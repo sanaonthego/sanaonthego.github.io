@@ -11,12 +11,17 @@
       color: #333;
     }
     header {
-  height: 75vh; /* controls hero height */
+  height: 75vh;
   min-height: 420px;
-  background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-              url('images/hero.jpg');
+  background-image: linear-gradient(
+      rgba(0,0,0,0.45),
+      rgba(0,0,0,0.45)
+    ),
+    url("images/hero.jpeg");
   background-size: cover;
-  background-position: center;
+  background-position: center center;
+  background-repeat: no-repeat;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
