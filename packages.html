@@ -1,53 +1,578 @@
-<h1>Our Travel Packages</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore our travel packages to Darjeeling, Kalimpong & Sikkim. Custom Himalayan itineraries starting from ₹18,500. Book via WhatsApp.">
+  <title>Packages – Sana On The Go</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
-<hr>
+  <style>
+    /* ── Reset & Variables ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<h2 id="darjeeling">Darjeeling & Kalimpong – 5 Nights / 6 Days</h2>
-<p><strong>Price:</strong> From ₹18,500 per person</p>
+    :root {
+      --green:    #2d6a4f;
+      --green-lt: #52b788;
+      --wa:       #25D366;
+      --wa-dk:    #1aab55;
+      --bg:       #f7f4ef;
+      --text:     #1e1e1e;
+      --muted:    #666;
+      --card-bg:  #ffffff;
+      --radius:   12px;
+    }
 
-<h4>Highlights</h4>
-<ul>
-  <li>Tiger Hill sunrise</li>
-  <li>Tea gardens & toy train</li>
-  <li>Monasteries & local sightseeing</li>
-</ul>
+    html { scroll-behavior: smooth; }
 
-<h4>Brief Itinerary</h4>
-<ul>
-  <li><strong>Day 1:</strong> NJP → Darjeeling</li>
-  <li><strong>Day 2:</strong> Darjeeling sightseeing</li>
-  <li><strong>Day 3:</strong> Darjeeling → Kalimpong</li>
-  <li><strong>Day 4:</strong> Kalimpong sightseeing</li>
-  <li><strong>Day 5:</strong> Leisure / local</li>
-  <li><strong>Day 6:</strong> Departure</li>
-</ul>
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-<a class="btn" href="https://wa.me/91XXXXXXXXXX">
-  Enquire on WhatsApp
-</a>
+    /* ── Navigation ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+      background: var(--green);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
 
-<hr>
+    nav .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
 
-<h2 id="sikkim">Offbeat Sikkim – 7 Nights / 8 Days</h2>
-<p><strong>Price:</strong> From ₹24,900 per person</p>
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
 
-<h4>Highlights</h4>
-<ul>
-  <li>Lachung & Yumthang Valley</li>
-  <li>Village homestays</li>
-  <li>Less-crowded routes</li>
-</ul>
+    nav ul a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
 
-<h4>Brief Itinerary</h4>
-<ul>
-  <li><strong>Day 1:</strong> NJP → Gangtok</li>
-  <li><strong>Day 2:</strong> Gangtok → Lachung</li>
-  <li><strong>Day 3:</strong> Yumthang Valley</li>
-  <li><strong>Day 4:</strong> Lachung → Gangtok</li>
-  <li><strong>Day 5–7:</strong> Offbeat villages</li>
-  <li><strong>Day 8:</strong> Departure</li>
-</ul>
+    nav ul a:hover { color: var(--green-lt); }
 
-<a class="btn" href="https://wa.me/91XXXXXXXXXX">
-  Enquire on WhatsApp
-</a>
+    /* ── Page Hero Banner ── */
+    .page-hero {
+      background: linear-gradient(135deg, #1a3d2b 0%, #2d6a4f 100%);
+      color: #fff;
+      text-align: center;
+      padding: 72px 24px 60px;
+    }
+
+    .page-hero .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green-lt);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      margin-bottom: 14px;
+    }
+
+    .page-hero p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── Package jump links ── */
+    .jump-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding: 28px 24px;
+      background: #fff;
+      border-bottom: 1px solid #e8e2d9;
+      flex-wrap: wrap;
+    }
+
+    .jump-links a {
+      display: inline-block;
+      border: 2px solid var(--green);
+      color: var(--green);
+      padding: 9px 22px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .jump-links a:hover {
+      background: var(--green);
+      color: #fff;
+    }
+
+    /* ── Package Sections ── */
+    .package-section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 72px 24px;
+    }
+
+    .package-section + .package-section {
+      border-top: 1px solid #e0dbd2;
+    }
+
+    /* scroll offset so sticky nav doesn't cover anchor */
+    .package-section::before {
+      content: '';
+      display: block;
+      height: 80px;
+      margin-top: -80px;
+      pointer-events: none;
+    }
+
+    .pkg-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .pkg-header-left .badge {
+      display: inline-block;
+      background: #e8f5ee;
+      color: var(--green);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .pkg-header-left h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--green);
+      line-height: 1.25;
+    }
+
+    .price-tag {
+      background: var(--green);
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: var(--radius);
+      text-align: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .price-tag .from {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .price-tag .amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      display: block;
+    }
+
+    .price-tag .per {
+      font-size: 0.75rem;
+      opacity: 0.7;
+    }
+
+    /* Two-column layout */
+    .pkg-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .pkg-box {
+      background: var(--card-bg);
+      border: 1px solid #e8e2d9;
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .pkg-box h4 {
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .pkg-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pkg-box ul li {
+      font-size: 0.93rem;
+      color: var(--text);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .pkg-box ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--green-lt);
+      font-weight: 700;
+    }
+
+    /* Itinerary timeline */
+    .itinerary-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .itinerary-list li {
+      font-size: 0.93rem;
+      padding: 10px 0 10px 40px;
+      position: relative;
+      border-left: 2px solid #d4ead9;
+      margin-left: 12px;
+    }
+
+    .itinerary-list li::before {
+      content: attr(data-day);
+      position: absolute;
+      left: -13px;
+      top: 10px;
+      background: var(--green);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0;
+    }
+
+    .itinerary-list li strong {
+      display: block;
+      font-size: 0.78rem;
+      letter-spacing: 0.5px;
+      color: var(--green);
+      margin-bottom: 2px;
+    }
+
+    /* CTA */
+    .pkg-cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--wa);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-wa:hover {
+      background: var(--wa-dk);
+      transform: translateY(-2px);
+    }
+
+    .btn-wa svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
+
+    .pkg-cta .note {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #1a2e25;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 24px 32px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    .footer-contact h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--green-lt);
+      margin-bottom: 12px;
+    }
+
+    .footer-contact p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 8px;
+    }
+
+    .footer-contact a { color: var(--green-lt); text-decoration: none; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-bottom a { color: var(--green-lt); text-decoration: none; }
+
+    /* ── Floating WhatsApp ── */
+    .wa-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 200;
+      background: var(--wa);
+      color: #fff;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .wa-float:hover { transform: scale(1.1); }
+    .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      nav ul { gap: 16px; }
+      .pkg-body { grid-template-columns: 1fr; }
+      .pkg-header { flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { justify-content: center; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a class="logo" href="index.html">Sana On The Go</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#why-us">Why Us</a></li>
+      <li><a href="index.html#gallery">Gallery</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <p class="eyebrow">Himalayan Travel Specialists</p>
+    <h1>Our Travel Packages</h1>
+    <p>Handcrafted itineraries for Darjeeling, Kalimpong &amp; Sikkim — built around your pace and interests.</p>
+  </div>
+
+  <!-- Quick Jump Links -->
+  <div class="jump-links">
+    <a href="#darjeeling">🍵 Darjeeling &amp; Kalimpong</a>
+    <a href="#sikkim">🏔️ Offbeat Sikkim</a>
+  </div>
+
+  <!-- ══ Package 1: Darjeeling ══ -->
+  <div class="package-section" id="darjeeling">
+    <div class="pkg-header">
+      <div class="pkg-header-left">
+        <span class="badge">5 Nights / 6 Days</span>
+        <h2>Darjeeling &amp; Kalimpong</h2>
+      </div>
+      <div class="price-tag">
+        <span class="from">Starting from</span>
+        <span class="amount">₹18,500</span>
+        <span class="per">per person</span>
+      </div>
+    </div>
+
+    <div class="pkg-body">
+      <div class="pkg-box">
+        <h4>Highlights</h4>
+        <ul>
+          <li>Tiger Hill sunrise viewpoint</li>
+          <li>Tea gardens &amp; tea tasting</li>
+          <li>Darjeeling Himalayan Railway (Toy Train)</li>
+          <li>Monasteries &amp; local sightseeing</li>
+          <li>Kalimpong hill town exploration</li>
+        </ul>
+      </div>
+
+      <div class="pkg-box">
+        <h4>Day-by-Day Itinerary</h4>
+        <ul class="itinerary-list">
+          <li data-day="1"><strong>Day 1</strong>NJP / Bagdogra → Darjeeling — check-in &amp; evening stroll on Mall Road</li>
+          <li data-day="2"><strong>Day 2</strong>Tiger Hill sunrise, Ghoom Monastery, Batasia Loop, Darjeeling Ropeway</li>
+          <li data-day="3"><strong>Day 3</strong>Tea garden visit &amp; toy train experience, transfer to Kalimpong</li>
+          <li data-day="4"><strong>Day 4</strong>Kalimpong sightseeing — Durpin Monastery, Delo Park, local markets</li>
+          <li data-day="5"><strong>Day 5</strong>Leisure day / optional offbeat excursion</li>
+          <li data-day="6"><strong>Day 6</strong>Departure transfer to NJP / Bagdogra</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pkg-cta">
+      <a class="btn-wa" href="https://wa.me/919874740763?text=Hi%2C%20I%20am%20interested%20in%20the%20Darjeeling%20%26%20Kalimpong%205N%2F6D%20package">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Enquire for Darjeeling
+      </a>
+      <span class="note">We'll send a detailed quote within a few hours.</span>
+    </div>
+  </div>
+
+  <!-- ══ Package 2: Sikkim ══ -->
+  <div class="package-section" id="sikkim">
+    <div class="pkg-header">
+      <div class="pkg-header-left">
+        <span class="badge">7 Nights / 8 Days</span>
+        <h2>Offbeat Sikkim</h2>
+      </div>
+      <div class="price-tag">
+        <span class="from">Starting from</span>
+        <span class="amount">₹24,900</span>
+        <span class="per">per person</span>
+      </div>
+    </div>
+
+    <div class="pkg-body">
+      <div class="pkg-box">
+        <h4>Highlights</h4>
+        <ul>
+          <li>Lachung &amp; Yumthang Valley (Valley of Flowers)</li>
+          <li>Authentic village homestays</li>
+          <li>Less-crowded offbeat routes</li>
+          <li>Gangtok city &amp; viewpoints</li>
+          <li>Himalayan mountain panoramas</li>
+        </ul>
+      </div>
+
+      <div class="pkg-box">
+        <h4>Day-by-Day Itinerary</h4>
+        <ul class="itinerary-list">
+          <li data-day="1"><strong>Day 1</strong>NJP / Bagdogra → Gangtok — check-in &amp; MG Road evening walk</li>
+          <li data-day="2"><strong>Day 2</strong>Gangtok sightseeing — Rumtek Monastery, viewpoints</li>
+          <li data-day="3"><strong>Day 3</strong>Gangtok → Lachung via scenic mountain drive</li>
+          <li data-day="4"><strong>Day 4</strong>Yumthang Valley &amp; Zero Point excursion</li>
+          <li data-day="5"><strong>Day 5</strong>Lachung → Gangtok, village homestay en route</li>
+          <li data-day="6–7"><strong>Day 6–7</strong>Offbeat villages — local culture, nature walks, home-cooked meals</li>
+          <li data-day="8"><strong>Day 8</strong>Departure transfer to NJP / Bagdogra</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pkg-cta">
+      <a class="btn-wa" href="https://wa.me/919874740763?text=Hi%2C%20I%20am%20interested%20in%20the%20Offbeat%20Sikkim%207N%2F8D%20package">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Enquire for Sikkim
+      </a>
+      <span class="note">We'll send a detailed quote within a few hours.</span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h2>Sana On The Go</h2>
+          <p>Based in North Bengal, we craft unforgettable journeys through Darjeeling, Kalimpong, and the hidden corners of Sikkim.</p>
+        </div>
+        <div class="footer-contact">
+          <h3>Get In Touch</h3>
+          <p>📞 Call / WhatsApp: <a href="tel:+919874740763">+91 98747 40763</a></p>
+          <p>📍 Based in North Bengal</p>
+          <p>📸 <a href="https://www.instagram.com/sana.onthe.go?igsh=MTRuaWVmOWJ5d2ZpMg==" target="_blank" rel="noopener">@sana.onthe.go</a> on Instagram</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Sana On The Go. All rights reserved.</span>
+        <a href="index.html">← Back to Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a class="wa-float" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20travel%20packages" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+</body>
+</html>
