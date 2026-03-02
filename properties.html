@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Properties – Sana On The Go | Hotels & Homestays North Bengal & Sikkim</title>
+  <meta name="description" content="Browse handpicked hotels and homestays in Darjeeling, Sikkim, Kalimpong and across North Bengal. Book via WhatsApp with Sana On The Go.">
+  <meta name="keywords" content="hotels darjeeling, homestay sikkim, kalimpong accommodation, north bengal hotels, offbeat stays north bengal, budget hotels darjeeling, luxury resort sikkim">
+  <link rel="canonical" href="https://sanaonthego.github.io/properties.html">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LodgingBusiness","name":"Sana On The Go – Properties","url":"https://sanaonthego.github.io/properties.html","telephone":"+91-98747-40763","address":{"@type":"PostalAddress","addressLocality":"Siliguri","addressRegion":"West Bengal","addressCountry":"IN"}}</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:#2d6a4f; --green-lt:#52b788; --green-dk:#1a3d2b;
+      --wa:#25D366; --wa-dk:#1aab55;
+      --bg:#f7f4ef; --text:#1e1e1e; --muted:#666; --radius:12px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden; }
+
+    /* NAV */
+    nav { position:sticky; top:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:14px 36px; background:var(--green); box-shadow:0 2px 12px rgba(0,0,0,0.18); }
+    .logo { font-family:'Playfair Display',serif; font-size:1.25rem; color:#fff; text-decoration:none; flex-shrink:0; }
+    .nav-links { list-style:none; display:flex; gap:22px; align-items:center; }
+    .nav-links a { color:rgba(255,255,255,0.85); text-decoration:none; font-size:0.88rem; font-weight:500; transition:color 0.2s; white-space:nowrap; }
+    .nav-links a:hover,.nav-links a.active { color:var(--green-lt); }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+    .hamburger span { display:block; width:24px; height:2px; background:#fff; border-radius:2px; }
+    .mobile-menu { display:none; position:fixed; top:58px; left:0; right:0; background:rgba(20,40,30,0.98); backdrop-filter:blur(10px); z-index:99; padding:16px 24px 24px; flex-direction:column; }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu a { color:rgba(255,255,255,0.85); text-decoration:none; font-size:1rem; font-weight:500; padding:13px 0; border-bottom:1px solid rgba(255,255,255,0.08); }
+    .mobile-menu a:last-child { border-bottom:none; }
+    .mobile-menu a:hover { color:var(--green-lt); }
+
+    /* PAGE HERO */
+    .page-hero { background:linear-gradient(135deg,#1a3d2b,#2d6a4f); color:#fff; text-align:center; padding:60px 24px 52px; }
+    .page-hero .eyebrow { font-size:0.74rem; letter-spacing:3px; text-transform:uppercase; color:var(--green-lt); margin-bottom:12px; font-weight:600; }
+    .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(1.9rem,5vw,3rem); margin-bottom:12px; }
+    .page-hero p { font-size:0.97rem; color:rgba(255,255,255,0.74); max-width:500px; margin:0 auto; }
+
+    /* MAIN CONTAINER */
+    .container { max-width:1060px; margin:0 auto; padding:0 20px; }
+
+    /* ── STEP INDICATOR ── */
+    .steps { display:flex; align-items:center; justify-content:center; gap:0; padding:28px 24px 0; flex-wrap:wrap; }
+    .step { display:flex; align-items:center; gap:8px; font-size:0.82rem; color:var(--muted); font-weight:500; }
+    .step .num { width:26px; height:26px; border-radius:50%; border:2px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#ccc; transition:all 0.3s; }
+    .step.active .num { background:var(--green); border-color:var(--green); color:#fff; }
+    .step.active { color:var(--green); }
+    .step.done .num { background:var(--green-lt); border-color:var(--green-lt); color:#fff; }
+    .step-line { width:40px; height:2px; background:#ddd; margin:0 4px; }
+    .step-line.done { background:var(--green-lt); }
+
+    /* SECTION TITLE */
+    .sec-title { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--green); margin-bottom:6px; }
+    .sec-sub { color:var(--muted); font-size:0.9rem; margin-bottom:28px; }
+
+    /* ── STEP 1: LOCATION GRID ── */
+    #step1 { padding:36px 0 60px; }
+    .loc-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(150px,1fr));
+      gap:12px;
+    }
+    .loc-card {
+      background:#fff; border:2px solid #e8e2d9; border-radius:var(--radius);
+      padding:18px 14px; text-align:center; cursor:pointer;
+      transition:all 0.2s; user-select:none;
+    }
+    .loc-card:hover { border-color:var(--green); transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,0.1); }
+    .loc-card.selected { border-color:var(--green); background:#eaf5ee; }
+    .loc-card .loc-icon { font-size:1.8rem; margin-bottom:8px; display:block; }
+    .loc-card .loc-name { font-weight:600; font-size:0.88rem; color:var(--text); display:block; margin-bottom:3px; }
+    .loc-card .loc-region { font-size:0.72rem; color:var(--muted); }
+
+    /* ── STEP 2: PROPERTY CARDS ── */
+    #step2 { display:none; padding:36px 0 60px; }
+    .back-btn { display:inline-flex; align-items:center; gap:6px; color:var(--green); font-weight:600; font-size:0.88rem; cursor:pointer; margin-bottom:24px; background:none; border:none; font-family:'DM Sans',sans-serif; }
+    .back-btn:hover { text-decoration:underline; }
+    .prop-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:20px; }
+    .prop-card { background:#fff; border-radius:var(--radius); border:1px solid #e8e2d9; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.06); transition:transform 0.2s, box-shadow 0.2s; }
+    .prop-card:hover { transform:translateY(-4px); box-shadow:0 10px 28px rgba(0,0,0,0.12); }
+
+    /* Property image gallery — 2 photos shown side by side */
+    .prop-imgs { display:grid; grid-template-columns:1fr 1fr; height:160px; gap:2px; overflow:hidden; position:relative; }
+    .prop-imgs img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.3s; }
+    .prop-imgs:hover img { transform:scale(1.04); }
+    /*
+    ════════════════════════════════════════════════════════════
+    HOW TO ADD PROPERTY IMAGES:
+    Each property has 2 images shown side-by-side.
+    In the PROPERTIES data array (JS below), each property has:
+      img1: "images/properties/LOCATION-PROPNAME-1.jpg"
+      img2: "images/properties/LOCATION-PROPNAME-2.jpg"
+
+    1. Create a folder: images/properties/
+    2. Upload your property photos there
+    3. Update the img1 and img2 values in the PROPERTIES array
+    4. If images are missing, a green placeholder is shown
+    ════════════════════════════════════════════════════════════
+    */
+    .prop-img-ph { background:linear-gradient(135deg,#1a3d2b,#2d6a4f); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:4px; }
+    .prop-img-ph span { color:rgba(255,255,255,0.5); font-size:0.7rem; text-align:center; padding:0 6px; }
+    .prop-img-ph .ph-i { font-size:1.4rem; }
+    .prop-type-badge { position:absolute; top:10px; left:10px; background:rgba(26,61,43,0.85); color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:3px 9px; border-radius:20px; z-index:1; }
+    .prop-body { padding:18px; }
+    .prop-name { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--text); margin-bottom:4px; }
+    .prop-loc { font-size:0.8rem; color:var(--muted); margin-bottom:10px; display:flex; align-items:center; gap:4px; }
+    .prop-loc svg { width:13px; height:13px; fill:var(--green-lt); }
+    .prop-amenities { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:12px; }
+    .amenity { font-size:0.7rem; background:#f0f0ea; color:#555; padding:3px 8px; border-radius:20px; }
+    .prop-price { font-size:0.95rem; font-weight:700; color:var(--green); margin-bottom:14px; }
+    .prop-price span { font-size:0.78rem; font-weight:400; color:var(--muted); }
+    .btn-book { display:block; width:100%; background:var(--green); color:#fff; border:none; padding:11px; border-radius:8px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:0.9rem; cursor:pointer; transition:background 0.2s; }
+    .btn-book:hover { background:var(--green-dk); }
+
+    /* ── BOOKING MODAL ── */
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:500; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(4px); }
+    .modal-overlay.open { display:flex; }
+    .modal { background:#fff; border-radius:16px; max-width:480px; width:100%; max-height:92vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.3); }
+    .modal-header { background:var(--green); color:#fff; padding:22px 24px 18px; border-radius:16px 16px 0 0; position:relative; }
+    .modal-header h3 { font-family:'Playfair Display',serif; font-size:1.25rem; margin-bottom:3px; }
+    .modal-header p { font-size:0.83rem; color:rgba(255,255,255,0.75); }
+    .modal-close { position:absolute; top:16px; right:18px; background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:1.2rem; width:30px; height:30px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+    .modal-close:hover { background:rgba(255,255,255,0.3); }
+
+    /* Mini property preview inside modal */
+    .modal-prop-preview { display:grid; grid-template-columns:90px 1fr; gap:14px; align-items:center; background:#f7f4ef; padding:14px 20px; border-bottom:1px solid #e8e2d9; }
+    .modal-prop-preview img { width:90px; height:60px; object-fit:cover; border-radius:8px; }
+    .modal-prop-preview .ph { width:90px; height:60px; background:linear-gradient(135deg,#1a3d2b,#2d6a4f); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
+    .modal-prop-preview .mpname { font-weight:600; font-size:0.95rem; color:var(--text); }
+    .modal-prop-preview .mpprice { font-size:0.85rem; color:var(--green); font-weight:600; }
+    .modal-prop-preview .mploc { font-size:0.78rem; color:var(--muted); }
+
+    .modal-body { padding:20px 24px 24px; }
+    .mform-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+    .mform-group { display:flex; flex-direction:column; gap:5px; }
+    .mform-group.full { grid-column:1/-1; }
+    .mform-group label { font-size:0.72rem; font-weight:600; color:var(--green); letter-spacing:0.5px; text-transform:uppercase; }
+    .mform-group input, .mform-group select, .mform-group textarea { padding:10px 13px; border:1.5px solid #d4cfc7; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--text); background:var(--bg); transition:border-color 0.2s; width:100%; }
+    .mform-group input:focus,.mform-group select:focus,.mform-group textarea:focus { outline:none; border-color:var(--green); }
+    .mform-group textarea { resize:vertical; min-height:64px; }
+    .btn-wa-modal { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; background:var(--wa); color:#fff; border:none; padding:14px; border-radius:10px; font-family:'DM Sans',sans-serif; font-weight:700; font-size:1rem; cursor:pointer; margin-top:16px; transition:background 0.2s, transform 0.2s; box-shadow:0 4px 16px rgba(37,211,102,0.35); }
+    .btn-wa-modal:hover { background:var(--wa-dk); transform:translateY(-1px); }
+    .btn-wa-modal svg { width:20px; height:20px; fill:#fff; flex-shrink:0; }
+    .modal-note { font-size:0.75rem; color:var(--muted); text-align:center; margin-top:10px; }
+
+    /* FOOTER */
+    footer { background:#111e18; color:rgba(255,255,255,0.8); padding:36px 24px 24px; text-align:center; }
+    .footer-links { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:16px; }
+    .footer-links a { color:var(--green-lt); text-decoration:none; font-size:0.88rem; }
+    .footer-copy { font-size:0.78rem; color:rgba(255,255,255,0.3); }
+
+    /* WA float */
+    .wa-float { position:fixed; bottom:26px; right:26px; z-index:200; background:var(--wa); width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(37,211,102,0.42); text-decoration:none; transition:transform 0.2s; }
+    .wa-float:hover { transform:scale(1.1); }
+    .wa-float svg { width:27px; height:27px; fill:#fff; }
+
+    /* RESPONSIVE */
+    @media (max-width:768px) {
+      nav { padding:13px 18px; } .nav-links { display:none; } .hamburger { display:flex; }
+      .loc-grid { grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); }
+      .prop-grid { grid-template-columns:1fr; }
+      .mform-row { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">Sana On The Go</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#booking">Quick Enquiry</a></li>
+    <li><a href="packages.html">Packages</a></li>
+    <li><a href="properties.html" class="active">Properties</a></li>
+    <li><a href="index.html#why-us">Why Us</a></li>
+    <li><a href="index.html#gallery">Gallery</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="index.html#booking" onclick="closeMenu()">Quick Enquiry</a>
+  <a href="packages.html" onclick="closeMenu()">Packages</a>
+  <a href="properties.html" onclick="closeMenu()">Properties</a>
+  <a href="index.html#why-us" onclick="closeMenu()">Why Us</a>
+  <a href="index.html#gallery" onclick="closeMenu()">Gallery</a>
+  <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<div class="page-hero">
+  <p class="eyebrow">Handpicked Stays</p>
+  <h1>Browse Properties</h1>
+  <p>Hotels, resorts and homestays across North Bengal &amp; Sikkim — curated by local experts.</p>
+</div>
+
+<!-- Step indicator -->
+<div class="steps" id="stepIndicator">
+  <div class="step active" id="s1ind"><span class="num">1</span> Choose Location</div>
+  <div class="step-line" id="sl1"></div>
+  <div class="step" id="s2ind"><span class="num">2</span> View Properties</div>
+  <div class="step-line" id="sl2"></div>
+  <div class="step" id="s3ind"><span class="num">3</span> Send Booking Enquiry</div>
+</div>
+
+<!-- STEP 1: LOCATION -->
+<section id="step1">
+  <div class="container">
+    <h2 class="sec-title">Where do you want to stay?</h2>
+    <p class="sec-sub">Select a destination to see available properties</p>
+    <div class="loc-grid" id="locGrid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- STEP 2: PROPERTIES -->
+<section id="step2">
+  <div class="container">
+    <button class="back-btn" onclick="goBack()">← Back to Locations</button>
+    <h2 class="sec-title" id="propHeading">Properties</h2>
+    <p class="sec-sub" id="propSub">Select a property to enquire</p>
+    <div class="prop-grid" id="propGrid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="bookModal">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h3 id="modalTitle">Book Your Stay</h3>
+      <p id="modalSub">Fill details — we'll confirm via WhatsApp</p>
+    </div>
+    <div class="modal-prop-preview" id="modalPreview"></div>
+    <div class="modal-body">
+      <div class="mform-row">
+        <div class="mform-group">
+          <label>Check-in Date</label>
+          <input type="date" id="mCheckin">
+        </div>
+        <div class="mform-group">
+          <label>Check-out Date</label>
+          <input type="date" id="mCheckout">
+        </div>
+      </div>
+      <div class="mform-row">
+        <div class="mform-group">
+          <label>No. of Rooms</label>
+          <select id="mRooms">
+            <option value="">Select</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option>
+          </select>
+        </div>
+        <div class="mform-group">
+          <label>No. of Persons</label>
+          <select id="mPersons">
+            <option value="">Select</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+            <option>6</option><option>7</option><option>8</option><option>9</option><option>10+</option>
+          </select>
+        </div>
+      </div>
+      <div class="mform-row">
+        <div class="mform-group full">
+          <label>Your Name</label>
+          <input type="text" id="mName" placeholder="Full name">
+        </div>
+      </div>
+      <div class="mform-row">
+        <div class="mform-group full">
+          <label>Special Requests (optional)</label>
+          <textarea id="mNote" placeholder="Any dietary needs, extra beds, special occasions..."></textarea>
+        </div>
+      </div>
+      <button class="btn-wa-modal" onclick="sendPropertyWA()">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Send Booking Enquiry via WhatsApp
+      </button>
+      <p class="modal-note">We typically reply within 2–4 hours. No payment required at this stage.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="packages.html">Tour Packages</a>
+    <a href="properties.html">Properties</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <p class="footer-copy">© 2026 Sana On The Go | Into The Wild Tour and Travels. All rights reserved.</p>
+</footer>
+
+<a class="wa-float" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20properties" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   LOCATIONS DATA
+   Add / edit locations here. Each has: id, name, icon, region
+═══════════════════════════════════════════════════════════════════════ */
+const LOCATIONS = [
+  { id:'darjeeling',  name:'Darjeeling',      icon:'🍵', region:'West Bengal' },
+  { id:'kalimpong',   name:'Kalimpong',        icon:'🌸', region:'West Bengal' },
+  { id:'kurseong',    name:'Kurseong',         icon:'🌿', region:'West Bengal' },
+  { id:'mirik',       name:'Mirik',            icon:'🏞️', region:'West Bengal' },
+  { id:'siliguri',    name:'Siliguri',         icon:'🏙️', region:'West Bengal' },
+  { id:'dooars',      name:'Dooars',           icon:'🐘', region:'West Bengal' },
+  { id:'lataguri',    name:'Lataguri',         icon:'🌳', region:'West Bengal' },
+  { id:'jaldapara',   name:'Jaldapara',        icon:'🦏', region:'West Bengal' },
+  { id:'gangtok',     name:'Gangtok',          icon:'🏔️', region:'Sikkim' },
+  { id:'pelling',     name:'Pelling',          icon:'🌄', region:'Sikkim' },
+  { id:'lachung',     name:'Lachung',          icon:'❄️', region:'Sikkim' },
+  { id:'namchi',      name:'Namchi',           icon:'🛕', region:'Sikkim' },
+  { id:'ravangla',    name:'Ravangla',         icon:'🌅', region:'Sikkim' },
+  { id:'yuksom',      name:'Yuksom',           icon:'🥾', region:'Sikkim' },
+  { id:'zuluk',       name:'Zuluk',            icon:'🛤️', region:'Sikkim' },
+  { id:'lava',        name:'Lava',             icon:'🌲', region:'West Bengal' },
+  { id:'lolegaon',    name:'Lolegaon',         icon:'🏡', region:'West Bengal' },
+  { id:'rishyap',     name:'Rishyap',          icon:'🌌', region:'West Bengal' },
+];
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PROPERTIES DATA
+   ────────────────────────────────────────────────────────────────────
+   HOW TO ADD YOUR OWN PROPERTIES:
+   1. Copy one of the property objects below
+   2. Change the id (must be unique), name, locationId, type, price etc.
+   3. Set img1 and img2 to YOUR image filenames inside images/properties/
+      Example: "images/properties/darjeeling-cedarinn-1.jpg"
+   4. Upload those images to the images/properties/ folder in your repo
+   5. If images are not found, a green placeholder is shown automatically
+
+   FIELDS:
+   - id:         unique identifier (no spaces)
+   - locationId: must match a location id above
+   - name:       property display name
+   - type:       "Hotel" | "Homestay" | "Resort" | "Guesthouse" | "Cottage"
+   - price:      price per person per day (number, in Rs.)
+   - desc:       short description (1-2 sentences)
+   - amenities:  array of short feature tags
+   - img1:       path to first image  (shown on left of property card)
+   - img2:       path to second image (shown on right of property card)
+═══════════════════════════════════════════════════════════════════════ */
+const PROPERTIES = [
+
+  /* ── DARJEELING ── */
+  {
+    id:'darj-01', locationId:'darjeeling', name:'Cedar Inn', type:'Hotel',
+    price:1800,
+    desc:'A heritage colonial bungalow overlooking the Kanchenjunga range, walking distance from Mall Road.',
+    amenities:['Mountain View','Breakfast Included','WiFi','Hot Water'],
+    img1:'images/properties/darjeeling-cedarinn-1.jpg',
+    img2:'images/properties/darjeeling-cedarinn-2.jpg'
+  },
+  {
+    id:'darj-02', locationId:'darjeeling', name:'Sunrise Homestay', type:'Homestay',
+    price:1200,
+    desc:'Family-run homestay with home-cooked Nepali and Bengali meals, panoramic garden views.',
+    amenities:['Home-cooked Meals','Garden','Heater','Local Guide'],
+    img1:'images/properties/darjeeling-sunrise-1.jpg',
+    img2:'images/properties/darjeeling-sunrise-2.jpg'
+  },
+  {
+    id:'darj-03', locationId:'darjeeling', name:'Windamere Hotel', type:'Hotel',
+    price:3500,
+    desc:'Iconic heritage hotel with old-world charm, fireside lounges and impeccable service since 1939.',
+    amenities:['Heritage Property','Fireplace','Dining Hall','Bar'],
+    img1:'images/properties/darjeeling-windamere-1.jpg',
+    img2:'images/properties/darjeeling-windamere-2.jpg'
+  },
+
+  /* ── KALIMPONG ── */
+  {
+    id:'kalim-01', locationId:'kalimpong', name:'Morgan House', type:'Resort',
+    price:2200,
+    desc:'Colonial-era bungalow set amidst orchards with sweeping views of the Teesta valley.',
+    amenities:['Valley View','Orchard Walk','Breakfast','Parking'],
+    img1:'images/properties/kalimpong-morgan-1.jpg',
+    img2:'images/properties/kalimpong-morgan-2.jpg'
+  },
+  {
+    id:'kalim-02', locationId:'kalimpong', name:'Himalayan Hotel', type:'Hotel',
+    price:2800,
+    desc:'Elegant boutique hotel with beautiful gardens and personalised service in the heart of Kalimpong.',
+    amenities:['Garden','Restaurant','WiFi','Room Service'],
+    img1:'images/properties/kalimpong-himalayan-1.jpg',
+    img2:'images/properties/kalimpong-himalayan-2.jpg'
+  },
+
+  /* ── KURSEONG ── */
+  {
+    id:'kurs-01', locationId:'kurseong', name:'Cochrane Place', type:'Resort',
+    price:3200,
+    desc:'Award-winning boutique resort inside a 1920s heritage building surrounded by tea estates.',
+    amenities:['Tea Garden','Pool','Spa','Restaurant','Heritage'],
+    img1:'images/properties/kurseong-cochrane-1.jpg',
+    img2:'images/properties/kurseong-cochrane-2.jpg'
+  },
+  {
+    id:'kurs-02', locationId:'kurseong', name:'Tea Bungalow Homestay', type:'Homestay',
+    price:1400,
+    desc:'Cozy rooms inside a working tea estate with daily tea tasting and organic farm meals.',
+    amenities:['Tea Tasting','Organic Meals','Nature Walk','Heater'],
+    img1:'images/properties/kurseong-teabungalow-1.jpg',
+    img2:'images/properties/kurseong-teabungalow-2.jpg'
+  },
+
+  /* ── GANGTOK ── */
+  {
+    id:'gang-01', locationId:'gangtok', name:'Elgin Nor-Khill', type:'Hotel',
+    price:4200,
+    desc:'Sikkim\'s most iconic heritage hotel, built for the Chogyal of Sikkim, with stunning Kanchenjunga views.',
+    amenities:['Kanchenjunga View','Heritage','Restaurant','Spa','WiFi'],
+    img1:'images/properties/gangtok-elgin-1.jpg',
+    img2:'images/properties/gangtok-elgin-2.jpg'
+  },
+  {
+    id:'gang-02', locationId:'gangtok', name:'Sikkim Homestay', type:'Homestay',
+    price:1100,
+    desc:'Warm Nepali family homestay near MG Marg with home-cooked meals and local sightseeing tips.',
+    amenities:['Home-cooked Meals','MG Marg Access','WiFi','Heater'],
+    img1:'images/properties/gangtok-homestay-1.jpg',
+    img2:'images/properties/gangtok-homestay-2.jpg'
+  },
+
+  /* ── PELLING ── */
+  {
+    id:'pell-01', locationId:'pelling', name:'Norbu Ghang Resort', type:'Resort',
+    price:3800,
+    desc:'Spectacular resort with unobstructed views of Kanchenjunga. Infinity pool, spa and gourmet dining.',
+    amenities:['Infinity Pool','Kanchenjunga View','Spa','Restaurant','Balcony'],
+    img1:'images/properties/pelling-norbu-1.jpg',
+    img2:'images/properties/pelling-norbu-2.jpg'
+  },
+  {
+    id:'pell-02', locationId:'pelling', name:'Mountain Dew Homestay', type:'Homestay',
+    price:1300,
+    desc:'Simple, clean homestay with stunning sunrise views over the Himalayan range. Walk to Pemayangtse.',
+    amenities:['Sunrise View','Balcony','Home-cooked Meals','Quiet'],
+    img1:'images/properties/pelling-mountaindew-1.jpg',
+    img2:'images/properties/pelling-mountaindew-2.jpg'
+  },
+
+  /* ── LACHUNG ── */
+  {
+    id:'lach-01', locationId:'lachung', name:'Lachung Alpine Resort', type:'Resort',
+    price:2600,
+    desc:'Cozy mountain resort at 8,600 ft with river views, perfect base for Yumthang Valley.',
+    amenities:['River View','Bonfire','Hot Water','Restaurant','Alpine Setting'],
+    img1:'images/properties/lachung-alpine-1.jpg',
+    img2:'images/properties/lachung-alpine-2.jpg'
+  },
+
+  /* ── DOOARS ── */
+  {
+    id:'door-01', locationId:'dooars', name:'Jungle Camp Dooars', type:'Resort',
+    price:2000,
+    desc:'Eco-resort inside the forest buffer zone with safari access, bonfire evenings and wildlife sightings.',
+    amenities:['Jungle Safari','Bonfire','Wildlife','Eco-resort','Meals Included'],
+    img1:'images/properties/dooars-junglecamp-1.jpg',
+    img2:'images/properties/dooars-junglecamp-2.jpg'
+  },
+
+  /* ── MIRIK ── */
+  {
+    id:'mirik-01', locationId:'mirik', name:'Lake View Cottage', type:'Cottage',
+    price:1600,
+    desc:'Peaceful cottage right on the banks of Mirik Lake with rowing boat access and tea garden surrounds.',
+    amenities:['Lake View','Rowing Boat','Tea Garden','Quiet','Bonfire'],
+    img1:'images/properties/mirik-lakeview-1.jpg',
+    img2:'images/properties/mirik-lakeview-2.jpg'
+  },
+
+  /* ── LAVA ── */
+  {
+    id:'lava-01', locationId:'lava', name:'Lava Forest Retreat', type:'Homestay',
+    price:1200,
+    desc:'Offbeat homestay surrounded by oak and rhododendron forests, close to Neora Valley National Park.',
+    amenities:['Forest Walk','Bird Watching','Home Meals','Fireplace','Offbeat'],
+    img1:'images/properties/lava-forest-1.jpg',
+    img2:'images/properties/lava-forest-2.jpg'
+  },
+
+  /* ── RISHYAP ── */
+  {
+    id:'rish-01', locationId:'rishyap', name:'Rishyap Starview Homestay', type:'Homestay',
+    price:1100,
+    desc:'Elevated homestay with one of the clearest night skies in North Bengal — perfect for stargazing.',
+    amenities:['Stargazing','Panoramic View','Home Meals','Peaceful','Bonfire'],
+    img1:'images/properties/rishyap-starview-1.jpg',
+    img2:'images/properties/rishyap-starview-2.jpg'
+  },
+];
+/* ═══════ END OF PROPERTY DATA — EDIT ABOVE ═══════ */
+
+let selectedProp = null;
+
+/* ── Build Location Grid ── */
+function buildLocGrid() {
+  const grid = document.getElementById('locGrid');
+  LOCATIONS.forEach(loc => {
+    const card = document.createElement('div');
+    card.className = 'loc-card';
+    card.innerHTML = `
+      <span class="loc-icon">${loc.icon}</span>
+      <span class="loc-name">${loc.name}</span>
+      <span class="loc-region">${loc.region}</span>`;
+    card.addEventListener('click', () => showProperties(loc));
+    grid.appendChild(card);
+  });
+}
+
+/* ── Show Properties for selected location ── */
+function showProperties(loc) {
+  const props = PROPERTIES.filter(p => p.locationId === loc.id);
+  document.getElementById('step1').style.display = 'none';
+  document.getElementById('step2').style.display = 'block';
+  document.getElementById('propHeading').textContent = `Properties in ${loc.name}`;
+
+  if (props.length === 0) {
+    document.getElementById('propSub').textContent = 'No properties listed yet for this location.';
+    document.getElementById('propGrid').innerHTML = `
+      <div style="grid-column:1/-1;text-align:center;padding:48px 24px;color:var(--muted);">
+        <div style="font-size:2.5rem;margin-bottom:12px;">🏗️</div>
+        <p style="font-weight:600;margin-bottom:6px;">Coming Soon</p>
+        <p style="font-size:0.88rem;">We're adding properties for ${loc.name}.<br>
+        <a href="https://wa.me/919874740763?text=Hi%2C%20I%20am%20looking%20for%20accommodation%20in%20${encodeURIComponent(loc.name)}" target="_blank" style="color:var(--green);font-weight:600;">
+          WhatsApp us directly →</a></p>
+      </div>`;
+  } else {
+    document.getElementById('propSub').textContent = `${props.length} ${props.length === 1 ? 'property' : 'properties'} available — tap to enquire`;
+    document.getElementById('propGrid').innerHTML = props.map(buildPropCard).join('');
+  }
+
+  // Update step indicators
+  document.getElementById('s1ind').classList.remove('active'); document.getElementById('s1ind').classList.add('done');
+  document.getElementById('sl1').classList.add('done');
+  document.getElementById('s2ind').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goBack() {
+  document.getElementById('step2').style.display = 'none';
+  document.getElementById('step1').style.display = 'block';
+  document.getElementById('s1ind').classList.add('active'); document.getElementById('s1ind').classList.remove('done');
+  document.getElementById('sl1').classList.remove('done');
+  document.getElementById('s2ind').classList.remove('active');
+}
+
+function buildPropCard(p) {
+  const imgBlock = `
+    <div class="prop-imgs">
+      <span class="prop-type-badge">${p.type}</span>
+      ${buildPropImg(p.img1, p.name + ' photo 1')}
+      ${buildPropImg(p.img2, p.name + ' photo 2')}
+    </div>`;
+  const amenities = (p.amenities||[]).map(a => `<span class="amenity">${a}</span>`).join('');
+  return `
+    <div class="prop-card">
+      ${imgBlock}
+      <div class="prop-body">
+        <div class="prop-name">${p.name}</div>
+        <div class="prop-loc">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          ${LOCATIONS.find(l=>l.id===p.locationId)?.name || ''}
+        </div>
+        <p style="font-size:0.85rem;color:var(--muted);margin-bottom:10px;line-height:1.55;">${p.desc}</p>
+        <div class="prop-amenities">${amenities}</div>
+        <div class="prop-price">₹${p.price.toLocaleString('en-IN')} <span>per person / night</span></div>
+        <button class="btn-book" onclick="openModal('${p.id}')">Enquire &amp; Book →</button>
+      </div>
+    </div>`;
+}
+
+function buildPropImg(src, alt) {
+  if (!src) return `<div class="prop-img-ph"><span class="ph-i">🏨</span><span>Add image</span></div>`;
+  return `<img src="${src}" alt="${alt}" loading="lazy"
+    onerror="this.outerHTML='<div class=\\'prop-img-ph\\'><span class=\\'ph-i\\'>📷</span><span>${src.split('/').pop()}</span></div>'">`;
+}
+
+/* ── Open Booking Modal ── */
+function openModal(propId) {
+  selectedProp = PROPERTIES.find(p => p.id === propId);
+  if (!selectedProp) return;
+
+  document.getElementById('modalTitle').textContent = `Book: ${selectedProp.name}`;
+  document.getElementById('modalSub').textContent = `${selectedProp.type} · ${LOCATIONS.find(l=>l.id===selectedProp.locationId)?.name}`;
+
+  // Modal preview with 2 property photos
+  const preview = document.getElementById('modalPreview');
+  const img1HTML = selectedProp.img1
+    ? `<img src="${selectedProp.img1}" alt="${selectedProp.name}" onerror="this.outerHTML='<div class=\\'ph\\'>🏨</div>'">`
+    : `<div class="ph">🏨</div>`;
+  preview.innerHTML = `
+    ${img1HTML}
+    <div>
+      <div class="mpname">${selectedProp.name}</div>
+      <div class="mploc">${LOCATIONS.find(l=>l.id===selectedProp.locationId)?.name} · ${selectedProp.type}</div>
+      <div class="mpprice">₹${selectedProp.price.toLocaleString('en-IN')} per person/night</div>
+    </div>`;
+
+  document.getElementById('bookModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // Update step indicator
+  document.getElementById('s2ind').classList.add('done');
+  document.getElementById('sl2').classList.add('done');
+  document.getElementById('s3ind').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('bookModal').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('s2ind').classList.remove('done');
+  document.getElementById('sl2').classList.remove('done');
+  document.getElementById('s3ind').classList.remove('active');
+  document.getElementById('s2ind').classList.add('active');
+}
+
+document.getElementById('bookModal').addEventListener('click', e => { if (e.target === document.getElementById('bookModal')) closeModal(); });
+
+/* ── Send WhatsApp Enquiry ── */
+function sendPropertyWA() {
+  const ci   = document.getElementById('mCheckin').value;
+  const co   = document.getElementById('mCheckout').value;
+  const rm   = document.getElementById('mRooms').value;
+  const per  = document.getElementById('mPersons').value;
+  const name = document.getElementById('mName').value.trim();
+  const note = document.getElementById('mNote').value.trim();
+
+  if (!ci || !co || !rm || !per) { alert('Please fill in Check-in, Check-out, Rooms, and Persons.'); return; }
+  if (!name) { alert('Please enter your name.'); return; }
+
+  const fmt = v => { const [y,m,d] = v.split('-'); return `${d} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]} ${y}`; };
+  const loc = LOCATIONS.find(l => l.id === selectedProp.locationId)?.name || '';
+
+  const msg =
+    `🏨 *PROPERTY BOOKING ENQUIRY*\n` +
+    `━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+    `*Property:* ${selectedProp.name}\n` +
+    `*Location:* ${loc}\n` +
+    `*Type:* ${selectedProp.type}\n` +
+    `*Price:* ₹${selectedProp.price.toLocaleString('en-IN')} per person/night\n\n` +
+    `📅 *Check-in:* ${fmt(ci)}\n` +
+    `📅 *Check-out:* ${fmt(co)}\n` +
+    `🛏️ *Rooms Required:* ${rm}\n` +
+    `👥 *Total Persons:* ${per}\n` +
+    `👤 *Guest Name:* ${name}\n` +
+    (note ? `📝 *Special Requests:* ${note}\n` : '') +
+    `━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+    `Please confirm availability and share the booking details. Thank you!`;
+
+  window.open('https://wa.me/919874740763?text=' + encodeURIComponent(msg), '_blank');
+}
+
+/* ── Hamburger ── */
+const hbg = document.getElementById('hamburger');
+const mm  = document.getElementById('mobileMenu');
+hbg.addEventListener('click', () => mm.classList.toggle('open'));
+function closeMenu() { mm.classList.remove('open'); }
+document.addEventListener('click', e => { if (!hbg.contains(e.target) && !mm.contains(e.target)) mm.classList.remove('open'); });
+
+// Init
+buildLocGrid();
+</script>
+</body>
+</html>
