@@ -94,14 +94,12 @@
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center; padding: 0 24px; color: #fff; overflow: hidden;
     }
-    /* ▼▼▼ HERO IMAGE — replace images/hero.jpeg with your own photo ▼▼▼ */
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
-      background-color: var(--green-dk); /* fallback colour shown if image missing */
+      background-color: var(--green-dk);
       background-image: url("images/hero.jpeg");
       background-size: cover; background-position: center;
     }
-    /* If hero.jpeg is missing, show a green-to-dark gradient instead of broken image */
     .hero-bg::after {
       content: '';
       position: absolute; inset: 0;
@@ -175,8 +173,6 @@
     .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; }
     .card { background: var(--card-bg); border: 1px solid #e8e2d9; border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); transition: transform 0.25s, box-shadow 0.25s; display: flex; flex-direction: column; }
     .card:hover { transform: translateY(-5px); box-shadow: 0 10px 32px rgba(0,0,0,0.12); }
-
-    /* ▼▼▼ PACKAGE CARD IMAGE — see comment inside HTML for how to add yours ▼▼▼ */
     .card-thumb-wrap {
       width: 100%; height: 175px; overflow: hidden;
       background: linear-gradient(135deg, #1a3d2b 0%, #2d6a4f 100%);
@@ -199,7 +195,6 @@
     .slider-track { display: flex; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
     .slide { min-width: 100%; position: relative; }
     .slide img { width: 100%; height: 400px; object-fit: cover; display: block; }
-    /* ▼▼▼ GALLERY PLACEHOLDER shown when image is missing ▼▼▼ */
     .slide-placeholder {
       width: 100%; height: 400px;
       background: linear-gradient(135deg, #1a3d2b 0%, #2d6a4f 100%);
@@ -223,16 +218,11 @@
     .why-item .icon { font-size: 2rem; margin-bottom: 10px; }
     .why-item h4 { font-size: 0.9rem; font-weight: 600; color: var(--green); }
 
-    /* ── TESTIMONIALS ── */
+    /* ── GOOGLE REVIEWS (Trustindex) ── */
     #testimonials { background: var(--green-dk); }
     .testi-inner { max-width: 900px; margin: 0 auto; padding: 68px 24px; }
     .testi-inner .section-title { color: #fff; }
     .testi-inner .section-sub { color: rgba(255,255,255,0.6); }
-    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
-    .testi-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 24px; }
-    .testi-stars { color: var(--gold); margin-bottom: 10px; }
-    .testi-text { font-size: 0.91rem; color: rgba(255,255,255,0.84); line-height: 1.7; margin-bottom: 14px; font-style: italic; }
-    .testi-author { font-size: 0.8rem; font-weight: 600; color: var(--green-lt); }
 
     /* ── FOOTER ── */
     footer { background: #111e18; color: rgba(255,255,255,0.85); }
@@ -321,16 +311,7 @@
 
 <!-- ── HERO ── -->
 <header>
-  <!--
-  ════════════════════════════════════════════════
-  HERO BACKGROUND IMAGE
-  Upload YOUR photo named "hero.jpeg" to the
-  "images" folder. It will appear automatically.
-  Recommended size: 1920×1080px or wider.
-  ════════════════════════════════════════════════
-  -->
   <div class="hero-bg"></div>
-
   <p class="eyebrow">Himalayan Travel Specialists · Siliguri, North Bengal</p>
   <h1>Sana On The Go</h1>
   <p>Curated travel experiences across Darjeeling, Kalimpong, Sikkim &amp; the Offbeat Himalayas</p>
@@ -340,10 +321,9 @@
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       WhatsApp Enquiry
     </a>
-    <a class="btn-outline-white" href="packages.html">Explore Packages →</a>
+    <a class="btn-outline-white" href="packages.html">Explore Packages &rarr;</a>
   </div>
 
-  <!-- Social pills visible over hero image -->
   <div class="hero-socials">
     <a class="hero-social-pill pill-insta" href="https://www.instagram.com/sana.onthe.go?igsh=MTRuaWVmOWJ5d2ZpMg==" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -363,7 +343,7 @@
   <div class="stats-inner">
     <div class="stat-item"><span class="stat-num">500+</span><span class="stat-lbl">Happy Travellers</span></div>
     <div class="stat-item"><span class="stat-num">10+</span><span class="stat-lbl">Curated Packages</span></div>
-    <div class="stat-item"><span class="stat-num">5★</span><span class="stat-lbl">Avg. Rating</span></div>
+    <div class="stat-item"><span class="stat-num">5&#9733;</span><span class="stat-lbl">Avg. Rating</span></div>
     <div class="stat-item"><span class="stat-num">5+</span><span class="stat-lbl">Years Experience</span></div>
   </div>
 </div>
@@ -371,7 +351,7 @@
 <!-- Booking Widget -->
 <div class="booking-wrap" id="booking">
   <div class="booking-inner">
-    <h2>🏔️ Plan Your Hill Escape</h2>
+    <h2>&#127956;&#65039; Plan Your Hill Escape</h2>
     <p class="booking-sub">Fill in details and send us a WhatsApp enquiry — we reply within a few hours!</p>
     <div class="booking-form">
       <div class="form-group"><label>Arrival at NJP / Bagdogra</label><input type="date" id="arrivalDate"></div>
@@ -400,69 +380,50 @@
   <div class="pkg-section-inner">
     <span class="section-tag">Handcrafted Itineraries</span>
     <h2 class="section-title">Featured Travel Experiences</h2>
-    <p class="section-sub">Local expertise, personal touch — <a href="packages.html" style="color:var(--green);font-weight:600;">view all packages →</a></p>
+    <p class="section-sub">Local expertise, personal touch — <a href="packages.html" style="color:var(--green);font-weight:600;">view all packages &rarr;</a></p>
     <div class="cards-grid">
 
-      <!-- ════ PACKAGE CARD 1 ════
-           HOW TO ADD YOUR IMAGE:
-           1. Upload your photo to the "images" folder
-           2. Name it: darjeeling-thumb.jpg  (or any name)
-           3. Replace the src below with your filename
-           4. Remove the .card-thumb-placeholder div
-      ════ -->
       <div class="card">
         <div class="card-thumb-wrap">
           <img class="card-thumb" src="images/darjeeling-thumb.jpg" alt="Darjeeling & Kalimpong tour"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="card-thumb-placeholder" style="display:none;">
-            🏔️<br>Upload: images/darjeeling-thumb.jpg
-          </div>
+          <div class="card-thumb-placeholder" style="display:none;">&#127956;<br>Upload: images/darjeeling-thumb.jpg</div>
         </div>
         <div class="card-body">
           <span class="card-badge">5 Nights / 6 Days</span>
           <h3>Darjeeling &amp; Kalimpong</h3>
           <p>Tea gardens, Tiger Hill sunrise, toy train rides, and the charm of colonial hill towns.</p>
-          <p class="price">From ₹18,500 per person</p>
+          <p class="price">From &#8377;18,500 per person</p>
           <a class="btn-outline" href="packages.html#darjeeling">View Full Itinerary</a>
         </div>
       </div>
 
-      <!-- ════ PACKAGE CARD 2 ════
-           Upload: images/sikkim-thumb.jpg
-      ════ -->
       <div class="card">
         <div class="card-thumb-wrap">
           <img class="card-thumb" src="images/sikkim-thumb.jpg" alt="Offbeat Sikkim tour"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="card-thumb-placeholder" style="display:none;">
-            🌄<br>Upload: images/sikkim-thumb.jpg
-          </div>
+          <div class="card-thumb-placeholder" style="display:none;">&#127748;<br>Upload: images/sikkim-thumb.jpg</div>
         </div>
         <div class="card-body">
           <span class="card-badge">7 Nights / 8 Days</span>
           <h3>Offbeat Sikkim</h3>
           <p>Lachung, Yumthang Valley, alpine meadows, and authentic village homestays.</p>
-          <p class="price">From ₹24,900 per person</p>
+          <p class="price">From &#8377;24,900 per person</p>
           <a class="btn-outline" href="packages.html#sikkim">View Full Itinerary</a>
         </div>
       </div>
 
-      <!-- ════ PACKAGE CARD 3 ════
-           Upload: images/pkg3-thumb.jpg
-      ════ -->
       <div class="card">
         <div class="card-thumb-wrap">
           <img class="card-thumb" src="images/pkg3-thumb.jpg" alt="Package 3"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="card-thumb-placeholder" style="display:none;">
-            🌿<br>Upload: images/pkg3-thumb.jpg
-          </div>
+          <div class="card-thumb-placeholder" style="display:none;">&#127807;<br>Upload: images/pkg3-thumb.jpg</div>
         </div>
         <div class="card-body">
           <span class="card-badge">X Nights / X Days</span>
           <h3>Your Package Name</h3>
           <p>Add a short description of this package that excites travellers.</p>
-          <p class="price">From ₹XX,XXX per person</p>
+          <p class="price">From &#8377;XX,XXX per person</p>
           <a class="btn-outline" href="packages.html#package3">View Full Itinerary</a>
         </div>
       </div>
@@ -471,29 +432,13 @@
   </div>
 </section>
 
-<!-- Testimonials -->
+<!-- Google Reviews via Trustindex -->
 <section id="testimonials">
   <div class="testi-inner">
-    <span class="section-tag">What Travellers Say</span>
-    <h2 class="section-title">Real Experiences</h2>
-    <p class="section-sub">From people who explored the Himalayas with us</p>
-    <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"The Darjeeling trip was absolutely magical. Every detail was perfectly arranged — from the Tiger Hill sunrise to the cozy homestay."</p>
-        <span class="testi-author">— Priya M., Kolkata</span>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Sikkim offbeat package was beyond expectations. The village stays were authentic and the routes were refreshingly crowd-free."</p>
-        <span class="testi-author">— Rahul &amp; Anjali, Mumbai</span>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"As solo travellers, Sana made everything seamless. The local knowledge and personal support throughout the trip was outstanding."</p>
-        <span class="testi-author">— Deeksha S., Bangalore</span>
-      </div>
-    </div>
+    <span class="section-tag">Google Reviews</span>
+    <h2 class="section-title">What Travellers Say</h2>
+    <p class="section-sub">Real reviews from our guests on Google</p>
+    <script defer async src='https://cdn.trustindex.io/loader.js?eaa7d8166192365d7e168830e3f'></script>
   </div>
 </section>
 
@@ -503,12 +448,12 @@
   <h2 class="section-title">Travel With Confidence</h2>
   <p class="section-sub">We handle every detail so you focus on the journey</p>
   <div class="why-grid">
-    <div class="why-item"><div class="icon">🗺️</div><h4>Local North Bengal Expertise</h4></div>
-    <div class="why-item"><div class="icon">✏️</div><h4>Custom Itineraries</h4></div>
-    <div class="why-item"><div class="icon">🏡</div><h4>Vetted Hotels &amp; Homestays</h4></div>
-    <div class="why-item"><div class="icon">📲</div><h4>24/7 Personal Support</h4></div>
-    <div class="why-item"><div class="icon">💰</div><h4>Best Value for Money</h4></div>
-    <div class="why-item"><div class="icon">🌿</div><h4>Responsible Travel</h4></div>
+    <div class="why-item"><div class="icon">&#128506;&#65039;</div><h4>Local North Bengal Expertise</h4></div>
+    <div class="why-item"><div class="icon">&#9999;&#65039;</div><h4>Custom Itineraries</h4></div>
+    <div class="why-item"><div class="icon">&#127969;</div><h4>Vetted Hotels &amp; Homestays</h4></div>
+    <div class="why-item"><div class="icon">&#128242;</div><h4>24/7 Personal Support</h4></div>
+    <div class="why-item"><div class="icon">&#128176;</div><h4>Best Value for Money</h4></div>
+    <div class="why-item"><div class="icon">&#127807;</div><h4>Responsible Travel</h4></div>
   </div>
 </section>
 
@@ -520,66 +465,49 @@
     <p class="section-sub">Your adventures, waiting to happen</p>
   </div>
 
-  <!--
-  ════════════════════════════════════════════════════════════
-  HOW TO ADD YOUR GALLERY PHOTOS:
-  1. Upload photos to the "images" folder in your repo
-  2. For each slide, set src="images/YOUR-FILENAME.jpg"
-  3. Update the caption text in .slide-caption
-  4. If image file is missing, a placeholder is shown
-  5. To add more slides: copy a .slide block and paste inside
-     the .slider-track div. Dots update automatically.
-  ════════════════════════════════════════════════════════════
-  -->
   <div style="max-width:900px; margin:0 auto; padding:0 24px 68px;">
     <div class="slider-wrap">
       <div class="slider-track" id="sliderTrack">
 
-        <!-- SLIDE 1 — Upload: images/gallery-1.jpg -->
         <div class="slide">
           <img src="images/gallery-1.JPG" alt="Gallery photo 1" loading="lazy"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">📷</span><span class="ph-txt">Upload: images/gallery-1.jpg</span></div>
+          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-1.jpg</span></div>
           <div class="slide-caption">The Sleeping Buddha from the Thakum Valley</div>
         </div>
 
-        <!-- SLIDE 2 — Upload: images/gallery-2.jpg -->
         <div class="slide">
           <img src="images/gallery-2.JPG" alt="Gallery photo 2" loading="lazy"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">📷</span><span class="ph-txt">Upload: images/gallery-2.jpg</span></div>
-          <div class="slide-caption">The mountains,clouds and the rain</div>
+          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-2.jpg</span></div>
+          <div class="slide-caption">The mountains, clouds and the rain</div>
         </div>
 
-        <!-- SLIDE 3 — Upload: images/gallery-3.jpg -->
         <div class="slide">
           <img src="images/gallery-3.JPG" alt="Gallery photo 3" loading="lazy"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">📷</span><span class="ph-txt">Upload: images/gallery-3.jpg</span></div>
+          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-3.jpg</span></div>
           <div class="slide-caption">Mt. Pandim painted red</div>
         </div>
 
-        <!-- SLIDE 4 — Upload: images/gallery-4.jpg -->
         <div class="slide">
           <img src="images/gallery-4.JPG" alt="Gallery photo 4" loading="lazy"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">📷</span><span class="ph-txt">Upload: images/gallery-4.jpg</span></div>
-          <div class="slide-caption">Darjeeling,where the champagne of teas are made</div>
+          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-4.jpg</span></div>
+          <div class="slide-caption">Darjeeling, where the champagne of teas are made</div>
         </div>
 
-        <!-- SLIDE 5 — Upload: images/gallery-5.jpg -->
         <div class="slide">
           <img src="images/gallery-5.jpeg" alt="Gallery photo 5" loading="lazy"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">📷</span><span class="ph-txt">Upload: images/gallery-5.jpg</span></div>
+          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-5.jpg</span></div>
           <div class="slide-caption">The breathtaking holy Gurudongmar Lake</div>
         </div>
 
-        <!-- SLIDE 6 — Upload: images/gallery-6.jpg -->
         <div class="slide">
           <img src="images/gallery-6.JPG" alt="Gallery photo 6" loading="lazy"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">📷</span><span class="ph-txt">Upload: images/gallery-6.jpg</span></div>
+          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-6.jpg</span></div>
           <div class="slide-caption">Kahi door jab din dhal jaye</div>
         </div>
 
@@ -616,7 +544,7 @@
         <div class="contact-row"><div class="ci email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div class="ct"><span class="cl">Email</span><a href="mailto:sayantikaintothewild@gmail.com">sayantikaintothewild@gmail.com</a></div></div>
         <div class="contact-row"><div class="ci ci-insta"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div><div class="ct"><span class="cl">Instagram</span><a href="https://www.instagram.com/sana.onthe.go?igsh=MTRuaWVmOWJ5d2ZpMg==" target="_blank" rel="noopener">@sana.onthe.go</a></div></div>
         <div class="contact-row"><div class="ci ci-fb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div><div class="ct"><span class="cl">Facebook</span><a href="https://www.facebook.com/share/1CQNotCTJ3/" target="_blank" rel="noopener">Sana On The Go</a></div></div>
-        <div class="contact-row"><div class="ci map"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div class="ct"><span class="cl">Office</span><div class="office-box"><strong>Into The Wild Tour and Travels</strong>100/A/3/L, Rabindra Nagar Main Road<br>P.S: Siliguri, Dist: Darjeeling<br>West Bengal – 734006</div></div></div>
+        <div class="contact-row"><div class="ci map"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div class="ct"><span class="cl">Office</span><div class="office-box"><strong>Into The Wild Tour and Travels</strong>100/A/3/L, Rabindra Nagar Main Road<br>P.S: Siliguri, Dist: Darjeeling<br>West Bengal &ndash; 734006</div></div></div>
       </div>
     </div>
 
@@ -625,8 +553,8 @@
     </div>
 
     <div class="footer-bottom">
-      <span>© 2026 Sana On The Go | Into The Wild Tour and Travels. All rights reserved.</span>
-      <a href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20travel%20packages">WhatsApp Enquiry →</a>
+      <span>&copy; 2026 Sana On The Go | Into The Wild Tour and Travels. All rights reserved.</span>
+      <a href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20travel%20packages">WhatsApp Enquiry &rarr;</a>
     </div>
   </div>
 </footer>
