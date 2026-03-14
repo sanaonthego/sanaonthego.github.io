@@ -3,173 +3,291 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tour Packages – Sana On The Go | Darjeeling, Sikkim & Kalimpong Itineraries</title>
-  <meta name="description" content="Explore handcrafted tour packages to Darjeeling, Kalimpong and offbeat Sikkim from North Bengal's trusted travel agency. Packages from ₹18,500. Book via WhatsApp.">
-  <meta name="keywords" content="darjeeling tour package price, sikkim package itinerary, kalimpong trip, offbeat north bengal tour, tiger hill tour, yumthang valley package, best travel agency siliguri">
+  <title>Tour Packages – Sana On The Go | Darjeeling, Kalimpong & Offbeat Himalayan Tours</title>
+  <meta name="description" content="Explore handcrafted tour packages to Darjeeling, Kalimpong and offbeat Himalayan destinations from North Bengal's trusted travel agency. Book via WhatsApp.">
   <link rel="canonical" href="https://sanaonthego.github.io/packages.html">
-  <meta property="og:title" content="Tour Packages – Sana On The Go">
-  <meta property="og:description" content="Customised Himalayan tour packages from ₹18,500. Darjeeling, Sikkim, Kalimpong and offbeat North Bengal.">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristInformationCenter","name":"Sana On The Go – Tour Packages","url":"https://sanaonthego.github.io/packages.html","telephone":"+91-98747-40763","address":{"@type":"PostalAddress","addressLocality":"Siliguri","addressRegion":"West Bengal","addressCountry":"IN"}}</script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --green: #2d6a4f; --green-lt: #52b788; --green-dk: #1a3d2b;
+      --green: #2d6a4f; --green-lt: #52b788; --green-dk: #1a3d2b; --green-bg: #eaf5ee;
       --wa: #25D366; --wa-dk: #1aab55;
-      --bg: #f7f4ef; --text: #1e1e1e; --muted: #666; --radius: 12px;
+      --gold: #c9a84c; --gold-lt: #e8c97a; --gold-dk: #a07830;
+      --bg: #f7f4ef; --bg2: #fff; --text: #1a1a1a; --muted: #666; --radius: 14px;
+      --shadow: 0 2px 16px rgba(0,0,0,0.07);
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    /* FIX 1: prevent horizontal overflow on mobile */
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; width: 100%; max-width: 100%; }
 
-    /* NAV */
-    nav { position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 14px 36px; background: var(--green); box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
-    .logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #fff; text-decoration: none; flex-shrink: 0; }
+    /* ── NAV ── */
+    nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 13px 36px; background: var(--green-dk); box-shadow: 0 2px 18px rgba(0,0,0,0.22); }
+    .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: #fff; text-decoration: none; letter-spacing: 0.3px; }
+    .logo span { color: var(--gold-lt); }
     .nav-links { list-style: none; display: flex; gap: 22px; align-items: center; }
-    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
-    .nav-links a:hover, .nav-links a.active { color: var(--green-lt); }
+    .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-lt); }
     .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
-    .mobile-menu { display: none; position: fixed; top: 58px; left: 0; right: 0; background: rgba(20,40,30,0.98); backdrop-filter: blur(10px); z-index: 99; padding: 16px 24px 24px; flex-direction: column; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+    .mobile-menu { display: none; position: fixed; top: 52px; left: 0; right: 0; background: rgba(20,40,30,0.98); backdrop-filter: blur(12px); z-index: 199; padding: 16px 24px 28px; flex-direction: column; border-top: 1px solid rgba(255,255,255,0.1); }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover { color: var(--green-lt); }
+    .mobile-menu a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .mobile-menu a:hover { color: var(--gold-lt); }
 
-    /* PAGE HERO */
-    .page-hero { background: linear-gradient(135deg, #1a3d2b, #2d6a4f); color: #fff; text-align: center; padding: 64px 24px 52px; }
-    .page-hero .eyebrow { font-size: 0.74rem; letter-spacing: 3px; text-transform: uppercase; color: var(--green-lt); margin-bottom: 12px; font-weight: 600; }
-    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 5vw, 3rem); margin-bottom: 12px; }
-    .page-hero p { font-size: 0.97rem; color: rgba(255,255,255,0.74); max-width: 520px; margin: 0 auto; }
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(135deg, #0d2218 0%, #1a3d2b 50%, #2d6a4f 100%);
+      color: #fff; text-align: center; padding: 72px 24px 60px; position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2352b788' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .page-hero > * { position: relative; z-index: 1; }
+    .page-hero .eyebrow { font-size: 0.72rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 14px; font-weight: 600; }
+    .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 600; margin-bottom: 14px; line-height: 1.15; }
+    .page-hero p { font-size: 1rem; color: rgba(255,255,255,0.72); max-width: 540px; margin: 0 auto; }
 
-    /* JUMP LINKS */
-    .jump-wrap { background: #fff; border-bottom: 1px solid #e8e2d9; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .jump-links { display: flex; gap: 10px; padding: 16px 24px; min-width: max-content; }
-    .jump-links a { display: inline-block; border: 2px solid var(--green); color: var(--green); padding: 7px 16px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.82rem; white-space: nowrap; transition: all 0.2s; }
-    .jump-links a:hover { background: var(--green); color: #fff; }
+    /* ── CATEGORY SELECTOR ── */
+    .cat-section { background: #fff; border-bottom: 1px solid #e8e2d9; padding: 40px 24px 32px; }
+    .cat-inner { max-width: 980px; margin: 0 auto; }
+    .cat-heading { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--green); text-align: center; margin-bottom: 6px; }
+    .cat-sub { text-align: center; color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
+    /* FIX 1: cat-grid — use 2 cols on small screens instead of 3 to prevent card text overflow */
+    .cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+    .cat-btn {
+      display: flex; flex-direction: column; align-items: center; gap: 9px;
+      padding: 22px 14px 18px; border: 2px solid #e0dbd2; border-radius: var(--radius);
+      background: var(--bg); cursor: pointer; transition: all 0.22s;
+      font-family: 'DM Sans', sans-serif; color: var(--text); text-align: center;
+      /* FIX 1: ensure labels wrap rather than overflow */
+      word-break: break-word;
+    }
+    .cat-btn:hover { border-color: var(--green); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(45,106,79,0.14); }
+    .cat-btn.active { border-color: var(--green); background: var(--green-bg); }
+    .cat-btn .cat-icon { font-size: 2rem; line-height: 1; }
+    .cat-btn .cat-label { font-size: 0.82rem; font-weight: 600; line-height: 1.3; color: var(--green-dk); }
+    .cat-btn .cat-count { font-size: 0.68rem; color: var(--muted); }
+    .cat-btn.active .cat-label { color: var(--green); }
 
-    /* PACKAGE SECTION */
-    .package-section { max-width: 900px; margin: 0 auto; padding: 68px 24px; scroll-margin-top: 68px; }
-    .package-section + .package-section { border-top: 1px solid #e0dbd2; }
+    /* ── PACKAGES AREA ── */
+    .pkgs-area { max-width: 980px; margin: 0 auto; padding: 0 24px 80px; }
 
-    .pkg-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 28px; }
-    .badge { display: inline-block; background: #e8f5ee; color: var(--green); font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 10px; }
-    .pkg-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2.1rem); color: var(--green); }
-    .price-tag { background: var(--green); color: #fff; padding: 14px 22px; border-radius: var(--radius); text-align: center; flex-shrink: 0; }
-    .price-tag .from { font-size: 0.72rem; opacity: 0.8; display: block; margin-bottom: 2px; }
-    .price-tag .amount { font-family: 'Playfair Display', serif; font-size: 1.4rem; display: block; }
-    .price-tag .per { font-size: 0.72rem; opacity: 0.7; }
+    /* ── BOOKING BANNER ── */
+    .book-banner {
+      background: linear-gradient(135deg, var(--green-dk), var(--green));
+      border-radius: var(--radius); padding: 24px 28px; margin: 32px 0 8px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    }
+    .book-banner p { color: rgba(255,255,255,0.85); font-size: 0.9rem; }
+    .book-banner strong { color: #fff; font-size: 1.05rem; display: block; margin-bottom: 3px; }
+    .btn-book-now {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--wa); color: #fff; padding: 11px 22px; border-radius: 50px;
+      font-weight: 600; font-size: 0.9rem; text-decoration: none; white-space: nowrap;
+      transition: background 0.2s, transform 0.2s; flex-shrink: 0;
+    }
+    .btn-book-now:hover { background: var(--wa-dk); transform: translateY(-1px); }
 
-    /* ─────────────────────────────────────────────────────────
-       PACKAGE IMAGE SLIDER
-       ──────────────────────────────────────────────────────
-       HOW TO ADD YOUR PHOTOS:
-       1. Upload your images to the "images/" folder
-       2. Name them:  darjeeling-1.jpg, darjeeling-2.jpg ... (up to 8)
-                      sikkim-1.jpg, sikkim-2.jpg ...
-                      pkg3-1.jpg, pkg3-2.jpg ... (for packages 3-10)
-       3. Replace the src="images/..." values in each .pkg-slide below
-       4. If an image file is missing, a green placeholder is shown
-       5. To add more slides: copy a .pkg-slide block inside the track
-    ───────────────────────────────────────────────────────── */
-    .pkg-slider-wrap { position: relative; overflow: hidden; border-radius: var(--radius); margin-bottom: 28px; background: var(--green-dk); }
-    .pkg-slider-track { display: flex; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
-    .pkg-slide { min-width: 100%; position: relative; }
-    .pkg-slide img { width: 100%; height: 320px; object-fit: cover; display: block; cursor: zoom-in; }
-    .pkg-slide-ph { width: 100%; height: 320px; background: linear-gradient(135deg, var(--green-dk), var(--green)); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
-    .pkg-slide-ph .phi { font-size: 2.5rem; }
-    .pkg-slide-ph .pht { color: rgba(255,255,255,0.55); font-size: 0.85rem; text-align: center; padding: 0 20px; }
-    .pkg-slide-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.6)); color: #fff; padding: 36px 18px 14px; font-size: 0.88rem; font-weight: 500; pointer-events: none; }
-    .pkg-slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.18); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.3); color: #fff; font-size: 1.4rem; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 2; }
-    .pkg-slider-btn:hover { background: rgba(255,255,255,0.35); }
-    .ps-prev { left: 12px; } .ps-next { right: 12px; }
-    .pkg-slider-dots { display: flex; justify-content: center; gap: 7px; padding: 10px 0 4px; background: rgba(0,0,0,0.45); }
-    .ps-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.35); border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; }
-    .ps-dot.active { background: var(--green-lt); transform: scale(1.3); }
+    /* ── PACKAGE CARDS GRID ── */
+    .pkg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 22px; margin-top: 28px; }
+    .pkg-card {
+      background: #fff; border-radius: var(--radius); border: 1px solid #e8e2d9;
+      overflow: hidden; box-shadow: var(--shadow); transition: transform 0.25s, box-shadow 0.25s;
+      display: flex; flex-direction: column;
+    }
+    .pkg-card:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(0,0,0,0.13); }
 
-    /* PKG BODY */
-    .pkg-body { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
-    .pkg-box { background: #fff; border: 1px solid #e8e2d9; border-radius: var(--radius); padding: 22px; }
-    .pkg-box h4 { font-size: 0.74rem; letter-spacing: 2px; text-transform: uppercase; color: var(--green); font-weight: 700; margin-bottom: 14px; }
-    .pkg-box ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .pkg-box ul li { font-size: 0.91rem; padding-left: 20px; position: relative; }
-    .pkg-box ul li::before { content: '✓'; position: absolute; left: 0; color: var(--green-lt); font-weight: 700; }
-    .itinerary-list { list-style: none; display: flex; flex-direction: column; }
-    .itinerary-list li { font-size: 0.91rem; padding: 10px 0 10px 38px; position: relative; border-left: 2px solid #d4ead9; margin-left: 11px; }
-    .itinerary-list li::before { content: attr(data-day); position: absolute; left: -11px; top: 11px; background: var(--green); color: #fff; font-size: 0.6rem; font-weight: 700; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    .itinerary-list li strong { display: block; font-size: 0.75rem; color: var(--green); margin-bottom: 2px; }
+    .pkg-card-img {
+      position: relative; height: 195px; overflow: hidden;
+      background: linear-gradient(135deg, var(--green-dk), var(--green));
+    }
+    .pkg-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .pkg-card:hover .pkg-card-img img { transform: scale(1.06); }
+    .pkg-card-img .img-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+    .pkg-card-img .img-ph-icon { font-size: 2.2rem; opacity: 0.5; }
+    .pkg-card-img .img-ph-txt { color: rgba(255,255,255,0.45); font-size: 0.75rem; text-align: center; padding: 0 12px; }
+    .pkg-badge { position: absolute; top: 12px; left: 12px; background: rgba(26,61,43,0.88); backdrop-filter: blur(4px); color: #fff; font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; }
+    .pkg-gold-badge { position: absolute; top: 12px; right: 12px; background: var(--gold); color: #fff; font-size: 0.65rem; font-weight: 700; padding: 3px 9px; border-radius: 20px; }
 
-    /* CTA BUTTONS */
-    .pkg-cta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 8px; }
-    .btn-wa { display: inline-flex; align-items: center; gap: 9px; background: var(--wa); color: #fff; padding: 13px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.92rem; box-shadow: 0 4px 14px rgba(37,211,102,0.32); transition: background 0.2s, transform 0.2s; }
-    .btn-wa:hover { background: var(--wa-dk); transform: translateY(-2px); }
-    .btn-wa svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
-    .btn-pdf { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: #fff; padding: 13px 22px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s, transform 0.2s; }
-    .btn-pdf:hover { background: var(--green-dk); transform: translateY(-2px); }
-    .btn-pdf svg { width: 15px; height: 15px; fill: #fff; flex-shrink: 0; }
-    .pdf-note { font-size: 0.74rem; color: var(--muted); }
+    .pkg-card-body { padding: 20px 20px 16px; display: flex; flex-direction: column; flex: 1; }
+    .pkg-card-body h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--green-dk); margin-bottom: 7px; line-height: 1.25; }
+    .pkg-desc { font-size: 0.875rem; color: var(--muted); flex: 1; margin-bottom: 14px; line-height: 1.6; }
 
-    /* LIGHTBOX */
-    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
-    .lightbox.active { display: flex; }
-    .lightbox img { max-width: 92vw; max-height: 87vh; object-fit: contain; border-radius: 8px; }
-    .lb-close { position: absolute; top: 18px; right: 22px; color: #fff; font-size: 2rem; cursor: pointer; background: none; border: none; line-height: 1; }
-    .lb-prev, .lb-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.14); border: none; color: #fff; font-size: 1.6rem; padding: 12px 16px; border-radius: 8px; cursor: pointer; transition: background 0.2s; }
-    .lb-prev { left: 14px; } .lb-next { right: 14px; }
-    .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,0.28); }
+    .pkg-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+    .pkg-meta-item { display: flex; align-items: center; gap: 4px; font-size: 0.75rem; color: var(--muted); }
+    .pkg-meta-item svg { width: 13px; height: 13px; fill: var(--green-lt); flex-shrink: 0; }
 
-    /* FOOTER */
-    footer { background: #111e18; color: rgba(255,255,255,0.82); }
-    .footer-inner { max-width: 900px; margin: 0 auto; padding: 48px 24px 32px; }
+    .pkg-price-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 14px; padding: 10px 12px; background: #faf8f4; border-radius: 8px; border: 1px solid #ede8e0; }
+    .pkg-price { font-size: 1.1rem; font-weight: 700; color: var(--gold-dk); }
+    .pkg-price-per { font-size: 0.72rem; color: var(--muted); }
+    .pkg-nights { font-size: 0.78rem; color: var(--green); font-weight: 600; }
+
+    .pkg-card-actions { display: flex; gap: 8px; }
+    .btn-enquire {
+      flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+      background: var(--wa); color: #fff; padding: 10px 14px; border-radius: 8px;
+      font-weight: 600; font-size: 0.85rem; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; transition: background 0.2s, transform 0.2s;
+    }
+    .btn-enquire:hover { background: var(--wa-dk); transform: translateY(-1px); }
+    .btn-enquire svg { width: 16px; height: 16px; fill: #fff; flex-shrink: 0; }
+    .btn-detail {
+      display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+      background: var(--green-bg); color: var(--green); padding: 10px 13px; border-radius: 8px;
+      font-weight: 600; font-size: 0.82rem; border: 1px solid #c3e0d0; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; transition: background 0.2s;
+    }
+    .btn-detail:hover { background: #d4ead9; }
+
+    /* ── PACKAGE DETAIL MODAL ── */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 500; align-items: flex-start; justify-content: center; padding: 20px; backdrop-filter: blur(5px); overflow-y: auto; }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #fff; border-radius: 18px; max-width: 720px; width: 100%;
+      margin: auto; box-shadow: 0 24px 80px rgba(0,0,0,0.3); overflow: hidden;
+    }
+    .modal-hero {
+      position: relative; height: 240px; background: linear-gradient(135deg, var(--green-dk), var(--green));
+      overflow: hidden;
+    }
+    .modal-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .modal-hero .mh-overlay { position: absolute; inset: 0; background: linear-gradient(transparent 40%, rgba(0,0,0,0.6)); }
+    .modal-hero-content { position: absolute; bottom: 20px; left: 24px; right: 60px; color: #fff; }
+    .modal-hero-content h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 600; line-height: 1.2; }
+    .modal-hero-content .mh-badge { display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.3); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 7px; letter-spacing: 1px; text-transform: uppercase; }
+    .modal-close { position: absolute; top: 14px; right: 14px; background: rgba(0,0,0,0.3); backdrop-filter: blur(4px); border: none; color: #fff; font-size: 1.1rem; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; }
+    .modal-close:hover { background: rgba(0,0,0,0.5); }
+    .modal-body { padding: 24px 28px 28px; }
+
+    .modal-price-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: linear-gradient(135deg, var(--gold-dk), var(--gold)); border-radius: 10px; padding: 14px 20px; margin-bottom: 22px; }
+    .modal-price-bar .mp-label { font-size: 0.72rem; color: rgba(255,255,255,0.75); text-transform: uppercase; letter-spacing: 1px; }
+    .modal-price-bar .mp-amount { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: #fff; }
+    .modal-price-bar .mp-nights { font-size: 0.8rem; color: rgba(255,255,255,0.8); }
+
+    .modal-section { margin-bottom: 20px; }
+    .modal-section h4 { font-size: 0.72rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green); font-weight: 700; margin-bottom: 12px; }
+    .highlight-list { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .highlight-item { display: flex; align-items: flex-start; gap: 8px; font-size: 0.88rem; }
+    .highlight-item::before { content: '✦'; color: var(--gold); font-size: 0.7rem; flex-shrink: 0; margin-top: 4px; }
+
+    .day-list { display: flex; flex-direction: column; gap: 0; }
+    .day-item { display: grid; grid-template-columns: 56px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f0ece6; }
+    .day-item:last-child { border-bottom: none; }
+    .day-num { background: var(--green); color: #fff; border-radius: 8px; font-size: 0.68rem; font-weight: 700; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.25; padding: 6px; }
+    .day-desc strong { display: block; font-size: 0.8rem; color: var(--green); margin-bottom: 2px; }
+    .day-desc span { font-size: 0.88rem; color: #444; line-height: 1.55; }
+
+    .modal-book-form { background: var(--green-bg); border-radius: 12px; padding: 20px; margin-top: 20px; border: 1px solid #c3e0d0; }
+    .modal-book-form h4 { font-size: 0.9rem; font-weight: 700; color: var(--green); margin-bottom: 14px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+    .form-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+    .fg { display: flex; flex-direction: column; gap: 4px; }
+    .fg label { font-size: 0.68rem; font-weight: 600; color: var(--green); text-transform: uppercase; letter-spacing: 0.5px; }
+    .fg input, .fg select { padding: 9px 11px; border: 1.5px solid #c8e0d2; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; color: var(--text); background: #fff; transition: border-color 0.2s; }
+    .fg input:focus, .fg select:focus { outline: none; border-color: var(--green); }
+    .btn-wa-book {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      width: 100%; background: var(--wa); color: #fff; border: none; padding: 13px;
+      border-radius: 9px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.95rem;
+      cursor: pointer; transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+    }
+    .btn-wa-book:hover { background: var(--wa-dk); transform: translateY(-1px); }
+    .btn-wa-book svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
+
+    .modal-actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+    .btn-dl-pdf {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--green); color: #fff; padding: 11px 20px; border-radius: 9px;
+      font-weight: 600; font-size: 0.88rem; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; transition: background 0.2s, transform 0.2s;
+    }
+    .btn-dl-pdf:hover { background: var(--green-dk); transform: translateY(-1px); }
+    .btn-dl-pdf svg { width: 15px; height: 15px; fill: #fff; flex-shrink: 0; }
+    .pdf-note { font-size: 0.72rem; color: var(--muted); align-self: center; }
+
+    /* ── CUSTOM PACKAGE SECTION ── */
+    .custom-section { background: var(--green-dk); border-radius: var(--radius); padding: 44px 36px; text-align: center; margin-top: 28px; }
+    .custom-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: #fff; margin-bottom: 10px; }
+    .custom-section p { color: rgba(255,255,255,0.72); font-size: 0.95rem; max-width: 480px; margin: 0 auto 26px; }
+    .custom-features { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 28px; }
+    .custom-feat { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.75); font-size: 0.85rem; }
+    .custom-feat::before { content: '✦'; color: var(--gold-lt); }
+
+    /* ── FOOTER ── */
+    footer { background: #0d1f16; color: rgba(255,255,255,0.82); }
+    .footer-inner { max-width: 900px; margin: 0 auto; padding: 52px 24px 32px; }
     .footer-top { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; margin-bottom: 40px; }
-    .footer-brand h2 { font-family: 'Playfair Display', serif; font-size: 1.45rem; color: #fff; margin-bottom: 8px; }
-    .footer-brand p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.72; margin-bottom: 18px; }
+    .footer-brand h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; color: #fff; margin-bottom: 8px; font-weight: 600; }
+    .footer-brand p { font-size: 0.87rem; color: rgba(255,255,255,0.48); line-height: 1.75; margin-bottom: 18px; }
     .footer-social { display: flex; gap: 10px; }
     .f-soc { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s; }
     .f-soc:hover { transform: translateY(-3px); }
     .f-soc.insta { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
     .f-soc.fb { background: #1877f2; } .f-soc.wa { background: var(--wa); }
     .f-soc svg { width: 17px; height: 17px; fill: #fff; }
-    .footer-contact h3 { font-size: 0.76rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green-lt); margin-bottom: 16px; }
-    .contact-row { display: flex; align-items: flex-start; gap: 11px; margin-bottom: 13px; }
+    .footer-contact h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green-lt); margin-bottom: 16px; }
+    .contact-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
     .ci { width: 33px; height: 33px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .ci svg { width: 14px; height: 14px; }
     .ci.phone { background: rgba(37,211,102,0.15); } .ci.phone svg { fill: var(--wa); }
     .ci.email { background: rgba(234,67,53,0.15); } .ci.email svg { fill: #ea4335; }
-    .ci.ci-insta { background: rgba(188,24,136,0.15); } .ci.ci-insta svg { fill: #bc1888; }
-    .ci.ci-fb { background: rgba(24,119,242,0.15); } .ci.ci-fb svg { fill: #1877f2; }
     .ci.map { background: rgba(82,183,136,0.15); } .ci.map svg { fill: var(--green-lt); }
-    .ct { font-size: 0.87rem; color: rgba(255,255,255,0.7); line-height: 1.55; }
-    .ct a { color: rgba(255,255,255,0.85); text-decoration: none; }
+    .ct { font-size: 0.86rem; color: rgba(255,255,255,0.68); line-height: 1.55; }
+    .ct a { color: rgba(255,255,255,0.84); text-decoration: none; }
     .ct a:hover { color: var(--green-lt); }
-    .ct .cl { font-size: 0.68rem; color: rgba(255,255,255,0.38); display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .office-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 9px; padding: 11px 13px; font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
-    .office-box strong { display: block; color: rgba(255,255,255,0.85); font-size: 0.85rem; margin-bottom: 4px; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.3); flex-wrap: wrap; gap: 10px; }
+    .ct .cl { font-size: 0.67rem; color: rgba(255,255,255,0.35); display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .office-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 9px; padding: 11px 13px; font-size: 0.82rem; color: rgba(255,255,255,0.58); line-height: 1.65; }
+    .office-box strong { display: block; color: rgba(255,255,255,0.84); margin-bottom: 4px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: rgba(255,255,255,0.28); flex-wrap: wrap; gap: 10px; }
     .footer-bottom a { color: var(--green-lt); text-decoration: none; }
 
     /* WA FLOAT */
-    .wa-float { position: fixed; bottom: 26px; right: 26px; z-index: 200; background: var(--wa); width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 18px rgba(37,211,102,0.42); text-decoration: none; transition: transform 0.2s; }
+    .wa-float { position: fixed; bottom: 26px; right: 26px; z-index: 300; background: var(--wa); width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 18px rgba(37,211,102,0.45); text-decoration: none; transition: transform 0.2s; }
     .wa-float:hover { transform: scale(1.1); }
-    .wa-float svg { width: 27px; height: 27px; fill: #fff; }
+    .wa-float svg { width: 28px; height: 28px; fill: #fff; }
 
-    /* RESPONSIVE */
+    /* Scroll to top */
+    .scroll-top { position: fixed; bottom: 92px; right: 28px; z-index: 299; background: var(--green); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 3px 12px rgba(0,0,0,0.15); opacity: 0; transition: opacity 0.3s, transform 0.2s; border: none; font-size: 1.1rem; }
+    .scroll-top.visible { opacity: 1; }
+    .scroll-top:hover { transform: translateY(-3px); }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      nav { padding: 13px 18px; } .nav-links { display: none; } .hamburger { display: flex; }
-      .pkg-body { grid-template-columns: 1fr; }
-      .pkg-header { flex-direction: column; }
-      .pkg-slide img, .pkg-slide-ph { height: 220px; }
+      nav { padding: 12px 18px; } .nav-links { display: none; } .hamburger { display: flex; }
+      /* FIX 1: 2 columns on mobile for category grid */
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .pkg-grid { grid-template-columns: 1fr; }
+      .highlight-list { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid.three { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; gap: 30px; }
+      .modal-body { padding: 18px 20px 24px; }
+      .modal-hero { height: 190px; }
+      /* FIX 1: prevent book-banner from overflowing on mobile */
+      .book-banner { padding: 18px 16px; }
+      .btn-book-now { width: 100%; justify-content: center; }
+      .custom-section { padding: 32px 20px; }
+      /* FIX 1: pkg-price-row stacks on very small screens */
+      .pkg-price-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+    }
+
+    @media (max-width: 400px) {
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a class="logo" href="index.html">Sana On The Go</a>
+  <a class="logo" href="index.html">Sana <span>On The Go</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#booking">Quick Enquiry</a></li>
@@ -191,318 +309,128 @@
   <a href="index.html#contact" onclick="closeMenu()">Contact</a>
 </div>
 
+<!-- PAGE HERO -->
 <div class="page-hero">
-  <p class="eyebrow">Himalayan Travel Specialists</p>
-  <h1>Our Travel Packages</h1>
-  <p>Handcrafted itineraries for Darjeeling, Kalimpong &amp; Sikkim — built around your pace and budget.</p>
+  <p class="eyebrow">Himalayan Travel Specialists · North Bengal</p>
+  <h1>Our Tour Packages</h1>
+  <p>Choose your preferred destination category, browse handcrafted itineraries, and send a WhatsApp enquiry in minutes.</p>
 </div>
 
-<div class="jump-wrap">
-  <div class="jump-links">
-    <a href="#darjeeling">🍵 Darjeeling &amp; Kalimpong</a>
-    <a href="#sikkim">🏔️ Offbeat Sikkim</a>
-    <a href="#package3">🌸 Package 3</a>
-    <a href="#package4">🛤️ Package 4</a>
-    <a href="#package5">🌿 Package 5</a>
-    <a href="#package6">❄️ Package 6</a>
-    <a href="#package7">🌄 Package 7</a>
-    <a href="#package8">🏡 Package 8</a>
-    <a href="#package9">🚂 Package 9</a>
-    <a href="#package10">🌏 Package 10</a>
+<!-- CATEGORY SELECTOR -->
+<div class="cat-section">
+  <div class="cat-inner">
+    <h2 class="cat-heading">Where do you want to go?</h2>
+    <p class="cat-sub">Select a category to explore available packages</p>
+    <div class="cat-grid" id="catGrid">
+      <!-- Categories rendered by JS -->
+    </div>
   </div>
 </div>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <button class="lb-close" onclick="closeLB()">&#10005;</button>
-  <button class="lb-prev" onclick="lbNav(-1)">&#8249;</button>
-  <img id="lbImg" src="" alt="">
-  <button class="lb-next" onclick="lbNav(1)">&#8250;</button>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════
-     HOW TO USE THESE PACKAGE BLOCKS:
-     Each package has:
-       1. A header (badge, title, price)
-       2. An image SLIDER — add your own photos (see comments)
-       3. Highlights + Day-by-day itinerary columns
-       4. WhatsApp enquiry + PDF download buttons
-
-     TO ADD YOUR OWN IMAGES:
-       • Upload photos to the "images/" folder in your repo
-       • Replace src="images/FILENAME.jpg" in each .pkg-slide
-       • If image file is missing → green placeholder is shown
-       • No Unsplash or external images are used anywhere
-
-     TO ADD MORE PACKAGES (3-10):
-       • Copy the PACKAGE 3 block at the bottom
-       • Change id="package3" to id="package4", etc.
-       • Update slider id, dots id, pkgSlide() calls to match
-       • Fill in your title, price, highlights, itinerary
-═══════════════════════════════════════════════════════════ -->
-
-
-<!-- ══ PACKAGE 1: DARJEELING ══ -->
-<div class="package-section" id="darjeeling">
-  <div class="pkg-header">
+<!-- PACKAGES AREA -->
+<div class="pkgs-area" id="pkgsArea" style="display:none;">
+  <div class="book-banner" id="bookBanner">
     <div>
-      <span class="badge">5 Nights / 6 Days</span>
-      <h2>Darjeeling &amp; Kalimpong</h2>
+      <strong id="bannerTitle">Packages</strong>
+      <p>Choose a package, select dates &amp; guests, and send your enquiry via WhatsApp. We reply within hours!</p>
     </div>
-    <div class="price-tag">
-      <span class="from">Starting from</span>
-      <span class="amount">&#8377;18,500</span>
-      <span class="per">per person</span>
-    </div>
-  </div>
-
-  <!-- ▼ SLIDER — upload 8 photos named darjeeling-1.jpg to darjeeling-8.jpg into images/ folder ▼ -->
-  <div class="pkg-slider-wrap">
-    <div class="pkg-slider-track" id="slider-darjeeling">
-
-      <!-- SLIDE 1 — Upload: images/darjeeling-1.jpg -->
-      <div class="pkg-slide">
-        <img src="images/darjeeling-1.jpg" alt="Darjeeling photo 1"
-             onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/darjeeling-1.jpg</span></div>'">
-        <div class="pkg-slide-caption">Add your caption here</div>
-      </div>
-      <!-- SLIDE 2 — Upload: images/darjeeling-2.jpg -->
-      <div class="pkg-slide">
-        <img src="images/darjeeling-2.jpg" alt="Darjeeling photo 2"
-             onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/darjeeling-2.jpg</span></div>'">
-        <div class="pkg-slide-caption">Add your caption here</div>
-      </div>
-      <!-- SLIDE 3 — Upload: images/darjeeling-3.jpg -->
-      <div class="pkg-slide">
-        <img src="images/darjeeling-3.jpg" alt="Darjeeling photo 3"
-             onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/darjeeling-3.jpg</span></div>'">
-        <div class="pkg-slide-caption">Add your caption here</div>
-      </div>
-      <!-- SLIDE 4 — Upload: images/darjeeling-4.jpg -->
-      <div class="pkg-slide">
-        <img src="images/darjeeling-4.jpg" alt="Darjeeling photo 4"
-             onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/darjeeling-4.jpg</span></div>'">
-        <div class="pkg-slide-caption">Add your caption here</div>
-      </div>
-      <!-- SLIDE 5 — Upload: images/darjeeling-5.jpg -->
-      <div class="pkg-slide">
-        <img src="images/darjeeling-5.jpg" alt="Darjeeling photo 5"
-             onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/darjeeling-5.jpg</span></div>'">
-        <div class="pkg-slide-caption">Add your caption here</div>
-      </div>
-      <!-- SLIDE 6 — Upload: images/darjeeling-6.jpg -->
-      <div class="pkg-slide">
-        <img src="images/darjeeling-6.jpg" alt="Darjeeling photo 6"
-             onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/darjeeling-6.jpg</span></div>'">
-        <div class="pkg-slide-caption">Add your caption here</div>
-      </div>
-      <!-- SLIDE 7 — Upload: images/darjeeling-7.jpg -->
-      <div class="pkg-slide">
-        <img src="images/darjeeling-7.jpg" alt="Darjeeling photo 7"
-             onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/darjeeling-7.jpg</span></div>'">
-        <div class="pkg-slide-caption">Add your caption here</div>
-      </div>
-      <!-- SLIDE 8 — Upload: images/darjeeling-8.jpg -->
-      <div class="pkg-slide">
-        <img src="images/darjeeling-8.jpg" alt="Darjeeling photo 8"
-             onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/darjeeling-8.jpg</span></div>'">
-        <div class="pkg-slide-caption">Add your caption here</div>
-      </div>
-    </div>
-    <button class="pkg-slider-btn ps-prev" onclick="pkgSlide('darjeeling',-1)">&#8249;</button>
-    <button class="pkg-slider-btn ps-next" onclick="pkgSlide('darjeeling',1)">&#8250;</button>
-    <div class="pkg-slider-dots" id="dots-darjeeling"></div>
-  </div>
-
-  <div class="pkg-body">
-    <div class="pkg-box">
-      <h4>Highlights</h4>
-      <ul>
-        <li>Tiger Hill sunrise viewpoint</li>
-        <li>Tea gardens &amp; tea tasting</li>
-        <li>Darjeeling Himalayan Railway (Toy Train)</li>
-        <li>Monasteries &amp; local sightseeing</li>
-        <li>Kalimpong hill town exploration</li>
-      </ul>
-    </div>
-    <div class="pkg-box">
-      <h4>Day-by-Day Itinerary</h4>
-      <ul class="itinerary-list">
-        <li data-day="1"><strong>Day 1</strong>NJP / Bagdogra to Darjeeling, check-in &amp; Mall Road evening</li>
-        <li data-day="2"><strong>Day 2</strong>Tiger Hill sunrise, Ghoom Monastery, Batasia Loop, Ropeway</li>
-        <li data-day="3"><strong>Day 3</strong>Tea garden visit, toy train, transfer to Kalimpong</li>
-        <li data-day="4"><strong>Day 4</strong>Kalimpong — Durpin Monastery, Delo Park, local markets</li>
-        <li data-day="5"><strong>Day 5</strong>Leisure day / optional offbeat excursion</li>
-        <li data-day="6"><strong>Day 6</strong>Departure transfer to NJP / Bagdogra</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="pkg-cta">
-    <a class="btn-wa" href="https://wa.me/919874740763?text=Hi%2C%20I%20am%20interested%20in%20the%20Darjeeling%20%26%20Kalimpong%205N%2F6D%20package">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Enquire for This Package
+    <a class="btn-book-now" href="https://wa.me/919874740763?text=Hi%2C%20I%20am%20interested%20in%20your%20packages" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      General WhatsApp Enquiry
     </a>
-    <button class="btn-pdf" onclick="downloadPDF('darjeeling')">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z"/></svg>
-      Download Itinerary PDF
-    </button>
   </div>
-  <p class="pdf-note">Branded PDF — watermarked with Sana On The Go &amp; WhatsApp number</p>
+  <div class="pkg-grid" id="pkgGrid"></div>
 </div>
 
-
-<!-- ══ PACKAGE 2: SIKKIM ══ -->
-<div class="package-section" id="sikkim">
-  <div class="pkg-header">
-    <div>
-      <span class="badge">7 Nights / 8 Days</span>
-      <h2>Offbeat Sikkim</h2>
+<!-- CUSTOM PACKAGE (always visible below fold) -->
+<div style="max-width:980px;margin:0 auto;padding:0 24px 80px;" id="customArea">
+  <div class="custom-section">
+    <h2>Can't find what you're looking for?</h2>
+    <p>We craft fully custom itineraries tailored to your dates, budget, and interests. Just tell us what you have in mind.</p>
+    <div class="custom-features">
+      <span class="custom-feat">Pick your own destinations</span>
+      <span class="custom-feat">Any number of days</span>
+      <span class="custom-feat">Any budget range</span>
+      <span class="custom-feat">Group or solo travel</span>
     </div>
-    <div class="price-tag">
-      <span class="from">Starting from</span>
-      <span class="amount">&#8377;24,900</span>
-      <span class="per">per person</span>
-    </div>
-  </div>
-
-  <!-- ▼ SLIDER — upload 8 photos named sikkim-1.jpg to sikkim-8.jpg into images/ folder ▼ -->
-  <div class="pkg-slider-wrap">
-    <div class="pkg-slider-track" id="slider-sikkim">
-      <div class="pkg-slide"><img src="images/sikkim-1.jpg" alt="Sikkim photo 1" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/sikkim-1.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-      <div class="pkg-slide"><img src="images/sikkim-2.jpg" alt="Sikkim photo 2" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/sikkim-2.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-      <div class="pkg-slide"><img src="images/sikkim-3.jpg" alt="Sikkim photo 3" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/sikkim-3.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-      <div class="pkg-slide"><img src="images/sikkim-4.jpg" alt="Sikkim photo 4" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/sikkim-4.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-      <div class="pkg-slide"><img src="images/sikkim-5.jpg" alt="Sikkim photo 5" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/sikkim-5.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-      <div class="pkg-slide"><img src="images/sikkim-6.jpg" alt="Sikkim photo 6" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/sikkim-6.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-      <div class="pkg-slide"><img src="images/sikkim-7.jpg" alt="Sikkim photo 7" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/sikkim-7.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-      <div class="pkg-slide"><img src="images/sikkim-8.jpg" alt="Sikkim photo 8" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/sikkim-8.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-    </div>
-    <button class="pkg-slider-btn ps-prev" onclick="pkgSlide('sikkim',-1)">&#8249;</button>
-    <button class="pkg-slider-btn ps-next" onclick="pkgSlide('sikkim',1)">&#8250;</button>
-    <div class="pkg-slider-dots" id="dots-sikkim"></div>
-  </div>
-
-  <div class="pkg-body">
-    <div class="pkg-box">
-      <h4>Highlights</h4>
-      <ul>
-        <li>Lachung &amp; Yumthang Valley (Valley of Flowers)</li>
-        <li>Authentic village homestays</li>
-        <li>Less-crowded offbeat routes</li>
-        <li>Gangtok city &amp; viewpoints</li>
-        <li>Himalayan mountain panoramas</li>
-      </ul>
-    </div>
-    <div class="pkg-box">
-      <h4>Day-by-Day Itinerary</h4>
-      <ul class="itinerary-list">
-        <li data-day="1"><strong>Day 1</strong>NJP / Bagdogra to Gangtok, MG Road evening</li>
-        <li data-day="2"><strong>Day 2</strong>Gangtok — Rumtek Monastery, viewpoints</li>
-        <li data-day="3"><strong>Day 3</strong>Gangtok to Lachung, scenic mountain drive</li>
-        <li data-day="4"><strong>Day 4</strong>Yumthang Valley &amp; Zero Point excursion</li>
-        <li data-day="5"><strong>Day 5</strong>Lachung to Gangtok, village homestay en route</li>
-        <li data-day="6-7"><strong>Day 6–7</strong>Offbeat villages — local culture, nature walks</li>
-        <li data-day="8"><strong>Day 8</strong>Departure to NJP / Bagdogra</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="pkg-cta">
-    <a class="btn-wa" href="https://wa.me/919874740763?text=Hi%2C%20I%20am%20interested%20in%20the%20Offbeat%20Sikkim%207N%2F8D%20package">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Enquire for This Package
+    <a class="btn-book-now" href="https://wa.me/919874740763?text=Hi%2C%20I%20want%20to%20build%20a%20custom%20tour%20package.%20Please%20help%20me%20plan%20my%20trip." target="_blank" style="display:inline-flex;">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Build My Custom Package
     </a>
-    <button class="btn-pdf" onclick="downloadPDF('sikkim')">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z"/></svg>
-      Download Itinerary PDF
-    </button>
   </div>
-  <p class="pdf-note">Branded PDF — watermarked with Sana On The Go &amp; WhatsApp number</p>
 </div>
 
-
-<!-- ══ PACKAGE 3 TEMPLATE ══
-     ▸ Duplicate this block for packages 4-10
-     ▸ Change ONLY: id, badge, h2, price, image filenames (pkg3→pkg4 etc), highlights, itinerary, WhatsApp text
-     ▸ Image filenames: pkg3-1.jpg ... pkg3-8.jpg  (upload to images/ folder)
-══ -->
-<div class="package-section" id="package3">
-  <div class="pkg-header">
-    <div>
-      <span class="badge">X Nights / X Days</span>
-      <h2>Your Package Name</h2>
+<!-- PACKAGE DETAIL MODAL -->
+<div class="modal-overlay" id="detailModal">
+  <div class="modal" id="detailModalContent">
+    <div class="modal-hero" id="mHero">
+      <div class="mh-overlay"></div>
+      <div class="modal-hero-content">
+        <span class="mh-badge" id="mBadge">5 Nights / 6 Days</span>
+        <h2 id="mTitle">Package Name</h2>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
-    <div class="price-tag">
-      <span class="from">Starting from</span>
-      <span class="amount">&#8377;XX,XXX</span>
-      <span class="per">per person</span>
+    <div class="modal-body">
+      <div class="modal-price-bar">
+        <div>
+          <span class="mp-label">Starting From</span>
+          <span class="mp-amount" id="mPrice">₹XX,XXX</span>
+        </div>
+        <span class="mp-nights" id="mNights">per person</span>
+      </div>
+
+      <p id="mDesc" style="font-size:0.9rem;color:var(--muted);margin-bottom:18px;line-height:1.65;"></p>
+
+      <div class="modal-section" id="mHighlightsSection">
+        <h4>Package Highlights</h4>
+        <div class="highlight-list" id="mHighlights"></div>
+      </div>
+
+      <div class="modal-section" id="mItinSection">
+        <h4>Day-by-Day Itinerary</h4>
+        <div class="day-list" id="mDays"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-dl-pdf" id="mPdfBtn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z"/></svg>
+          Download Itinerary PDF
+        </button>
+        <span class="pdf-note">Branded PDF with Sana On The Go watermark &amp; contact details</span>
+      </div>
+
+      <div class="modal-book-form">
+        <h4>📩 Send Booking Enquiry via WhatsApp</h4>
+        <div class="form-grid three">
+          <div class="fg"><label>Arrival at NJP/Bagdogra</label><input type="date" id="bArrival"></div>
+          <div class="fg"><label>Departure from NJP/Bagdogra</label><input type="date" id="bDeparture"></div>
+          <div class="fg"><label>Persons</label>
+            <select id="bPersons"><option value="">Select</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10+</option></select>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="fg"><label>No. of Rooms</label>
+            <select id="bRooms"><option value="">Select</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select>
+          </div>
+          <div class="fg"><label>Your Name</label><input type="text" id="bName" placeholder="Full name"></div>
+        </div>
+        <button class="btn-wa-book" onclick="sendEnquiry()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Send Enquiry via WhatsApp
+        </button>
+      </div>
     </div>
   </div>
-
-  <!-- ▼ Upload: images/pkg3-1.jpg through images/pkg3-8.jpg ▼ -->
-  <div class="pkg-slider-wrap">
-    <div class="pkg-slider-track" id="slider-package3">
-      <div class="pkg-slide"><img src="images/pkg3-1.jpg" alt="Package 3 photo 1" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/pkg3-1.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-      <div class="pkg-slide"><img src="images/pkg3-2.jpg" alt="Package 3 photo 2" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/pkg3-2.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-      <div class="pkg-slide"><img src="images/pkg3-3.jpg" alt="Package 3 photo 3" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/pkg3-3.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-      <div class="pkg-slide"><img src="images/pkg3-4.jpg" alt="Package 3 photo 4" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/pkg3-4.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-      <div class="pkg-slide"><img src="images/pkg3-5.jpg" alt="Package 3 photo 5" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/pkg3-5.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-      <div class="pkg-slide"><img src="images/pkg3-6.jpg" alt="Package 3 photo 6" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/pkg3-6.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-      <div class="pkg-slide"><img src="images/pkg3-7.jpg" alt="Package 3 photo 7" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/pkg3-7.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-      <div class="pkg-slide"><img src="images/pkg3-8.jpg" alt="Package 3 photo 8" onerror="this.outerHTML='<div class=\'pkg-slide-ph\'><span class=\'phi\'>📷</span><span class=\'pht\'>Upload: images/pkg3-8.jpg</span></div>'"><div class="pkg-slide-caption">Add your caption</div></div>
-    </div>
-    <button class="pkg-slider-btn ps-prev" onclick="pkgSlide('package3',-1)">&#8249;</button>
-    <button class="pkg-slider-btn ps-next" onclick="pkgSlide('package3',1)">&#8250;</button>
-    <div class="pkg-slider-dots" id="dots-package3"></div>
-  </div>
-
-  <div class="pkg-body">
-    <div class="pkg-box"><h4>Highlights</h4><ul><li>Highlight one</li><li>Highlight two</li><li>Highlight three</li><li>Highlight four</li><li>Highlight five</li></ul></div>
-    <div class="pkg-box"><h4>Day-by-Day Itinerary</h4><ul class="itinerary-list">
-      <li data-day="1"><strong>Day 1</strong>Arrival &amp; check-in</li>
-      <li data-day="2"><strong>Day 2</strong>Day 2 activity</li>
-      <li data-day="3"><strong>Day 3</strong>Day 3 activity</li>
-      <li data-day="4"><strong>Day 4</strong>Day 4 activity</li>
-      <li data-day="5"><strong>Day 5</strong>Day 5 activity</li>
-      <li data-day="6"><strong>Day 6</strong>Departure</li>
-    </ul></div>
-  </div>
-  <div class="pkg-cta">
-    <a class="btn-wa" href="https://wa.me/919874740763?text=Hi%2C%20I%20am%20interested%20in%20Package%203">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Enquire for This Package
-    </a>
-    <button class="btn-pdf" onclick="downloadPDF('package3')">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z"/></svg>
-      Download Itinerary PDF
-    </button>
-  </div>
-  <p class="pdf-note">Branded PDF — watermarked with Sana On The Go &amp; WhatsApp number</p>
 </div>
 
-<!-- ═════════════════════════════════════════════════════════════
-     PACKAGES 4-10: Copy the entire Package 3 block above here.
-     For each copy:
-       1. Change id="package3" → id="package4" (etc.)
-       2. Change id="slider-package3" → id="slider-package4"
-       3. Change id="dots-package3" → id="dots-package4"
-       4. Change onclick="pkgSlide('package3'..." → pkgSlide('package4'...
-       5. Change onclick="downloadPDF('package3')" → downloadPDF('package4')
-       6. Change image filenames: pkg3-1.jpg → pkg4-1.jpg (etc.)
-       7. Update badge, h2, price, highlights, itinerary text
-       8. Update WhatsApp href message text
-     The slider JS auto-initialises — no other changes needed!
-═════════════════════════════════════════════════════════════ -->
-
-
-<!-- ═══ FOOTER ═══ -->
+<!-- FOOTER -->
 <footer id="contact">
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
         <h2>Sana On The Go</h2>
-        <p>Based in Siliguri, North Bengal — we craft unforgettable journeys through Darjeeling, Kalimpong, and the hidden corners of Sikkim.</p>
+        <p>Based in Siliguri, North Bengal — we craft unforgettable journeys through Darjeeling, Kalimpong, and the hidden corners of Sikkim. Every trip is personal.</p>
         <div class="footer-social">
           <a class="f-soc insta" href="https://www.instagram.com/sana.onthe.go?igsh=MTRuaWVmOWJ5d2ZpMg==" target="_blank" rel="noopener" title="Instagram">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -532,128 +460,544 @@
 <a class="wa-float" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20travel%20packages" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
-  // Hamburger
-  const hbg=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu');
-  hbg.addEventListener('click',()=>mm.classList.toggle('open'));
-  function closeMenu(){mm.classList.remove('open');}
-  document.addEventListener('click',e=>{if(!hbg.contains(e.target)&&!mm.contains(e.target))mm.classList.remove('open');});
+/* ══════════════════════════════════════════════════════════════════
+   PACKAGE DATA
+   ══════════════════════════════════════════════════════════════════ */
 
-  // Slider engine — auto-discovers all sliders on page
-  const sliders={};
-  function initSlider(id){
-    const track=document.getElementById('slider-'+id);
-    const dotsEl=document.getElementById('dots-'+id);
-    if(!track||!dotsEl)return;
-    const slides=track.querySelectorAll('.pkg-slide');
-    if(!slides.length)return;
-    let cur=0;
-    slides.forEach((_,i)=>{
-      const d=document.createElement('button');
-      d.className='ps-dot'+(i===0?' active':'');
-      d.setAttribute('aria-label','Slide '+(i+1));
-      d.addEventListener('click',()=>gt(i));
-      dotsEl.appendChild(d);
+const CATEGORIES = [
+  { id: 'darjeeling', icon: '🍵', label: 'Darjeeling Offbeat', count: 8 },
+  { id: 'kalimpong',  icon: '🌸', label: 'Kalimpong Offbeat', count: 8 },
+  { id: 'mixed-dk',   icon: '🏔️', label: 'Darjeeling + Kalimpong Mixed', count: 7 },
+  { id: 'mixed-town', icon: '🚂', label: 'Offbeat + Darjeeling Town', count: 7 },
+  { id: 'jungle',     icon: '🐘', label: 'Jungle Safari Based', count: 7 },
+  // NEW CATEGORY
+  { id: 'sikkim',     icon: '🏯', label: 'Offbeat Sikkim', count: 8 },
+];
+
+const PACKAGES = {
+
+  darjeeling: [
+    {
+      id: 'darj-1',
+      name: 'Package 1 – Darjeeling Offbeat',
+      nights: '3 Nights / 4 Days',
+      price: '₹XX,XXX',
+      desc: 'Package description here. Add details about what makes this Darjeeling offbeat package special — the places, experiences, and unique moments that travellers will remember.',
+      img: 'images/pkg-darj-1.jpg',
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me','Highlight 5 — edit me','Highlight 6 — edit me'],
+      days: [
+        { day: 'Day 1', title: 'Arrival Day', desc: 'Arrival at NJP/Bagdogra. Transfer to destination. Check-in and settle in. Evening at leisure.' },
+        { day: 'Day 2', title: 'Sightseeing Day 1', desc: 'Full day sightseeing. Visit [Location 1], [Location 2]. Lunch at [place]. Evening at [viewpoint].' },
+        { day: 'Day 3', title: 'Sightseeing Day 2', desc: 'Morning excursion to [Location]. Afternoon at [place]. Dinner and overnight stay.' },
+        { day: 'Day 4', title: 'Departure', desc: 'Early morning. Breakfast. Transfer to NJP/Bagdogra for departure. Tour ends.' },
+      ],
+    },
+    { id: 'darj-2', name: 'Package 2 – Darjeeling Offbeat', nights: '4 Nights / 5 Days', price: '₹XX,XXX', desc: 'Package description here. Add details about what makes this Darjeeling offbeat package special.', img: 'images/pkg-darj-2.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me','Highlight 5 — edit me','Highlight 6 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival at NJP/Bagdogra. Transfer and check-in.' },{ day: 'Day 2', title: 'Exploration Day 1', desc: 'Sightseeing details here.' },{ day: 'Day 3', title: 'Exploration Day 2', desc: 'Sightseeing details here.' },{ day: 'Day 4', title: 'Exploration Day 3', desc: 'Sightseeing details here.' },{ day: 'Day 5', title: 'Departure', desc: 'Breakfast and departure transfer.' }] },
+    { id: 'darj-3', name: 'Package 3 – Darjeeling Offbeat', nights: '5 Nights / 6 Days', price: '₹XX,XXX', desc: 'Package description here. Add details about what makes this Darjeeling offbeat package special.', img: 'images/pkg-darj-3.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me','Highlight 5 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },{ day: 'Day 2', title: 'Day 2', desc: 'Itinerary details here.' },{ day: 'Day 3', title: 'Day 3', desc: 'Itinerary details here.' },{ day: 'Day 4', title: 'Day 4', desc: 'Itinerary details here.' },{ day: 'Day 5', title: 'Day 5', desc: 'Itinerary details here.' },{ day: 'Day 6', title: 'Departure', desc: 'Breakfast and departure transfer.' }] },
+    { id: 'darj-4', name: 'Package 4 – Darjeeling Offbeat', nights: '5 Nights / 6 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-darj-4.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },{ day: 'Day 2–5', title: 'Exploration Days', desc: 'Sightseeing details here across multiple days.' },{ day: 'Day 6', title: 'Departure', desc: 'Departure transfer.' }] },
+    { id: 'darj-5', name: 'Package 5 – Darjeeling Offbeat', nights: '6 Nights / 7 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-darj-5.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },{ day: 'Day 2–6', title: 'Exploration Days', desc: 'Sightseeing details here.' },{ day: 'Day 7', title: 'Departure', desc: 'Departure transfer.' }] },
+    { id: 'darj-6', name: 'Package 6 – Darjeeling Offbeat', nights: '3 Nights / 4 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-darj-6.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },{ day: 'Day 2–3', title: 'Exploration', desc: 'Sightseeing details here.' },{ day: 'Day 4', title: 'Departure', desc: 'Departure transfer.' }] },
+    { id: 'darj-7', name: 'Package 7 – Darjeeling Offbeat', nights: '4 Nights / 5 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-darj-7.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },{ day: 'Day 2–4', title: 'Exploration', desc: 'Sightseeing details here.' },{ day: 'Day 5', title: 'Departure', desc: 'Departure transfer.' }] },
+    { id: 'darj-8', name: 'Package 8 – Darjeeling Offbeat', nights: '6 Nights / 7 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-darj-8.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },{ day: 'Day 2–6', title: 'Exploration', desc: 'Sightseeing details here.' },{ day: 'Day 7', title: 'Departure', desc: 'Departure transfer.' }] },
+  ],
+
+  kalimpong: [
+    { id: 'kalim-1', name: 'Package 1 – Kalimpong Offbeat', nights: '3 Nights / 4 Days', price: '₹XX,XXX', desc: 'Package description here. Add your Kalimpong offbeat package details.', img: 'images/pkg-kalim-1.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival at NJP/Bagdogra and transfer.' },{ day: 'Day 2–3', title: 'Exploration', desc: 'Sightseeing details here.' },{ day: 'Day 4', title: 'Departure', desc: 'Departure transfer.' }] },
+    { id: 'kalim-2', name: 'Package 2 – Kalimpong Offbeat', nights: '4 Nights / 5 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-kalim-2.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–4', title: 'Exploration', desc: 'Sightseeing.' },{ day: 'Day 5', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'kalim-3', name: 'Package 3 – Kalimpong Offbeat', nights: '5 Nights / 6 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-kalim-3.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–5', title: 'Exploration', desc: 'Sightseeing.' },{ day: 'Day 6', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'kalim-4', name: 'Package 4 – Kalimpong Offbeat', nights: '3 Nights / 4 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-kalim-4.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–3', title: 'Exploration', desc: 'Sightseeing.' },{ day: 'Day 4', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'kalim-5', name: 'Package 5 – Kalimpong Offbeat', nights: '4 Nights / 5 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-kalim-5.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–4', title: 'Exploration', desc: 'Sightseeing.' },{ day: 'Day 5', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'kalim-6', name: 'Package 6 – Kalimpong Offbeat', nights: '5 Nights / 6 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-kalim-6.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–5', title: 'Exploration', desc: 'Sightseeing.' },{ day: 'Day 6', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'kalim-7', name: 'Package 7 – Kalimpong Offbeat', nights: '6 Nights / 7 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-kalim-7.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–6', title: 'Exploration', desc: 'Sightseeing.' },{ day: 'Day 7', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'kalim-8', name: 'Package 8 – Kalimpong Offbeat', nights: '3 Nights / 4 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-kalim-8.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–3', title: 'Exploration', desc: 'Sightseeing.' },{ day: 'Day 4', title: 'Departure', desc: 'Departure.' }] },
+  ],
+
+  'mixed-dk': [
+    { id: 'mdk-1', name: 'Package 1 – Darjeeling & Kalimpong Mixed', nights: '5 Nights / 6 Days', price: '₹XX,XXX', desc: 'Explore both Darjeeling and Kalimpong offbeat areas on a single combined tour. Package description here.', img: 'images/pkg-mdk-1.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'], days: [{ day: 'Day 1', title: 'Arrival at Darjeeling', desc: 'Arrival and transfer to Darjeeling.' },{ day: 'Day 2–3', title: 'Darjeeling Exploration', desc: 'Sightseeing in and around Darjeeling.' },{ day: 'Day 4', title: 'Transfer to Kalimpong', desc: 'Transfer and check-in at Kalimpong.' },{ day: 'Day 5', title: 'Kalimpong Exploration', desc: 'Sightseeing in and around Kalimpong.' },{ day: 'Day 6', title: 'Departure', desc: 'Departure transfer to NJP/Bagdogra.' }] },
+    { id: 'mdk-2', name: 'Package 2 – Darjeeling & Kalimpong Mixed', nights: '6 Nights / 7 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-mdk-2.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–3', title: 'Darjeeling', desc: 'Darjeeling days.' },{ day: 'Day 4', title: 'Transfer', desc: 'Transfer to Kalimpong.' },{ day: 'Day 5–6', title: 'Kalimpong', desc: 'Kalimpong days.' },{ day: 'Day 7', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'mdk-3', name: 'Package 3 – Darjeeling & Kalimpong Mixed', nights: '4 Nights / 5 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-mdk-3.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2', title: 'Darjeeling', desc: 'Darjeeling day.' },{ day: 'Day 3–4', title: 'Kalimpong', desc: 'Kalimpong days.' },{ day: 'Day 5', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'mdk-4', name: 'Package 4 – Darjeeling & Kalimpong Mixed', nights: '5 Nights / 6 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-mdk-4.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–3', title: 'Darjeeling', desc: 'Darjeeling days.' },{ day: 'Day 4–5', title: 'Kalimpong', desc: 'Kalimpong days.' },{ day: 'Day 6', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'mdk-5', name: 'Package 5 – Darjeeling & Kalimpong Mixed', nights: '7 Nights / 8 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-mdk-5.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–4', title: 'Darjeeling', desc: 'Darjeeling days.' },{ day: 'Day 5–7', title: 'Kalimpong', desc: 'Kalimpong days.' },{ day: 'Day 8', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'mdk-6', name: 'Package 6 – Darjeeling & Kalimpong Mixed', nights: '4 Nights / 5 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-mdk-6.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–4', title: 'Exploration', desc: 'Sightseeing.' },{ day: 'Day 5', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'mdk-7', name: 'Package 7 – Darjeeling & Kalimpong Mixed', nights: '6 Nights / 7 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-mdk-7.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–6', title: 'Exploration', desc: 'Sightseeing.' },{ day: 'Day 7', title: 'Departure', desc: 'Departure.' }] },
+  ],
+
+  'mixed-town': [
+    { id: 'mt-1', name: 'Package 1 – Offbeat + Darjeeling Town', nights: '5 Nights / 6 Days', price: '₹XX,XXX', desc: 'A blend of Darjeeling town classics and hidden offbeat gems nearby. Package description here.', img: 'images/pkg-mt-1.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'], days: [{ day: 'Day 1', title: 'Arrival at Darjeeling', desc: 'Arrival, Mall Road evening.' },{ day: 'Day 2', title: 'Darjeeling Town', desc: 'Tiger Hill, monasteries, toy train.' },{ day: 'Day 3–4', title: 'Offbeat Villages', desc: 'Explore offbeat villages and viewpoints.' },{ day: 'Day 5', title: 'Kalimpong Day', desc: 'Excursion to Kalimpong or day trip.' },{ day: 'Day 6', title: 'Departure', desc: 'Departure transfer.' }] },
+    { id: 'mt-2', name: 'Package 2 – Offbeat + Darjeeling Town', nights: '4 Nights / 5 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-mt-2.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2', title: 'Town Sightseeing', desc: 'Town sightseeing.' },{ day: 'Day 3–4', title: 'Offbeat Days', desc: 'Offbeat sightseeing.' },{ day: 'Day 5', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'mt-3', name: 'Package 3 – Offbeat + Darjeeling Town', nights: '6 Nights / 7 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-mt-3.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–3', title: 'Darjeeling Town', desc: 'Town sightseeing.' },{ day: 'Day 4–6', title: 'Offbeat Days', desc: 'Offbeat exploration.' },{ day: 'Day 7', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'mt-4', name: 'Package 4 – Offbeat + Darjeeling Town', nights: '3 Nights / 4 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-mt-4.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2', title: 'Town', desc: 'Town sightseeing.' },{ day: 'Day 3', title: 'Offbeat', desc: 'Offbeat exploration.' },{ day: 'Day 4', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'mt-5', name: 'Package 5 – Offbeat + Darjeeling Town', nights: '5 Nights / 6 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-mt-5.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–5', title: 'Mixed Days', desc: 'Town and offbeat sightseeing.' },{ day: 'Day 6', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'mt-6', name: 'Package 6 – Offbeat + Darjeeling Town', nights: '4 Nights / 5 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-mt-6.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–4', title: 'Mixed Days', desc: 'Sightseeing.' },{ day: 'Day 5', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'mt-7', name: 'Package 7 – Offbeat + Darjeeling Town', nights: '7 Nights / 8 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-mt-7.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–7', title: 'Exploration', desc: 'Full exploration days.' },{ day: 'Day 8', title: 'Departure', desc: 'Departure.' }] },
+  ],
+
+  jungle: [
+    { id: 'jng-1', name: 'Package 1 – Jungle Safari', nights: '2 Nights / 3 Days', price: '₹XX,XXX', desc: 'Wildlife and jungle safari experience in the Dooars. Package description here.', img: 'images/pkg-jng-1.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'], days: [{ day: 'Day 1', title: 'Arrival at Dooars', desc: 'Arrival and transfer to jungle resort.' },{ day: 'Day 2', title: 'Safari Day', desc: 'Morning and evening safari. Wildlife spotting.' },{ day: 'Day 3', title: 'Departure', desc: 'Breakfast and departure transfer.' }] },
+    { id: 'jng-2', name: 'Package 2 – Jungle Safari', nights: '3 Nights / 4 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-jng-2.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–3', title: 'Safari Days', desc: 'Morning and evening safaris.' },{ day: 'Day 4', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'jng-3', name: 'Package 3 – Jungle Safari', nights: '4 Nights / 5 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-jng-3.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–4', title: 'Safari & Nature', desc: 'Safari and nature walks.' },{ day: 'Day 5', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'jng-4', name: 'Package 4 – Jungle Safari + Hills', nights: '4 Nights / 5 Days', price: '₹XX,XXX', desc: 'Package description here. Combines jungle safari with hill station stay.', img: 'images/pkg-jng-4.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'], days: [{ day: 'Day 1', title: 'Arrival at Dooars', desc: 'Arrival.' },{ day: 'Day 2', title: 'Safari', desc: 'Safari day.' },{ day: 'Day 3', title: 'Transfer to Hills', desc: 'Transfer to hill destination.' },{ day: 'Day 4', title: 'Hills Sightseeing', desc: 'Sightseeing in hills.' },{ day: 'Day 5', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'jng-5', name: 'Package 5 – Gorumara Safari', nights: '2 Nights / 3 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-jng-5.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2', title: 'Safari', desc: 'Safari day.' },{ day: 'Day 3', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'jng-6', name: 'Package 6 – Jaldapara Safari', nights: '3 Nights / 4 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-jng-6.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–3', title: 'Safari Days', desc: 'Safari days.' },{ day: 'Day 4', title: 'Departure', desc: 'Departure.' }] },
+    { id: 'jng-7', name: 'Package 7 – Dooars Complete Safari', nights: '5 Nights / 6 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-jng-7.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–5', title: 'Safari & Nature Days', desc: 'Multiple safari experiences.' },{ day: 'Day 6', title: 'Departure', desc: 'Departure.' }] },
+  ],
+
+  /* ══════════════════════════════════════════════════════════════════
+     NEW CATEGORY: OFFBEAT SIKKIM
+     8 packages covering North Sikkim, East Sikkim, West Sikkim, and
+     combined circuits. Edit exactly as you would for any other category.
+  ══════════════════════════════════════════════════════════════════ */
+  sikkim: [
+    {
+      id: 'sik-1',
+      name: 'Package 1 – North Sikkim Offbeat',
+      nights: '4 Nights / 5 Days',
+      /* EDIT PRICE */
+      price: '₹XX,XXX',
+      /* EDIT DESCRIPTION */
+      desc: 'Package description here. Add details about this North Sikkim offbeat package — Lachen, Lachung, Gurudongmar Lake and hidden valleys that very few tourists explore.',
+      /* EDIT IMAGE: upload to images/ folder and update path */
+      img: 'images/pkg-sik-1.jpg',
+      highlights: [
+        'Highlight 1 — edit me',
+        'Highlight 2 — edit me',
+        'Highlight 3 — edit me',
+        'Highlight 4 — edit me',
+        'Highlight 5 — edit me',
+        'Highlight 6 — edit me',
+      ],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Gangtok', desc: 'Arrival at NJP/Bagdogra. Transfer to Gangtok. Check-in and evening at leisure.' },
+        { day: 'Day 2', title: 'Gangtok to Lachung', desc: 'Drive to Lachung via Chungthang. En-route scenic valley views. Overnight at Lachung.' },
+        { day: 'Day 3', title: 'Yumthang Valley', desc: 'Morning excursion to Yumthang Valley (Valley of Flowers). Return to Lachung. Afternoon leisure.' },
+        { day: 'Day 4', title: 'Lachung to Gangtok', desc: 'After breakfast drive back to Gangtok. Evening MG Marg. Overnight Gangtok.' },
+        { day: 'Day 5', title: 'Departure', desc: 'Breakfast. Transfer to NJP/Bagdogra for departure. Tour ends.' },
+      ],
+    },
+    {
+      id: 'sik-2',
+      name: 'Package 2 – North Sikkim with Gurudongmar',
+      nights: '5 Nights / 6 Days',
+      price: '₹XX,XXX',
+      desc: 'Package description here. A longer North Sikkim package covering both Lachung / Yumthang and the sacred Gurudongmar Lake circuit via Lachen.',
+      img: 'images/pkg-sik-2.jpg',
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me','Highlight 5 — edit me'],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Gangtok', desc: 'Arrival and transfer to Gangtok.' },
+        { day: 'Day 2', title: 'Gangtok to Lachen', desc: 'Drive to Lachen. En-route waterfall stops.' },
+        { day: 'Day 3', title: 'Gurudongmar Lake', desc: 'Early morning excursion to Gurudongmar Lake (~17,000 ft). Return to Lachen, drive to Lachung overnight.' },
+        { day: 'Day 4', title: 'Yumthang Valley', desc: 'Excursion to Yumthang Valley. Return to Lachung.' },
+        { day: 'Day 5', title: 'Return to Gangtok', desc: 'Drive to Gangtok. Evening at MG Marg.' },
+        { day: 'Day 6', title: 'Departure', desc: 'Transfer to NJP/Bagdogra.' },
+      ],
+    },
+    {
+      id: 'sik-3',
+      name: 'Package 3 – East Sikkim Offbeat',
+      nights: '3 Nights / 4 Days',
+      price: '₹XX,XXX',
+      desc: 'Package description here. East Sikkim offbeat circuit covering Tsomgo (Changu) Lake, Baba Mandir, Nathang Valley, and Old Silk Route villages.',
+      img: 'images/pkg-sik-3.jpg',
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Gangtok', desc: 'Arrival and transfer. Check-in and evening at leisure.' },
+        { day: 'Day 2', title: 'Old Silk Route', desc: 'Full day excursion on the Old Silk Route — Aritar, Zuluk, Thambi View Point.' },
+        { day: 'Day 3', title: 'Tsomgo & Baba Mandir', desc: 'Tsomgo Lake and Baba Mandir visit (permit required). Return to Gangtok.' },
+        { day: 'Day 4', title: 'Departure', desc: 'Breakfast and departure transfer.' },
+      ],
+    },
+    {
+      id: 'sik-4',
+      name: 'Package 4 – West Sikkim Offbeat',
+      nights: '4 Nights / 5 Days',
+      price: '₹XX,XXX',
+      desc: 'Package description here. West Sikkim offbeat package covering Pelling, Yuksom, Khecheopalri Lake and the stunning Kanchenjunga views.',
+      img: 'images/pkg-sik-4.jpg',
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Pelling', desc: 'Arrival at NJP/Bagdogra and drive to Pelling.' },
+        { day: 'Day 2', title: 'Pelling Sightseeing', desc: 'Pemayangtse Monastery, Rabdentse Ruins, Kanchenjunga Waterfall.' },
+        { day: 'Day 3', title: 'Yuksom & Khecheopalri', desc: 'Excursion to Yuksom (first capital of Sikkim) and sacred Khecheopalri Lake.' },
+        { day: 'Day 4', title: 'Offbeat Villages', desc: 'Explore lesser-known villages and viewpoints. Description here.' },
+        { day: 'Day 5', title: 'Departure', desc: 'Breakfast and transfer to NJP/Bagdogra.' },
+      ],
+    },
+    {
+      id: 'sik-5',
+      name: 'Package 5 – Gangtok & East Sikkim Circuit',
+      nights: '3 Nights / 4 Days',
+      price: '₹XX,XXX',
+      desc: 'Package description here. A compact Gangtok-based package with day excursions to East Sikkim offbeat spots — ideal for a short Sikkim break.',
+      img: 'images/pkg-sik-5.jpg',
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Gangtok', desc: 'Arrival, check-in. Evening MG Marg.' },
+        { day: 'Day 2', title: 'Gangtok Sightseeing', desc: 'Rumtek Monastery, Enchey Monastery, Tashi Viewpoint, local market.' },
+        { day: 'Day 3', title: 'East Sikkim Day Trip', desc: 'Tsomgo Lake, Baba Mandir excursion.' },
+        { day: 'Day 4', title: 'Departure', desc: 'Breakfast. Departure transfer.' },
+      ],
+    },
+    {
+      id: 'sik-6',
+      name: 'Package 6 – Sikkim Complete (North + West)',
+      nights: '6 Nights / 7 Days',
+      price: '₹XX,XXX',
+      desc: 'Package description here. A week-long Sikkim grand circuit combining North Sikkim (Lachung, Gurudongmar) and West Sikkim (Pelling, Yuksom) with Gangtok.',
+      img: 'images/pkg-sik-6.jpg',
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Gangtok', desc: 'Arrival and check-in.' },
+        { day: 'Day 2', title: 'Gangtok to Lachung', desc: 'Drive to Lachung.' },
+        { day: 'Day 3', title: 'Yumthang Valley', desc: 'Excursion to Yumthang. Return to Lachung.' },
+        { day: 'Day 4', title: 'Lachung to Pelling', desc: 'Long scenic drive to Pelling via Gangtok.' },
+        { day: 'Day 5', title: 'West Sikkim Sightseeing', desc: 'Pemayangtse, Khecheopalri, Yuksom.' },
+        { day: 'Day 6', title: 'Pelling to Gangtok', desc: 'Drive back to Gangtok. Evening leisure.' },
+        { day: 'Day 7', title: 'Departure', desc: 'Transfer to NJP/Bagdogra.' },
+      ],
+    },
+    {
+      id: 'sik-7',
+      name: 'Package 7 – Sikkim Monastery Trail',
+      nights: '4 Nights / 5 Days',
+      price: '₹XX,XXX',
+      desc: 'Package description here. A spiritual and cultural tour covering the most significant and offbeat monasteries across Sikkim — from ancient gompas to hillside shrines.',
+      img: 'images/pkg-sik-7.jpg',
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Gangtok', desc: 'Arrival and check-in. Rumtek Monastery visit in the evening.' },
+        { day: 'Day 2', title: 'North Sikkim Monasteries', desc: 'Drive towards North Sikkim. Phensang and Lachen Gompa visits.' },
+        { day: 'Day 3', title: 'Return via Chungthang', desc: 'Scenic valley monasteries en-route. Return to Gangtok.' },
+        { day: 'Day 4', title: 'West Sikkim Monasteries', desc: 'Day excursion to Pemayangtse and Tashiding Monastery.' },
+        { day: 'Day 5', title: 'Departure', desc: 'Breakfast and departure transfer.' },
+      ],
+    },
+    {
+      id: 'sik-8',
+      name: 'Package 8 – Silk Route & South Sikkim',
+      nights: '5 Nights / 6 Days',
+      price: '₹XX,XXX',
+      desc: 'Package description here. Covers the historic Old Silk Route, Zuluk zigzag, Nathang Valley and South Sikkim highlights like Ravangla and Namchi — all largely offbeat.',
+      img: 'images/pkg-sik-8.jpg',
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Gangtok', desc: 'Arrival and check-in.' },
+        { day: 'Day 2', title: 'Old Silk Route', desc: 'Drive via Aritar and Zuluk. Thambi View Point. Overnight at Zuluk or Nathang.' },
+        { day: 'Day 3', title: 'Nathang Valley', desc: 'Morning at Nathang (flat valley, stunning views). Drive to Tsomgo. Return to Gangtok.' },
+        { day: 'Day 4', title: 'South Sikkim – Ravangla', desc: 'Drive to Ravangla. Buddha Park, Temi Tea Garden, offbeat viewpoints.' },
+        { day: 'Day 5', title: 'Namchi & Return', desc: 'Namchi Char Dham, Siddheshwar Dham. Return to Gangtok.' },
+        { day: 'Day 6', title: 'Departure', desc: 'Breakfast and transfer to NJP/Bagdogra.' },
+      ],
+    },
+  ],
+
+};
+
+/* ═══ RENDER CATEGORY BUTTONS ═══ */
+const catGrid = document.getElementById('catGrid');
+CATEGORIES.forEach(cat => {
+  const btn = document.createElement('button');
+  btn.className = 'cat-btn';
+  btn.dataset.catId = cat.id;
+  btn.innerHTML = `<span class="cat-icon">${cat.icon}</span><span class="cat-label">${cat.label}</span><span class="cat-count">${cat.count} packages</span>`;
+  btn.addEventListener('click', () => selectCategory(cat));
+  catGrid.appendChild(btn);
+});
+
+let currentPkg = null;
+
+function selectCategory(cat) {
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.dataset.catId === cat.id));
+  document.getElementById('bannerTitle').textContent = cat.label + ' Packages';
+  renderPackages(cat.id);
+  document.getElementById('pkgsArea').style.display = 'block';
+  setTimeout(() => document.getElementById('pkgsArea').scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+}
+
+function renderPackages(catId) {
+  const pkgs = PACKAGES[catId] || [];
+  const grid = document.getElementById('pkgGrid');
+  grid.innerHTML = pkgs.map(p => `
+    <div class="pkg-card">
+      <div class="pkg-card-img">
+        <img src="${p.img}" alt="${p.name}" loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="img-ph" style="display:none;">
+          <span class="img-ph-icon">📷</span>
+          <span class="img-ph-txt">Upload: ${p.img}</span>
+        </div>
+        <span class="pkg-badge">${p.nights}</span>
+      </div>
+      <div class="pkg-card-body">
+        <h3>${p.name}</h3>
+        <p class="pkg-desc">${p.desc}</p>
+        <div class="pkg-price-row">
+          <div>
+            <div class="pkg-price">${p.price}</div>
+            <div class="pkg-price-per">per person</div>
+          </div>
+          <div class="pkg-nights">${p.nights}</div>
+        </div>
+        <div class="pkg-card-actions">
+          <button class="btn-enquire" onclick="openQuickEnquiry('${p.id}')">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="btn-detail" onclick="openDetail('${p.id}')">Details &amp; PDF ›</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function findPkg(id) {
+  for (const cat of Object.values(PACKAGES)) {
+    const p = cat.find(x => x.id === id);
+    if (p) return p;
+  }
+  return null;
+}
+
+function openDetail(id) {
+  const p = findPkg(id);
+  if (!p) return;
+  currentPkg = p;
+  const heroEl = document.getElementById('mHero');
+  heroEl.style.backgroundImage = `url('${p.img}')`;
+  heroEl.style.backgroundSize = 'cover';
+  heroEl.style.backgroundPosition = 'center';
+  document.getElementById('mBadge').textContent = p.nights;
+  document.getElementById('mTitle').textContent = p.name;
+  document.getElementById('mPrice').textContent = p.price;
+  document.getElementById('mNights').textContent = 'per person · ' + p.nights;
+  document.getElementById('mDesc').textContent = p.desc;
+  document.getElementById('mHighlights').innerHTML = p.highlights.map(h => `<div class="highlight-item">${h}</div>`).join('');
+  document.getElementById('mDays').innerHTML = p.days.map(d => `
+    <div class="day-item">
+      <div class="day-num">${d.day}</div>
+      <div class="day-desc"><strong>${d.title}</strong><span>${d.desc}</span></div>
+    </div>`).join('');
+  ['bArrival','bDeparture','bPersons','bRooms','bName'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+  document.getElementById('mPdfBtn').onclick = () => generatePDF(p);
+  document.getElementById('detailModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function openQuickEnquiry(id) {
+  const p = findPkg(id);
+  if (!p) return;
+  const msg = `Hi Sana! I'm interested in:\n\n📦 *${p.name}*\n⏱️ Duration: ${p.nights}\n💰 Price: ${p.price} per person\n\nCould you please share availability and details? Thank you!`;
+  window.open('https://wa.me/919874740763?text=' + encodeURIComponent(msg), '_blank');
+}
+
+function closeModal() {
+  document.getElementById('detailModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('detailModal').addEventListener('click', e => { if (e.target === document.getElementById('detailModal')) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+function sendEnquiry() {
+  if (!currentPkg) return;
+  const a = document.getElementById('bArrival').value;
+  const d = document.getElementById('bDeparture').value;
+  const p = document.getElementById('bPersons').value;
+  const r = document.getElementById('bRooms').value;
+  const n = document.getElementById('bName').value.trim();
+  if (!a || !d || !p || !r) { alert('Please fill in all fields.'); return; }
+  if (new Date(d) <= new Date(a)) { alert('Departure date must be after arrival date.'); return; }
+  const fmt = v => { const [y,m,day] = v.split('-'); return `${day} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]} ${y}`; };
+  const msg = `🏔️ *PACKAGE BOOKING ENQUIRY*\n━━━━━━━━━━━━━━━━━━━━━\n*Package:* ${currentPkg.name}\n*Duration:* ${currentPkg.nights}\n*Price:* ${currentPkg.price} per person\n\n📅 *Arrival at NJP/Bagdogra:* ${fmt(a)}\n📅 *Departure from NJP/Bagdogra:* ${fmt(d)}\n👥 *Persons:* ${p}\n🛏️ *Rooms:* ${r}\n${n ? `👤 *Name:* ${n}\n` : ''}━━━━━━━━━━━━━━━━━━━━━\nPlease confirm availability. Thank you!`;
+  window.open('https://wa.me/919874740763?text=' + encodeURIComponent(msg), '_blank');
+}
+
+/* ═══ PDF GENERATOR ═══ */
+function generatePDF(pkg) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+  const W = 210, H = 297, M = 18;
+
+  // Watermark
+  function addWatermark() {
+    doc.saveGraphicsState();
+    doc.setGState(new doc.GState({ opacity: 0.055 }));
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(36);
+    doc.setTextColor(45, 106, 79);
+    doc.text('SANA ON THE GO', W / 2, H / 2 - 10, { align: 'center', angle: 38 });
+    doc.setFontSize(16);
+    doc.text('+91 98747 40763', W / 2, H / 2 + 12, { align: 'center', angle: 38 });
+    doc.restoreGraphicsState();
+  }
+
+  addWatermark();
+
+  // Header
+  doc.setFillColor(26, 61, 43);
+  doc.rect(0, 0, W, 42, 'F');
+  doc.setFillColor(201, 168, 76);
+  doc.rect(0, 40, W, 2.5, 'F');
+  doc.setFillColor(82, 183, 136);
+  doc.rect(0, 42.5, W, 0.8, 'F');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(20);
+  doc.setTextColor(255, 255, 255);
+  doc.text('Sana On The Go', M, 16);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(180, 220, 200);
+  doc.text('Into The Wild Tour and Travels  |  Himalayan Travel Specialists', M, 24);
+  doc.text('100/A/3/L Rabindra Nagar Main Road, Siliguri, West Bengal 734006', M, 31);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9.5);
+  doc.setTextColor(255, 255, 255);
+  doc.text('+91 98747 40763', W - M, 16, { align: 'right' });
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7.5);
+  doc.setTextColor(180, 220, 200);
+  doc.text('sayantikaintothewild@gmail.com', W - M, 24, { align: 'right' });
+  doc.text('@sana.onthe.go', W - M, 31, { align: 'right' });
+
+  let y = 52;
+
+  // Package title
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(18);
+  doc.setTextColor(26, 61, 43);
+  doc.text(pkg.name, M, y);
+  y += 8;
+
+  // ── FIX 3: Duration badge + price on TWO separate lines to prevent truncation ──
+  // Duration badge
+  doc.setFillColor(234, 245, 238);
+  doc.roundedRect(M, y, 58, 7.5, 2, 2, 'F');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8);
+  doc.setTextColor(45, 106, 79);
+  doc.text(pkg.nights, M + 4, y + 5.2);
+
+  // Price — placed below the badge, full width, never truncated
+  y += 11;
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(12);
+  doc.setTextColor(160, 120, 48);
+  doc.text('Price: ' + pkg.price + ' per person', M, y);
+  y += 10;
+  // ── end FIX 3 ──
+
+  // Divider
+  doc.setDrawColor(201, 168, 76);
+  doc.setLineWidth(0.6);
+  doc.line(M, y, W - M, y);
+  y += 9;
+
+  // Description
+  if (pkg.desc) {
+    doc.setFont('helvetica', 'italic');
+    doc.setFontSize(9.5);
+    doc.setTextColor(80, 80, 80);
+    const descLines = doc.splitTextToSize(pkg.desc, W - M * 2);
+    doc.text(descLines, M, y);
+    y += descLines.length * 5.5 + 7;
+  }
+
+  // Highlights
+  if (pkg.highlights && pkg.highlights.length) {
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(11.5);
+    doc.setTextColor(26, 61, 43);
+    doc.text('Package Highlights', M, y);
+    y += 7;
+    pkg.highlights.forEach(h => {
+      doc.setFillColor(82, 183, 136);
+      doc.circle(M + 2, y - 1.8, 1.4, 'F');
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(9.5);
+      doc.setTextColor(40, 40, 40);
+      const lines = doc.splitTextToSize(h, W - M * 2 - 10);
+      doc.text(lines, M + 8, y);
+      y += lines.length * 5.8 + 1.5;
     });
-    function gt(n){
-      cur=(n+slides.length)%slides.length;
-      track.style.transform='translateX(-'+(cur*100)+'%)';
-      dotsEl.querySelectorAll('.ps-dot').forEach((d,i)=>d.classList.toggle('active',i===cur));
-    }
-    let ts=0;
-    track.addEventListener('touchstart',e=>{ts=e.touches[0].clientX;},{passive:true});
-    track.addEventListener('touchend',e=>{const df=ts-e.changedTouches[0].clientX;if(Math.abs(df)>40)gt(cur+(df>0?1:-1));});
-    sliders[id]={gt,getCur:()=>cur};
+    y += 5;
   }
-  function pkgSlide(id,dir){if(sliders[id])sliders[id].gt(sliders[id].getCur()+dir);}
-  document.addEventListener('DOMContentLoaded',()=>{
-    document.querySelectorAll('[id^="slider-"]').forEach(el=>initSlider(el.id.replace('slider-','')));
-  });
 
-  // Lightbox
-  const lb=document.getElementById('lightbox');
-  let lbImgs=[],lbI=0;
-  document.addEventListener('click',e=>{
-    const slide=e.target.closest('.pkg-slide');
-    if(!slide||e.target.closest('.pkg-slider-btn'))return;
-    const wrap=slide.closest('[id^="slider-"]');
-    if(!wrap)return;
-    const imgs=Array.from(wrap.querySelectorAll('.pkg-slide img'));
-    lbImgs=imgs.map(i=>i.src);
-    lbI=imgs.indexOf(slide.querySelector('img'));
-    if(lbI<0||!lbImgs.length)return;
-    document.getElementById('lbImg').src=lbImgs[lbI];
-    lb.classList.add('active');document.body.style.overflow='hidden';
-  });
-  function closeLB(){lb.classList.remove('active');document.body.style.overflow='';}
-  function lbNav(d){lbI=(lbI+d+lbImgs.length)%lbImgs.length;document.getElementById('lbImg').src=lbImgs[lbI];}
-  lb.addEventListener('click',e=>{if(e.target===lb)closeLB();});
-  document.addEventListener('keydown',e=>{if(!lb.classList.contains('active'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='ArrowRight')lbNav(1);});
+  // Divider
+  doc.setDrawColor(220, 215, 205);
+  doc.setLineWidth(0.3);
+  doc.line(M, y, W - M, y);
+  y += 9;
 
-  // PDF itinerary data
-  const ITIN={
-    darjeeling:{title:"Darjeeling & Kalimpong",duration:"5 Nights / 6 Days",price:"From Rs.18,500 per person",highlights:["Tiger Hill sunrise viewpoint","Tea gardens & tea tasting","Darjeeling Himalayan Railway (Toy Train)","Monasteries & local sightseeing","Kalimpong hill town exploration"],days:[{day:"Day 1",desc:"NJP/Bagdogra to Darjeeling - check-in & evening stroll on Mall Road"},{day:"Day 2",desc:"Tiger Hill sunrise, Ghoom Monastery, Batasia Loop, Darjeeling Ropeway"},{day:"Day 3",desc:"Tea garden visit & toy train experience, transfer to Kalimpong"},{day:"Day 4",desc:"Kalimpong sightseeing - Durpin Monastery, Delo Park, local markets"},{day:"Day 5",desc:"Leisure day / optional offbeat excursion"},{day:"Day 6",desc:"Departure transfer to NJP/Bagdogra"}]},
-    sikkim:{title:"Offbeat Sikkim",duration:"7 Nights / 8 Days",price:"From Rs.24,900 per person",highlights:["Lachung & Yumthang Valley (Valley of Flowers)","Authentic village homestays","Less-crowded offbeat routes","Gangtok city & viewpoints","Himalayan mountain panoramas"],days:[{day:"Day 1",desc:"NJP/Bagdogra to Gangtok - check-in & MG Road evening walk"},{day:"Day 2",desc:"Gangtok sightseeing - Rumtek Monastery, viewpoints"},{day:"Day 3",desc:"Gangtok to Lachung via scenic mountain drive"},{day:"Day 4",desc:"Yumthang Valley & Zero Point excursion"},{day:"Day 5",desc:"Lachung to Gangtok, village homestay en route"},{day:"Day 6",desc:"Offbeat villages - local culture & nature walks"},{day:"Day 7",desc:"Village experience continues - home-cooked meals & scenery"},{day:"Day 8",desc:"Departure transfer to NJP/Bagdogra"}]}
-  };
-  function readDOM(id){
-    const sec=document.getElementById(id);if(!sec)return null;
-    const t=sec.querySelector('h2'),b=sec.querySelector('.badge'),p=sec.querySelector('.amount');
-    const hl=Array.from(sec.querySelectorAll('.pkg-box:first-of-type li')).map(l=>l.textContent.trim());
-    const days=Array.from(sec.querySelectorAll('.itinerary-list li')).map(l=>{const s=l.querySelector('strong');return{day:s?s.textContent.trim():'',desc:l.textContent.replace(s?s.textContent:'','').trim()};});
-    return{title:t?t.textContent.trim():id,duration:b?b.textContent.trim():'',price:p?'From '+p.textContent.trim()+' per person':'',highlights:hl,days:days};
+  // Itinerary
+  if (pkg.days && pkg.days.length) {
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(11.5);
+    doc.setTextColor(26, 61, 43);
+    doc.text('Day-by-Day Itinerary', M, y);
+    y += 8;
+
+    pkg.days.forEach(item => {
+      if (y > H - 38) {
+        doc.addPage();
+        addWatermark();
+        doc.setFillColor(26, 61, 43);
+        doc.rect(0, 0, W, 11, 'F');
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(8.5);
+        doc.setTextColor(255, 255, 255);
+        doc.text('Sana On The Go  |  ' + pkg.name, M, 7.5);
+        y = 20;
+      }
+      doc.setFillColor(45, 106, 79);
+      doc.roundedRect(M, y - 5, 22, 7, 1.5, 1.5, 'F');
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(7);
+      doc.setTextColor(255, 255, 255);
+      doc.text(item.day, M + 11, y, { align: 'center' });
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(9);
+      doc.setTextColor(45, 106, 79);
+      doc.text(item.title, M + 26, y - 1.5);
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(9);
+      doc.setTextColor(55, 55, 55);
+      const lines = doc.splitTextToSize(item.desc, W - M * 2 - 28);
+      doc.text(lines, M + 26, y + 4);
+      y += Math.max(lines.length * 5.5, 6) + 6;
+    });
   }
-  function downloadPDF(pkgId){
-    const data=ITIN[pkgId]||readDOM(pkgId);
-    if(!data){alert('Itinerary data not found.');return;}
-    const{jsPDF}=window.jspdf;
-    const doc=new jsPDF({unit:'mm',format:'a4'});
-    const W=210,H=297,M=18;
-    function wm(){
-      doc.saveGraphicsState();
-      doc.setGState(new doc.GState({opacity:0.06}));
-      doc.setFont('helvetica','bold');doc.setFontSize(38);doc.setTextColor(45,106,79);
-      doc.text('SANA ON THE GO',W/2,H/2-8,{align:'center',angle:38});
-      doc.setFontSize(17);doc.text('+91 98747 40763',W/2,H/2+12,{align:'center',angle:38});
-      doc.restoreGraphicsState();
-    }
-    wm();
-    doc.setFillColor(45,106,79);doc.rect(0,0,W,40,'F');
-    doc.setFillColor(82,183,136);doc.rect(0,38,W,2,'F');
-    doc.setFont('helvetica','bold');doc.setFontSize(22);doc.setTextColor(255,255,255);doc.text('Sana On The Go',M,17);
-    doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(180,230,200);
-    doc.text('Into The Wild Tour and Travels  |  Himalayan Travel Specialists',M,26);
-    doc.text('100/A/3/L Rabindra Nagar Main Road, Siliguri, West Bengal 734006',M,33);
-    doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(255,255,255);doc.text('+91 98747 40763',W-M,17,{align:'right'});
-    doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(180,230,200);
-    doc.text('sayantikaintothewild@gmail.com',W-M,25,{align:'right'});doc.text('@sana.onthe.go',W-M,32,{align:'right'});
-    let y=50;
-    doc.setFont('helvetica','bold');doc.setFontSize(20);doc.setTextColor(45,106,79);doc.text(data.title,M,y);y+=8;
-    if(data.duration){doc.setFillColor(232,245,238);doc.roundedRect(M,y,56,7,2,2,'F');doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(45,106,79);doc.text(data.duration,M+4,y+5);}
-    if(data.price){doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(45,106,79);doc.text(data.price,W-M,y+5,{align:'right'});}
-    y+=14;
-    doc.setDrawColor(82,183,136);doc.setLineWidth(0.5);doc.line(M,y,W-M,y);y+=9;
-    if(data.highlights&&data.highlights.length){
-      doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(45,106,79);doc.text('Package Highlights',M,y);y+=7;
-      doc.setFont('helvetica','normal');doc.setFontSize(9.5);doc.setTextColor(40,40,40);
-      data.highlights.forEach(h=>{doc.setFillColor(82,183,136);doc.circle(M+2,y-1.5,1.3,'F');const lines=doc.splitTextToSize(h,W-M*2-10);doc.text(lines,M+8,y);y+=lines.length*5.8+1;});y+=5;
-    }
-    doc.setDrawColor(210,210,200);doc.setLineWidth(0.3);doc.line(M,y,W-M,y);y+=9;
-    if(data.days&&data.days.length){
-      doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(45,106,79);doc.text('Day-by-Day Itinerary',M,y);y+=8;
-      data.days.forEach(function(item){
-        if(y>H-36){doc.addPage();wm();doc.setFillColor(45,106,79);doc.rect(0,0,W,12,'F');doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(255,255,255);doc.text('Sana On The Go  |  '+data.title,M,8);y=22;}
-        doc.setFillColor(45,106,79);doc.roundedRect(M,y-4.5,20,6.5,1.5,1.5,'F');
-        doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.setTextColor(255,255,255);doc.text(item.day,M+10,y,{align:'center'});
-        doc.setFont('helvetica','normal');doc.setFontSize(9.5);doc.setTextColor(40,40,40);
-        const lines=doc.splitTextToSize(item.desc,W-M*2-26);doc.text(lines,M+24,y);y+=Math.max(lines.length*5.8,8)+3.5;
-      });
-    }
-    doc.setFillColor(26,61,43);doc.rect(0,H-20,W,20,'F');
-    doc.setFont('helvetica','bold');doc.setFontSize(8.5);doc.setTextColor(255,255,255);doc.text('Sana On The Go  |  Into The Wild Tour and Travels',M,H-12);
-    doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(180,230,200);doc.text('WA: +91 98747 40763  |  sayantikaintothewild@gmail.com  |  @sana.onthe.go',M,H-6);
-    doc.save('Sana-On-The-Go-'+(data.title||pkgId).replace(/[^a-zA-Z0-9]/g,'-')+'.pdf');
-  }
+
+  // Footer
+  doc.setFillColor(13, 31, 22);
+  doc.rect(0, H - 20, W, 20, 'F');
+  doc.setFillColor(201, 168, 76);
+  doc.rect(0, H - 20, W, 1.5, 'F');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8.5);
+  doc.setTextColor(255, 255, 255);
+  doc.text('Sana On The Go  |  Into The Wild Tour and Travels', M, H - 12);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7.5);
+  doc.setTextColor(150, 200, 175);
+  doc.text('WA: +91 98747 40763  |  sayantikaintothewild@gmail.com  |  @sana.onthe.go', M, H - 6);
+
+  doc.save('Sana-On-The-Go-' + pkg.name.replace(/[^a-zA-Z0-9]/g, '-') + '.pdf');
+}
+
+// Nav
+const hbg = document.getElementById('hamburger'), mm = document.getElementById('mobileMenu');
+hbg.addEventListener('click', () => mm.classList.toggle('open'));
+function closeMenu() { mm.classList.remove('open'); }
+document.addEventListener('click', e => { if (!hbg.contains(e.target) && !mm.contains(e.target)) mm.classList.remove('open'); });
+
+// Scroll to top
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
 </script>
 </body>
 </html>
