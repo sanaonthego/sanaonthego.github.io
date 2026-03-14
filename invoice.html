@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invoice Generator — Sana On The Go (Private)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #2d6a4f; --green-lt: #52b788; --green-dk: #1a3d2b;
+      --gold: #c9a84c; --gold-lt: #e8c97a; --gold-dk: #a07830;
+      --bg: #f0ede6; --card: #fff; --text: #1e1e1e; --muted: #666;
+      --radius: 10px; --border: #ddd9d0;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg); color: var(--text);
+      min-height: 100vh; padding-bottom: 60px;
+    }
+
+    /* ── HEADER ── */
+    .tool-header {
+      background: var(--green-dk);
+      padding: 20px 36px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .tool-header .brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; }
+    .tool-header .brand span { color: var(--green-lt); }
+    .tool-header .badge {
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.75); font-size: 0.74rem; padding: 5px 12px; border-radius: 20px;
+      font-weight: 600; letter-spacing: 0.5px;
+    }
+
+    /* ── LAYOUT ── */
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 36px 24px; }
+    .page-title { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--green); margin-bottom: 6px; }
+    .page-sub { color: var(--muted); font-size: 0.92rem; margin-bottom: 36px; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 360px; gap: 28px; align-items: start; }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .card-head {
+      background: var(--green); color: #fff;
+      padding: 13px 20px; display: flex; align-items: center; gap: 10px;
+    }
+    .card-head h3 { font-size: 0.88rem; font-weight: 600; letter-spacing: 0.3px; }
+    .card-head .ch-icon { font-size: 1rem; }
+    .card-body { padding: 20px; }
+
+    /* ── FORM ELEMENTS ── */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .form-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+    .form-row.single { grid-template-columns: 1fr; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-group label {
+      font-size: 0.72rem; font-weight: 600; color: var(--green);
+      letter-spacing: 0.4px; text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 9px 12px; border: 1.5px solid var(--border); border-radius: 7px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--text);
+      background: #faf9f6; transition: border-color 0.2s; width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { outline: none; border-color: var(--green); background: #fff; }
+    .form-group textarea { resize: vertical; min-height: 72px; }
+    .form-hint { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── ITINERARY BUILDER ── */
+    .day-list { display: flex; flex-direction: column; gap: 10px; }
+    .day-item {
+      display: grid; grid-template-columns: 80px 1fr auto;
+      gap: 10px; align-items: start;
+      background: #faf9f6; border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px;
+    }
+    .day-item input { background: #fff; }
+    .day-item textarea { background: #fff; min-height: 52px; font-size: 0.85rem; }
+    .day-num {
+      background: var(--green); color: #fff; border-radius: 6px;
+      font-size: 0.72rem; font-weight: 700; text-align: center;
+      padding: 8px 4px; letter-spacing: 0.5px;
+      align-self: start; margin-top: 2px;
+    }
+    .btn-rm-day {
+      background: #fee2e2; border: none; color: #c0392b; border-radius: 6px;
+      width: 30px; height: 30px; cursor: pointer; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      align-self: start; margin-top: 2px; transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .btn-rm-day:hover { background: #fca5a5; }
+    .btn-add-day {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: none; border: 1.5px dashed var(--green-lt); color: var(--green);
+      padding: 9px 16px; border-radius: 7px; font-family: 'DM Sans', sans-serif;
+      font-size: 0.84rem; font-weight: 600; cursor: pointer; margin-top: 10px;
+      transition: background 0.2s;
+    }
+    .btn-add-day:hover { background: #eaf5ee; }
+
+    /* ── COST TABLE ── */
+    .cost-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .cost-table th {
+      background: #f0ede6; color: var(--green); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.5px; text-transform: uppercase; padding: 8px 10px; text-align: left;
+    }
+    .cost-table td { padding: 7px 10px; border-bottom: 1px solid #f0ede6; vertical-align: middle; }
+    .cost-table td input { border: 1px solid var(--border); border-radius: 5px; padding: 5px 8px; font-size: 0.85rem; width: 100%; background: #faf9f6; font-family: 'DM Sans', sans-serif; }
+    .cost-table td input:focus { outline: none; border-color: var(--green); background: #fff; }
+    .btn-add-row {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: none; border: 1.5px dashed var(--green-lt); color: var(--green);
+      padding: 7px 14px; border-radius: 7px; font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem; font-weight: 600; cursor: pointer; margin-top: 10px;
+      transition: background 0.2s;
+    }
+    .btn-add-row:hover { background: #eaf5ee; }
+    .total-display {
+      background: linear-gradient(135deg, var(--gold-dk), var(--gold));
+      color: #fff; border-radius: 8px; padding: 14px 18px;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 14px;
+    }
+    .total-display .lbl { font-size: 0.82rem; opacity: 0.85; }
+    .total-display .amt { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; }
+    .payment-summary {
+      background: #f7f4ef; border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px; margin-top: 12px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    }
+    .ps-item { text-align: center; }
+    .ps-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px; }
+    .ps-val { font-size: 1.05rem; font-weight: 700; }
+    .ps-val.advance { color: var(--green); }
+    .ps-val.due { color: #c0392b; }
+
+    /* ── INCLUSIONS QUICK-ADD ── */
+    .chip-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 10px; }
+    .quick-chip {
+      padding: 5px 12px; border-radius: 20px; font-size: 0.76rem; font-weight: 600;
+      border: 1.5px solid var(--border); background: #faf9f6; cursor: pointer;
+      transition: all 0.15s; color: var(--text); user-select: none;
+    }
+    .quick-chip:hover { border-color: var(--green); color: var(--green); background: #eaf5ee; }
+    .quick-chip.active { background: var(--green); border-color: var(--green); color: #fff; }
+
+    /* ── PREVIEW PANEL ── */
+    .preview-panel { position: sticky; top: 20px; }
+    .preview-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .preview-header {
+      background: linear-gradient(135deg, var(--green-dk), var(--green));
+      padding: 20px; color: #fff;
+    }
+    .preview-header .pv-brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+    .preview-header .pv-sub { font-size: 0.74rem; opacity: 0.7; margin-top: 2px; }
+    .preview-header .pv-inv { margin-top: 12px; font-size: 0.78rem; opacity: 0.8; }
+    .preview-header .pv-client { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-top: 4px; }
+    .preview-body { padding: 16px; }
+    .pv-row { display: flex; justify-content: space-between; font-size: 0.82rem; padding: 5px 0; border-bottom: 1px solid #f0ede6; }
+    .pv-row:last-child { border-bottom: none; }
+    .pv-row .lbl { color: var(--muted); }
+    .pv-row .val { font-weight: 600; color: var(--text); text-align: right; max-width: 60%; }
+    .pv-total {
+      background: linear-gradient(135deg, var(--gold-dk), var(--gold));
+      color: #fff; border-radius: 8px; padding: 12px 16px;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 10px;
+    }
+    .pv-total .lbl { font-size: 0.78rem; opacity: 0.85; }
+    .pv-total .amt { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; }
+    .pv-days { margin-top: 10px; }
+    .pv-day { font-size: 0.78rem; color: var(--muted); padding: 4px 0; border-bottom: 1px solid #f5f3ee; display: flex; gap: 8px; }
+    .pv-day .d-lbl { color: var(--green); font-weight: 600; flex-shrink: 0; }
+
+    /* ── GENERATE BTN ── */
+    .generate-wrap { margin-top: 8px; }
+    .btn-generate {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 15px; border-radius: 9px; border: none;
+      background: linear-gradient(135deg, var(--green), var(--green-lt));
+      color: #fff; font-family: 'DM Sans', sans-serif; font-size: 1rem;
+      font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 4px 18px rgba(45,106,79,0.38); letter-spacing: 0.3px;
+    }
+    .btn-generate:hover { opacity: 0.92; transform: translateY(-1px); }
+    .btn-generate svg { width: 20px; height: 20px; fill: #fff; flex-shrink: 0; }
+    .btn-preview-only {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; padding: 11px; border-radius: 9px;
+      border: 1.5px solid var(--border); background: #faf9f6; color: var(--green);
+      font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+      font-weight: 600; cursor: pointer; margin-top: 9px; transition: all 0.2s;
+    }
+    .btn-preview-only:hover { border-color: var(--green); background: #eaf5ee; }
+
+    /* ── STATUS TOAST ── */
+    .toast {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: var(--green-dk); color: #fff; padding: 13px 22px; border-radius: 50px;
+      font-size: 0.88rem; font-weight: 600; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s; z-index: 999; white-space: nowrap;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .two-col { grid-template-columns: 1fr; }
+      .preview-panel { position: static; }
+      .tool-header { padding: 14px 18px; }
+    }
+    @media (max-width: 560px) {
+      .form-row, .form-row.triple { grid-template-columns: 1fr; }
+      .day-item { grid-template-columns: 60px 1fr auto; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="toast" id="toast">✓ PDF generated successfully!</div>
+
+<!-- HEADER -->
+<div class="tool-header">
+  <div class="brand">Sana On The Go <span>/ Invoice Generator</span></div>
+  <span class="badge">🔒 PRIVATE — Do not share this URL</span>
+</div>
+
+<div class="page-wrap">
+  <h1 class="page-title">Generate Client Invoice</h1>
+  <p class="page-sub">Fill in the details below and click Generate PDF. The invoice will download instantly — branded, professional, ready to send.</p>
+
+  <div class="two-col">
+
+    <!-- ══ LEFT: FORM ══ -->
+    <div>
+
+      <!-- CLIENT DETAILS -->
+      <div class="card">
+        <div class="card-head"><span class="ch-icon">👤</span><h3>Client Details</h3></div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Client Full Name *</label>
+              <input type="text" id="clientName" placeholder="e.g. Priya Sharma" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label>Phone / WhatsApp</label>
+              <input type="text" id="clientPhone" placeholder="+91 98XXX XXXXX" oninput="updatePreview()">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="clientEmail" placeholder="client@email.com" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label>City / State</label>
+              <input type="text" id="clientCity" placeholder="e.g. Kolkata, West Bengal" oninput="updatePreview()">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Invoice Number *</label>
+              <input type="text" id="invoiceNo" placeholder="e.g. SOTG-2025-042" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label>Invoice Date *</label>
+              <input type="date" id="invoiceDate" oninput="updatePreview()">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRIP DETAILS -->
+      <div class="card">
+        <div class="card-head"><span class="ch-icon">🏔️</span><h3>Trip Details</h3></div>
+        <div class="card-body">
+          <div class="form-row single">
+            <div class="form-group">
+              <label>Package / Trip Name *</label>
+              <input type="text" id="tripName" placeholder="e.g. Offbeat Sikkim – 7N/8D" oninput="updatePreview()">
+            </div>
+          </div>
+          <div class="form-row triple">
+            <div class="form-group">
+              <label>Travel Start Date *</label>
+              <input type="date" id="travelStart" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label>Travel End Date *</label>
+              <input type="date" id="travelEnd" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label>No. of Persons</label>
+              <input type="number" id="numPersons" min="1" value="2" oninput="updatePreview()">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>No. of Rooms</label>
+              <input type="number" id="numRooms" min="1" value="1" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label>Accommodation Type</label>
+              <select id="accomType" onchange="updatePreview()">
+                <option>Standard Hotel (3-star)</option>
+                <option>Heritage Property</option>
+                <option>Homestay</option>
+                <option>Resort</option>
+                <option>Mix of Hotel & Homestay</option>
+                <option>Luxury Resort</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-group">
+              <label>Destinations Covered</label>
+              <input type="text" id="destinations" placeholder="e.g. Gangtok, Lachung, Yumthang, Offbeat Villages" oninput="updatePreview()">
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-group">
+              <label>Pickup / Drop Point</label>
+              <input type="text" id="pickupDrop" placeholder="e.g. NJP Railway Station / Bagdogra Airport" oninput="updatePreview()">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITINERARY -->
+      <div class="card">
+        <div class="card-head"><span class="ch-icon">📋</span><h3>Day-by-Day Itinerary</h3></div>
+        <div class="card-body">
+          <div class="day-list" id="dayList"></div>
+          <button class="btn-add-day" onclick="addDay()">+ Add Day</button>
+        </div>
+      </div>
+
+      <!-- COST BREAKDOWN -->
+      <div class="card">
+        <div class="card-head"><span class="ch-icon">💰</span><h3>Cost Breakdown</h3></div>
+        <div class="card-body">
+          <table class="cost-table">
+            <thead>
+              <tr>
+                <th style="width:50%">Item / Description</th>
+                <th>Qty</th>
+                <th>Rate (₹)</th>
+                <th>Amount (₹)</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="costRows"></tbody>
+          </table>
+          <button class="btn-add-row" onclick="addCostRow()">+ Add Item</button>
+
+          <div class="total-display" id="totalDisplay">
+            <span class="lbl">Total Package Cost</span>
+            <span class="amt" id="totalAmt">₹0</span>
+          </div>
+
+          <div style="margin-top: 16px;">
+            <div class="form-row triple">
+              <div class="form-group">
+                <label>Advance Paid (₹)</label>
+                <input type="number" id="advancePaid" min="0" placeholder="0" oninput="calcPayments()">
+              </div>
+              <div class="form-group">
+                <label>Advance Date</label>
+                <input type="date" id="advanceDate">
+              </div>
+              <div class="form-group">
+                <label>Payment Method</label>
+                <select id="payMethod">
+                  <option>UPI / GPay</option>
+                  <option>Bank Transfer</option>
+                  <option>Cash</option>
+                  <option>PhonePe</option>
+                  <option>Cheque</option>
+                </select>
+              </div>
+            </div>
+            <div class="payment-summary" id="paymentSummary">
+              <div class="ps-item"><span class="ps-label">Advance Paid</span><span class="ps-val advance" id="ps-advance">₹0</span></div>
+              <div class="ps-item"><span class="ps-label">Balance Due</span><span class="ps-val due" id="ps-due">₹0</span></div>
+            </div>
+            <div class="form-row single" style="margin-top:12px">
+              <div class="form-group">
+                <label>Balance Due Date</label>
+                <input type="date" id="dueDate">
+                <span class="form-hint">Usually 7 days before travel start</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INCLUSIONS -->
+      <div class="card">
+        <div class="card-head"><span class="ch-icon">✅</span><h3>Inclusions</h3></div>
+        <div class="card-body">
+          <p style="font-size:0.78rem;color:var(--muted);margin-bottom:10px;">Quick-add common inclusions, or type your own below:</p>
+          <div class="chip-row" id="inclChips">
+            <span class="quick-chip" onclick="toggleChip(this,'incl')">🏨 Accommodation</span>
+            <span class="quick-chip" onclick="toggleChip(this,'incl')">🍽️ Breakfast</span>
+            <span class="quick-chip" onclick="toggleChip(this,'incl')">🍽️ Dinner</span>
+            <span class="quick-chip" onclick="toggleChip(this,'incl')">🚗 All Transfers</span>
+            <span class="quick-chip" onclick="toggleChip(this,'incl')">🎟️ Entry Fees</span>
+            <span class="quick-chip" onclick="toggleChip(this,'incl')">🧭 Local Guide</span>
+            <span class="quick-chip" onclick="toggleChip(this,'incl')">📋 Permits (ILP/PAP)</span>
+            <span class="quick-chip" onclick="toggleChip(this,'incl')">🚂 Toy Train Joyride</span>
+            <span class="quick-chip" onclick="toggleChip(this,'incl')">🏡 Homestay Meals</span>
+            <span class="quick-chip" onclick="toggleChip(this,'incl')">📱 24/7 Support</span>
+            <span class="quick-chip" onclick="toggleChip(this,'incl')">🔥 Bonfire Evening</span>
+          </div>
+          <div class="form-group">
+            <label>Additional / Custom Inclusions</label>
+            <textarea id="customIncl" placeholder="One per line, e.g.&#10;Tea garden visit with tasting session&#10;Complimentary room upgrade"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXCLUSIONS -->
+      <div class="card">
+        <div class="card-head"><span class="ch-icon">❌</span><h3>Exclusions</h3></div>
+        <div class="card-body">
+          <div class="chip-row">
+            <span class="quick-chip" onclick="toggleChip(this,'excl')">✈️ Flights/Trains</span>
+            <span class="quick-chip" onclick="toggleChip(this,'excl')">🍛 Lunch</span>
+            <span class="quick-chip" onclick="toggleChip(this,'excl')">🛡️ Travel Insurance</span>
+            <span class="quick-chip" onclick="toggleChip(this,'excl')">🛍️ Personal Expenses</span>
+            <span class="quick-chip" onclick="toggleChip(this,'excl')">💊 Medical Expenses</span>
+            <span class="quick-chip" onclick="toggleChip(this,'excl')">❄️ Snow Vehicle Charges</span>
+            <span class="quick-chip" onclick="toggleChip(this,'excl')">🎭 Optional Activities</span>
+            <span class="quick-chip" onclick="toggleChip(this,'excl')">🧗 Porter / Trekking Gear</span>
+          </div>
+          <div class="form-group">
+            <label>Additional / Custom Exclusions</label>
+            <textarea id="customExcl" placeholder="One per line"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- POLICIES -->
+      <div class="card">
+        <div class="card-head"><span class="ch-icon">📜</span><h3>Policies & Notes</h3></div>
+        <div class="card-body">
+          <div class="form-row single">
+            <div class="form-group">
+              <label>Cancellation Policy</label>
+              <textarea id="cancelPolicy" style="min-height:90px">• 15+ days before travel: Full refund
+• 7–14 days before travel: 50% refund
+• Under 7 days: No refund
+• Force majeure / natural disaster: Full credit note valid for 12 months</textarea>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-group">
+              <label>Special Notes / Terms</label>
+              <textarea id="specialNotes" style="min-height:80px" placeholder="e.g. Itinerary may be adjusted due to road conditions / weather. We recommend travel insurance for all guests."></textarea>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-group">
+              <label>Personal Message to Client (optional)</label>
+              <textarea id="personalMsg" style="min-height:72px" placeholder="e.g. Thank you so much for choosing Sana On The Go, Priya! We can't wait to craft your perfect Himalayan adventure. 🏔️"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /left -->
+
+    <!-- ══ RIGHT: PREVIEW + GENERATE ══ -->
+    <div class="preview-panel">
+
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="pv-brand">Sana On The Go</div>
+          <div class="pv-sub">Into The Wild Tour and Travels · Siliguri, West Bengal</div>
+          <div class="pv-inv" id="pv-invno">Invoice #—</div>
+          <div class="pv-client" id="pv-client">Client Name</div>
+        </div>
+        <div class="preview-body">
+          <div class="pv-row"><span class="lbl">Trip</span><span class="val" id="pv-trip">—</span></div>
+          <div class="pv-row"><span class="lbl">Dates</span><span class="val" id="pv-dates">—</span></div>
+          <div class="pv-row"><span class="lbl">Persons / Rooms</span><span class="val" id="pv-persons">—</span></div>
+          <div class="pv-row"><span class="lbl">Destinations</span><span class="val" id="pv-dest">—</span></div>
+          <div class="pv-row"><span class="lbl">Accommodation</span><span class="val" id="pv-accom">—</span></div>
+          <div class="pv-total">
+            <span class="lbl">Total Cost</span>
+            <span class="amt" id="pv-total">₹0</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;">
+            <div style="background:#eaf5ee;border-radius:7px;padding:10px;text-align:center;">
+              <div style="font-size:0.7rem;color:#2d6a4f;font-weight:700;text-transform:uppercase;margin-bottom:3px;">Advance</div>
+              <div style="font-size:1rem;font-weight:700;color:#2d6a4f;" id="pv-advance">₹0</div>
+            </div>
+            <div style="background:#fef2f2;border-radius:7px;padding:10px;text-align:center;">
+              <div style="font-size:0.7rem;color:#c0392b;font-weight:700;text-transform:uppercase;margin-bottom:3px;">Balance Due</div>
+              <div style="font-size:1rem;font-weight:700;color:#c0392b;" id="pv-due">₹0</div>
+            </div>
+          </div>
+          <div class="pv-days" id="pv-days"></div>
+        </div>
+      </div>
+
+      <div class="generate-wrap" style="margin-top:16px;">
+        <button class="btn-generate" onclick="generatePDF()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z"/></svg>
+          Generate & Download PDF
+        </button>
+        <div style="font-size:0.74rem;color:var(--muted);text-align:center;margin-top:8px;">
+          Professional A4 PDF · Branded · Ready to send on WhatsApp
+        </div>
+      </div>
+
+    </div><!-- /right -->
+
+  </div><!-- /two-col -->
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+//  STATE
+// ─────────────────────────────────────────────
+let dayCount = 0;
+let costRowCount = 0;
+const activeInclChips = new Set();
+const activeExclChips = new Set();
+
+// ─────────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  // Set today's date for invoice
+  document.getElementById('invoiceDate').value = new Date().toISOString().split('T')[0];
+  // Auto-invoice number
+  const now = new Date();
+  const yr = now.getFullYear().toString().slice(-2);
+  const mo = String(now.getMonth()+1).padStart(2,'0');
+  const rnd = String(Math.floor(Math.random()*900)+100);
+  document.getElementById('invoiceNo').value = `SOTG-${yr}${mo}-${rnd}`;
+  // Default days
+  addDay('Arrival', 'Arrival at NJP / Bagdogra. Transfer to hotel. Check-in, rest & welcome dinner.');
+  addDay('Day 2', '');
+  addDay('Day 3', '');
+  // Default cost rows
+  addCostRow('Accommodation (per person × nights)', 2, 3500);
+  addCostRow('All Transfers & Sightseeing Cab', 1, 4000);
+  addCostRow('Meals (Breakfast + Dinner)', 2, 1500);
+  addCostRow('Entry Fees & Permits', 1, 800);
+  calcTotal();
+  updatePreview();
+});
+
+// ─────────────────────────────────────────────
+//  DAY BUILDER
+// ─────────────────────────────────────────────
+function addDay(label='', desc='') {
+  dayCount++;
+  const list = document.getElementById('dayList');
+  const item = document.createElement('div');
+  item.className = 'day-item';
+  item.id = 'day-' + dayCount;
+  item.innerHTML = `
+    <div class="day-num">DAY<br>${dayCount}</div>
+    <div style="display:flex;flex-direction:column;gap:7px;flex:1;">
+      <input type="text" placeholder="Day label (e.g. Day 2 / Departure)" value="${label}" oninput="updatePreview()" style="font-size:0.82rem;font-weight:600;">
+      <textarea placeholder="Brief description of the day's activities…" oninput="updatePreview()" style="min-height:52px;font-size:0.82rem;">${desc}</textarea>
+    </div>
+    <button class="btn-rm-day" onclick="removeDay('day-${dayCount}')" title="Remove day">✕</button>`;
+  list.appendChild(item);
+  updatePreview();
+}
+
+function removeDay(id) {
+  const el = document.getElementById(id);
+  if(el) el.remove();
+  // Re-number
+  document.querySelectorAll('.day-item').forEach((item, i) => {
+    item.querySelector('.day-num').innerHTML = `DAY<br>${i+1}`;
+  });
+  updatePreview();
+}
+
+// ─────────────────────────────────────────────
+//  COST TABLE
+// ─────────────────────────────────────────────
+function addCostRow(desc='', qty=1, rate=0) {
+  costRowCount++;
+  const tbody = document.getElementById('costRows');
+  const tr = document.createElement('tr');
+  tr.id = 'cr-' + costRowCount;
+  const amt = qty * rate;
+  tr.innerHTML = `
+    <td><input type="text" value="${desc}" placeholder="Item description" oninput="calcTotal()"></td>
+    <td><input type="number" value="${qty}" min="1" style="width:60px;" oninput="calcRowAmt(this)" data-row="${costRowCount}"></td>
+    <td><input type="number" value="${rate}" min="0" style="width:90px;" oninput="calcRowAmt(this)" data-row="${costRowCount}"></td>
+    <td><input type="number" value="${amt}" min="0" style="width:100px;font-weight:600;color:var(--gold-dk);" id="rowamt-${costRowCount}" readonly></td>
+    <td><button onclick="removeCostRow('cr-${costRowCount}')" style="background:#fee2e2;border:none;color:#c0392b;border-radius:5px;width:26px;height:26px;cursor:pointer;font-size:0.9rem;" title="Remove">✕</button></td>`;
+  tbody.appendChild(tr);
+  calcTotal();
+}
+
+function calcRowAmt(inp) {
+  const row = inp.closest('tr');
+  const inputs = row.querySelectorAll('input[type="number"]');
+  const qty = parseFloat(inputs[0].value) || 0;
+  const rate = parseFloat(inputs[1].value) || 0;
+  inputs[2].value = qty * rate;
+  calcTotal();
+}
+
+function removeCostRow(id) {
+  const el = document.getElementById(id);
+  if(el) el.remove();
+  calcTotal();
+}
+
+function calcTotal() {
+  let total = 0;
+  document.querySelectorAll('#costRows tr').forEach(tr => {
+    const amtInputs = tr.querySelectorAll('input[type="number"]');
+    if(amtInputs.length >= 3) total += parseFloat(amtInputs[2].value) || 0;
+  });
+  document.getElementById('totalAmt').textContent = '₹' + total.toLocaleString('en-IN');
+  document.getElementById('pv-total').textContent = '₹' + total.toLocaleString('en-IN');
+  calcPayments();
+}
+
+function calcPayments() {
+  let total = 0;
+  document.querySelectorAll('#costRows tr').forEach(tr => {
+    const amtInputs = tr.querySelectorAll('input[type="number"]');
+    if(amtInputs.length >= 3) total += parseFloat(amtInputs[2].value) || 0;
+  });
+  const advance = parseFloat(document.getElementById('advancePaid').value) || 0;
+  const due = Math.max(0, total - advance);
+  document.getElementById('ps-advance').textContent = '₹' + advance.toLocaleString('en-IN');
+  document.getElementById('ps-due').textContent = '₹' + due.toLocaleString('en-IN');
+  document.getElementById('pv-advance').textContent = '₹' + advance.toLocaleString('en-IN');
+  document.getElementById('pv-due').textContent = '₹' + due.toLocaleString('en-IN');
+}
+
+// ─────────────────────────────────────────────
+//  CHIPS
+// ─────────────────────────────────────────────
+function toggleChip(el, type) {
+  const set = type === 'incl' ? activeInclChips : activeExclChips;
+  const key = el.textContent.trim();
+  if(set.has(key)) { set.delete(key); el.classList.remove('active'); }
+  else { set.add(key); el.classList.add('active'); }
+}
+
+function getInclusions() {
+  const chips = Array.from(activeInclChips);
+  const custom = document.getElementById('customIncl').value.trim();
+  const lines = custom ? custom.split('\n').filter(l=>l.trim()) : [];
+  return [...chips, ...lines];
+}
+
+function getExclusions() {
+  const chips = Array.from(activeExclChips);
+  const custom = document.getElementById('customExcl').value.trim();
+  const lines = custom ? custom.split('\n').filter(l=>l.trim()) : [];
+  return [...chips, ...lines];
+}
+
+// ─────────────────────────────────────────────
+//  LIVE PREVIEW
+// ─────────────────────────────────────────────
+function fmtDate(v) {
+  if(!v) return '';
+  const [y,m,d] = v.split('-');
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${parseInt(d)} ${months[parseInt(m)-1]} ${y}`;
+}
+
+function updatePreview() {
+  document.getElementById('pv-client').textContent = document.getElementById('clientName').value || 'Client Name';
+  document.getElementById('pv-invno').textContent = 'Invoice #' + (document.getElementById('invoiceNo').value || '—');
+  document.getElementById('pv-trip').textContent = document.getElementById('tripName').value || '—';
+  const s = document.getElementById('travelStart').value;
+  const e = document.getElementById('travelEnd').value;
+  document.getElementById('pv-dates').textContent = s && e ? `${fmtDate(s)} → ${fmtDate(e)}` : '—';
+  document.getElementById('pv-persons').textContent = `${document.getElementById('numPersons').value || '?'} pax / ${document.getElementById('numRooms').value || '?'} room(s)`;
+  document.getElementById('pv-dest').textContent = document.getElementById('destinations').value || '—';
+  document.getElementById('pv-accom').textContent = document.getElementById('accomType').value || '—';
+  // Days preview
+  const days = document.querySelectorAll('.day-item');
+  const pvDays = document.getElementById('pv-days');
+  pvDays.innerHTML = '';
+  if(days.length) {
+    const hdr = document.createElement('div');
+    hdr.style.cssText = 'font-size:0.72rem;font-weight:700;color:var(--green);letter-spacing:0.5px;text-transform:uppercase;margin:12px 0 6px;';
+    hdr.textContent = 'Itinerary';
+    pvDays.appendChild(hdr);
+    days.forEach((d,i) => {
+      const lbl = d.querySelector('input[type="text"]').value || `Day ${i+1}`;
+      const desc = d.querySelector('textarea').value || '';
+      const row = document.createElement('div');
+      row.className = 'pv-day';
+      row.innerHTML = `<span class="d-lbl">${lbl}</span><span>${desc.length > 60 ? desc.slice(0,60)+'…' : desc}</span>`;
+      pvDays.appendChild(row);
+    });
+  }
+  calcTotal();
+}
+
+// ─────────────────────────────────────────────
+//  PDF GENERATION
+// ─────────────────────────────────────────────
+function generatePDF() {
+  // Gather all data
+  const d = {
+    clientName:   document.getElementById('clientName').value.trim() || 'Valued Client',
+    clientPhone:  document.getElementById('clientPhone').value.trim(),
+    clientEmail:  document.getElementById('clientEmail').value.trim(),
+    clientCity:   document.getElementById('clientCity').value.trim(),
+    invoiceNo:    document.getElementById('invoiceNo').value.trim() || 'SOTG-001',
+    invoiceDate:  document.getElementById('invoiceDate').value,
+    tripName:     document.getElementById('tripName').value.trim() || 'Himalayan Journey',
+    travelStart:  document.getElementById('travelStart').value,
+    travelEnd:    document.getElementById('travelEnd').value,
+    numPersons:   document.getElementById('numPersons').value,
+    numRooms:     document.getElementById('numRooms').value,
+    accomType:    document.getElementById('accomType').value,
+    destinations: document.getElementById('destinations').value.trim(),
+    pickupDrop:   document.getElementById('pickupDrop').value.trim(),
+    advancePaid:  parseFloat(document.getElementById('advancePaid').value) || 0,
+    advanceDate:  document.getElementById('advanceDate').value,
+    payMethod:    document.getElementById('payMethod').value,
+    dueDate:      document.getElementById('dueDate').value,
+    cancelPolicy: document.getElementById('cancelPolicy').value.trim(),
+    specialNotes: document.getElementById('specialNotes').value.trim(),
+    personalMsg:  document.getElementById('personalMsg').value.trim(),
+  };
+
+  // Collect itinerary days
+  const days = [];
+  document.querySelectorAll('.day-item').forEach((item, i) => {
+    days.push({
+      label: item.querySelector('input[type="text"]').value || `Day ${i+1}`,
+      desc:  item.querySelector('textarea').value || ''
+    });
+  });
+
+  // Collect cost rows
+  const costRows = [];
+  let totalCost = 0;
+  document.querySelectorAll('#costRows tr').forEach(tr => {
+    const cells = tr.querySelectorAll('input');
+    if(cells.length >= 4) {
+      const desc = cells[0].value;
+      const qty  = parseFloat(cells[1].value) || 0;
+      const rate = parseFloat(cells[2].value) || 0;
+      const amt  = parseFloat(cells[3].value) || 0;
+      costRows.push({ desc, qty, rate, amt });
+      totalCost += amt;
+    }
+  });
+  const balanceDue = Math.max(0, totalCost - d.advancePaid);
+
+  const incl = getInclusions();
+  const excl = getExclusions();
+
+  // ── jsPDF ──
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+  const W = 210, M = 16;
+  let y = 0;
+
+  // ── Colors
+  const G_DK = [26, 61, 43];
+  const G    = [45, 106, 79];
+  const G_LT = [82, 183, 136];
+  const GOLD = [160, 120, 48];
+  const GOLD_LT = [232, 201, 122];
+  const CREAM = [247, 244, 239];
+  const WHITE = [255, 255, 255];
+  const MUTED = [100, 100, 100];
+  const TEXT  = [30, 30, 30];
+  const RED   = [192, 57, 43];
+
+  // ── Helper: page-break safe
+  function checkY(needed = 20) {
+    if (y + needed > 270) {
+      doc.addPage();
+      watermark();
+      drawPageHeader();
+      y = 38;
+    }
+  }
+
+  // ── Watermark
+  function watermark() {
+    doc.saveGraphicsState();
+    doc.setGState(new doc.GState({ opacity: 0.045 }));
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(36);
+    doc.setTextColor(...G);
+    doc.text('SANA ON THE GO', W / 2, 148, { align: 'center', angle: 38 });
+    doc.setFontSize(16);
+    doc.text('+91 98747 40763', W / 2, 165, { align: 'center', angle: 38 });
+    doc.restoreGraphicsState();
+  }
+
+  // ── Page header (continuation pages)
+  function drawPageHeader() {
+    doc.setFillColor(...G_DK);
+    doc.rect(0, 0, W, 10, 'F');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(7);
+    doc.setTextColor(...WHITE);
+    doc.text(`Sana On The Go  ·  Invoice ${d.invoiceNo}  ·  ${d.clientName}`, M, 7);
+    doc.setTextColor(...G_LT);
+    doc.text('CONFIDENTIAL', W - M, 7, { align: 'right' });
+  }
+
+  // ── Section heading helper
+  function sectionHead(title, icon = '') {
+    checkY(14);
+    doc.setFillColor(...G);
+    doc.roundedRect(M, y, W - M * 2, 9, 1, 1, 'F');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8);
+    doc.setTextColor(...WHITE);
+    doc.text((icon ? icon + '  ' : '') + title.toUpperCase(), M + 5, y + 6.2);
+    y += 13;
+  }
+
+  // ── Text helper with wrap
+  function txt(text, x, yPos, size, color, fontStyle = 'normal', maxWidth = null) {
+    doc.setFont('helvetica', fontStyle);
+    doc.setFontSize(size);
+    doc.setTextColor(...color);
+    if (maxWidth) {
+      const lines = doc.splitTextToSize(text, maxWidth);
+      doc.text(lines, x, yPos);
+      return lines.length * (size * 0.4);
+    }
+    doc.text(text, x, yPos);
+    return size * 0.4;
+  }
+
+  // ── WATERMARK + PAGE 1 ──
+  watermark();
+
+  // ── HEADER BAND ──
+  doc.setFillColor(...G_DK);
+  doc.rect(0, 0, W, 46, 'F');
+  doc.setFillColor(...G_LT);
+  doc.rect(0, 44, W, 2, 'F');
+  // Brand
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(20);
+  doc.setTextColor(...WHITE);
+  doc.text('Sana On The Go', M, 16);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(180, 220, 200);
+  doc.text('Into The Wild Tour and Travels  |  Himalayan Travel Specialists', M, 23);
+  doc.text('100/A/3/L Rabindra Nagar Main Road, Siliguri, West Bengal 734006', M, 29);
+  doc.text('+91 98747 40763  |  sayantikaintothewild@gmail.com  |  @sana.onthe.go', M, 35);
+  // Invoice label (right side)
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(22);
+  doc.setTextColor(...GOLD_LT);
+  doc.text('INVOICE', W - M, 18, { align: 'right' });
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8.5);
+  doc.setTextColor(200, 230, 215);
+  doc.text(`No. ${d.invoiceNo}`, W - M, 26, { align: 'right' });
+  doc.text(`Date: ${fmtDate(d.invoiceDate)}`, W - M, 32, { align: 'right' });
+
+  y = 52;
+
+  // ── CLIENT + TRIP SUMMARY BLOCK ──
+  const leftX = M, rightX = W / 2 + 4;
+  const blockH = 38;
+
+  // Left: client info
+  doc.setFillColor(...CREAM);
+  doc.roundedRect(M, y, (W / 2) - M - 4, blockH, 2, 2, 'F');
+  doc.setFillColor(...G);
+  doc.roundedRect(M, y, (W / 2) - M - 4, 8, 2, 2, 'F');
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(...WHITE);
+  doc.text('BILLED TO', M + 5, y + 5.5);
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(...G_DK);
+  doc.text(d.clientName, M + 5, y + 16);
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(...MUTED);
+  if (d.clientPhone) doc.text(d.clientPhone, M + 5, y + 22);
+  if (d.clientEmail) doc.text(d.clientEmail, M + 5, y + 27.5);
+  if (d.clientCity) doc.text(d.clientCity, M + 5, y + 33);
+
+  // Right: trip summary
+  doc.setFillColor(...CREAM);
+  doc.roundedRect(rightX, y, W - rightX - M, blockH, 2, 2, 'F');
+  doc.setFillColor(...G);
+  doc.roundedRect(rightX, y, W - rightX - M, 8, 2, 2, 'F');
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(...WHITE);
+  doc.text('TRIP DETAILS', rightX + 5, y + 5.5);
+  const colR1 = rightX + 5, colR2 = rightX + 52;
+  const tripDetails = [
+    ['Package', d.tripName],
+    ['Travel Dates', d.travelStart && d.travelEnd ? `${fmtDate(d.travelStart)} → ${fmtDate(d.travelEnd)}` : '—'],
+    ['Persons / Rooms', `${d.numPersons} pax  /  ${d.numRooms} room(s)`],
+    ['Pickup / Drop', d.pickupDrop || 'NJP / Bagdogra'],
+  ];
+  tripDetails.forEach(([lbl, val], i) => {
+    const ry = y + 14 + i * 6;
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(...MUTED);
+    doc.text(lbl, colR1, ry);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...TEXT);
+    const lines = doc.splitTextToSize(val, W - colR2 - M - 2);
+    doc.text(lines, colR2, ry);
+  });
+
+  y += blockH + 12;
+
+  // ── ITINERARY ──
+  if (days.length) {
+    sectionHead('Day-by-Day Itinerary', 'itinerary:');
+    days.forEach((day, i) => {
+      checkY(16);
+      // Day pill
+      doc.setFillColor(...G);
+      doc.roundedRect(M, y - 3, 22, 7, 2, 2, 'F');
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(...WHITE);
+      doc.text(String(i + 1).padStart(2,'0'), M + 11, y + 2, { align: 'center' });
+      // Label
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(...G_DK);
+      doc.text(day.label, M + 26, y + 1.5);
+      // Description
+      if (day.desc) {
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(...MUTED);
+        const lines = doc.splitTextToSize(day.desc, W - M * 2 - 30);
+        doc.text(lines, M + 26, y + 7);
+        y += 8 + lines.length * 4 + 4;
+      } else {
+        y += 12;
+      }
+      // Divider
+      if (i < days.length - 1) {
+        doc.setDrawColor(220, 215, 205); doc.setLineWidth(0.2);
+        doc.line(M + 26, y - 2, W - M, y - 2);
+      }
+    });
+    y += 6;
+  }
+
+  // ── COST BREAKDOWN ──
+  if (costRows.length) {
+    sectionHead('Cost Breakdown', 'cost:');
+    // Table header
+    doc.setFillColor(...CREAM);
+    doc.rect(M, y, W - M * 2, 8, 'F');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5); doc.setTextColor(...G);
+    doc.text('ITEM / DESCRIPTION', M + 3, y + 5.5);
+    doc.text('QTY', M + 96, y + 5.5, { align: 'right' });
+    doc.text('RATE (₹)', M + 121, y + 5.5, { align: 'right' });
+    doc.text('AMOUNT (₹)', W - M - 3, y + 5.5, { align: 'right' });
+    y += 10;
+
+    costRows.forEach((row, i) => {
+      checkY(9);
+      if (i % 2 === 1) { doc.setFillColor(251, 249, 245); doc.rect(M, y - 3, W - M * 2, 8, 'F'); }
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(...TEXT);
+      doc.text(row.desc, M + 3, y + 2);
+      doc.text(String(row.qty), M + 96, y + 2, { align: 'right' });
+      doc.text(row.rate.toLocaleString('en-IN'), M + 121, y + 2, { align: 'right' });
+      doc.setFont('helvetica', 'bold');
+      doc.text(row.amt.toLocaleString('en-IN'), W - M - 3, y + 2, { align: 'right' });
+      y += 7;
+    });
+
+    // Subtotal divider
+    doc.setDrawColor(...G_LT); doc.setLineWidth(0.5);
+    doc.line(M, y, W - M, y);
+    y += 4;
+
+    // Total box
+    checkY(14);
+    doc.setFillColor(...GOLD);
+    doc.roundedRect(M + 80, y, W - M - 80 - M, 12, 2, 2, 'F');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(...WHITE);
+    doc.text('TOTAL PACKAGE COST', M + 85, y + 8);
+    doc.setFontSize(11);
+    doc.text('₹' + totalCost.toLocaleString('en-IN'), W - M - 3, y + 8, { align: 'right' });
+    y += 18;
+  }
+
+  // ── PAYMENT SUMMARY ──
+  checkY(36);
+  sectionHead('Payment Summary', 'payment:');
+
+  const psBoxW = (W - M * 2 - 8) / 3;
+  const psData = [
+    { lbl: 'Total Cost', val: '₹' + totalCost.toLocaleString('en-IN'), color: G_DK },
+    { lbl: 'Advance Paid' + (d.advanceDate ? '\n' + fmtDate(d.advanceDate) : ''), val: '₹' + d.advancePaid.toLocaleString('en-IN'), color: G },
+    { lbl: 'Balance Due' + (d.dueDate ? '\nby ' + fmtDate(d.dueDate) : ''), val: '₹' + balanceDue.toLocaleString('en-IN'), color: RED },
+  ];
+
+  psData.forEach((item, i) => {
+    const bx = M + i * (psBoxW + 4);
+    doc.setFillColor(...CREAM);
+    doc.roundedRect(bx, y, psBoxW, 24, 2, 2, 'F');
+    doc.setFillColor(...item.color);
+    doc.roundedRect(bx, y, psBoxW, 7, 2, 2, 'F');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(...WHITE);
+    doc.text(item.lbl.split('\n')[0].toUpperCase(), bx + psBoxW / 2, y + 4.8, { align: 'center' });
+    if (item.lbl.split('\n')[1]) {
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(...WHITE);
+      doc.text(item.lbl.split('\n')[1], bx + psBoxW / 2, y + 9.5, { align: 'center' });
+    }
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(...item.color);
+    doc.text(item.val, bx + psBoxW / 2, y + 20, { align: 'center' });
+  });
+
+  y += 30;
+
+  // Payment method
+  if (d.payMethod) {
+    checkY(8);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...MUTED);
+    doc.text(`Advance received via: ${d.payMethod}`, M, y);
+    y += 8;
+  }
+
+  // Bank details box
+  checkY(22);
+  doc.setFillColor(...CREAM);
+  doc.roundedRect(M, y, W - M * 2, 20, 2, 2, 'F');
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5); doc.setTextColor(...G_DK);
+  doc.text('PAYMENT DETAILS', M + 5, y + 6);
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...MUTED);
+  doc.text('UPI ID: sayantikaintothewild@okicici  |  PayTM / GPay / PhonePe: +91 98747 40763', M + 5, y + 12);
+  doc.text('Bank: Please contact us on WhatsApp for NEFT/IMPS details  |  Preferred: UPI', M + 5, y + 17.5);
+  y += 26;
+
+  // ── INCLUSIONS & EXCLUSIONS ──
+  if (incl.length || excl.length) {
+    checkY(14);
+    sectionHead('Package Inclusions & Exclusions', 'ie:');
+
+    const colW = (W - M * 2 - 8) / 2;
+    const startY = y;
+    let leftY = y, rightY = y;
+
+    if (incl.length) {
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(...G);
+      doc.text('INCLUDED', M, leftY); leftY += 6;
+      incl.forEach(item => {
+        if (leftY > 275) { /* safety */ return; }
+        doc.setFillColor(...G_LT);
+        doc.circle(M + 1.5, leftY - 1, 1.2, 'F');
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...TEXT);
+        const lines = doc.splitTextToSize(item.replace(/^[^\s]+\s/, ''), colW - 12);
+        // Show item text (strip emoji for cleaner PDF)
+        const cleanItem = item.replace(/[\u{1F300}-\u{1FFFF}]/gu, '').trim();
+        doc.text(cleanItem || item, M + 6, leftY);
+        leftY += lines.length * 4.5 + 1.5;
+      });
+    }
+
+    if (excl.length) {
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(RED[0], RED[1], RED[2]);
+      doc.text('EXCLUDED', M + colW + 8, rightY); rightY += 6;
+      excl.forEach(item => {
+        if (rightY > 275) { return; }
+        doc.setFillColor(...RED);
+        doc.circle(M + colW + 8 + 1.5, rightY - 1, 1.2, 'F');
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...TEXT);
+        const cleanItem = item.replace(/[\u{1F300}-\u{1FFFF}]/gu, '').trim();
+        doc.text(cleanItem || item, M + colW + 8 + 6, rightY);
+        rightY += 4.5 + 1.5;
+      });
+    }
+
+    y = Math.max(leftY, rightY) + 8;
+  }
+
+  // ── CANCELLATION POLICY ──
+  if (d.cancelPolicy) {
+    checkY(20);
+    sectionHead('Cancellation Policy', 'cancel:');
+    doc.setFillColor(255, 243, 240);
+    const lines = doc.splitTextToSize(d.cancelPolicy, W - M * 2 - 10);
+    doc.roundedRect(M, y - 2, W - M * 2, lines.length * 5 + 8, 2, 2, 'F');
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(...TEXT);
+    lines.forEach((line, i) => {
+      const ly = y + i * 5 + 3;
+      doc.text(line, M + 5, ly);
+    });
+    y += lines.length * 5 + 14;
+  }
+
+  // ── SPECIAL NOTES ──
+  if (d.specialNotes) {
+    checkY(18);
+    sectionHead('Important Notes', 'notes:');
+    const lines = doc.splitTextToSize(d.specialNotes, W - M * 2 - 10);
+    doc.setFillColor(...CREAM);
+    doc.roundedRect(M, y - 2, W - M * 2, lines.length * 5 + 8, 2, 2, 'F');
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...MUTED);
+    lines.forEach((line, i) => { doc.text(line, M + 5, y + i * 5 + 3); });
+    y += lines.length * 5 + 14;
+  }
+
+  // ── PERSONAL MESSAGE ──
+  if (d.personalMsg) {
+    checkY(20);
+    doc.setFillColor(232, 245, 238);
+    const lines = doc.splitTextToSize(`"${d.personalMsg}"`, W - M * 2 - 14);
+    doc.roundedRect(M, y, W - M * 2, lines.length * 5.5 + 10, 3, 3, 'F');
+    doc.setFillColor(...G);
+    doc.roundedRect(M, y, 3, lines.length * 5.5 + 10, 1, 1, 'F');
+    doc.setFont('helvetica', 'italic'); doc.setFontSize(8.5); doc.setTextColor(...G_DK);
+    lines.forEach((line, i) => { doc.text(line, M + 8, y + 7 + i * 5.5); });
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5); doc.setTextColor(...G);
+    doc.text('— Sayantika, Sana On The Go', W - M, y + lines.length * 5.5 + 4, { align: 'right' });
+    y += lines.length * 5.5 + 16;
+  }
+
+  // ── FOOTER ──
+  const totalPages = doc.internal.getNumberOfPages();
+  for (let pg = 1; pg <= totalPages; pg++) {
+    doc.setPage(pg);
+    doc.setFillColor(...G_DK);
+    doc.rect(0, 284, W, 13, 'F');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5); doc.setTextColor(...WHITE);
+    doc.text('Sana On The Go  |  Into The Wild Tour and Travels', M, 291);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(7); doc.setTextColor(160, 210, 185);
+    doc.text('WA: +91 98747 40763  ·  sayantikaintothewild@gmail.com  ·  @sana.onthe.go', M, 295.5);
+    doc.setTextColor(...WHITE);
+    doc.text(`Page ${pg} of ${totalPages}`, W - M, 291, { align: 'right' });
+    if (pg === 1 && d.invoiceNo) {
+      doc.setTextColor(160, 210, 185);
+      doc.text(`Invoice ${d.invoiceNo}`, W - M, 295.5, { align: 'right' });
+    }
+  }
+
+  // ── SAVE ──
+  const filename = `SOTG-Invoice-${d.invoiceNo}-${d.clientName.replace(/\s+/g,'-')}.pdf`;
+  doc.save(filename);
+  showToast('✓ PDF saved: ' + filename);
+}
+
+// ─────────────────────────────────────────────
+//  TOAST
+// ─────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+</script>
+</body>
+</html>
