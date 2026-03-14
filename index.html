@@ -1,621 +1,954 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- ═══ SEO META TAGS ═══ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sana On The Go | Best Travel Agency in North Bengal – Darjeeling, Sikkim, Kalimpong Tours</title>
-  <meta name="description" content="Sana On The Go is a trusted travel agency in North Bengal offering customised tour packages to Darjeeling, Kalimpong, Sikkim and offbeat Himalayan destinations. Book now via WhatsApp.">
-  <meta name="keywords" content="travel agency north bengal, darjeeling tour package, sikkim tour package, kalimpong trip, himalayan travel, siliguri travel agent, north bengal tourism, offbeat sikkim, tea garden tour darjeeling, best tour operator north bengal, into the wild tour travels siliguri">
-  <meta name="author" content="Sana On The Go – Into The Wild Tour and Travels">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://sanaonthego.github.io/">
-
-  <!-- Open Graph (for WhatsApp / Facebook link previews) -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sanaonthego.github.io/">
-  <meta property="og:title" content="Sana On The Go | Travel Agency North Bengal">
-  <meta property="og:description" content="Curated tour packages to Darjeeling, Sikkim & Kalimpong. Trusted local travel experts from Siliguri, North Bengal.">
-  <meta property="og:image" content="https://sanaonthego.github.io/images/hero.jpeg">
-  <meta property="twitter:card" content="summary_large_image">
-
-  <!-- Local Business Schema (helps Google show your business in local search) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "TravelAgency",
-    "name": "Sana On The Go – Into The Wild Tour and Travels",
-    "description": "Customised tour packages to Darjeeling, Kalimpong, Sikkim and offbeat North Bengal destinations.",
-    "url": "https://sanaonthego.github.io/",
-    "telephone": "+91-98747-40763",
-    "email": "sayantikaintothewild@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "100/A/3/L Rabindra Nagar Main Road",
-      "addressLocality": "Siliguri",
-      "addressRegion": "West Bengal",
-      "postalCode": "734006",
-      "addressCountry": "IN"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 26.7271,
-      "longitude": 88.3953
-    },
-    "openingHours": "Mo-Su 09:00-20:00",
-    "sameAs": [
-      "https://www.instagram.com/sana.onthe.go",
-      "https://www.facebook.com/share/1CQNotCTJ3/"
-    ],
-    "areaServed": ["Darjeeling", "Kalimpong", "Sikkim", "North Bengal", "Siliguri"],
-    "priceRange": "₹₹"
-  }
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
+  <meta name="description" content="Sana On The Go – curated offbeat tours across Darjeeling, Kalimpong, Sikkim & North Bengal. WhatsApp-first booking, handpicked stays, local expertise." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --green: #2d6a4f; --green-lt: #52b788; --green-dk: #1a3d2b;
-      --wa: #25D366; --wa-dk: #1aab55;
-      --gold: #c9a84c; --bg: #f7f4ef; --text: #1e1e1e;
-      --muted: #666; --card-bg: #fff; --radius: 12px;
+      --green-dark:  #1B3A2D;
+      --green:       #2D6A4F;
+      --green-light: #3A8C65;
+      --green-pale:  #EAF4EE;
+      --gold:        #D4A017;
+      --gold-light:  #F0C842;
+      --white:       #FFFFFF;
+      --off-white:   #F9FAFB;
+      --dark:        #1A1A1A;
+      --text:        #2D2D2D;
+      --muted:       #6B7280;
+      --border:      #E5E7EB;
+      --wa-green:    #25D366;
+      --radius:      14px;
+      --radius-sm:   8px;
+      --shadow:      0 4px 20px rgba(0,0,0,0.08);
+      --shadow-lg:   0 8px 40px rgba(0,0,0,0.13);
+      --font-d:      'Playfair Display', serif;
+      --font-b:      'DM Sans', sans-serif;
+      /* CHANGE 5: shared section bg matching gallery green */
+      --section-bg:  #2A5240;
     }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; overflow-x:hidden; }
+    body { font-family:var(--font-b); color:var(--text); background:#fff; line-height:1.6; overflow-x:hidden; }
+    img { max-width:100%; }
+    a { text-decoration:none; }
 
-    /* ── NAV ── */
+    /* TOAST */
+    .wa-toast {
+      display:none; position:fixed; top:22px; left:50%; transform:translateX(-50%);
+      background:#25D366; color:#fff; padding:11px 28px; border-radius:40px;
+      font-size:.9rem; font-weight:600; z-index:9999;
+      box-shadow:0 4px 20px rgba(37,211,102,.35);
+    }
+    .wa-toast.show { display:block; animation:tin .3s ease; }
+    @keyframes tin { from{opacity:0;transform:translateX(-50%) translateY(-10px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+
+    /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 36px;
-      background: rgba(0,0,0,0.45); backdrop-filter: blur(10px);
-      transition: background 0.3s;
+      position:sticky; top:0; z-index:100;
+      background:rgba(27,58,45,.97); backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 5%; height:64px; box-shadow:0 2px 16px rgba(0,0,0,.2);
     }
-    nav.scrolled { background: rgba(26,61,43,0.97); }
-    .logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #fff; text-decoration: none; flex-shrink: 0; }
-    .nav-links { list-style: none; display: flex; gap: 24px; align-items: center; }
-    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
-    .nav-links a:hover, .nav-links a.active { color: var(--green-lt); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
-    .mobile-menu { display: none; position: fixed; top: 58px; left: 0; right: 0; background: rgba(20,40,30,0.98); backdrop-filter: blur(10px); z-index: 99; padding: 16px 24px 24px; flex-direction: column; }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover { color: var(--green-lt); }
+    .nav-brand { font-family:var(--font-d); font-size:1.15rem; font-weight:700; color:#fff; }
+    .nav-brand span { color:var(--gold-light); }
+    .nav-links { display:flex; gap:26px; align-items:center; }
+    .nav-links a { color:rgba(255,255,255,.82); font-size:.87rem; font-weight:500; transition:color .2s; }
+    .nav-links a:hover { color:var(--gold-light); }
+    .nav-wa { background:var(--wa-green); color:#fff !important; padding:7px 18px; border-radius:40px; font-weight:700 !important; font-size:.84rem !important; }
+    .nav-wa:hover { background:#1ebe5d !important; }
+    .nav-ham { display:none; background:none; border:none; cursor:pointer; padding:4px; }
+    .nav-ham span { display:block; width:24px; height:2px; background:#fff; margin:5px 0; border-radius:2px; }
+    .mob-nav { display:none; flex-direction:column; position:fixed; top:64px; left:0; right:0; z-index:99; background:var(--green-dark); border-bottom:1px solid rgba(255,255,255,.1); box-shadow:0 8px 24px rgba(0,0,0,.25); }
+    .mob-nav.open { display:flex; }
+    .mob-nav a { color:rgba(255,255,255,.85); font-size:.95rem; font-weight:500; padding:14px 5%; border-bottom:1px solid rgba(255,255,255,.07); transition:background .15s; }
+    .mob-nav a:hover { background:rgba(255,255,255,.06); color:var(--gold-light); }
+    @media(max-width:768px){ .nav-links{display:none} .nav-ham{display:block} }
 
-    /* ── HERO ── */
-    header {
-      height: 100vh; min-height: 600px; position: relative;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 0 24px; color: #fff; overflow: hidden;
+    /* HERO */
+    .hero { position:relative; min-height:90vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; background:#000; }
+    .hero-bg { position:absolute; inset:0; background:url('images/hero.jpeg') center/cover no-repeat; opacity:1; }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.55) 100%); }
+    .hero-content { position:relative; z-index:2; max-width:700px; padding:0 24px; }
+    .hero-badge { display:inline-block; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); color:rgba(255,255,255,.88); font-size:.75rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; padding:6px 20px; border-radius:40px; margin-bottom:20px; }
+    .hero h1 { font-family:var(--font-d); font-size:clamp(2.8rem,6vw,4.6rem); font-weight:700; color:#fff; line-height:1.1; margin-bottom:18px; }
+    .hero h1 span { color:var(--gold-light); }
+    .hero p { font-size:1.05rem; color:rgba(255,255,255,.82); max-width:520px; margin:0 auto 32px; }
+    .hero-cta { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:36px; }
+    .btn-wa { background:var(--wa-green); color:#fff; padding:14px 28px; border-radius:50px; font-weight:700; font-size:.95rem; box-shadow:0 4px 18px rgba(37,211,102,.3); transition:.2s; }
+    .btn-wa:hover { background:#1ebe5d; transform:translateY(-2px); }
+    .btn-outline-w { background:transparent; color:#fff; border:2px solid rgba(255,255,255,.4); padding:12px 26px; border-radius:50px; font-weight:600; font-size:.95rem; transition:.2s; }
+    .btn-outline-w:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.7); }
+
+    .hero-socials { display:flex; gap:18px; justify-content:center; align-items:center; }
+    .hero-socials a { display:flex; align-items:center; gap:8px; color:rgba(255,255,255,.88); font-size:.84rem; font-weight:500; transition:opacity .2s; }
+    .hero-socials a:hover { opacity:.75; }
+    .soc-div { color:rgba(255,255,255,.3); }
+    .insta-icon { background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); border-radius:7px; width:26px; height:26px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .insta-icon svg { fill:#fff; width:15px; height:15px; }
+    .fb-icon { background:#1877F2; border-radius:50%; width:26px; height:26px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .fb-icon svg { fill:#fff; width:14px; height:14px; }
+
+    .hero-stats { display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin-top:52px; padding-top:36px; border-top:1px solid rgba(255,255,255,.15); }
+    .hero-stat strong { display:block; font-family:var(--font-d); font-size:2rem; color:var(--gold-light); font-weight:700; }
+    .hero-stat span { font-size:.8rem; color:rgba(255,255,255,.65); font-weight:500; }
+
+    /* SECTION COMMON */
+    section { padding:80px 5%; }
+    .sec-label { font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+    .sec-title { font-family:var(--font-d); font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:700; color:var(--dark); margin-bottom:12px; line-height:1.2; }
+    .sec-sub { color:var(--muted); font-size:.97rem; max-width:560px; }
+    .sec-cta { margin-top:36px; text-align:center; }
+    .btn-outline-g { display:inline-block; border:2px solid var(--green); color:var(--green); padding:12px 32px; border-radius:40px; font-weight:700; font-size:.9rem; transition:.2s; }
+    .btn-outline-g:hover { background:var(--green); color:#fff; }
+
+    /* BOOKING */
+    #booking { background:var(--green-dark); }
+    #booking .sec-label { color:var(--gold-light); }
+    #booking .sec-title { color:#fff; }
+    #booking .sec-sub { color:rgba(255,255,255,.7); margin:0 auto 36px; }
+    #booking .inner { max-width:700px; margin:0 auto; text-align:center; }
+    .booking-form { background:rgba(255,255,255,.06); border:1.5px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:36px 32px; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+    @media(max-width:540px){ .form-grid{grid-template-columns:1fr} }
+    .form-field { display:flex; flex-direction:column; gap:6px; text-align:left; }
+    .form-field label { font-size:.78rem; font-weight:600; color:rgba(255,255,255,.65); text-transform:uppercase; letter-spacing:.06em; }
+    .form-field input, .form-field select { padding:11px 14px; border:1.5px solid rgba(255,255,255,.18); border-radius:var(--radius-sm); font-family:var(--font-b); font-size:.92rem; color:#fff; background:rgba(255,255,255,.09); transition:border-color .2s; outline:none; }
+    .form-field select option { background:var(--green-dark); color:#fff; }
+    .form-field input:focus, .form-field select:focus { border-color:var(--gold-light); background:rgba(255,255,255,.13); }
+    .form-field input.err, .form-field select.err { border-color:#f87171; }
+    .ferr { font-size:.74rem; color:#f87171; display:none; margin-top:2px; }
+    .ferr.show { display:block; }
+    .btn-wa-submit { width:100%; margin-top:6px; background:var(--wa-green); color:#fff; border:none; padding:15px; border-radius:var(--radius-sm); font-family:var(--font-b); font-size:1rem; font-weight:700; cursor:pointer; transition:.2s; box-shadow:0 4px 18px rgba(37,211,102,.25); }
+    .btn-wa-submit:hover { background:#1ebe5d; transform:translateY(-1px); }
+
+    /* ── CHANGE 5: PACKAGES section — green bg ── */
+    /* ── CHANGE 3: package slider mobile fix ── */
+    #packages { background:var(--section-bg); }
+    #packages .sec-label { color:var(--gold-light); }
+    #packages .sec-title { color:#fff; }
+    #packages .sec-sub { color:rgba(255,255,255,.75); }
+    #packages .btn-outline-g { border-color:rgba(255,255,255,.5); color:#fff; }
+    #packages .btn-outline-g:hover { background:rgba(255,255,255,.15); border-color:#fff; }
+    #packages .sl-btn { background:rgba(255,255,255,.15); border-color:rgba(255,255,255,.3); color:#fff; }
+    #packages .sl-btn:hover { background:rgba(255,255,255,.25); }
+    #packages .sl-dots button { background:rgba(255,255,255,.3); }
+    #packages .sl-dots button.on { background:#fff; }
+
+    .sl-outer { position:relative; margin-top:40px; max-width:100%; }
+    .sl-vp { overflow:hidden; width:100%; }
+    .sl-track { display:flex; transition:transform .45s cubic-bezier(.4,0,.2,1); will-change:transform; }
+
+    /* Package cards */
+    .pkg-card { flex-shrink:0; background:#fff; border-radius:var(--radius); border:1.5px solid var(--border); box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column; transition:transform .2s,box-shadow .2s; }
+    .pkg-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); }
+    .pkg-img { height:210px; background:linear-gradient(135deg,var(--green-pale),#b7ddc5); display:flex; align-items:center; justify-content:center; font-size:3.5rem; position:relative; overflow:hidden; }
+    .pkg-img img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+    .pkg-badge { position:absolute; top:12px; left:12px; background:rgba(27,58,45,.8); color:#fff; font-size:.68rem; font-weight:700; padding:4px 10px; border-radius:20px; letter-spacing:.04em; }
+    .pkg-body { padding:22px; flex:1; display:flex; flex-direction:column; }
+    .pkg-cat { font-size:.68rem; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:.12em; margin-bottom:7px; }
+    .pkg-name { font-family:var(--font-d); font-size:1.1rem; font-weight:700; color:var(--dark); margin-bottom:10px; line-height:1.3; }
+    .pkg-desc { font-size:.84rem; color:var(--muted); margin-bottom:16px; flex:1; line-height:1.6; }
+    .pkg-price { font-size:.82rem; color:var(--muted); margin-bottom:16px; }
+    .pkg-price strong { font-size:1rem; color:var(--dark); }
+    .btn-pkg { display:block; text-align:center; background:var(--green-pale); color:var(--green); border:1.5px solid #b7ddc5; padding:10px; border-radius:var(--radius-sm); font-size:.85rem; font-weight:700; transition:.2s; }
+    .btn-pkg:hover { background:var(--green); color:#fff; border-color:var(--green); }
+
+    /* Custom package card */
+    .pkg-custom-card { flex-shrink:0; background:linear-gradient(145deg,var(--green-dark),var(--green)); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:36px 28px; gap:14px; min-height:360px; }
+    .pkg-custom-card h3 { font-family:var(--font-d); font-size:1.2rem; color:#fff; line-height:1.3; }
+    .pkg-custom-card p { font-size:.84rem; color:rgba(255,255,255,.78); line-height:1.6; }
+    .btn-custom { background:var(--wa-green); color:#fff; padding:11px 24px; border-radius:40px; font-weight:700; font-size:.88rem; transition:.2s; }
+    .btn-custom:hover { background:#1ebe5d; }
+
+    /* Slider controls */
+    .sl-btn { position:absolute; top:40%; transform:translateY(-50%); background:#fff; border:2px solid var(--border); width:44px; height:44px; border-radius:50%; font-size:1.3rem; cursor:pointer; z-index:5; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 12px rgba(0,0,0,.1); transition:.2s; color:var(--dark); line-height:1; }
+    .sl-btn:hover { background:var(--green-pale); border-color:var(--green); }
+    .sl-btn.prev { left:-22px; }
+    .sl-btn.next { right:-22px; }
+    /* CHANGE 3: on mobile pull arrows inside the viewport so they don't overflow */
+    @media(max-width:600px){ .sl-btn.prev{left:4px} .sl-btn.next{right:4px} }
+    .sl-dots { display:flex; justify-content:center; gap:8px; margin-top:18px; }
+    .sl-dots button { width:8px; height:8px; border-radius:50%; border:none; background:#d1d5db; cursor:pointer; padding:0; transition:.2s; }
+    .sl-dots button.on { background:var(--green); transform:scale(1.3); }
+
+    /* CHANGE 5: PROPERTIES section — green bg */
+    #properties { background:var(--section-bg); }
+    #properties .sec-label { color:var(--gold-light); }
+    #properties .sec-title { color:#fff; }
+    #properties .sec-sub { color:rgba(255,255,255,.75); }
+    #properties .btn-outline-g { border-color:rgba(255,255,255,.5); color:#fff; }
+    #properties .btn-outline-g:hover { background:rgba(255,255,255,.15); border-color:#fff; }
+    #properties .sl-btn { background:rgba(255,255,255,.15); border-color:rgba(255,255,255,.3); color:#fff; }
+    #properties .sl-btn:hover { background:rgba(255,255,255,.25); }
+    #properties .sl-dots button { background:rgba(255,255,255,.3); }
+    #properties .sl-dots button.on { background:#fff; }
+
+    .prop-card { flex-shrink:0; background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; }
+    .prop-img { height:200px; background:linear-gradient(135deg,var(--green-pale),#b7ddc5); display:flex; align-items:center; justify-content:center; font-size:3.5rem; overflow:hidden; position:relative; }
+    .prop-img img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+    .prop-body { padding:18px 20px; }
+    .prop-name { font-family:var(--font-d); font-size:1rem; font-weight:700; color:var(--dark); margin-bottom:4px; }
+    .prop-loc { font-size:.82rem; color:var(--muted); }
+    .prop-tag { display:inline-block; margin-top:8px; background:var(--green-pale); border:1px solid #b7ddc5; color:var(--green); font-size:.7rem; font-weight:700; padding:3px 10px; border-radius:20px; }
+
+    /* ── CHANGE 4 + 5: WHY US — redesigned & green bg ── */
+    #why-us { background:var(--section-bg); }
+    #why-us .sec-label { color:var(--gold-light); }
+    #why-us .sec-title { color:#fff; }
+    #why-us .sec-sub { color:rgba(255,255,255,.75); }
+
+    .why-grid {
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:24px;
+      margin-top:44px;
     }
-    .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
-      background-color: var(--green-dk);
-      background-image: url("images/hero.jpeg");
-      background-size: cover; background-position: center;
+    /* CHANGE 4: redesigned cards — glassmorphism on dark green bg */
+    .why-card {
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:var(--radius);
+      padding:32px 26px 28px;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:0;
+      position:relative;
+      overflow:hidden;
+      transition:transform .25s, box-shadow .25s, background .25s;
+      backdrop-filter:blur(6px);
     }
-    .hero-bg::after {
+    .why-card::before {
+      content:'';
+      position:absolute; top:0; left:20%; right:20%; height:2px;
+      background:linear-gradient(90deg, transparent, var(--gold-light), transparent);
+      border-radius:0 0 2px 2px;
+      opacity:0;
+      transition:opacity .25s;
+    }
+    .why-card:hover {
+      transform:translateY(-6px);
+      box-shadow:0 16px 48px rgba(0,0,0,.3);
+      background:rgba(255,255,255,.12);
+    }
+    .why-card:hover::before { opacity:1; }
+    .why-icon-wrap {
+      width:52px; height:52px;
+      border-radius:14px;
+      background:rgba(212,160,23,.15);
+      border:1px solid rgba(212,160,23,.3);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.6rem;
+      margin-bottom:18px;
+      transition:background .25s;
+    }
+    .why-card:hover .why-icon-wrap {
+      background:rgba(212,160,23,.25);
+    }
+    .why-card h4 {
+      font-family:var(--font-d);
+      font-size:1.05rem;
+      font-weight:700;
+      color:#fff;
+      margin-bottom:8px;
+      line-height:1.25;
+    }
+    .why-card p {
+      font-size:.85rem;
+      color:rgba(255,255,255,.65);
+      line-height:1.65;
+    }
+    /* gold accent number */
+    .why-num {
+      position:absolute;
+      top:14px; right:18px;
+      font-family:var(--font-d);
+      font-size:2.8rem;
+      font-weight:700;
+      color:rgba(240,200,66,.08);
+      line-height:1;
+      pointer-events:none;
+      user-select:none;
+    }
+
+    /* GALLERY */
+    #gallery { background:#2A5240; }
+    #gallery .sec-label { color:var(--gold-light); }
+    #gallery .sec-title { color:#fff; }
+    #gallery .sec-sub { color:rgba(255,255,255,.7); }
+    #gallery .sl-btn { background:rgba(255,255,255,.15); border-color:rgba(255,255,255,.3); color:#fff; }
+    #gallery .sl-btn:hover { background:rgba(255,255,255,.25); }
+    #gallery .sl-dots button { background:rgba(255,255,255,.3); }
+    #gallery .sl-dots button.on { background:#fff; }
+    .gal-slide { flex-shrink:0; border-radius:var(--radius-sm); overflow:hidden; position:relative; }
+    .gal-slide img { width:100%; height:230px; object-fit:cover; display:block; transition:transform .35s; }
+    .gal-slide:hover img { transform:scale(1.04); }
+    .gal-cap { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,rgba(0,0,0,.65),transparent); color:#fff; padding:28px 14px 12px; font-size:.78rem; font-style:italic; }
+
+    /* REVIEWS */
+    #reviews {
+      background: linear-gradient(160deg, #1B3A2D 0%, #2A5240 50%, #1B3A2D 100%);
+      position: relative; overflow: hidden;
+    }
+    #reviews::before {
+      content: '"';
+      position: absolute; top: -40px; left: 3%;
+      font-family: var(--font-d); font-size: 28rem; font-weight: 700;
+      color: rgba(255,255,255,.03); line-height: 1; pointer-events: none;
+      user-select: none;
+    }
+    #reviews .sec-label { color:var(--gold-light); }
+    #reviews .sec-title { color:#fff; }
+    #reviews .sec-sub { color:rgba(255,255,255,.65); }
+    .reviews-wrap { max-width:1020px; margin:0 auto; text-align:center; position:relative; z-index:1; }
+    .reviews-wrap .sec-sub { margin:0 auto; }
+    .reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:44px; }
+    @media(max-width:860px){ .reviews-grid{grid-template-columns:1fr 1fr} }
+    @media(max-width:580px){ .reviews-grid{grid-template-columns:1fr} }
+
+    .review-card {
+      background: linear-gradient(145deg, rgba(255,255,255,.11) 0%, rgba(255,255,255,.05) 100%);
+      border: 1px solid rgba(212,160,23,.35);
+      border-radius: var(--radius);
+      padding: 32px 26px 28px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      position: relative; overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+      backdrop-filter: blur(4px);
+    }
+    .review-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.3), 0 0 0 1px rgba(212,160,23,.5);
+    }
+    .review-card::before {
       content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.22) 55%, rgba(0,0,0,0.68) 100%);
+      position: absolute; top: 0; left: 20%; right: 20%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+      border-radius: 0 0 2px 2px;
     }
-    header > * { position: relative; z-index: 1; }
-    .eyebrow { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--green-lt); margin-bottom: 14px; font-weight: 600; animation: fadeUp 0.8s ease both; }
-    header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1.15; margin-bottom: 18px; text-shadow: 0 2px 24px rgba(0,0,0,0.45); animation: fadeUp 0.8s ease 0.15s both; }
-    header > p { font-size: 1.05rem; max-width: 560px; margin: 0 auto 32px; color: rgba(255,255,255,0.87); line-height: 1.7; animation: fadeUp 0.8s ease 0.3s both; }
-    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; animation: fadeUp 0.8s ease 0.45s both; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    .review-card::after {
+      content: '\201C';
+      position: absolute; top: -10px; right: 14px;
+      font-family: var(--font-d); font-size: 7rem; font-weight: 700; line-height: 1;
+      color: rgba(240,200,66,.12); pointer-events: none; user-select: none;
+    }
+    .review-av {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green-light), var(--green-dark));
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-d); font-weight: 700; font-size: 1.3rem;
+      margin-bottom: 14px; flex-shrink: 0;
+      border: 2px solid rgba(212,160,23,.6);
+      box-shadow: 0 0 0 4px rgba(212,160,23,.12);
+    }
+    .review-stars { display: flex; gap: 3px; justify-content: center; margin-bottom: 8px; }
+    .review-stars span { font-size: 1.05rem; color: var(--gold-light); filter: drop-shadow(0 0 4px rgba(240,200,66,.6)); }
+    .review-name { font-weight: 700; font-size: 1rem; color: #fff; margin-bottom: 2px; }
+    .review-src {
+      font-size: .72rem; color: rgba(255,255,255,.45); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 5px; justify-content: center;
+    }
+    .review-src::before {
+      content: '';
+      display: inline-block; width: 12px; height: 12px; border-radius: 50%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234285F4' d='M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z'/%3E%3Cpath fill='%2334A853' d='M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z'/%3E%3Cpath fill='%23FBBC05' d='M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z'/%3E%3Cpath fill='%23EA4335' d='M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z'/%3E%3C/svg%3E") center/contain no-repeat;
+      flex-shrink: 0;
+    }
+    .review-text { font-size: .87rem; color: rgba(255,255,255,.78); line-height: 1.7; text-align: center; font-style: italic; position: relative; z-index: 1; }
 
-    /* Hero social pills */
-    .hero-socials { margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s ease 0.6s both; }
-    .hero-social-pill {
+    .reviews-cta { text-align:center; margin-top:36px; }
+    .btn-outline-w-rev {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 9px 18px; border-radius: 50px;
-      text-decoration: none; font-weight: 600; font-size: 0.86rem; color: #fff;
-      border: 1.5px solid rgba(255,255,255,0.45); backdrop-filter: blur(8px);
-      transition: transform 0.2s, background 0.2s;
+      border: 2px solid rgba(212,160,23,.6); color: var(--gold-light);
+      padding: 13px 32px; border-radius: 40px;
+      font-weight: 700; font-size: .9rem; transition: .2s;
+      background: rgba(212,160,23,.08);
     }
-    .hero-social-pill:hover { transform: translateY(-2px); background: rgba(255,255,255,0.2); }
-    .hero-social-pill svg { width: 16px; height: 16px; fill: #fff; flex-shrink: 0; }
-    .pill-insta { background: rgba(188,24,136,0.38); border-color: rgba(220,100,180,0.55); }
-    .pill-fb    { background: rgba(24,119,242,0.38); border-color: rgba(80,150,255,0.55); }
+    .btn-outline-w-rev:hover { background: rgba(212,160,23,.2); border-color: var(--gold-light); transform: translateY(-2px); }
+    .reviews-note { text-align:center; font-size:.8rem; color:rgba(255,255,255,.4); margin-top:12px; }
 
-    .scroll-hint { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 5px; color: rgba(255,255,255,0.45); font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; animation: fadeUp 1s ease 1s both; }
-    .scroll-hint .arrow { width: 18px; height: 18px; border-right: 2px solid rgba(255,255,255,0.4); border-bottom: 2px solid rgba(255,255,255,0.4); transform: rotate(45deg); animation: bounce 1.5s infinite; }
-    @keyframes bounce { 0%,100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(5px); } }
+    /* FOOTER */
+    footer { background:var(--green-dark); color:rgba(255,255,255,.75); padding:60px 5% 30px; }
+    .footer-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:40px; margin-bottom:40px; }
+    @media(max-width:768px){ .footer-grid{grid-template-columns:1fr} }
+    .footer-brand { font-family:var(--font-d); font-size:1.3rem; font-weight:700; color:#fff; margin-bottom:10px; }
+    .footer-brand span { color:var(--gold-light); }
+    .footer-desc { font-size:.85rem; color:rgba(255,255,255,.6); line-height:1.7; max-width:300px; margin-bottom:20px; }
+    .footer-wa { background:var(--wa-green); color:#fff; padding:10px 22px; border-radius:40px; font-weight:700; font-size:.85rem; display:inline-block; }
+    footer h4 { color:#fff; font-size:.88rem; font-weight:700; margin-bottom:14px; text-transform:uppercase; letter-spacing:.08em; }
+    footer a { color:rgba(255,255,255,.65); font-size:.84rem; transition:color .2s; }
+    footer a:hover { color:var(--gold-light); }
+    .footer-links { display:flex; flex-direction:column; gap:9px; }
+    .footer-ci { font-size:.84rem; color:rgba(255,255,255,.65); margin-bottom:9px; line-height:1.5; }
+    .footer-ci a { color:var(--gold-light); }
+    .footer-map { margin-top:4px; }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,.1); padding-top:20px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:.77rem; color:rgba(255,255,255,.4); }
 
-    /* ── BUTTONS ── */
-    .btn-wa { display: inline-flex; align-items: center; gap: 9px; background: var(--wa); color: #fff; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 18px rgba(37,211,102,0.38); transition: background 0.2s, transform 0.2s; }
-    .btn-wa:hover { background: var(--wa-dk); transform: translateY(-2px); }
-    .btn-wa svg { width: 19px; height: 19px; flex-shrink: 0; }
-    .btn-outline-white { display: inline-flex; align-items: center; gap: 9px; background: transparent; color: #fff; padding: 14px 28px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.6); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s, border-color 0.2s, transform 0.2s; }
-    .btn-outline-white:hover { background: rgba(255,255,255,0.14); border-color: #fff; transform: translateY(-2px); }
-    .btn-outline { display: inline-block; border: 2px solid var(--green); color: var(--green); padding: 9px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.86rem; transition: background 0.2s, color 0.2s; }
-    .btn-outline:hover { background: var(--green); color: #fff; }
-
-    /* ── STATS BAR ── */
-    .stats-bar { background: var(--green); color: #fff; }
-    .stats-inner { max-width: 900px; margin: 0 auto; padding: 26px 24px; display: grid; grid-template-columns: repeat(4, 1fr); }
-    .stat-item { text-align: center; padding: 0 12px; border-right: 1px solid rgba(255,255,255,0.2); }
-    .stat-item:last-child { border-right: none; }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 1.9rem; display: block; line-height: 1; margin-bottom: 3px; }
-    .stat-lbl { font-size: 0.74rem; letter-spacing: 1px; text-transform: uppercase; opacity: 0.8; }
-
-    /* ── BOOKING WIDGET ── */
-    .booking-wrap { background: #fff; border-bottom: 1px solid #e0dbd2; }
-    .booking-inner { max-width: 900px; margin: 0 auto; padding: 36px 24px; }
-    .booking-inner h2 { font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--green); margin-bottom: 5px; }
-    .booking-sub { font-size: 0.88rem; color: var(--muted); margin-bottom: 20px; }
-    .booking-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; align-items: end; }
-    .form-group { display: flex; flex-direction: column; gap: 5px; }
-    .form-group label { font-size: 0.72rem; font-weight: 600; color: var(--green); letter-spacing: 0.5px; text-transform: uppercase; }
-    .form-group input, .form-group select { padding: 10px 13px; border: 1.5px solid #d4cfc7; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.91rem; color: var(--text); background: var(--bg); transition: border-color 0.2s; width: 100%; }
-    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--green); }
-    .booking-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--wa); color: #fff; padding: 11px 18px; border-radius: 8px; border: none; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.2s; width: 100%; justify-content: center; }
-    .booking-btn:hover { background: var(--wa-dk); }
-    .booking-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
-
-    /* ── SECTION BASE ── */
-    .section { max-width: 900px; margin: 0 auto; padding: 68px 24px; }
-    .section-tag { font-size: 0.72rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green-lt); font-weight: 700; margin-bottom: 8px; display: block; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 3.5vw, 2.3rem); margin-bottom: 8px; color: var(--green); }
-    .section-sub { color: var(--muted); font-size: 0.97rem; margin-bottom: 36px; }
-
-    /* ── PACKAGES SECTION ── */
-    #packages { background: #fff; }
-    .pkg-section-inner { max-width: 900px; margin: 0 auto; padding: 68px 24px; }
-    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; }
-    .card { background: var(--card-bg); border: 1px solid #e8e2d9; border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); transition: transform 0.25s, box-shadow 0.25s; display: flex; flex-direction: column; }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 32px rgba(0,0,0,0.12); }
-    .card-thumb-wrap {
-      width: 100%; height: 175px; overflow: hidden;
-      background: linear-gradient(135deg, #1a3d2b 0%, #2d6a4f 100%);
-      display: flex; align-items: center; justify-content: center; position: relative;
-    }
-    .card-thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .card-thumb-placeholder { color: rgba(255,255,255,0.4); font-size: 0.8rem; text-align: center; padding: 12px; }
-    .card-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
-    .card-badge { display: inline-block; background: #e8f5ee; color: var(--green); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
-    .card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 7px; }
-    .card p { color: var(--muted); font-size: 0.9rem; flex: 1; margin-bottom: 14px; }
-    .card .price { font-size: 0.97rem; font-weight: 700; color: var(--green); margin-bottom: 16px; }
-
-    /* ── GALLERY SLIDER ── */
-    #gallery { background: var(--green-dk); overflow: hidden; }
-    .gallery-inner { max-width: 900px; margin: 0 auto; padding: 68px 24px 36px; }
-    .gallery-inner .section-title { color: #fff; }
-    .gallery-inner .section-sub { color: rgba(255,255,255,0.6); }
-    .slider-wrap { position: relative; overflow: hidden; border-radius: var(--radius); }
-    .slider-track { display: flex; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
-    .slide { min-width: 100%; position: relative; }
-    .slide img { width: 100%; height: 400px; object-fit: cover; display: block; }
-    .slide-placeholder {
-      width: 100%; height: 400px;
-      background: linear-gradient(135deg, #1a3d2b 0%, #2d6a4f 100%);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 10px;
-    }
-    .slide-placeholder .ph-icon { font-size: 2.5rem; }
-    .slide-placeholder .ph-txt { color: rgba(255,255,255,0.5); font-size: 0.85rem; }
-    .slide-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.65)); color: #fff; padding: 44px 22px 18px; font-size: 0.95rem; font-weight: 500; }
-    .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.18); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.3); color: #fff; font-size: 1.3rem; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 2; }
-    .slider-btn:hover { background: rgba(255,255,255,0.34); }
-    .slider-btn.prev { left: 12px; } .slider-btn.next { right: 12px; }
-    .slider-dots { display: flex; justify-content: center; gap: 8px; padding: 18px 0 44px; }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; }
-    .dot.active { background: var(--green-lt); transform: scale(1.3); }
-
-    /* ── WHY US ── */
-    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 18px; }
-    .why-item { background: var(--card-bg); border-radius: var(--radius); padding: 26px 18px; border: 1px solid #e8e2d9; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
-    .why-item:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
-    .why-item .icon { font-size: 2rem; margin-bottom: 10px; }
-    .why-item h4 { font-size: 0.9rem; font-weight: 600; color: var(--green); }
-
-    /* ── GOOGLE REVIEWS (Trustindex) ── */
-    #testimonials { background: var(--green-dk); }
-    .testi-inner { max-width: 900px; margin: 0 auto; padding: 68px 24px; }
-    .testi-inner .section-title { color: #fff; }
-    .testi-inner .section-sub { color: rgba(255,255,255,0.6); }
-
-    /* ── FOOTER ── */
-    footer { background: #111e18; color: rgba(255,255,255,0.85); }
-    .footer-inner { max-width: 900px; margin: 0 auto; padding: 56px 24px 36px; }
-    .footer-top { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; margin-bottom: 40px; }
-    .footer-brand h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; margin-bottom: 8px; }
-    .footer-brand p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 18px; }
-    .footer-social { display: flex; gap: 10px; }
-    .f-soc { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s; }
-    .f-soc:hover { transform: translateY(-3px); }
-    .f-soc.insta { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
-    .f-soc.fb { background: #1877f2; } .f-soc.wa { background: var(--wa); }
-    .f-soc svg { width: 17px; height: 17px; fill: #fff; }
-    .footer-contact h3 { font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green-lt); margin-bottom: 18px; }
-    .contact-row { display: flex; align-items: flex-start; gap: 11px; margin-bottom: 14px; }
-    .ci { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .ci svg { width: 15px; height: 15px; }
-    .ci.phone { background: rgba(37,211,102,0.15); } .ci.phone svg { fill: var(--wa); }
-    .ci.email { background: rgba(234,67,53,0.15); } .ci.email svg { fill: #ea4335; }
-    .ci.ci-insta { background: rgba(188,24,136,0.15); } .ci.ci-insta svg { fill: #bc1888; }
-    .ci.ci-fb { background: rgba(24,119,242,0.15); } .ci.ci-fb svg { fill: #1877f2; }
-    .ci.map { background: rgba(82,183,136,0.15); } .ci.map svg { fill: var(--green-lt); }
-    .ct { font-size: 0.88rem; color: rgba(255,255,255,0.72); line-height: 1.55; }
-    .ct a { color: rgba(255,255,255,0.86); text-decoration: none; }
-    .ct a:hover { color: var(--green-lt); }
-    .ct .cl { font-size: 0.68rem; color: rgba(255,255,255,0.38); display: block; margin-bottom: 2px; letter-spacing: 0.5px; text-transform: uppercase; }
-    .office-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 9px; padding: 12px 14px; font-size: 0.83rem; color: rgba(255,255,255,0.62); line-height: 1.65; }
-    .office-box strong { display: block; color: rgba(255,255,255,0.86); font-size: 0.86rem; margin-bottom: 4px; }
-    .map-wrap { border-radius: var(--radius); overflow: hidden; margin-bottom: 36px; }
-    .map-wrap iframe { width: 100%; height: 240px; border: 0; display: block; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.32); flex-wrap: wrap; gap: 10px; }
-    .footer-bottom a { color: var(--green-lt); text-decoration: none; }
-
-    /* ── FLOATING WA ── */
-    .wa-float { position: fixed; bottom: 26px; right: 26px; z-index: 200; background: var(--wa); width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 18px rgba(37,211,102,0.42); text-decoration: none; transition: transform 0.2s; }
-    .wa-float:hover { transform: scale(1.1); }
-    .wa-float svg { width: 27px; height: 27px; fill: #fff; }
+    /* FLOAT WA */
+    .float-wa { position:fixed; bottom:28px; right:24px; background:var(--wa-green); color:#fff; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; box-shadow:0 4px 20px rgba(37,211,102,.4); z-index:200; transition:.2s; animation:wap 2.5s infinite; }
+    .float-wa:hover { transform:scale(1.1); }
+    @keyframes wap { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4)} 50%{box-shadow:0 4px 32px rgba(37,211,102,.7)} }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      nav { padding: 13px 18px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .stats-inner { grid-template-columns: repeat(2,1fr); }
-      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 14px; }
-      .stat-item:nth-child(2n) { border-right: none; }
-      .stat-item:last-child, .stat-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
-      .footer-top { grid-template-columns: 1fr; gap: 32px; }
-      .slide img, .slide-placeholder { height: 240px; }
+    @media(max-width:900px){
+      .footer-grid { grid-template-columns:1fr 1fr; }
+      .reviews-grid { grid-template-columns:1fr 1fr; }
+      .why-grid { grid-template-columns:1fr 1fr; }
     }
-    @media (max-width: 480px) {
-      header { background-attachment: scroll; }
-      .booking-form { grid-template-columns: 1fr; }
-      .footer-bottom { justify-content: center; text-align: center; }
+
+    @media(max-width:768px){
+      body { overflow-x:hidden; }
+      section { padding:52px 5%; }
+      .hero { min-height:60vh; max-height:680px; }
+      .hero h1 { font-size:2.2rem; }
+      .hero p { font-size:.93rem; }
+      .hero-badge { font-size:.68rem; padding:5px 14px; }
+      .hero-cta { gap:10px; }
+      .btn-wa, .btn-outline-w { padding:12px 20px; font-size:.88rem; }
+      .hero-stats { gap:18px; margin-top:32px; padding-top:24px; }
+      .hero-stat strong { font-size:1.5rem; }
+      .hero-stat span { font-size:.72rem; }
+      .hero-socials { gap:12px; font-size:.78rem; }
+      .nav-links { display:none; }
+      .nav-ham { display:block; }
+      .sec-title { font-size:1.6rem; }
+      .sec-sub { font-size:.9rem; }
+      .booking-form { padding:22px 16px; }
+      .form-grid { grid-template-columns:1fr; gap:12px; }
+      /* CHANGE 3: slider arrows on mobile stay inside */
+      .sl-btn.prev { left:2px; }
+      .sl-btn.next { right:2px; }
+      /* CHANGE 3: package slider — 1 card at a time on mobile, give it breathing room */
+      #pkgOuter { margin-left:0; margin-right:0; }
+      .why-grid { grid-template-columns:1fr 1fr; }
+      .reviews-grid { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr; gap:28px; }
+      .footer-desc { max-width:100%; }
+    }
+
+    @media(max-width:480px){
+      .hero { min-height:52vh; max-height:560px; }
+      .hero h1 { font-size:1.85rem; line-height:1.15; }
+      .hero p { font-size:.87rem; margin-bottom:22px; }
+      .hero-badge { display:none; }
+      .hero-cta { flex-direction:column; align-items:center; gap:10px; }
+      .btn-wa, .btn-outline-w { width:100%; max-width:280px; text-align:center; padding:13px 18px; }
+      .hero-stats { gap:14px; }
+      .hero-stat strong { font-size:1.35rem; }
+      .hero-socials { flex-wrap:wrap; justify-content:center; gap:10px; }
+      .soc-div { display:none; }
+      .why-grid { grid-template-columns:1fr; }
+      .booking-form { padding:18px 14px; }
+      .form-field input, .form-field select { font-size:.88rem; padding:10px 12px; }
+      .sl-btn { width:36px; height:36px; font-size:1.1rem; }
+      .sl-btn.prev { left:0; }
+      .sl-btn.next { right:0; }
+      .pkg-img { height:170px; }
+      .footer-map iframe { height:140px; }
+      .reviews-grid { grid-template-columns:1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
-<nav id="mainNav">
-  <a class="logo" href="index.html">Sana On The Go</a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="#booking">Quick Enquiry</a></li>
-    <li><a href="packages.html">Packages</a></li>
-    <li><a href="properties.html">Properties</a></li>
-    <li><a href="#why-us">Why Us</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
-  </button>
+<div class="wa-toast" id="waToast">✅ Opening WhatsApp… we'll reply within a few hours!</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">🏔️ Sana <span>On The Go</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="#booking">Quick Enquiry</a>
+    <a href="packages.html">Packages</a>
+    <a href="properties.html">Properties</a>
+    <a href="#why-us">Why Us</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+    <a href="https://wa.me/919874740763?text=Hi%20Sana%20On%20The%20Go!%20I%20am%20interested%20in%20a%20tour%20package." class="nav-wa" target="_blank" onclick="showToast()">💬 WhatsApp</a>
+  </div>
+  <button class="nav-ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" onclick="closeMenu()">Home</a>
-  <a href="#booking" onclick="closeMenu()">Quick Enquiry</a>
-  <a href="packages.html" onclick="closeMenu()">Packages</a>
-  <a href="properties.html" onclick="closeMenu()">Properties</a>
-  <a href="#why-us" onclick="closeMenu()">Why Us</a>
-  <a href="#gallery" onclick="closeMenu()">Gallery</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html">Home</a>
+  <a href="#booking">Quick Enquiry</a>
+  <a href="packages.html">Packages</a>
+  <a href="properties.html">Properties</a>
+  <a href="#why-us">Why Us</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#contact">Contact</a>
+  <a href="https://wa.me/919874740763" target="_blank" onclick="showToast()">💬 WhatsApp Us</a>
 </div>
 
-<!-- ── HERO ── -->
-<header>
+<!-- HERO -->
+<section class="hero">
   <div class="hero-bg"></div>
-  <p class="eyebrow">Himalayan Travel Specialists · Siliguri, North Bengal</p>
-  <h1>Sana On The Go</h1>
-  <p>Curated travel experiences across Darjeeling, Kalimpong, Sikkim &amp; the Offbeat Himalayas</p>
-
-  <div class="hero-btns">
-    <a class="btn-wa" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20travel%20packages">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp Enquiry
-    </a>
-    <a class="btn-outline-white" href="packages.html">Explore Packages &rarr;</a>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Himalayan Travel Specialists · Siliguri, North Bengal</div>
+    <h1>Sana <span>On The Go</span></h1>
+    <p>Curated travel experiences across Darjeeling, Kalimpong, Sikkim &amp; the Offbeat Himalayas</p>
+    <div class="hero-cta">
+      <a href="https://wa.me/919874740763?text=Hi%20Sana%20On%20The%20Go!%20I%20am%20interested%20in%20your%20travel%20packages." class="btn-wa" target="_blank" onclick="showToast()">💬 WhatsApp Enquiry</a>
+      <a href="packages.html" class="btn-outline-w">Explore Packages →</a>
+    </div>
+    <div class="hero-socials">
+      <a href="https://www.instagram.com/sana.onthe.go" target="_blank" aria-label="Instagram">
+        <span class="insta-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </span>
+        @sana.onthe.go
+      </a>
+      <span class="soc-div">·</span>
+      <a href="https://www.facebook.com/share/1CQNotCTJ3/" target="_blank" aria-label="Facebook">
+        <span class="fb-icon">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </span>
+        Sana On The Go
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>500+</strong><span>Happy Travellers</span></div>
+      <div class="hero-stat"><strong>37+</strong><span>Curated Packages</span></div>
+      <div class="hero-stat"><strong>5.0★</strong><span>Avg. Rating</span></div> 
+    </div>
   </div>
+</section>
 
-  <div class="hero-socials">
-    <a class="hero-social-pill pill-insta" href="https://www.instagram.com/sana.onthe.go?igsh=MTRuaWVmOWJ5d2ZpMg==" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      @sana.onthe.go
-    </a>
-    <a class="hero-social-pill pill-fb" href="https://www.facebook.com/share/1CQNotCTJ3/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-      Sana On The Go
-    </a>
-  </div>
-
-  <div class="scroll-hint"><div class="arrow"></div></div>
-</header>
-
-<!-- Stats Bar -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat-item"><span class="stat-num">500+</span><span class="stat-lbl">Happy Travellers</span></div>
-    <div class="stat-item"><span class="stat-num">10+</span><span class="stat-lbl">Curated Packages</span></div>
-    <div class="stat-item"><span class="stat-num">5&#9733;</span><span class="stat-lbl">Avg. Rating</span></div>
-    <div class="stat-item"><span class="stat-num">5+</span><span class="stat-lbl">Years Experience</span></div>
-  </div>
-</div>
-
-<!-- Booking Widget -->
-<div class="booking-wrap" id="booking">
-  <div class="booking-inner">
-    <h2>&#127956;&#65039; Plan Your Hill Escape</h2>
-    <p class="booking-sub">Fill in details and send us a WhatsApp enquiry — we reply within a few hours!</p>
+<!-- BOOKING -->
+<section id="booking">
+  <div class="inner">
+    <div class="sec-label">🏕️ Plan Your Hill Escape</div>
+    <h2 class="sec-title">Get a Personalised Quote</h2>
+    <p class="sec-sub">Fill in your details and we'll send you our best packages on WhatsApp within hours!</p>
     <div class="booking-form">
-      <div class="form-group"><label>Arrival at NJP / Bagdogra</label><input type="date" id="arrivalDate"></div>
-      <div class="form-group"><label>Departure from NJP / Bagdogra</label><input type="date" id="departureDate"></div>
-      <div class="form-group"><label>Persons</label>
-        <select id="numPersons"><option value="">Select</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10+</option></select>
+      <div class="form-grid">
+        <div class="form-field">
+          <label>Arrival at NJP / Bagdogra</label>
+          <!-- CHANGE 6: oninput sets departure min date -->
+          <input type="date" id="arrDate" oninput="onArrivalChange()" />
+          <span class="ferr" id="eArr">Please select an arrival date.</span>
+        </div>
+        <div class="form-field">
+          <label>Departure from NJP / Bagdogra</label>
+          <input type="date" id="depDate" />
+          <span class="ferr" id="eDep">Departure must be after arrival date.</span>
+        </div>
+        <div class="form-field">
+          <label>No. of Persons</label>
+          <select id="persons">
+            <option value="">Select</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+            <option>5</option><option>6</option><option>7</option><option>8</option>
+            <option>9</option><option>10+</option>
+          </select>
+          <span class="ferr" id="ePer">Please select number of persons.</span>
+        </div>
+        <div class="form-field">
+          <label>No. of Rooms</label>
+          <select id="rooms">
+            <option value="">Select</option>
+            <option>1</option><option>2</option><option>3</option>
+            <option>4</option><option>5</option><option>6+</option>
+          </select>
+          <span class="ferr" id="eRom">Please select number of rooms.</span>
+        </div>
+        <div class="form-field" style="grid-column:1/-1">
+          <label>Destination / Package</label>
+          <select id="dest">
+            <option value="">Select a category</option>
+            <option value="Darjeeling Offbeat">🏔️ Darjeeling Offbeat</option>
+            <option value="Kalimpong Offbeat">🌸 Kalimpong Offbeat</option>
+            <option value="Darjeeling &amp; Kalimpong Mixed">🗺️ Darjeeling &amp; Kalimpong Mixed</option>
+            <option value="Offbeat &amp; Darjeeling Town">🍵 Offbeat &amp; Darjeeling Town</option>
+            <option value="Offbeat Sikkim">⛰️ Offbeat Sikkim</option>
+            <option value="Jungle Safari">🐘 Jungle Safari Based</option>
+            <option value="Custom">✨ Custom Package</option>
+          </select>
+        </div>
       </div>
-      <div class="form-group"><label>Rooms</label>
-        <select id="numRooms"><option value="">Select</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select>
-      </div>
-      <div class="form-group"><label>Interested In</label>
-        <select id="interest"><option value="">Select Package</option><option>Darjeeling &amp; Kalimpong</option><option>Offbeat Sikkim</option><option>Custom / Not Sure Yet</option></select>
-      </div>
-      <div class="form-group"><label>&nbsp;</label>
-        <button class="booking-btn" onclick="sendBookingWA()">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Send via WhatsApp
-        </button>
-      </div>
+      <button class="btn-wa-submit" onclick="submitEnquiry()">💬 Send Enquiry on WhatsApp</button>
     </div>
   </div>
-</div>
+</section>
 
-<!-- Featured Packages -->
+<!-- PACKAGES SLIDER -->
+<!-- CHANGE 1: Offbeat Sikkim card added; CHANGE 3: mobile overflow fix via CSS + slider engine -->
 <section id="packages">
-  <div class="pkg-section-inner">
-    <span class="section-tag">Handcrafted Itineraries</span>
-    <h2 class="section-title">Featured Travel Experiences</h2>
-    <p class="section-sub">Local expertise, personal touch — <a href="packages.html" style="color:var(--green);font-weight:600;">view all packages &rarr;</a></p>
-    <div class="cards-grid">
+  <div class="sec-label">✦ Our Collections</div>
+  <h2 class="sec-title">Featured Travel Experiences</h2>
+  <p class="sec-sub">Hand-picked journeys through North Bengal's most beautiful corners. Click a category to browse all packages.</p>
+  <div class="sl-outer" id="pkgOuter">
+    <button class="sl-btn prev" id="pkgPrev" aria-label="Prev">&#8249;</button>
+    <div class="sl-vp" id="pkgVP">
+      <div class="sl-track" id="pkgTrack">
 
-      <div class="card">
-        <div class="card-thumb-wrap">
-          <img class="card-thumb" src="images/darjeeling-thumb.jpg" alt="Darjeeling & Kalimpong tour"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="card-thumb-placeholder" style="display:none;">&#127956;<br>Upload: images/darjeeling-thumb.jpg</div>
+        <div class="pkg-card">
+          <div class="pkg-img"><span>🏔️</span><img src="images/darjeeling-offbeat.jpg" alt="" onerror="this.style.display='none'"/><div class="pkg-badge">8 Packages</div></div>
+          <div class="pkg-body"><div class="pkg-cat">🏔️ Darjeeling Offbeat</div><div class="pkg-name">Darjeeling's Hidden Trails</div><div class="pkg-desc">Misty ridges, tea garden villages, and forest hamlets far from the tourist trail — the real Darjeeling awaits.</div><div class="pkg-price">From <strong>₹X,XXX</strong> / person</div><a href="packages.html#darjeeling" class="btn-pkg">Explore Packages →</a></div>
         </div>
-        <div class="card-body">
-          <span class="card-badge">5 Nights / 6 Days</span>
-          <h3>Darjeeling &amp; Kalimpong</h3>
-          <p>Tea gardens, Tiger Hill sunrise, toy train rides, and the charm of colonial hill towns.</p>
-          <p class="price">From &#8377;18,500 per person</p>
-          <a class="btn-outline" href="packages.html#darjeeling">View Full Itinerary</a>
+
+        <div class="pkg-card">
+          <div class="pkg-img"><span>🌸</span><img src="images/kalimpong-offbeat.jpg" alt="" onerror="this.style.display='none'"/><div class="pkg-badge">8 Packages</div></div>
+          <div class="pkg-body"><div class="pkg-cat">🌸 Kalimpong Offbeat</div><div class="pkg-name">Kalimpong's Secret Villages</div><div class="pkg-desc">Ancient monasteries, orchid valleys, and hilltop hamlets with sweeping Himalayan views — Kalimpong off the beaten path.</div><div class="pkg-price">From <strong>₹X,XXX</strong> / person</div><a href="packages.html#kalimpong" class="btn-pkg">Explore Packages →</a></div>
         </div>
+
+        <!-- CHANGE 1: NEW Offbeat Sikkim card -->
+        <div class="pkg-card">
+          <div class="pkg-img"><span>🏯</span><img src="images/offbeat-sikkim.jpg" alt="" onerror="this.style.display='none'"/><div class="pkg-badge">8 Packages</div></div>
+          <div class="pkg-body"><div class="pkg-cat">🏯 Offbeat Sikkim</div><div class="pkg-name">Sikkim's Hidden Valleys</div><div class="pkg-desc">Gurudongmar Lake, Yumthang Valley, the Old Silk Route and secret monasteries — Sikkim far beyond Gangtok town.</div><div class="pkg-price">From <strong>₹X,XXX</strong> / person</div><a href="packages.html#sikkim" class="btn-pkg">Explore Packages →</a></div>
+        </div>
+
+        <div class="pkg-card">
+          <div class="pkg-img"><span>🐘</span><img src="images/jungle-safari.jpg" alt="" onerror="this.style.display='none'"/><div class="pkg-badge">7 Packages</div></div>
+          <div class="pkg-body"><div class="pkg-cat">🐘 Jungle Safari</div><div class="pkg-name">Dooars Wildlife Safaris</div><div class="pkg-desc">Encounter elephants, rhinos and leopards in Gorumara, Jaldapara &amp; Chapramari — the wild heart of the Dooars.</div><div class="pkg-price">From <strong>₹X,XXX</strong> / person</div><a href="packages.html#jungle" class="btn-pkg">Explore Packages →</a></div>
+        </div>
+
+        <div class="pkg-card">
+          <div class="pkg-img"><span>🗺️</span><img src="images/mixed-circuit.jpg" alt="" onerror="this.style.display='none'"/><div class="pkg-badge">7 Packages</div></div>
+          <div class="pkg-body"><div class="pkg-cat">🗺️ Mixed Circuit</div><div class="pkg-name">The Best of Both Hills</div><div class="pkg-desc">Combine the charms of Darjeeling and Kalimpong in one seamless circuit — offbeat villages and viewpoints.</div><div class="pkg-price">From <strong>₹X,XXX</strong> / person</div><a href="packages.html#mixed" class="btn-pkg">Explore Packages →</a></div>
+        </div>
+
+        <div class="pkg-card">
+          <div class="pkg-img"><span>🍵</span><img src="images/darjeeling-town.jpg" alt="" onerror="this.style.display='none'"/><div class="pkg-badge">7 Packages</div></div>
+          <div class="pkg-body"><div class="pkg-cat">🍵 With Darjeeling Town</div><div class="pkg-name">Offbeat + Toy Train Town</div><div class="pkg-desc">Offbeat hill villages plus iconic Darjeeling town — Tiger Hill sunrises, Batasia Loop &amp; the Toy Train.</div><div class="pkg-price">From <strong>₹X,XXX</strong> / person</div><a href="packages.html#darjtown" class="btn-pkg">Explore Packages →</a></div>
+        </div>
+
+        <div class="pkg-custom-card">
+          <div style="font-size:2.8rem">✨</div>
+          <h3>Design Your Dream Trip</h3>
+          <p>Any destination, any duration, any group size. We'll craft a bespoke Himalayan journey just for you.</p>
+          <a href="https://wa.me/919874740763?text=Hi!%20I%20want%20to%20plan%20a%20custom%20tour%20package." class="btn-custom" target="_blank" onclick="showToast()">💬 Chat with Us</a>
+        </div>
+
       </div>
-
-      <div class="card">
-        <div class="card-thumb-wrap">
-          <img class="card-thumb" src="images/sikkim-thumb.jpg" alt="Offbeat Sikkim tour"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="card-thumb-placeholder" style="display:none;">&#127748;<br>Upload: images/sikkim-thumb.jpg</div>
-        </div>
-        <div class="card-body">
-          <span class="card-badge">7 Nights / 8 Days</span>
-          <h3>Offbeat Sikkim</h3>
-          <p>Lachung, Yumthang Valley, alpine meadows, and authentic village homestays.</p>
-          <p class="price">From &#8377;24,900 per person</p>
-          <a class="btn-outline" href="packages.html#sikkim">View Full Itinerary</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-thumb-wrap">
-          <img class="card-thumb" src="images/pkg3-thumb.jpg" alt="Package 3"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="card-thumb-placeholder" style="display:none;">&#127807;<br>Upload: images/pkg3-thumb.jpg</div>
-        </div>
-        <div class="card-body">
-          <span class="card-badge">X Nights / X Days</span>
-          <h3>Your Package Name</h3>
-          <p>Add a short description of this package that excites travellers.</p>
-          <p class="price">From &#8377;XX,XXX per person</p>
-          <a class="btn-outline" href="packages.html#package3">View Full Itinerary</a>
-        </div>
-      </div>
-
     </div>
+    <button class="sl-btn next" id="pkgNext" aria-label="Next">&#8250;</button>
   </div>
+  <div class="sl-dots" id="pkgDots"></div>
+  <div class="sec-cta"><a href="packages.html" class="btn-outline-g">View All Packages →</a></div>
 </section>
 
-<!-- Google Reviews via Trustindex -->
-<section id="testimonials">
-  <div class="testi-inner">
-    <span class="section-tag">Google Reviews</span>
-    <h2 class="section-title">What Travellers Say</h2>
-    <p class="section-sub">Real reviews from our guests on Google</p>
-    <script defer async src='https://cdn.trustindex.io/loader.js?eaa7d8166192365d7e168830e3f'></script>
+<!-- PROPERTIES SLIDER -->
+<section id="properties">
+  <div class="sec-label">🏡 Curated Stays</div>
+  <h2 class="sec-title">Your Best Possible Hill Stays</h2>
+  <p class="sec-sub">Handpicked hotels and homestays we personally recommend — from cosy village cottages to ridge-top retreats.</p>
+  <div class="sl-outer" id="propOuter">
+    <button class="sl-btn prev" id="propPrev" aria-label="Prev">&#8249;</button>
+    <div class="sl-vp" id="propVP">
+      <div class="sl-track" id="propTrack">
+        <div class="prop-card"><div class="prop-img"><span>🏡</span><img src="images/property-1.jpg" alt="" onerror="this.style.display='none'"/></div><div class="prop-body"><div class="prop-name">Property 1 Name Homestay</div><div class="prop-loc">📍 Location 1, North Bengal</div><span class="prop-tag">Homestay</span></div></div>
+        <div class="prop-card"><div class="prop-img"><span>🌿</span><img src="images/property-2.jpg" alt="" onerror="this.style.display='none'"/></div><div class="prop-body"><div class="prop-name">Property 2 Name Resort</div><div class="prop-loc">📍 Location 2, North Bengal</div><span class="prop-tag">Resort</span></div></div>
+        <div class="prop-card"><div class="prop-img"><span>⛰️</span><img src="images/property-3.jpg" alt="" onerror="this.style.display='none'"/></div><div class="prop-body"><div class="prop-name">Property 3 Name Boutique Hotel</div><div class="prop-loc">📍 Location 3, North Bengal</div><span class="prop-tag">Boutique Hotel</span></div></div>
+        <div class="prop-card"><div class="prop-img"><span>🍵</span><img src="images/property-4.jpg" alt="" onerror="this.style.display='none'"/></div><div class="prop-body"><div class="prop-name">Property 4 Name Tea Estate Stay</div><div class="prop-loc">📍 Location 4, North Bengal</div><span class="prop-tag">Tea Estate</span></div></div>
+        <div class="prop-card"><div class="prop-img"><span>🌄</span><img src="images/property-5.jpg" alt="" onerror="this.style.display='none'"/></div><div class="prop-body"><div class="prop-name">Property 5 Name Eco Lodge</div><div class="prop-loc">📍 Location 5, North Bengal</div><span class="prop-tag">Eco Lodge</span></div></div>
+        <div class="prop-card"><div class="prop-img"><span>🏕️</span><img src="images/property-6.jpg" alt="" onerror="this.style.display='none'"/></div><div class="prop-body"><div class="prop-name">Property 6 Name Forest Cottage</div><div class="prop-loc">📍 Location 6, North Bengal</div><span class="prop-tag">Forest Cottage</span></div></div>
+        <div class="prop-card"><div class="prop-img"><span>🌸</span><img src="images/property-7.jpg" alt="" onerror="this.style.display='none'"/></div><div class="prop-body"><div class="prop-name">Property 7 Name Valley View</div><div class="prop-loc">📍 Location 7, North Bengal</div><span class="prop-tag">Valley View</span></div></div>
+      </div>
+    </div>
+    <button class="sl-btn next" id="propNext" aria-label="Next">&#8250;</button>
   </div>
+  <div class="sl-dots" id="propDots"></div>
+  <div class="sec-cta"><a href="properties.html" class="btn-outline-g">Browse All Properties →</a></div>
 </section>
 
-<!-- Why Us -->
-<section id="why-us" class="section">
-  <span class="section-tag">Why Choose Us</span>
-  <h2 class="section-title">Travel With Confidence</h2>
-  <p class="section-sub">We handle every detail so you focus on the journey</p>
+<!-- WHY US — CHANGE 4: redesigned cards, CHANGE 5: green bg -->
+<section id="why-us">
+  <div class="sec-label">✦ Why Travel with Us</div>
+  <h2 class="sec-title">The Sana On The Go Difference</h2>
+  <p class="sec-sub">Local experts who live and breathe the Himalayas — we know these hills like our backyard.</p>
   <div class="why-grid">
-    <div class="why-item"><div class="icon">&#128506;&#65039;</div><h4>Local North Bengal Expertise</h4></div>
-    <div class="why-item"><div class="icon">&#9999;&#65039;</div><h4>Custom Itineraries</h4></div>
-    <div class="why-item"><div class="icon">&#127969;</div><h4>Vetted Hotels &amp; Homestays</h4></div>
-    <div class="why-item"><div class="icon">&#128242;</div><h4>24/7 Personal Support</h4></div>
-    <div class="why-item"><div class="icon">&#128176;</div><h4>Best Value for Money</h4></div>
-    <div class="why-item"><div class="icon">&#127807;</div><h4>Responsible Travel</h4></div>
+    <div class="why-card">
+      <span class="why-num">01</span>
+      <div class="why-icon-wrap">🏔️</div>
+      <h4>Local Expertise</h4>
+      <p>Based in Siliguri, we know every offbeat trail, hidden viewpoint and secret village in the hills.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-num">02</span>
+      <div class="why-icon-wrap">✨</div>
+      <h4>Curated Experiences</h4>
+      <p>Every route, stay and activity is handpicked — no filler, just the best the Himalayas have to offer.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-num">03</span>
+      <div class="why-icon-wrap">💬</div>
+      <h4>WhatsApp Booking</h4>
+      <p>Simple, fast and personal. Plan your entire trip with a chat — no forms, no waiting.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-num">04</span>
+      <div class="why-icon-wrap">🏡</div>
+      <h4>Vetted Properties</h4>
+      <p>We personally inspect every homestay and hotel we recommend. No surprises on arrival.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-num">05</span>
+      <div class="why-icon-wrap">🚗</div>
+      <h4>Reliable Transfers</h4>
+      <p>Safe, comfortable cabs from NJP / Bagdogra — punctual pickups, every time.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-num">06</span>
+      <div class="why-icon-wrap">⭐</div>
+      <h4>5-Star Reviews</h4>
+      <p>Hundreds of happy travellers and a 5.0 Google rating — our guests come back for more.</p>
+    </div>
   </div>
 </section>
 
-<!-- Gallery Slider -->
+<!-- GALLERY -->
 <section id="gallery">
-  <div class="gallery-inner">
-    <span class="section-tag">Gallery</span>
-    <h2 class="section-title">A Glimpse of the Himalayas</h2>
-    <p class="section-sub">Your adventures, waiting to happen</p>
-  </div>
-
-  <div style="max-width:900px; margin:0 auto; padding:0 24px 68px;">
-    <div class="slider-wrap">
-      <div class="slider-track" id="sliderTrack">
-
-        <div class="slide">
-          <img src="images/gallery-1.JPG" alt="Gallery photo 1" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-1.jpg</span></div>
-          <div class="slide-caption">The Sleeping Buddha from the Thakum Valley</div>
-        </div>
-
-        <div class="slide">
-          <img src="images/gallery-2.JPG" alt="Gallery photo 2" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-2.jpg</span></div>
-          <div class="slide-caption">The mountains, clouds and the rain</div>
-        </div>
-
-        <div class="slide">
-          <img src="images/gallery-3.JPG" alt="Gallery photo 3" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-3.jpg</span></div>
-          <div class="slide-caption">Mt. Pandim painted red</div>
-        </div>
-
-        <div class="slide">
-          <img src="images/gallery-4.JPG" alt="Gallery photo 4" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-4.jpg</span></div>
-          <div class="slide-caption">Darjeeling, where the champagne of teas are made</div>
-        </div>
-
-        <div class="slide">
-          <img src="images/gallery-5.jpeg" alt="Gallery photo 5" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-5.jpg</span></div>
-          <div class="slide-caption">The breathtaking holy Gurudongmar Lake</div>
-        </div>
-
-        <div class="slide">
-          <img src="images/gallery-6.JPG" alt="Gallery photo 6" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-6.jpg</span></div>
-          <div class="slide-caption">Kahi door jab din dhal jaye</div>
-        </div>
-
-      </div><!-- /slider-track -->
-      <button class="slider-btn prev" onclick="slideGallery(-1)">&#8249;</button>
-      <button class="slider-btn next" onclick="slideGallery(1)">&#8250;</button>
+  <div class="sec-label">Gallery</div>
+  <h2 class="sec-title">A Glimpse of the Himalayas</h2>
+  <p class="sec-sub">Your adventures, waiting to happen</p>
+  <div class="sl-outer" id="galOuter">
+    <button class="sl-btn prev" id="galPrev" aria-label="Prev">&#8249;</button>
+    <div class="sl-vp" id="galVP">
+      <div class="sl-track" id="galTrack">
+        <div class="gal-slide"><img src="images/gallery-1.JPG" alt="Sleeping Buddha"/><div class="gal-cap">The Sleeping Buddha from the Thakum Valley</div></div>
+        <div class="gal-slide"><img src="images/gallery-2.JPG" alt="Mountains"/><div class="gal-cap">The mountains, clouds and the rain</div></div>
+        <div class="gal-slide"><img src="images/gallery-3.JPG" alt="Mt Pandim"/><div class="gal-cap">Mt. Pandim painted red</div></div>
+        <div class="gal-slide"><img src="images/gallery-4.JPG" alt="Darjeeling"/><div class="gal-cap">Darjeeling, where the champagne of teas are made</div></div>
+        <div class="gal-slide"><img src="images/gallery-5.jpeg" alt="Gurudongmar"/><div class="gal-cap">The breathtaking holy Gurudongmar Lake</div></div>
+        <div class="gal-slide"><img src="images/gallery-6.JPG" alt="Hills"/><div class="gal-cap">Kahi door jab din dhal jaye</div></div>
+        <div class="gal-slide"><img src="images/gallery-7.JPG" alt="Hills"/><div class="gal-cap">Three Sisters- Everest,Makalu,Lhotse</div></div>
+        <div class="gal-slide"><img src="images/gallery-8.JPG" alt="Hills"/><div class="gal-cap">The Land of White Orchids,Kurseong</div></div>
+        <div class="gal-slide"><img src="images/gallery-9.JPG" alt="Hills"/><div class="gal-cap">Rhododendron,The postman of Spring</div></div>
+        <div class="gal-slide"><img src="images/gallery-10.JPG" alt="Hills"/><div class="gal-cap">The Famous Dow Hill School and endless stories</div></div>
+      </div>
     </div>
-    <div class="slider-dots" id="sliderDots"></div>
+    <button class="sl-btn next" id="galNext" aria-label="Next">&#8250;</button>
+  </div>
+  <div class="sl-dots" id="galDots"></div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="reviews-wrap">
+    <div class="sec-label">✦ Traveller Reviews</div>
+    <h2 class="sec-title">What Our Guests Say</h2>
+    <p class="sec-sub">Real 5‑star reviews from guests — straight from Google</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-av">A</div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <div class="review-name">Anirban</div>
+        <div class="review-src">Google Review</div>
+        <div class="review-text">Traveling with Sana di was an amazing experience. Everything was perfectly organized, the places were beautiful, and she makes sure everyone feels comfortable. Traveling with them feels more like going on a trip with friends rather than a tour company. Highly recommended — this was already my second trip!</div>
+      </div>
+      <div class="review-card">
+        <div class="review-av">B</div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <div class="review-name">Bipasha</div>
+        <div class="review-src">Google Review</div>
+        <div class="review-text">If you'd just want to lie down and relax, don't come with her — she makes sure you don't miss any surreal experience or view, despite saying you're sleepy! I loved those sleepless nights by the way!! Already on my second trip with her.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-av">P</div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <div class="review-name">Pushpal</div>
+        <div class="review-src">Google Review</div>
+        <div class="review-text">Traveling to North Bengal with Sana di was truly an unforgettable experience. She plans every tour so beautifully that each trip feels like discovering the mountains anew. Hotels and homestays are always premium quality. Highly recommended for anyone who wants to experience the mountains at a reasonable cost.</div>
+      </div>
+    </div>
+    <div class="reviews-cta">
+      <a href="https://share.google/5dTWhISUrA2SqOOea" target="_blank" class="btn-outline-w-rev">⭐ Read More Reviews on Google</a>
+    </div>
+    <p class="reviews-note">5.0 · All verified Google reviews</p>
   </div>
 </section>
 
-<!-- Footer / Contact -->
+<!-- FOOTER -->
+<!-- CHANGE 2: copyright updated to 2026 -->
 <footer id="contact">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <h2>Sana On The Go</h2>
-        <p>Based in Siliguri, North Bengal — we craft unforgettable journeys through Darjeeling, Kalimpong, and the hidden corners of Sikkim. Every trip is personal.</p>
-        <div class="footer-social">
-          <a class="f-soc insta" href="https://www.instagram.com/sana.onthe.go?igsh=MTRuaWVmOWJ5d2ZpMg==" target="_blank" rel="noopener" title="Instagram">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <a class="f-soc fb" href="https://www.facebook.com/share/1CQNotCTJ3/" target="_blank" rel="noopener" title="Facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <a class="f-soc wa" href="https://wa.me/919874740763" target="_blank" rel="noopener" title="WhatsApp">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer-contact">
-        <h3>Contact Us</h3>
-        <div class="contact-row"><div class="ci phone"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div><div class="ct"><span class="cl">Call / WhatsApp</span><a href="tel:+919874740763">+91 98747 40763</a></div></div>
-        <div class="contact-row"><div class="ci email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div class="ct"><span class="cl">Email</span><a href="mailto:sayantikaintothewild@gmail.com">sayantikaintothewild@gmail.com</a></div></div>
-        <div class="contact-row"><div class="ci ci-insta"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div><div class="ct"><span class="cl">Instagram</span><a href="https://www.instagram.com/sana.onthe.go?igsh=MTRuaWVmOWJ5d2ZpMg==" target="_blank" rel="noopener">@sana.onthe.go</a></div></div>
-        <div class="contact-row"><div class="ci ci-fb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div><div class="ct"><span class="cl">Facebook</span><a href="https://www.facebook.com/share/1CQNotCTJ3/" target="_blank" rel="noopener">Sana On The Go</a></div></div>
-        <div class="contact-row"><div class="ci map"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div class="ct"><span class="cl">Office</span><div class="office-box"><strong>Into The Wild Tour and Travels</strong>100/A/3/L, Rabindra Nagar Main Road<br>P.S: Siliguri, Dist: Darjeeling<br>West Bengal &ndash; 734006</div></div></div>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">🏔️ Sana <span>On The Go</span></div>
+      <p class="footer-desc">Into The Wild Tour and Travels — your trusted local guide for offbeat Himalayan journeys, curated from the heart of North Bengal.</p>
+      <a href="https://wa.me/919874740763?text=Hi%20Sana%20On%20The%20Go!%20I%20am%20interested%20in%20your%20tour%20packages." class="footer-wa" target="_blank" onclick="showToast()">💬 Chat on WhatsApp</a>
+    </div>
+    <div>
+      <h4>Contact Us</h4>
+      <div class="footer-ci">📞 Phone / WhatsApp<br/><a href="tel:+919874740763">+91 98747 40763</a></div>
+      <div class="footer-ci">✉️ Email<br/><a href="mailto:sayantikaintothewild@gmail.com">sayantikaintothewild@gmail.com</a></div>
+      <div class="footer-ci">📍 Office<br/>100/A/3/L Rabindra Nagar Main Road, Siliguri, WB 734006<br/><small>Open Mon–Sun · 9 AM – 8 PM</small></div>
+      <div class="footer-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.2!2d88.4266!3d26.7221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e441c4b6b6b6b7%3A0x0!2s100%2FA%2F3%2FL%20Rabindra%20Nagar%20Main%20Road%2C%20Siliguri%2C%20West%20Bengal%20734006!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          width="100%" height="160" style="border:0; border-radius:8px; margin-top:10px; opacity:0.85; filter:grayscale(20%);"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Into The Wild Tour and Travels location">
+        </iframe>
+        <a href="https://maps.google.com/?q=100/A/3/L+Rabindra+Nagar+Main+Road,+Siliguri,+West+Bengal+734006" target="_blank" style="display:inline-block;margin-top:6px;font-size:.75rem;color:var(--gold-light);">📍 Open in Google Maps →</a>
       </div>
     </div>
-
-    <div class="map-wrap">
-      <iframe src="https://www.google.com/maps?q=Siliguri+West+Bengal+India&output=embed" loading="lazy" allowfullscreen title="Office location"></iframe>
+    <div>
+      <h4>Quick Links</h4>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <a href="properties.html">Properties</a>
+        <a href="#booking">Quick Enquiry</a>
+        <a href="#gallery">Gallery</a>
+        <a href="https://www.instagram.com/sana.onthe.go" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/share/1CQNotCTJ3/" target="_blank">Facebook</a>
+      </div>
     </div>
-
-    <div class="footer-bottom">
-      <span>&copy; 2026 Sana On The Go | Into The Wild Tour and Travels. All rights reserved.</span>
-      <a href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20travel%20packages">WhatsApp Enquiry &rarr;</a>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Sana On The Go – Into The Wild Tour and Travels. All rights reserved.</span>
+    <div style="display:flex;gap:16px">
+      <a href="index.html">Home</a>
+      <a href="packages.html">Packages</a>
+      <a href="properties.html">Properties</a>
+      <a href="https://wa.me/919874740763" target="_blank">WhatsApp</a>
     </div>
   </div>
 </footer>
 
-<!-- Floating WhatsApp -->
-<a class="wa-float" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20travel%20packages" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
+<a href="https://wa.me/919874740763?text=Hi%20Sana%20On%20The%20Go!%20I%20am%20interested%20in%20your%20tour%20packages." class="float-wa" target="_blank" onclick="showToast()">💬</a>
 
 <script>
-  // Nav scroll
-  window.addEventListener('scroll', () => {
-    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 80);
-  });
+/* TOAST */
+function showToast() {
+  const t = document.getElementById('waToast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
 
-  // Hamburger
-  const hbg = document.getElementById('hamburger');
-  const mm  = document.getElementById('mobileMenu');
-  hbg.addEventListener('click', () => mm.classList.toggle('open'));
-  function closeMenu() { mm.classList.remove('open'); }
-  document.addEventListener('click', e => { if (!hbg.contains(e.target) && !mm.contains(e.target)) mm.classList.remove('open'); });
+/* NAV */
+document.getElementById('ham').addEventListener('click', () => document.getElementById('mobNav').classList.toggle('open'));
+document.querySelectorAll('.mob-nav a').forEach(a => a.addEventListener('click', () => document.getElementById('mobNav').classList.remove('open')));
 
-  // Gallery slider
-  const track  = document.getElementById('sliderTrack');
-  const dotsEl = document.getElementById('sliderDots');
-  const slides = track.querySelectorAll('.slide');
-  let cur = 0, timer;
+/* ── CHANGE 6: Departure date min = arrival + 1 day ── */
+function onArrivalChange() {
+  const arrInput = document.getElementById('arrDate');
+  const depInput = document.getElementById('depDate');
+  const arrVal   = arrInput.value;
+  if (!arrVal) { depInput.removeAttribute('min'); return; }
 
-  slides.forEach((_, i) => {
-    const d = document.createElement('button');
-    d.className = 'dot' + (i === 0 ? ' active' : '');
-    d.addEventListener('click', () => go(i));
-    dotsEl.appendChild(d);
-  });
+  // Set min for departure to day after arrival
+  const arrDate = new Date(arrVal);
+  arrDate.setDate(arrDate.getDate() + 1);
+  const minDep = arrDate.toISOString().split('T')[0];
+  depInput.setAttribute('min', minDep);
 
-  function go(n) {
-    cur = (n + slides.length) % slides.length;
-    track.style.transform = `translateX(-${cur * 100}%)`;
-    dotsEl.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === cur));
-    clearInterval(timer); timer = setInterval(() => go(cur + 1), 4500);
+  // If a departure was already selected and is now invalid, clear it
+  if (depInput.value && depInput.value <= arrVal) {
+    depInput.value = '';
   }
-  function slideGallery(d) { go(cur + d); }
-  timer = setInterval(() => go(cur + 1), 4500);
+}
 
-  // Touch swipe
+/* BOOKING VALIDATION */
+function submitEnquiry() {
+  const arr = document.getElementById('arrDate').value;
+  const dep = document.getElementById('depDate').value;
+  const per = document.getElementById('persons').value;
+  const rom = document.getElementById('rooms').value;
+  const dst = document.getElementById('dest').value;
+  let ok = true;
+
+  ['arrDate','depDate','persons','rooms'].forEach(id => document.getElementById(id).classList.remove('err'));
+  ['eArr','eDep','ePer','eRom'].forEach(id => document.getElementById(id).classList.remove('show'));
+
+  if (!arr) { document.getElementById('arrDate').classList.add('err'); document.getElementById('eArr').textContent='Please select an arrival date.'; document.getElementById('eArr').classList.add('show'); ok=false; }
+  if (!dep) { document.getElementById('depDate').classList.add('err'); document.getElementById('eDep').textContent='Please select a departure date.'; document.getElementById('eDep').classList.add('show'); ok=false; }
+  else if (arr && dep <= arr) { document.getElementById('depDate').classList.add('err'); document.getElementById('eDep').textContent='Departure must be after arrival date.'; document.getElementById('eDep').classList.add('show'); ok=false; }
+  if (!per) { document.getElementById('persons').classList.add('err'); document.getElementById('ePer').classList.add('show'); ok=false; }
+  if (!rom) { document.getElementById('rooms').classList.add('err'); document.getElementById('eRom').classList.add('show'); ok=false; }
+  if (!ok) return;
+
+  const fmt = v => { const d=new Date(v); return d.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}); };
+  const msg = `Hi Sana On The Go! 🏔️ Tour enquiry:\n\n📅 Arrival: ${fmt(arr)}\n📅 Departure: ${fmt(dep)}\n👥 Persons: ${per}\n🛏️ Rooms: ${rom}\n📍 Destination: ${dst||'Any destination'}\n\nPlease share your best packages!`;
+  showToast();
+  setTimeout(() => window.open('https://wa.me/919874740763?text='+encodeURIComponent(msg),'_blank'), 300);
+}
+
+/* SLIDER ENGINE */
+function Slider(vpId, trackId, dotsId, itemSel, gap, auto) {
+  const vp    = document.getElementById(vpId);
+  const track = document.getElementById(trackId);
+  const dotsC = document.getElementById(dotsId);
+  const items = Array.from(track.querySelectorAll(itemSel));
+  let cur = 0;
+
+  /* CHANGE 3: on mobile always show 1 card, never overflow */
+  const vis = () => {
+    const w = vp.offsetWidth;
+    return w < 500 ? 1 : w < 820 ? 2 : 3;
+  };
+
+  const resize = () => {
+    const v = vis();
+    const sw = (vp.offsetWidth - (v - 1) * gap) / v;
+    items.forEach(el => {
+      el.style.minWidth  = sw + 'px';
+      el.style.maxWidth  = sw + 'px'; /* CHANGE 3: cap width so cards never exceed viewport */
+      el.style.marginRight = gap + 'px';
+    });
+    buildDots(); go(cur);
+  };
+
+  const buildDots = () => {
+    dotsC.innerHTML = '';
+    const pages = Math.ceil(items.length / vis());
+    for (let i = 0; i < pages; i++) {
+      const b = document.createElement('button');
+      b.setAttribute('aria-label', 'Page ' + (i + 1));
+      b.addEventListener('click', () => go(i * vis()));
+      dotsC.appendChild(b);
+    }
+    markDot();
+  };
+
+  const markDot = () => {
+    Array.from(dotsC.children).forEach((b, i) => b.classList.toggle('on', i === Math.round(cur / vis())));
+  };
+
+  const go = idx => {
+    const v   = vis();
+    const max = Math.max(0, items.length - v);
+    cur = Math.max(0, Math.min(idx, max));
+    const sw = parseFloat(items[0].style.minWidth || '300');
+    track.style.transform = `translateX(-${cur * (sw + gap)}px)`;
+    markDot();
+  };
+
+  const fwd = () => go(cur + vis() >= items.length ? 0 : cur + 1);
+  const bwd = () => go(cur === 0 ? Math.max(0, items.length - vis()) : cur - 1);
+
+  window.addEventListener('resize', resize);
+
   let tx = 0;
-  track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend',   e => { if (Math.abs(tx - e.changedTouches[0].clientX) > 40) go(cur + (tx > e.changedTouches[0].clientX ? 1 : -1)); });
+  vp.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  vp.addEventListener('touchend',   e => { const d = tx - e.changedTouches[0].clientX; if (Math.abs(d) > 40) { d > 0 ? fwd() : bwd(); } });
 
-  // Booking WhatsApp
-  function sendBookingWA() {
-    const a = document.getElementById('arrivalDate').value;
-    const d = document.getElementById('departureDate').value;
-    const p = document.getElementById('numPersons').value;
-    const r = document.getElementById('numRooms').value;
-    const i = document.getElementById('interest').value;
-    if (!a || !d || !p || !r) { alert('Please fill in all fields before sending.'); return; }
-    const fmt = v => { const [y,m,day] = v.split('-'); return `${day} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]} ${y}`; };
-    const msg = `Hi Sana! I'd like to enquire about a trip 🏔️\n\n📅 Arrival: ${fmt(a)}\n📅 Departure: ${fmt(d)}\n👥 Persons: ${p}\n🛏️ Rooms: ${r}\n🗺️ Interested In: ${i || 'Not decided yet'}\n\nPlease share package options and pricing. Thank you!`;
-    window.open('https://wa.me/919874740763?text=' + encodeURIComponent(msg), '_blank');
-  }
+  resize();
+  if (auto) setInterval(fwd, auto);
+
+  return { fwd, bwd };
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const pkg  = Slider('pkgVP',  'pkgTrack',  'pkgDots',  '.pkg-card, .pkg-custom-card', 24, 5000);
+  const prop = Slider('propVP', 'propTrack', 'propDots', '.prop-card', 22, 4000);
+  const gal  = Slider('galVP',  'galTrack',  'galDots',  '.gal-slide', 14, 6000);
+
+  document.getElementById('pkgPrev') .addEventListener('click', pkg.bwd);
+  document.getElementById('pkgNext') .addEventListener('click', pkg.fwd);
+  document.getElementById('propPrev').addEventListener('click', prop.bwd);
+  document.getElementById('propNext').addEventListener('click', prop.fwd);
+  document.getElementById('galPrev') .addEventListener('click', gal.bwd);
+  document.getElementById('galNext') .addEventListener('click', gal.fwd);
+});
 </script>
 </body>
 </html>
