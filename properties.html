@@ -5,174 +5,176 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Properties – Sana On The Go | Hotels & Homestays North Bengal & Sikkim</title>
   <meta name="description" content="Browse handpicked hotels and homestays in Darjeeling, Sikkim, Kalimpong and across North Bengal. Book via WhatsApp with Sana On The Go.">
-  <meta name="keywords" content="hotels darjeeling, homestay sikkim, kalimpong accommodation, north bengal hotels, offbeat stays north bengal, budget hotels darjeeling, luxury resort sikkim">
   <link rel="canonical" href="https://sanaonthego.github.io/properties.html">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LodgingBusiness","name":"Sana On The Go – Properties","url":"https://sanaonthego.github.io/properties.html","telephone":"+91-98747-40763","address":{"@type":"PostalAddress","addressLocality":"Siliguri","addressRegion":"West Bengal","addressCountry":"IN"}}</script>
-
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --green:#2d6a4f; --green-lt:#52b788; --green-dk:#1a3d2b;
-      --wa:#25D366; --wa-dk:#1aab55;
-      --bg:#f7f4ef; --text:#1e1e1e; --muted:#666; --radius:12px;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --green:#2d6a4f;--green-lt:#52b788;--green-dk:#1a3d2b;--green-bg:#eaf5ee;
+      --wa:#25D366;--wa-dk:#1aab55;
+      --gold:#c9a84c;--gold-lt:#e8c97a;--gold-dk:#a07830;
+      --bg:#f7f4ef;--text:#1a1a1a;--muted:#666;--radius:14px;
     }
-    html { scroll-behavior: smooth; }
-    body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden; }
-
-    /* NAV */
-    nav { position:sticky; top:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:14px 36px; background:var(--green); box-shadow:0 2px 12px rgba(0,0,0,0.18); }
-    .logo { font-family:'Playfair Display',serif; font-size:1.25rem; color:#fff; text-decoration:none; flex-shrink:0; }
-    .nav-links { list-style:none; display:flex; gap:22px; align-items:center; }
-    .nav-links a { color:rgba(255,255,255,0.85); text-decoration:none; font-size:0.88rem; font-weight:500; transition:color 0.2s; white-space:nowrap; }
-    .nav-links a:hover,.nav-links a.active { color:var(--green-lt); }
-    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
-    .hamburger span { display:block; width:24px; height:2px; background:#fff; border-radius:2px; }
-    .mobile-menu { display:none; position:fixed; top:58px; left:0; right:0; background:rgba(20,40,30,0.98); backdrop-filter:blur(10px); z-index:99; padding:16px 24px 24px; flex-direction:column; }
-    .mobile-menu.open { display:flex; }
-    .mobile-menu a { color:rgba(255,255,255,0.85); text-decoration:none; font-size:1rem; font-weight:500; padding:13px 0; border-bottom:1px solid rgba(255,255,255,0.08); }
-    .mobile-menu a:last-child { border-bottom:none; }
-    .mobile-menu a:hover { color:var(--green-lt); }
-
-    /* PAGE HERO */
-    .page-hero { background:linear-gradient(135deg,#1a3d2b,#2d6a4f); color:#fff; text-align:center; padding:60px 24px 52px; }
-    .page-hero .eyebrow { font-size:0.74rem; letter-spacing:3px; text-transform:uppercase; color:var(--green-lt); margin-bottom:12px; font-weight:600; }
-    .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(1.9rem,5vw,3rem); margin-bottom:12px; }
-    .page-hero p { font-size:0.97rem; color:rgba(255,255,255,0.74); max-width:500px; margin:0 auto; }
-
-    /* MAIN CONTAINER */
-    .container { max-width:1060px; margin:0 auto; padding:0 20px; }
-
-    /* ── STEP INDICATOR ── */
-    .steps { display:flex; align-items:center; justify-content:center; gap:0; padding:28px 24px 0; flex-wrap:wrap; }
-    .step { display:flex; align-items:center; gap:8px; font-size:0.82rem; color:var(--muted); font-weight:500; }
-    .step .num { width:26px; height:26px; border-radius:50%; border:2px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#ccc; transition:all 0.3s; }
-    .step.active .num { background:var(--green); border-color:var(--green); color:#fff; }
-    .step.active { color:var(--green); }
-    .step.done .num { background:var(--green-lt); border-color:var(--green-lt); color:#fff; }
-    .step-line { width:40px; height:2px; background:#ddd; margin:0 4px; }
-    .step-line.done { background:var(--green-lt); }
-
-    /* SECTION TITLE */
-    .sec-title { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--green); margin-bottom:6px; }
-    .sec-sub { color:var(--muted); font-size:0.9rem; margin-bottom:28px; }
-
-    /* ── STEP 1: LOCATION GRID ── */
-    #step1 { padding:36px 0 60px; }
-    .loc-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fill, minmax(150px,1fr));
-      gap:12px;
-    }
-    .loc-card {
-      background:#fff; border:2px solid #e8e2d9; border-radius:var(--radius);
-      padding:18px 14px; text-align:center; cursor:pointer;
-      transition:all 0.2s; user-select:none;
-    }
-    .loc-card:hover { border-color:var(--green); transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,0.1); }
-    .loc-card.selected { border-color:var(--green); background:#eaf5ee; }
-    .loc-card .loc-icon { font-size:1.8rem; margin-bottom:8px; display:block; }
-    .loc-card .loc-name { font-weight:600; font-size:0.88rem; color:var(--text); display:block; margin-bottom:3px; }
-    .loc-card .loc-region { font-size:0.72rem; color:var(--muted); }
-
-    /* ── STEP 2: PROPERTY CARDS ── */
-    #step2 { display:none; padding:36px 0 60px; }
-    .back-btn { display:inline-flex; align-items:center; gap:6px; color:var(--green); font-weight:600; font-size:0.88rem; cursor:pointer; margin-bottom:24px; background:none; border:none; font-family:'DM Sans',sans-serif; }
-    .back-btn:hover { text-decoration:underline; }
-    .prop-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:20px; }
-    .prop-card { background:#fff; border-radius:var(--radius); border:1px solid #e8e2d9; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.06); transition:transform 0.2s, box-shadow 0.2s; }
-    .prop-card:hover { transform:translateY(-4px); box-shadow:0 10px 28px rgba(0,0,0,0.12); }
-
-    /* Property image gallery — 2 photos shown side by side */
-    .prop-imgs { display:grid; grid-template-columns:1fr 1fr; height:160px; gap:2px; overflow:hidden; position:relative; }
-    .prop-imgs img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.3s; }
-    .prop-imgs:hover img { transform:scale(1.04); }
-    /*
-    ════════════════════════════════════════════════════════════
-    HOW TO ADD PROPERTY IMAGES:
-    Each property has 2 images shown side-by-side.
-    In the PROPERTIES data array (JS below), each property has:
-      img1: "images/properties/LOCATION-PROPNAME-1.jpg"
-      img2: "images/properties/LOCATION-PROPNAME-2.jpg"
-
-    1. Create a folder: images/properties/
-    2. Upload your property photos there
-    3. Update the img1 and img2 values in the PROPERTIES array
-    4. If images are missing, a green placeholder is shown
-    ════════════════════════════════════════════════════════════
-    */
-    .prop-img-ph { background:linear-gradient(135deg,#1a3d2b,#2d6a4f); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:4px; }
-    .prop-img-ph span { color:rgba(255,255,255,0.5); font-size:0.7rem; text-align:center; padding:0 6px; }
-    .prop-img-ph .ph-i { font-size:1.4rem; }
-    .prop-type-badge { position:absolute; top:10px; left:10px; background:rgba(26,61,43,0.85); color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:3px 9px; border-radius:20px; z-index:1; }
-    .prop-body { padding:18px; }
-    .prop-name { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--text); margin-bottom:4px; }
-    .prop-loc { font-size:0.8rem; color:var(--muted); margin-bottom:10px; display:flex; align-items:center; gap:4px; }
-    .prop-loc svg { width:13px; height:13px; fill:var(--green-lt); }
-    .prop-amenities { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:12px; }
-    .amenity { font-size:0.7rem; background:#f0f0ea; color:#555; padding:3px 8px; border-radius:20px; }
-    .prop-price { font-size:0.95rem; font-weight:700; color:var(--green); margin-bottom:14px; }
-    .prop-price span { font-size:0.78rem; font-weight:400; color:var(--muted); }
-    .btn-book { display:block; width:100%; background:var(--green); color:#fff; border:none; padding:11px; border-radius:8px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:0.9rem; cursor:pointer; transition:background 0.2s; }
-    .btn-book:hover { background:var(--green-dk); }
-
-    /* ── BOOKING MODAL ── */
-    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:500; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(4px); }
-    .modal-overlay.open { display:flex; }
-    .modal { background:#fff; border-radius:16px; max-width:480px; width:100%; max-height:92vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.3); }
-    .modal-header { background:var(--green); color:#fff; padding:22px 24px 18px; border-radius:16px 16px 0 0; position:relative; }
-    .modal-header h3 { font-family:'Playfair Display',serif; font-size:1.25rem; margin-bottom:3px; }
-    .modal-header p { font-size:0.83rem; color:rgba(255,255,255,0.75); }
-    .modal-close { position:absolute; top:16px; right:18px; background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:1.2rem; width:30px; height:30px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; }
-    .modal-close:hover { background:rgba(255,255,255,0.3); }
-
-    /* Mini property preview inside modal */
-    .modal-prop-preview { display:grid; grid-template-columns:90px 1fr; gap:14px; align-items:center; background:#f7f4ef; padding:14px 20px; border-bottom:1px solid #e8e2d9; }
-    .modal-prop-preview img { width:90px; height:60px; object-fit:cover; border-radius:8px; }
-    .modal-prop-preview .ph { width:90px; height:60px; background:linear-gradient(135deg,#1a3d2b,#2d6a4f); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
-    .modal-prop-preview .mpname { font-weight:600; font-size:0.95rem; color:var(--text); }
-    .modal-prop-preview .mpprice { font-size:0.85rem; color:var(--green); font-weight:600; }
-    .modal-prop-preview .mploc { font-size:0.78rem; color:var(--muted); }
-
-    .modal-body { padding:20px 24px 24px; }
-    .mform-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
-    .mform-group { display:flex; flex-direction:column; gap:5px; }
-    .mform-group.full { grid-column:1/-1; }
-    .mform-group label { font-size:0.72rem; font-weight:600; color:var(--green); letter-spacing:0.5px; text-transform:uppercase; }
-    .mform-group input, .mform-group select, .mform-group textarea { padding:10px 13px; border:1.5px solid #d4cfc7; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--text); background:var(--bg); transition:border-color 0.2s; width:100%; }
-    .mform-group input:focus,.mform-group select:focus,.mform-group textarea:focus { outline:none; border-color:var(--green); }
-    .mform-group textarea { resize:vertical; min-height:64px; }
-    .btn-wa-modal { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; background:var(--wa); color:#fff; border:none; padding:14px; border-radius:10px; font-family:'DM Sans',sans-serif; font-weight:700; font-size:1rem; cursor:pointer; margin-top:16px; transition:background 0.2s, transform 0.2s; box-shadow:0 4px 16px rgba(37,211,102,0.35); }
-    .btn-wa-modal:hover { background:var(--wa-dk); transform:translateY(-1px); }
-    .btn-wa-modal svg { width:20px; height:20px; fill:#fff; flex-shrink:0; }
-    .modal-note { font-size:0.75rem; color:var(--muted); text-align:center; margin-top:10px; }
-
-    /* FOOTER */
-    footer { background:#111e18; color:rgba(255,255,255,0.8); padding:36px 24px 24px; text-align:center; }
-    .footer-links { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:16px; }
-    .footer-links a { color:var(--green-lt); text-decoration:none; font-size:0.88rem; }
-    .footer-copy { font-size:0.78rem; color:rgba(255,255,255,0.3); }
-
-    /* WA float */
-    .wa-float { position:fixed; bottom:26px; right:26px; z-index:200; background:var(--wa); width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(37,211,102,0.42); text-decoration:none; transition:transform 0.2s; }
-    .wa-float:hover { transform:scale(1.1); }
-    .wa-float svg { width:27px; height:27px; fill:#fff; }
-
-    /* RESPONSIVE */
-    @media (max-width:768px) {
-      nav { padding:13px 18px; } .nav-links { display:none; } .hamburger { display:flex; }
-      .loc-grid { grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); }
-      .prop-grid { grid-template-columns:1fr; }
-      .mform-row { grid-template-columns:1fr; }
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
+    nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:13px 36px;background:var(--green-dk);box-shadow:0 2px 18px rgba(0,0,0,.22);}
+    .logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:#fff;text-decoration:none;}
+    .logo span{color:var(--gold-lt);}
+    .nav-links{list-style:none;display:flex;gap:22px;align-items:center;}
+    .nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s;white-space:nowrap;}
+    .nav-links a:hover,.nav-links a.active{color:var(--gold-lt);}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+    .hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;}
+    .mobile-menu{display:none;position:fixed;top:52px;left:0;right:0;background:rgba(13,31,22,.98);backdrop-filter:blur(12px);z-index:199;padding:16px 24px 28px;flex-direction:column;border-top:1px solid rgba(255,255,255,.08);}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{color:rgba(255,255,255,.85);text-decoration:none;font-size:1rem;font-weight:500;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);}
+    .mobile-menu a:hover{color:var(--gold-lt);}
+    .page-hero{background:linear-gradient(135deg,#0d2218,#1a3d2b 50%,#2d6a4f);color:#fff;text-align:center;padding:72px 24px 60px;position:relative;overflow:hidden;}
+    .page-hero>*{position:relative;z-index:1;}
+    .page-hero .eyebrow{font-size:.72rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold-lt);margin-bottom:14px;font-weight:600;}
+    .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.4rem);font-weight:600;margin-bottom:14px;line-height:1.15;}
+    .page-hero p{font-size:1rem;color:rgba(255,255,255,.72);max-width:500px;margin:0 auto;}
+    .steps{display:flex;align-items:center;justify-content:center;gap:0;padding:28px 24px 0;flex-wrap:wrap;}
+    .step{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--muted);font-weight:500;}
+    .step .num{width:26px;height:26px;border-radius:50%;border:2px solid #ccc;display:flex;align-items:center;justify-content:center;font-size:.73rem;font-weight:700;color:#ccc;transition:all .3s;}
+    .step.active .num{background:var(--green);border-color:var(--green);color:#fff;}
+    .step.active{color:var(--green);}
+    .step.done .num{background:var(--green-lt);border-color:var(--green-lt);color:#fff;}
+    .step-line{width:40px;height:2px;background:#ddd;margin:0 4px;}
+    .step-line.done{background:var(--green-lt);}
+    .container{max-width:1060px;margin:0 auto;padding:0 20px;}
+    #step1{padding:38px 0 64px;}
+    .sec-title{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;color:var(--green);margin-bottom:6px;}
+    .sec-sub{color:var(--muted);font-size:.9rem;margin-bottom:22px;}
+    .region-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+    .region-tab{padding:6px 16px;border-radius:50px;border:1.5px solid #d4cfc7;background:#fff;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;}
+    .region-tab:hover{border-color:var(--green);color:var(--green);}
+    .region-tab.active{background:var(--green);border-color:var(--green);color:#fff;}
+    .loc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:12px;}
+    .loc-card{background:#fff;border:2px solid #e8e2d9;border-radius:var(--radius);padding:18px 12px;text-align:center;cursor:pointer;transition:all .22s;user-select:none;}
+    .loc-card:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:0 8px 24px rgba(45,106,79,.14);}
+    .loc-card.selected{border-color:var(--green);background:var(--green-bg);}
+    .loc-card .loc-icon{font-size:1.8rem;margin-bottom:8px;display:block;}
+    .loc-card .loc-name{font-weight:600;font-size:.86rem;color:var(--text);display:block;margin-bottom:3px;}
+    .loc-card .loc-region{font-size:.7rem;color:var(--muted);}
+    .loc-card .loc-count{font-size:.68rem;color:var(--green);font-weight:700;margin-top:4px;display:block;}
+    .loc-card.hidden{display:none;}
+    #step2{display:none;padding:36px 0 64px;}
+    .back-btn{display:inline-flex;align-items:center;gap:6px;color:var(--green);font-weight:600;font-size:.88rem;cursor:pointer;margin-bottom:22px;background:none;border:none;font-family:'DM Sans',sans-serif;}
+    .back-btn:hover{text-decoration:underline;}
+    .filter-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#fff;border:1px solid #e8e2d9;border-radius:var(--radius);padding:14px 18px;margin-bottom:24px;}
+    .filter-label{font-size:.72rem;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase;flex-shrink:0;}
+    .filter-divider{width:1px;height:20px;background:#e0dbd2;flex-shrink:0;}
+    .filter-group{display:flex;gap:7px;flex-wrap:wrap;align-items:center;}
+    .filter-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 13px;border-radius:50px;font-size:.79rem;font-weight:600;border:1.5px solid #d4cfc7;color:var(--muted);background:#fff;cursor:pointer;transition:all .18s;user-select:none;}
+    .filter-chip:hover{border-color:var(--green);color:var(--green);}
+    .filter-chip.active{background:var(--green);border-color:var(--green);color:#fff;}
+    .filter-chip.price-active{background:var(--gold-dk);border-color:var(--gold-dk);color:#fff;}
+    .filter-reset{margin-left:auto;font-size:.78rem;color:var(--muted);cursor:pointer;text-decoration:underline;background:none;border:none;font-family:'DM Sans',sans-serif;}
+    .filter-reset:hover{color:var(--green);}
+    .filter-results-count{font-size:.82rem;color:var(--muted);padding:4px 0 0;width:100%;}
+    .prop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;}
+    .prop-card{background:#fff;border-radius:var(--radius);border:1px solid #e8e2d9;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s;}
+    .prop-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,.13);}
+    .prop-imgs{position:relative;height:168px;overflow:hidden;}
+    .prop-imgs-grid{display:grid;grid-template-columns:1fr 1fr;height:100%;gap:2px;}
+    .prop-imgs img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s;}
+    .prop-card:hover .prop-imgs img{transform:scale(1.05);}
+    .prop-img-ph{background:linear-gradient(135deg,#1a3d2b,#2d6a4f);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;height:100%;}
+    .prop-img-ph span{color:rgba(255,255,255,.4);font-size:.67rem;text-align:center;padding:0 6px;}
+    .prop-img-ph .ph-i{font-size:1.5rem;opacity:.55;}
+    .prop-type-badge{position:absolute;top:10px;left:10px;background:rgba(26,61,43,.88);color:#fff;font-size:.67rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:20px;z-index:1;}
+    .prop-body{padding:17px;}
+    .prop-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:4px;}
+    .prop-loc{font-size:.76rem;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:4px;}
+    .prop-loc svg{width:12px;height:12px;fill:var(--green-lt);}
+    .prop-desc{font-size:.82rem;color:var(--muted);margin-bottom:10px;line-height:1.55;}
+    .prop-amenities{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:11px;}
+    .amenity{font-size:.68rem;background:#f0f0ea;color:#555;padding:3px 8px;border-radius:20px;}
+    .prop-price{font-size:.95rem;font-weight:700;color:var(--gold-dk);margin-bottom:13px;}
+    .prop-price span{font-size:.74rem;font-weight:400;color:var(--muted);}
+    .btn-book{display:block;width:100%;background:var(--green);color:#fff;border:none;padding:11px;border-radius:9px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.9rem;cursor:pointer;transition:background .2s;}
+    .btn-book:hover{background:var(--green-dk);}
+    .no-results{grid-column:1/-1;text-align:center;padding:56px 24px;color:var(--muted);}
+    .no-results .nr-icon{font-size:2.5rem;margin-bottom:12px;display:block;}
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:500;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px);overflow-y:auto;}
+    .modal-overlay.open{display:flex;}
+    .modal{background:#fff;border-radius:18px;max-width:480px;width:100%;margin:auto;box-shadow:0 24px 80px rgba(0,0,0,.3);overflow:hidden;}
+    .modal-header{background:var(--green-dk);color:#fff;padding:22px 24px 18px;position:relative;}
+    .modal-header h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;margin-bottom:3px;font-weight:600;}
+    .modal-header p{font-size:.82rem;color:rgba(255,255,255,.7);}
+    .modal-close{position:absolute;top:16px;right:18px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:1.1rem;width:30px;height:30px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+    .modal-close:hover{background:rgba(255,255,255,.28);}
+    .modal-prop-preview{display:grid;grid-template-columns:90px 1fr;gap:14px;align-items:center;background:#f7f4ef;padding:14px 20px;border-bottom:1px solid #e8e2d9;}
+    .modal-prop-preview img{width:90px;height:62px;object-fit:cover;border-radius:8px;}
+    .modal-prop-preview .ph{width:90px;height:62px;background:linear-gradient(135deg,#1a3d2b,#2d6a4f);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;}
+    .modal-prop-preview .mpname{font-weight:600;font-size:.95rem;}
+    .modal-prop-preview .mpprice{font-size:.85rem;color:var(--gold-dk);font-weight:600;}
+    .modal-prop-preview .mploc{font-size:.76rem;color:var(--muted);}
+    .modal-body{padding:20px 24px 24px;}
+    .mform-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+    .mform-group{display:flex;flex-direction:column;gap:5px;}
+    .mform-group.full{grid-column:1/-1;}
+    .mform-group label{font-size:.7rem;font-weight:600;color:var(--green);letter-spacing:.5px;text-transform:uppercase;}
+    .mform-group input,.mform-group select,.mform-group textarea{padding:10px 13px;border:1.5px solid #d4cfc7;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--text);background:var(--bg);transition:border-color .2s;width:100%;}
+    .mform-group input:focus,.mform-group select:focus,.mform-group textarea:focus{outline:none;border-color:var(--green);}
+    .mform-group input.error{border-color:#e53e3e;}
+    .mform-group textarea{resize:vertical;min-height:60px;}
+    .field-error{font-size:.72rem;color:#e53e3e;margin-top:2px;display:none;}
+    .field-error.show{display:block;}
+    .btn-wa-modal{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--wa);color:#fff;border:none;padding:14px;border-radius:10px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.98rem;cursor:pointer;margin-top:16px;transition:background .2s,transform .2s;box-shadow:0 4px 16px rgba(37,211,102,.32);}
+    .btn-wa-modal:hover{background:var(--wa-dk);transform:translateY(-1px);}
+    .btn-wa-modal svg{width:19px;height:19px;fill:#fff;flex-shrink:0;}
+    .modal-note{font-size:.74rem;color:var(--muted);text-align:center;margin-top:10px;}
+    footer{background:#0d1f16;color:rgba(255,255,255,.84);}
+    .footer-inner{max-width:900px;margin:0 auto;padding:52px 24px 32px;}
+    .footer-top{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;margin-bottom:40px;}
+    .footer-brand h2{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:#fff;margin-bottom:8px;font-weight:600;}
+    .footer-brand p{font-size:.88rem;color:rgba(255,255,255,.48);line-height:1.75;margin-bottom:18px;}
+    .footer-social{display:flex;gap:10px;}
+    .f-soc{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s;}
+    .f-soc:hover{transform:translateY(-3px);}
+    .f-soc.insta{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+    .f-soc.fb{background:#1877f2;}.f-soc.wa{background:var(--wa);}
+    .f-soc svg{width:17px;height:17px;fill:#fff;}
+    .footer-contact h3{font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green-lt);margin-bottom:16px;}
+    .contact-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;}
+    .ci{width:33px;height:33px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .ci svg{width:14px;height:14px;}
+    .ci.phone{background:rgba(37,211,102,.15);}.ci.phone svg{fill:var(--wa);}
+    .ci.email{background:rgba(234,67,53,.15);}.ci.email svg{fill:#ea4335;}
+    .ci.map{background:rgba(82,183,136,.15);}.ci.map svg{fill:var(--green-lt);}
+    .ct{font-size:.86rem;color:rgba(255,255,255,.68);line-height:1.55;}
+    .ct a{color:rgba(255,255,255,.84);text-decoration:none;}
+    .ct a:hover{color:var(--green-lt);}
+    .ct .cl{font-size:.67rem;color:rgba(255,255,255,.35);display:block;margin-bottom:2px;text-transform:uppercase;letter-spacing:.5px;}
+    .office-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:11px 13px;font-size:.82rem;color:rgba(255,255,255,.58);line-height:1.65;}
+    .office-box strong{display:block;color:rgba(255,255,255,.84);margin-bottom:4px;}
+    .map-wrap{border-radius:14px;overflow:hidden;margin-bottom:36px;}
+    .map-wrap iframe{width:100%;height:240px;border:0;display:block;}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:rgba(255,255,255,.28);flex-wrap:wrap;gap:10px;}
+    .footer-bottom a{color:var(--green-lt);text-decoration:none;}
+    .wa-float{position:fixed;bottom:26px;right:26px;z-index:300;background:var(--wa);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);text-decoration:none;transition:transform .2s;}
+    .wa-float:hover{transform:scale(1.1);}
+    .wa-float svg{width:28px;height:28px;fill:#fff;}
+    .scroll-top{position:fixed;bottom:94px;right:28px;z-index:299;background:var(--green);color:#fff;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.18);opacity:0;transition:opacity .3s;border:none;font-size:1.1rem;}
+    .scroll-top.visible{opacity:1;}
+    @media(max-width:768px){
+      nav{padding:12px 18px;}.nav-links{display:none;}.hamburger{display:flex;}
+      .loc-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));}
+      .prop-grid{grid-template-columns:1fr;}
+      .mform-row{grid-template-columns:1fr;}
+      .footer-top{grid-template-columns:1fr;gap:32px;}
+      .filter-bar{flex-direction:column;align-items:flex-start;}
+      .filter-reset{margin-left:0;}
     }
   </style>
 </head>
 <body>
-
 <nav>
-  <a class="logo" href="index.html">Sana On The Go</a>
+  <a class="logo" href="index.html">Sana <span>On The Go</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#booking">Quick Enquiry</a></li>
@@ -197,423 +199,319 @@
 <div class="page-hero">
   <p class="eyebrow">Handpicked Stays</p>
   <h1>Browse Properties</h1>
-  <p>Hotels, resorts and homestays across North Bengal &amp; Sikkim — curated by local experts.</p>
+  <p>Hotels, resorts and homestays across 20 destinations in North Bengal &amp; Sikkim — curated by local experts.</p>
 </div>
 
-<!-- Step indicator -->
 <div class="steps" id="stepIndicator">
   <div class="step active" id="s1ind"><span class="num">1</span> Choose Location</div>
   <div class="step-line" id="sl1"></div>
-  <div class="step" id="s2ind"><span class="num">2</span> View Properties</div>
+  <div class="step" id="s2ind"><span class="num">2</span> Filter &amp; View</div>
   <div class="step-line" id="sl2"></div>
-  <div class="step" id="s3ind"><span class="num">3</span> Send Booking Enquiry</div>
+  <div class="step" id="s3ind"><span class="num">3</span> Send Enquiry</div>
 </div>
 
-<!-- STEP 1: LOCATION -->
 <section id="step1">
   <div class="container">
     <h2 class="sec-title">Where do you want to stay?</h2>
-    <p class="sec-sub">Select a destination to see available properties</p>
-    <div class="loc-grid" id="locGrid">
-      <!-- Populated by JS -->
+    <p class="sec-sub">20 destinations across North Bengal &amp; Sikkim — select one to browse properties</p>
+    <div class="region-tabs" id="regionTabs">
+      <button class="region-tab active" data-region="all" onclick="filterRegion('all')">All Regions</button>
+      <button class="region-tab" data-region="nb" onclick="filterRegion('nb')">North Bengal</button>
+      <button class="region-tab" data-region="sikkim" onclick="filterRegion('sikkim')">Sikkim</button>
+      <button class="region-tab" data-region="dooars" onclick="filterRegion('dooars')">Dooars</button>
     </div>
+    <div class="loc-grid" id="locGrid"></div>
   </div>
 </section>
 
-<!-- STEP 2: PROPERTIES -->
 <section id="step2">
   <div class="container">
-    <button class="back-btn" onclick="goBack()">← Back to Locations</button>
+    <button class="back-btn" onclick="goBack()">&#8592; Back to Locations</button>
     <h2 class="sec-title" id="propHeading">Properties</h2>
-    <p class="sec-sub" id="propSub">Select a property to enquire</p>
-    <div class="prop-grid" id="propGrid">
-      <!-- Populated by JS -->
+    <p class="sec-sub" id="propSub"></p>
+    <div class="filter-bar" id="filterBar">
+      <span class="filter-label">Filter</span>
+      <div class="filter-divider"></div>
+      <div class="filter-group" id="typeFilters"></div>
+      <div class="filter-divider"></div>
+      <div class="filter-group" id="priceFilters">
+        <button class="filter-chip" data-price="budget" onclick="togglePriceFilter('budget')">&#x1F4B0; Budget (&lt;&#8377;1,500)</button>
+        <button class="filter-chip" data-price="mid" onclick="togglePriceFilter('mid')">&#x1F3F7;&#xFE0F; Mid (&#8377;1,500&#8211;3,000)</button>
+        <button class="filter-chip" data-price="luxury" onclick="togglePriceFilter('luxury')">&#x2728; Luxury (&gt;&#8377;3,000)</button>
+      </div>
+      <button class="filter-reset" onclick="resetFilters()">Reset filters</button>
+      <div class="filter-results-count" id="filterCount"></div>
     </div>
+    <div class="prop-grid" id="propGrid"></div>
   </div>
 </section>
-
-<!-- BOOKING MODAL -->
 <div class="modal-overlay" id="bookModal">
   <div class="modal">
     <div class="modal-header">
-      <button class="modal-close" onclick="closeModal()">✕</button>
+      <button class="modal-close" onclick="closeModal()">&#10005;</button>
       <h3 id="modalTitle">Book Your Stay</h3>
-      <p id="modalSub">Fill details — we'll confirm via WhatsApp</p>
+      <p id="modalSub">Fill details &mdash; we'll confirm via WhatsApp</p>
     </div>
     <div class="modal-prop-preview" id="modalPreview"></div>
     <div class="modal-body">
       <div class="mform-row">
-        <div class="mform-group">
-          <label>Check-in Date</label>
-          <input type="date" id="mCheckin">
+        <div class="mform-group"><label>Check-in Date</label><input type="date" id="mCheckin" oninput="validateDates()"><span class="field-error" id="checkinErr">Please select a check-in date.</span></div>
+        <div class="mform-group"><label>Check-out Date</label><input type="date" id="mCheckout" oninput="validateDates()"><span class="field-error" id="checkoutErr">Check-out must be after check-in.</span></div>
+      </div>
+      <div class="mform-row">
+        <div class="mform-group"><label>No. of Rooms</label>
+          <select id="mRooms"><option value="">Select</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select>
         </div>
-        <div class="mform-group">
-          <label>Check-out Date</label>
-          <input type="date" id="mCheckout">
+        <div class="mform-group"><label>No. of Persons</label>
+          <select id="mPersons"><option value="">Select</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10+</option></select>
         </div>
       </div>
       <div class="mform-row">
-        <div class="mform-group">
-          <label>No. of Rooms</label>
-          <select id="mRooms">
-            <option value="">Select</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option>
-          </select>
-        </div>
-        <div class="mform-group">
-          <label>No. of Persons</label>
-          <select id="mPersons">
-            <option value="">Select</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-            <option>6</option><option>7</option><option>8</option><option>9</option><option>10+</option>
-          </select>
-        </div>
+        <div class="mform-group full"><label>Your Name</label><input type="text" id="mName" placeholder="Full name"><span class="field-error" id="nameErr">Please enter your name.</span></div>
       </div>
       <div class="mform-row">
-        <div class="mform-group full">
-          <label>Your Name</label>
-          <input type="text" id="mName" placeholder="Full name">
-        </div>
-      </div>
-      <div class="mform-row">
-        <div class="mform-group full">
-          <label>Special Requests (optional)</label>
-          <textarea id="mNote" placeholder="Any dietary needs, extra beds, special occasions..."></textarea>
-        </div>
+        <div class="mform-group full"><label>Special Requests (optional)</label><textarea id="mNote" placeholder="Any dietary needs, extra beds, special occasions..."></textarea></div>
       </div>
       <button class="btn-wa-modal" onclick="sendPropertyWA()">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Send Booking Enquiry via WhatsApp
       </button>
-      <p class="modal-note">We typically reply within 2–4 hours. No payment required at this stage.</p>
+      <p class="modal-note">We typically reply within 2&ndash;4 hours. No payment required at this stage.</p>
     </div>
   </div>
 </div>
-
-<footer>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="packages.html">Tour Packages</a>
-    <a href="properties.html">Properties</a>
-    <a href="index.html#contact">Contact</a>
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h2>Sana On The Go</h2>
+        <p>Based in Siliguri, North Bengal &mdash; we craft unforgettable journeys through Darjeeling, Kalimpong, and the hidden corners of Sikkim.</p>
+        <div class="footer-social">
+          <a class="f-soc insta" href="https://www.instagram.com/sana.onthe.go?igsh=MTRuaWVmOWJ5d2ZpMg==" target="_blank" rel="noopener" title="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a class="f-soc fb" href="https://www.facebook.com/share/1CQNotCTJ3/" target="_blank" rel="noopener" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a class="f-soc wa" href="https://wa.me/919874740763" target="_blank" rel="noopener" title="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <div class="contact-row"><div class="ci phone"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div><div class="ct"><span class="cl">Call / WhatsApp</span><a href="tel:+919874740763">+91 98747 40763</a></div></div>
+        <div class="contact-row"><div class="ci email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div class="ct"><span class="cl">Email</span><a href="mailto:sayantikaintothewild@gmail.com">sayantikaintothewild@gmail.com</a></div></div>
+        <div class="contact-row"><div class="ci map"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div class="ct"><span class="cl">Office</span><div class="office-box"><strong>Into The Wild Tour and Travels</strong>100/A/3/L, Rabindra Nagar Main Road<br>P.S: Siliguri, Dist: Darjeeling<br>West Bengal &ndash; 734006</div></div></div>
+      </div>
+    </div>
+    <div class="map-wrap"><iframe src="https://www.google.com/maps?q=Siliguri+West+Bengal+India&output=embed" loading="lazy" allowfullscreen title="Office location"></iframe></div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Sana On The Go | Into The Wild Tour and Travels. All rights reserved.</span>
+      <a href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20properties">WhatsApp Enquiry &rarr;</a>
+    </div>
   </div>
-  <p class="footer-copy">© 2026 Sana On The Go | Into The Wild Tour and Travels. All rights reserved.</p>
 </footer>
-
-<a class="wa-float" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20properties" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
+<a class="wa-float" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20properties" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
 <script>
-/* ═══════════════════════════════════════════════════════════════════════
-   LOCATIONS DATA
-   Add / edit locations here. Each has: id, name, icon, region
-═══════════════════════════════════════════════════════════════════════ */
-const LOCATIONS = [
-  { id:'darjeeling',  name:'Darjeeling',      icon:'🍵', region:'West Bengal' },
-  { id:'kalimpong',   name:'Kalimpong',        icon:'🌸', region:'West Bengal' },
-  { id:'kurseong',    name:'Kurseong',         icon:'🌿', region:'West Bengal' },
-  { id:'mirik',       name:'Mirik',            icon:'🏞️', region:'West Bengal' },
-  { id:'siliguri',    name:'Siliguri',         icon:'🏙️', region:'West Bengal' },
-  { id:'dooars',      name:'Dooars',           icon:'🐘', region:'West Bengal' },
-  { id:'lataguri',    name:'Lataguri',         icon:'🌳', region:'West Bengal' },
-  { id:'jaldapara',   name:'Jaldapara',        icon:'🦏', region:'West Bengal' },
-  { id:'gangtok',     name:'Gangtok',          icon:'🏔️', region:'Sikkim' },
-  { id:'pelling',     name:'Pelling',          icon:'🌄', region:'Sikkim' },
-  { id:'lachung',     name:'Lachung',          icon:'❄️', region:'Sikkim' },
-  { id:'namchi',      name:'Namchi',           icon:'🛕', region:'Sikkim' },
-  { id:'ravangla',    name:'Ravangla',         icon:'🌅', region:'Sikkim' },
-  { id:'yuksom',      name:'Yuksom',           icon:'🥾', region:'Sikkim' },
-  { id:'zuluk',       name:'Zuluk',            icon:'🛤️', region:'Sikkim' },
-  { id:'lava',        name:'Lava',             icon:'🌲', region:'West Bengal' },
-  { id:'lolegaon',    name:'Lolegaon',         icon:'🏡', region:'West Bengal' },
-  { id:'rishyap',     name:'Rishyap',          icon:'🌌', region:'West Bengal' },
-];
+/* ══════════════════════════════════════════════════════════════════
+   LOCATIONS DATA — 20 destinations
+   ══════════════════════════════════════════════════════════════════
+   HOW TO EDIT LOCATION NAMES:
+   Find the location object by its id (e.g. "location-1") and change
+   the "name" field to your actual location name.
+   Also update the "hint" field with the region description.
 
-/* ═══════════════════════════════════════════════════════════════════════
-   PROPERTIES DATA
-   ────────────────────────────────────────────────────────────────────
-   HOW TO ADD YOUR OWN PROPERTIES:
-   1. Copy one of the property objects below
-   2. Change the id (must be unique), name, locationId, type, price etc.
-   3. Set img1 and img2 to YOUR image filenames inside images/properties/
-      Example: "images/properties/darjeeling-cedarinn-1.jpg"
-   4. Upload those images to the images/properties/ folder in your repo
-   5. If images are not found, a green placeholder is shown automatically
+   HOW TO CHANGE THE REGION TAB:
+   Change "region" to one of: "nb" (North Bengal), "sikkim", or "dooars"
+══════════════════════════════════════════════════════════════════ */
+const LOCATIONS = [{"id": "location-1", "name": "Location 1", "icon": "🍵", "region": "nb", "hint": "Edit Location Name"}, {"id": "location-2", "name": "Location 2", "icon": "🌸", "region": "nb", "hint": "Edit Location Name"}, {"id": "location-3", "name": "Location 3", "icon": "🌿", "region": "nb", "hint": "Edit Location Name"}, {"id": "location-4", "name": "Location 4", "icon": "🏞️", "region": "nb", "hint": "Edit Location Name"}, {"id": "location-5", "name": "Location 5", "icon": "🏙️", "region": "nb", "hint": "Edit Location Name"}, {"id": "location-6", "name": "Location 6", "icon": "🌲", "region": "nb", "hint": "Edit Location Name"}, {"id": "location-7", "name": "Location 7", "icon": "🏡", "region": "nb", "hint": "Edit Location Name"}, {"id": "location-8", "name": "Location 8", "icon": "🌌", "region": "nb", "hint": "Edit Location Name"}, {"id": "location-9", "name": "Location 9", "icon": "🛕", "region": "nb", "hint": "Edit Location Name"}, {"id": "location-10", "name": "Location 10", "icon": "🌅", "region": "nb", "hint": "Edit Location Name"}, {"id": "location-11", "name": "Location 11", "icon": "🏔️", "region": "sikkim", "hint": "Edit Location Name"}, {"id": "location-12", "name": "Location 12", "icon": "🌄", "region": "sikkim", "hint": "Edit Location Name"}, {"id": "location-13", "name": "Location 13", "icon": "❄️", "region": "sikkim", "hint": "Edit Location Name"}, {"id": "location-14", "name": "Location 14", "icon": "🛕", "region": "sikkim", "hint": "Edit Location Name"}, {"id": "location-15", "name": "Location 15", "icon": "🥾", "region": "sikkim", "hint": "Edit Location Name"}, {"id": "location-16", "name": "Location 16", "icon": "🛤️", "region": "sikkim", "hint": "Edit Location Name"}, {"id": "location-17", "name": "Location 17", "icon": "🐘", "region": "dooars", "hint": "Edit Location Name"}, {"id": "location-18", "name": "Location 18", "icon": "🦏", "region": "dooars", "hint": "Edit Location Name"}, {"id": "location-19", "name": "Location 19", "icon": "🌳", "region": "dooars", "hint": "Edit Location Name"}, {"id": "location-20", "name": "Location 20", "icon": "🦅", "region": "dooars", "hint": "Edit Location Name"}];
 
-   FIELDS:
-   - id:         unique identifier (no spaces)
-   - locationId: must match a location id above
-   - name:       property display name
-   - type:       "Hotel" | "Homestay" | "Resort" | "Guesthouse" | "Cottage"
-   - price:      price per person per day (number, in Rs.)
-   - desc:       short description (1-2 sentences)
-   - amenities:  array of short feature tags
-   - img1:       path to first image  (shown on left of property card)
-   - img2:       path to second image (shown on right of property card)
-═══════════════════════════════════════════════════════════════════════ */
-const PROPERTIES = [
+/* ══════════════════════════════════════════════════════════════════
+   PROPERTIES DATA — 9 properties per location (180 total)
+   ══════════════════════════════════════════════════════════════════
+   HOW TO EDIT A PROPERTY:
+   1. Find it by its id e.g. "location-1-prop1"
+   2. Edit these fields:
+        name:       "Property Name"            ← property name
+        type:       "Hotel"                    ← Hotel/Homestay/Resort/Guesthouse/Cottage
+        price:      1800                       ← price per person per night (number only)
+        desc:       "Description text..."      ← short description
+        amenities:  ["WiFi","Breakfast",...]   ← list of amenities (keep as array)
+        img1:       "images/properties/..."    ← path to first image
+        img2:       "images/properties/..."    ← path to second image
+   3. To ADD a new property: copy an object and paste after the last
+      one for that location, give it a new unique id.
+   4. To REMOVE a property: delete the whole object.
 
-  /* ── DARJEELING ── */
-  {
-    id:'darj-01', locationId:'darjeeling', name:'Cedar Inn', type:'Hotel',
-    price:1800,
-    desc:'A heritage colonial bungalow overlooking the Kanchenjunga range, walking distance from Mall Road.',
-    amenities:['Mountain View','Breakfast Included','WiFi','Hot Water'],
-    img1:'images/properties/darjeeling-cedarinn-1.jpg',
-    img2:'images/properties/darjeeling-cedarinn-2.jpg'
-  },
-  {
-    id:'darj-02', locationId:'darjeeling', name:'Sunrise Homestay', type:'Homestay',
-    price:1200,
-    desc:'Family-run homestay with home-cooked Nepali and Bengali meals, panoramic garden views.',
-    amenities:['Home-cooked Meals','Garden','Heater','Local Guide'],
-    img1:'images/properties/darjeeling-sunrise-1.jpg',
-    img2:'images/properties/darjeeling-sunrise-2.jpg'
-  },
-  {
-    id:'darj-03', locationId:'darjeeling', name:'Windamere Hotel', type:'Hotel',
-    price:3500,
-    desc:'Iconic heritage hotel with old-world charm, fireside lounges and impeccable service since 1939.',
-    amenities:['Heritage Property','Fireplace','Dining Hall','Bar'],
-    img1:'images/properties/darjeeling-windamere-1.jpg',
-    img2:'images/properties/darjeeling-windamere-2.jpg'
-  },
+   HOW TO ADD PROPERTY IMAGES:
+   Upload your property images to the images/properties/ folder in your
+   GitHub repo. Then update img1 and img2 paths accordingly.
+   Recommended size: 600x400px per image.
+══════════════════════════════════════════════════════════════════ */
+const PROPERTIES = [{"id": "location-1-prop1", "locationId": "location-1", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 1.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-1-prop1-1.jpg", "img2": "images/properties/location-1-prop1-2.jpg"}, {"id": "location-1-prop2", "locationId": "location-1", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 1.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-1-prop2-1.jpg", "img2": "images/properties/location-1-prop2-2.jpg"}, {"id": "location-1-prop3", "locationId": "location-1", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 1.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-1-prop3-1.jpg", "img2": "images/properties/location-1-prop3-2.jpg"}, {"id": "location-1-prop4", "locationId": "location-1", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 1.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-1-prop4-1.jpg", "img2": "images/properties/location-1-prop4-2.jpg"}, {"id": "location-1-prop5", "locationId": "location-1", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 1.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-1-prop5-1.jpg", "img2": "images/properties/location-1-prop5-2.jpg"}, {"id": "location-1-prop6", "locationId": "location-1", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 1.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-1-prop6-1.jpg", "img2": "images/properties/location-1-prop6-2.jpg"}, {"id": "location-1-prop7", "locationId": "location-1", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 1.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-1-prop7-1.jpg", "img2": "images/properties/location-1-prop7-2.jpg"}, {"id": "location-1-prop8", "locationId": "location-1", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 1.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-1-prop8-1.jpg", "img2": "images/properties/location-1-prop8-2.jpg"}, {"id": "location-1-prop9", "locationId": "location-1", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 1.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-1-prop9-1.jpg", "img2": "images/properties/location-1-prop9-2.jpg"}, {"id": "location-2-prop1", "locationId": "location-2", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 2.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-2-prop1-1.jpg", "img2": "images/properties/location-2-prop1-2.jpg"}, {"id": "location-2-prop2", "locationId": "location-2", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 2.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-2-prop2-1.jpg", "img2": "images/properties/location-2-prop2-2.jpg"}, {"id": "location-2-prop3", "locationId": "location-2", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 2.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-2-prop3-1.jpg", "img2": "images/properties/location-2-prop3-2.jpg"}, {"id": "location-2-prop4", "locationId": "location-2", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 2.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-2-prop4-1.jpg", "img2": "images/properties/location-2-prop4-2.jpg"}, {"id": "location-2-prop5", "locationId": "location-2", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 2.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-2-prop5-1.jpg", "img2": "images/properties/location-2-prop5-2.jpg"}, {"id": "location-2-prop6", "locationId": "location-2", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 2.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-2-prop6-1.jpg", "img2": "images/properties/location-2-prop6-2.jpg"}, {"id": "location-2-prop7", "locationId": "location-2", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 2.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-2-prop7-1.jpg", "img2": "images/properties/location-2-prop7-2.jpg"}, {"id": "location-2-prop8", "locationId": "location-2", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 2.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-2-prop8-1.jpg", "img2": "images/properties/location-2-prop8-2.jpg"}, {"id": "location-2-prop9", "locationId": "location-2", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 2.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-2-prop9-1.jpg", "img2": "images/properties/location-2-prop9-2.jpg"}, {"id": "location-3-prop1", "locationId": "location-3", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 3.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-3-prop1-1.jpg", "img2": "images/properties/location-3-prop1-2.jpg"}, {"id": "location-3-prop2", "locationId": "location-3", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 3.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-3-prop2-1.jpg", "img2": "images/properties/location-3-prop2-2.jpg"}, {"id": "location-3-prop3", "locationId": "location-3", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 3.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-3-prop3-1.jpg", "img2": "images/properties/location-3-prop3-2.jpg"}, {"id": "location-3-prop4", "locationId": "location-3", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 3.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-3-prop4-1.jpg", "img2": "images/properties/location-3-prop4-2.jpg"}, {"id": "location-3-prop5", "locationId": "location-3", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 3.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-3-prop5-1.jpg", "img2": "images/properties/location-3-prop5-2.jpg"}, {"id": "location-3-prop6", "locationId": "location-3", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 3.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-3-prop6-1.jpg", "img2": "images/properties/location-3-prop6-2.jpg"}, {"id": "location-3-prop7", "locationId": "location-3", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 3.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-3-prop7-1.jpg", "img2": "images/properties/location-3-prop7-2.jpg"}, {"id": "location-3-prop8", "locationId": "location-3", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 3.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-3-prop8-1.jpg", "img2": "images/properties/location-3-prop8-2.jpg"}, {"id": "location-3-prop9", "locationId": "location-3", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 3.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-3-prop9-1.jpg", "img2": "images/properties/location-3-prop9-2.jpg"}, {"id": "location-4-prop1", "locationId": "location-4", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 4.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-4-prop1-1.jpg", "img2": "images/properties/location-4-prop1-2.jpg"}, {"id": "location-4-prop2", "locationId": "location-4", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 4.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-4-prop2-1.jpg", "img2": "images/properties/location-4-prop2-2.jpg"}, {"id": "location-4-prop3", "locationId": "location-4", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 4.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-4-prop3-1.jpg", "img2": "images/properties/location-4-prop3-2.jpg"}, {"id": "location-4-prop4", "locationId": "location-4", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 4.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-4-prop4-1.jpg", "img2": "images/properties/location-4-prop4-2.jpg"}, {"id": "location-4-prop5", "locationId": "location-4", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 4.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-4-prop5-1.jpg", "img2": "images/properties/location-4-prop5-2.jpg"}, {"id": "location-4-prop6", "locationId": "location-4", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 4.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-4-prop6-1.jpg", "img2": "images/properties/location-4-prop6-2.jpg"}, {"id": "location-4-prop7", "locationId": "location-4", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 4.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-4-prop7-1.jpg", "img2": "images/properties/location-4-prop7-2.jpg"}, {"id": "location-4-prop8", "locationId": "location-4", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 4.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-4-prop8-1.jpg", "img2": "images/properties/location-4-prop8-2.jpg"}, {"id": "location-4-prop9", "locationId": "location-4", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 4.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-4-prop9-1.jpg", "img2": "images/properties/location-4-prop9-2.jpg"}, {"id": "location-5-prop1", "locationId": "location-5", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 5.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-5-prop1-1.jpg", "img2": "images/properties/location-5-prop1-2.jpg"}, {"id": "location-5-prop2", "locationId": "location-5", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 5.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-5-prop2-1.jpg", "img2": "images/properties/location-5-prop2-2.jpg"}, {"id": "location-5-prop3", "locationId": "location-5", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 5.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-5-prop3-1.jpg", "img2": "images/properties/location-5-prop3-2.jpg"}, {"id": "location-5-prop4", "locationId": "location-5", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 5.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-5-prop4-1.jpg", "img2": "images/properties/location-5-prop4-2.jpg"}, {"id": "location-5-prop5", "locationId": "location-5", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 5.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-5-prop5-1.jpg", "img2": "images/properties/location-5-prop5-2.jpg"}, {"id": "location-5-prop6", "locationId": "location-5", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 5.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-5-prop6-1.jpg", "img2": "images/properties/location-5-prop6-2.jpg"}, {"id": "location-5-prop7", "locationId": "location-5", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 5.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-5-prop7-1.jpg", "img2": "images/properties/location-5-prop7-2.jpg"}, {"id": "location-5-prop8", "locationId": "location-5", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 5.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-5-prop8-1.jpg", "img2": "images/properties/location-5-prop8-2.jpg"}, {"id": "location-5-prop9", "locationId": "location-5", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 5.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-5-prop9-1.jpg", "img2": "images/properties/location-5-prop9-2.jpg"}, {"id": "location-6-prop1", "locationId": "location-6", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 6.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-6-prop1-1.jpg", "img2": "images/properties/location-6-prop1-2.jpg"}, {"id": "location-6-prop2", "locationId": "location-6", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 6.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-6-prop2-1.jpg", "img2": "images/properties/location-6-prop2-2.jpg"}, {"id": "location-6-prop3", "locationId": "location-6", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 6.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-6-prop3-1.jpg", "img2": "images/properties/location-6-prop3-2.jpg"}, {"id": "location-6-prop4", "locationId": "location-6", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 6.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-6-prop4-1.jpg", "img2": "images/properties/location-6-prop4-2.jpg"}, {"id": "location-6-prop5", "locationId": "location-6", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 6.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-6-prop5-1.jpg", "img2": "images/properties/location-6-prop5-2.jpg"}, {"id": "location-6-prop6", "locationId": "location-6", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 6.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-6-prop6-1.jpg", "img2": "images/properties/location-6-prop6-2.jpg"}, {"id": "location-6-prop7", "locationId": "location-6", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 6.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-6-prop7-1.jpg", "img2": "images/properties/location-6-prop7-2.jpg"}, {"id": "location-6-prop8", "locationId": "location-6", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 6.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-6-prop8-1.jpg", "img2": "images/properties/location-6-prop8-2.jpg"}, {"id": "location-6-prop9", "locationId": "location-6", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 6.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-6-prop9-1.jpg", "img2": "images/properties/location-6-prop9-2.jpg"}, {"id": "location-7-prop1", "locationId": "location-7", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 7.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-7-prop1-1.jpg", "img2": "images/properties/location-7-prop1-2.jpg"}, {"id": "location-7-prop2", "locationId": "location-7", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 7.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-7-prop2-1.jpg", "img2": "images/properties/location-7-prop2-2.jpg"}, {"id": "location-7-prop3", "locationId": "location-7", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 7.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-7-prop3-1.jpg", "img2": "images/properties/location-7-prop3-2.jpg"}, {"id": "location-7-prop4", "locationId": "location-7", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 7.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-7-prop4-1.jpg", "img2": "images/properties/location-7-prop4-2.jpg"}, {"id": "location-7-prop5", "locationId": "location-7", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 7.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-7-prop5-1.jpg", "img2": "images/properties/location-7-prop5-2.jpg"}, {"id": "location-7-prop6", "locationId": "location-7", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 7.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-7-prop6-1.jpg", "img2": "images/properties/location-7-prop6-2.jpg"}, {"id": "location-7-prop7", "locationId": "location-7", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 7.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-7-prop7-1.jpg", "img2": "images/properties/location-7-prop7-2.jpg"}, {"id": "location-7-prop8", "locationId": "location-7", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 7.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-7-prop8-1.jpg", "img2": "images/properties/location-7-prop8-2.jpg"}, {"id": "location-7-prop9", "locationId": "location-7", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 7.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-7-prop9-1.jpg", "img2": "images/properties/location-7-prop9-2.jpg"}, {"id": "location-8-prop1", "locationId": "location-8", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 8.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-8-prop1-1.jpg", "img2": "images/properties/location-8-prop1-2.jpg"}, {"id": "location-8-prop2", "locationId": "location-8", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 8.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-8-prop2-1.jpg", "img2": "images/properties/location-8-prop2-2.jpg"}, {"id": "location-8-prop3", "locationId": "location-8", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 8.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-8-prop3-1.jpg", "img2": "images/properties/location-8-prop3-2.jpg"}, {"id": "location-8-prop4", "locationId": "location-8", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 8.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-8-prop4-1.jpg", "img2": "images/properties/location-8-prop4-2.jpg"}, {"id": "location-8-prop5", "locationId": "location-8", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 8.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-8-prop5-1.jpg", "img2": "images/properties/location-8-prop5-2.jpg"}, {"id": "location-8-prop6", "locationId": "location-8", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 8.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-8-prop6-1.jpg", "img2": "images/properties/location-8-prop6-2.jpg"}, {"id": "location-8-prop7", "locationId": "location-8", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 8.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-8-prop7-1.jpg", "img2": "images/properties/location-8-prop7-2.jpg"}, {"id": "location-8-prop8", "locationId": "location-8", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 8.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-8-prop8-1.jpg", "img2": "images/properties/location-8-prop8-2.jpg"}, {"id": "location-8-prop9", "locationId": "location-8", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 8.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-8-prop9-1.jpg", "img2": "images/properties/location-8-prop9-2.jpg"}, {"id": "location-9-prop1", "locationId": "location-9", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 9.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-9-prop1-1.jpg", "img2": "images/properties/location-9-prop1-2.jpg"}, {"id": "location-9-prop2", "locationId": "location-9", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 9.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-9-prop2-1.jpg", "img2": "images/properties/location-9-prop2-2.jpg"}, {"id": "location-9-prop3", "locationId": "location-9", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 9.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-9-prop3-1.jpg", "img2": "images/properties/location-9-prop3-2.jpg"}, {"id": "location-9-prop4", "locationId": "location-9", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 9.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-9-prop4-1.jpg", "img2": "images/properties/location-9-prop4-2.jpg"}, {"id": "location-9-prop5", "locationId": "location-9", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 9.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-9-prop5-1.jpg", "img2": "images/properties/location-9-prop5-2.jpg"}, {"id": "location-9-prop6", "locationId": "location-9", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 9.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-9-prop6-1.jpg", "img2": "images/properties/location-9-prop6-2.jpg"}, {"id": "location-9-prop7", "locationId": "location-9", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 9.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-9-prop7-1.jpg", "img2": "images/properties/location-9-prop7-2.jpg"}, {"id": "location-9-prop8", "locationId": "location-9", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 9.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-9-prop8-1.jpg", "img2": "images/properties/location-9-prop8-2.jpg"}, {"id": "location-9-prop9", "locationId": "location-9", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 9.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-9-prop9-1.jpg", "img2": "images/properties/location-9-prop9-2.jpg"}, {"id": "location-10-prop1", "locationId": "location-10", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 10.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-10-prop1-1.jpg", "img2": "images/properties/location-10-prop1-2.jpg"}, {"id": "location-10-prop2", "locationId": "location-10", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 10.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-10-prop2-1.jpg", "img2": "images/properties/location-10-prop2-2.jpg"}, {"id": "location-10-prop3", "locationId": "location-10", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 10.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-10-prop3-1.jpg", "img2": "images/properties/location-10-prop3-2.jpg"}, {"id": "location-10-prop4", "locationId": "location-10", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 10.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-10-prop4-1.jpg", "img2": "images/properties/location-10-prop4-2.jpg"}, {"id": "location-10-prop5", "locationId": "location-10", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 10.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-10-prop5-1.jpg", "img2": "images/properties/location-10-prop5-2.jpg"}, {"id": "location-10-prop6", "locationId": "location-10", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 10.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-10-prop6-1.jpg", "img2": "images/properties/location-10-prop6-2.jpg"}, {"id": "location-10-prop7", "locationId": "location-10", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 10.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-10-prop7-1.jpg", "img2": "images/properties/location-10-prop7-2.jpg"}, {"id": "location-10-prop8", "locationId": "location-10", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 10.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-10-prop8-1.jpg", "img2": "images/properties/location-10-prop8-2.jpg"}, {"id": "location-10-prop9", "locationId": "location-10", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 10.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-10-prop9-1.jpg", "img2": "images/properties/location-10-prop9-2.jpg"}, {"id": "location-11-prop1", "locationId": "location-11", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 11.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-11-prop1-1.jpg", "img2": "images/properties/location-11-prop1-2.jpg"}, {"id": "location-11-prop2", "locationId": "location-11", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 11.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-11-prop2-1.jpg", "img2": "images/properties/location-11-prop2-2.jpg"}, {"id": "location-11-prop3", "locationId": "location-11", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 11.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-11-prop3-1.jpg", "img2": "images/properties/location-11-prop3-2.jpg"}, {"id": "location-11-prop4", "locationId": "location-11", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 11.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-11-prop4-1.jpg", "img2": "images/properties/location-11-prop4-2.jpg"}, {"id": "location-11-prop5", "locationId": "location-11", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 11.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-11-prop5-1.jpg", "img2": "images/properties/location-11-prop5-2.jpg"}, {"id": "location-11-prop6", "locationId": "location-11", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 11.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-11-prop6-1.jpg", "img2": "images/properties/location-11-prop6-2.jpg"}, {"id": "location-11-prop7", "locationId": "location-11", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 11.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-11-prop7-1.jpg", "img2": "images/properties/location-11-prop7-2.jpg"}, {"id": "location-11-prop8", "locationId": "location-11", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 11.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-11-prop8-1.jpg", "img2": "images/properties/location-11-prop8-2.jpg"}, {"id": "location-11-prop9", "locationId": "location-11", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 11.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-11-prop9-1.jpg", "img2": "images/properties/location-11-prop9-2.jpg"}, {"id": "location-12-prop1", "locationId": "location-12", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 12.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-12-prop1-1.jpg", "img2": "images/properties/location-12-prop1-2.jpg"}, {"id": "location-12-prop2", "locationId": "location-12", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 12.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-12-prop2-1.jpg", "img2": "images/properties/location-12-prop2-2.jpg"}, {"id": "location-12-prop3", "locationId": "location-12", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 12.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-12-prop3-1.jpg", "img2": "images/properties/location-12-prop3-2.jpg"}, {"id": "location-12-prop4", "locationId": "location-12", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 12.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-12-prop4-1.jpg", "img2": "images/properties/location-12-prop4-2.jpg"}, {"id": "location-12-prop5", "locationId": "location-12", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 12.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-12-prop5-1.jpg", "img2": "images/properties/location-12-prop5-2.jpg"}, {"id": "location-12-prop6", "locationId": "location-12", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 12.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-12-prop6-1.jpg", "img2": "images/properties/location-12-prop6-2.jpg"}, {"id": "location-12-prop7", "locationId": "location-12", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 12.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-12-prop7-1.jpg", "img2": "images/properties/location-12-prop7-2.jpg"}, {"id": "location-12-prop8", "locationId": "location-12", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 12.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-12-prop8-1.jpg", "img2": "images/properties/location-12-prop8-2.jpg"}, {"id": "location-12-prop9", "locationId": "location-12", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 12.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-12-prop9-1.jpg", "img2": "images/properties/location-12-prop9-2.jpg"}, {"id": "location-13-prop1", "locationId": "location-13", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 13.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-13-prop1-1.jpg", "img2": "images/properties/location-13-prop1-2.jpg"}, {"id": "location-13-prop2", "locationId": "location-13", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 13.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-13-prop2-1.jpg", "img2": "images/properties/location-13-prop2-2.jpg"}, {"id": "location-13-prop3", "locationId": "location-13", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 13.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-13-prop3-1.jpg", "img2": "images/properties/location-13-prop3-2.jpg"}, {"id": "location-13-prop4", "locationId": "location-13", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 13.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-13-prop4-1.jpg", "img2": "images/properties/location-13-prop4-2.jpg"}, {"id": "location-13-prop5", "locationId": "location-13", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 13.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-13-prop5-1.jpg", "img2": "images/properties/location-13-prop5-2.jpg"}, {"id": "location-13-prop6", "locationId": "location-13", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 13.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-13-prop6-1.jpg", "img2": "images/properties/location-13-prop6-2.jpg"}, {"id": "location-13-prop7", "locationId": "location-13", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 13.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-13-prop7-1.jpg", "img2": "images/properties/location-13-prop7-2.jpg"}, {"id": "location-13-prop8", "locationId": "location-13", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 13.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-13-prop8-1.jpg", "img2": "images/properties/location-13-prop8-2.jpg"}, {"id": "location-13-prop9", "locationId": "location-13", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 13.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-13-prop9-1.jpg", "img2": "images/properties/location-13-prop9-2.jpg"}, {"id": "location-14-prop1", "locationId": "location-14", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 14.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-14-prop1-1.jpg", "img2": "images/properties/location-14-prop1-2.jpg"}, {"id": "location-14-prop2", "locationId": "location-14", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 14.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-14-prop2-1.jpg", "img2": "images/properties/location-14-prop2-2.jpg"}, {"id": "location-14-prop3", "locationId": "location-14", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 14.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-14-prop3-1.jpg", "img2": "images/properties/location-14-prop3-2.jpg"}, {"id": "location-14-prop4", "locationId": "location-14", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 14.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-14-prop4-1.jpg", "img2": "images/properties/location-14-prop4-2.jpg"}, {"id": "location-14-prop5", "locationId": "location-14", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 14.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-14-prop5-1.jpg", "img2": "images/properties/location-14-prop5-2.jpg"}, {"id": "location-14-prop6", "locationId": "location-14", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 14.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-14-prop6-1.jpg", "img2": "images/properties/location-14-prop6-2.jpg"}, {"id": "location-14-prop7", "locationId": "location-14", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 14.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-14-prop7-1.jpg", "img2": "images/properties/location-14-prop7-2.jpg"}, {"id": "location-14-prop8", "locationId": "location-14", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 14.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-14-prop8-1.jpg", "img2": "images/properties/location-14-prop8-2.jpg"}, {"id": "location-14-prop9", "locationId": "location-14", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 14.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-14-prop9-1.jpg", "img2": "images/properties/location-14-prop9-2.jpg"}, {"id": "location-15-prop1", "locationId": "location-15", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 15.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-15-prop1-1.jpg", "img2": "images/properties/location-15-prop1-2.jpg"}, {"id": "location-15-prop2", "locationId": "location-15", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 15.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-15-prop2-1.jpg", "img2": "images/properties/location-15-prop2-2.jpg"}, {"id": "location-15-prop3", "locationId": "location-15", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 15.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-15-prop3-1.jpg", "img2": "images/properties/location-15-prop3-2.jpg"}, {"id": "location-15-prop4", "locationId": "location-15", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 15.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-15-prop4-1.jpg", "img2": "images/properties/location-15-prop4-2.jpg"}, {"id": "location-15-prop5", "locationId": "location-15", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 15.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-15-prop5-1.jpg", "img2": "images/properties/location-15-prop5-2.jpg"}, {"id": "location-15-prop6", "locationId": "location-15", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 15.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-15-prop6-1.jpg", "img2": "images/properties/location-15-prop6-2.jpg"}, {"id": "location-15-prop7", "locationId": "location-15", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 15.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-15-prop7-1.jpg", "img2": "images/properties/location-15-prop7-2.jpg"}, {"id": "location-15-prop8", "locationId": "location-15", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 15.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-15-prop8-1.jpg", "img2": "images/properties/location-15-prop8-2.jpg"}, {"id": "location-15-prop9", "locationId": "location-15", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 15.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-15-prop9-1.jpg", "img2": "images/properties/location-15-prop9-2.jpg"}, {"id": "location-16-prop1", "locationId": "location-16", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 16.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-16-prop1-1.jpg", "img2": "images/properties/location-16-prop1-2.jpg"}, {"id": "location-16-prop2", "locationId": "location-16", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 16.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-16-prop2-1.jpg", "img2": "images/properties/location-16-prop2-2.jpg"}, {"id": "location-16-prop3", "locationId": "location-16", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 16.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-16-prop3-1.jpg", "img2": "images/properties/location-16-prop3-2.jpg"}, {"id": "location-16-prop4", "locationId": "location-16", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 16.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-16-prop4-1.jpg", "img2": "images/properties/location-16-prop4-2.jpg"}, {"id": "location-16-prop5", "locationId": "location-16", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 16.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-16-prop5-1.jpg", "img2": "images/properties/location-16-prop5-2.jpg"}, {"id": "location-16-prop6", "locationId": "location-16", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 16.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-16-prop6-1.jpg", "img2": "images/properties/location-16-prop6-2.jpg"}, {"id": "location-16-prop7", "locationId": "location-16", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 16.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-16-prop7-1.jpg", "img2": "images/properties/location-16-prop7-2.jpg"}, {"id": "location-16-prop8", "locationId": "location-16", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 16.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-16-prop8-1.jpg", "img2": "images/properties/location-16-prop8-2.jpg"}, {"id": "location-16-prop9", "locationId": "location-16", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 16.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-16-prop9-1.jpg", "img2": "images/properties/location-16-prop9-2.jpg"}, {"id": "location-17-prop1", "locationId": "location-17", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 17.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-17-prop1-1.jpg", "img2": "images/properties/location-17-prop1-2.jpg"}, {"id": "location-17-prop2", "locationId": "location-17", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 17.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-17-prop2-1.jpg", "img2": "images/properties/location-17-prop2-2.jpg"}, {"id": "location-17-prop3", "locationId": "location-17", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 17.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-17-prop3-1.jpg", "img2": "images/properties/location-17-prop3-2.jpg"}, {"id": "location-17-prop4", "locationId": "location-17", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 17.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-17-prop4-1.jpg", "img2": "images/properties/location-17-prop4-2.jpg"}, {"id": "location-17-prop5", "locationId": "location-17", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 17.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-17-prop5-1.jpg", "img2": "images/properties/location-17-prop5-2.jpg"}, {"id": "location-17-prop6", "locationId": "location-17", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 17.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-17-prop6-1.jpg", "img2": "images/properties/location-17-prop6-2.jpg"}, {"id": "location-17-prop7", "locationId": "location-17", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 17.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-17-prop7-1.jpg", "img2": "images/properties/location-17-prop7-2.jpg"}, {"id": "location-17-prop8", "locationId": "location-17", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 17.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-17-prop8-1.jpg", "img2": "images/properties/location-17-prop8-2.jpg"}, {"id": "location-17-prop9", "locationId": "location-17", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 17.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-17-prop9-1.jpg", "img2": "images/properties/location-17-prop9-2.jpg"}, {"id": "location-18-prop1", "locationId": "location-18", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 18.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-18-prop1-1.jpg", "img2": "images/properties/location-18-prop1-2.jpg"}, {"id": "location-18-prop2", "locationId": "location-18", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 18.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-18-prop2-1.jpg", "img2": "images/properties/location-18-prop2-2.jpg"}, {"id": "location-18-prop3", "locationId": "location-18", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 18.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-18-prop3-1.jpg", "img2": "images/properties/location-18-prop3-2.jpg"}, {"id": "location-18-prop4", "locationId": "location-18", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 18.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-18-prop4-1.jpg", "img2": "images/properties/location-18-prop4-2.jpg"}, {"id": "location-18-prop5", "locationId": "location-18", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 18.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-18-prop5-1.jpg", "img2": "images/properties/location-18-prop5-2.jpg"}, {"id": "location-18-prop6", "locationId": "location-18", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 18.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-18-prop6-1.jpg", "img2": "images/properties/location-18-prop6-2.jpg"}, {"id": "location-18-prop7", "locationId": "location-18", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 18.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-18-prop7-1.jpg", "img2": "images/properties/location-18-prop7-2.jpg"}, {"id": "location-18-prop8", "locationId": "location-18", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 18.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-18-prop8-1.jpg", "img2": "images/properties/location-18-prop8-2.jpg"}, {"id": "location-18-prop9", "locationId": "location-18", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 18.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-18-prop9-1.jpg", "img2": "images/properties/location-18-prop9-2.jpg"}, {"id": "location-19-prop1", "locationId": "location-19", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 19.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-19-prop1-1.jpg", "img2": "images/properties/location-19-prop1-2.jpg"}, {"id": "location-19-prop2", "locationId": "location-19", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 19.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-19-prop2-1.jpg", "img2": "images/properties/location-19-prop2-2.jpg"}, {"id": "location-19-prop3", "locationId": "location-19", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 19.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-19-prop3-1.jpg", "img2": "images/properties/location-19-prop3-2.jpg"}, {"id": "location-19-prop4", "locationId": "location-19", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 19.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-19-prop4-1.jpg", "img2": "images/properties/location-19-prop4-2.jpg"}, {"id": "location-19-prop5", "locationId": "location-19", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 19.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-19-prop5-1.jpg", "img2": "images/properties/location-19-prop5-2.jpg"}, {"id": "location-19-prop6", "locationId": "location-19", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 19.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-19-prop6-1.jpg", "img2": "images/properties/location-19-prop6-2.jpg"}, {"id": "location-19-prop7", "locationId": "location-19", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 19.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-19-prop7-1.jpg", "img2": "images/properties/location-19-prop7-2.jpg"}, {"id": "location-19-prop8", "locationId": "location-19", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 19.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-19-prop8-1.jpg", "img2": "images/properties/location-19-prop8-2.jpg"}, {"id": "location-19-prop9", "locationId": "location-19", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 19.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-19-prop9-1.jpg", "img2": "images/properties/location-19-prop9-2.jpg"}, {"id": "location-20-prop1", "locationId": "location-20", "name": "Property 1", "type": "Hotel", "price": 1200, "desc": "Property 1 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 20.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-20-prop1-1.jpg", "img2": "images/properties/location-20-prop1-2.jpg"}, {"id": "location-20-prop2", "locationId": "location-20", "name": "Property 2", "type": "Homestay", "price": 1800, "desc": "Property 2 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 20.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-20-prop2-1.jpg", "img2": "images/properties/location-20-prop2-2.jpg"}, {"id": "location-20-prop3", "locationId": "location-20", "name": "Property 3", "type": "Resort", "price": 2500, "desc": "Property 3 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 20.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-20-prop3-1.jpg", "img2": "images/properties/location-20-prop3-2.jpg"}, {"id": "location-20-prop4", "locationId": "location-20", "name": "Property 4", "type": "Guesthouse", "price": 1400, "desc": "Property 4 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 20.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-20-prop4-1.jpg", "img2": "images/properties/location-20-prop4-2.jpg"}, {"id": "location-20-prop5", "locationId": "location-20", "name": "Property 5", "type": "Cottage", "price": 3200, "desc": "Property 5 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 20.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-20-prop5-1.jpg", "img2": "images/properties/location-20-prop5-2.jpg"}, {"id": "location-20-prop6", "locationId": "location-20", "name": "Property 6", "type": "Homestay", "price": 1100, "desc": "Property 6 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 20.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-20-prop6-1.jpg", "img2": "images/properties/location-20-prop6-2.jpg"}, {"id": "location-20-prop7", "locationId": "location-20", "name": "Property 7", "type": "Hotel", "price": 2200, "desc": "Property 7 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 20.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-20-prop7-1.jpg", "img2": "images/properties/location-20-prop7-2.jpg"}, {"id": "location-20-prop8", "locationId": "location-20", "name": "Property 8", "type": "Resort", "price": 3800, "desc": "Property 8 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 20.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-20-prop8-1.jpg", "img2": "images/properties/location-20-prop8-2.jpg"}, {"id": "location-20-prop9", "locationId": "location-20", "name": "Property 9", "type": "Homestay", "price": 1600, "desc": "Property 9 description here. Edit this text to add details about the property — its unique features, views, and what makes it special for travellers visiting Location 20.", "amenities": ["Amenity 1", "Amenity 2", "Amenity 3", "WiFi"], "img1": "images/properties/location-20-prop9-1.jpg", "img2": "images/properties/location-20-prop9-2.jpg"}];
 
-  /* ── KALIMPONG ── */
-  {
-    id:'kalim-01', locationId:'kalimpong', name:'Morgan House', type:'Resort',
-    price:2200,
-    desc:'Colonial-era bungalow set amidst orchards with sweeping views of the Teesta valley.',
-    amenities:['Valley View','Orchard Walk','Breakfast','Parking'],
-    img1:'images/properties/kalimpong-morgan-1.jpg',
-    img2:'images/properties/kalimpong-morgan-2.jpg'
-  },
-  {
-    id:'kalim-02', locationId:'kalimpong', name:'Himalayan Hotel', type:'Hotel',
-    price:2800,
-    desc:'Elegant boutique hotel with beautiful gardens and personalised service in the heart of Kalimpong.',
-    amenities:['Garden','Restaurant','WiFi','Room Service'],
-    img1:'images/properties/kalimpong-himalayan-1.jpg',
-    img2:'images/properties/kalimpong-himalayan-2.jpg'
-  },
-
-  /* ── KURSEONG ── */
-  {
-    id:'kurs-01', locationId:'kurseong', name:'Cochrane Place', type:'Resort',
-    price:3200,
-    desc:'Award-winning boutique resort inside a 1920s heritage building surrounded by tea estates.',
-    amenities:['Tea Garden','Pool','Spa','Restaurant','Heritage'],
-    img1:'images/properties/kurseong-cochrane-1.jpg',
-    img2:'images/properties/kurseong-cochrane-2.jpg'
-  },
-  {
-    id:'kurs-02', locationId:'kurseong', name:'Tea Bungalow Homestay', type:'Homestay',
-    price:1400,
-    desc:'Cozy rooms inside a working tea estate with daily tea tasting and organic farm meals.',
-    amenities:['Tea Tasting','Organic Meals','Nature Walk','Heater'],
-    img1:'images/properties/kurseong-teabungalow-1.jpg',
-    img2:'images/properties/kurseong-teabungalow-2.jpg'
-  },
-
-  /* ── GANGTOK ── */
-  {
-    id:'gang-01', locationId:'gangtok', name:'Elgin Nor-Khill', type:'Hotel',
-    price:4200,
-    desc:'Sikkim\'s most iconic heritage hotel, built for the Chogyal of Sikkim, with stunning Kanchenjunga views.',
-    amenities:['Kanchenjunga View','Heritage','Restaurant','Spa','WiFi'],
-    img1:'images/properties/gangtok-elgin-1.jpg',
-    img2:'images/properties/gangtok-elgin-2.jpg'
-  },
-  {
-    id:'gang-02', locationId:'gangtok', name:'Sikkim Homestay', type:'Homestay',
-    price:1100,
-    desc:'Warm Nepali family homestay near MG Marg with home-cooked meals and local sightseeing tips.',
-    amenities:['Home-cooked Meals','MG Marg Access','WiFi','Heater'],
-    img1:'images/properties/gangtok-homestay-1.jpg',
-    img2:'images/properties/gangtok-homestay-2.jpg'
-  },
-
-  /* ── PELLING ── */
-  {
-    id:'pell-01', locationId:'pelling', name:'Norbu Ghang Resort', type:'Resort',
-    price:3800,
-    desc:'Spectacular resort with unobstructed views of Kanchenjunga. Infinity pool, spa and gourmet dining.',
-    amenities:['Infinity Pool','Kanchenjunga View','Spa','Restaurant','Balcony'],
-    img1:'images/properties/pelling-norbu-1.jpg',
-    img2:'images/properties/pelling-norbu-2.jpg'
-  },
-  {
-    id:'pell-02', locationId:'pelling', name:'Mountain Dew Homestay', type:'Homestay',
-    price:1300,
-    desc:'Simple, clean homestay with stunning sunrise views over the Himalayan range. Walk to Pemayangtse.',
-    amenities:['Sunrise View','Balcony','Home-cooked Meals','Quiet'],
-    img1:'images/properties/pelling-mountaindew-1.jpg',
-    img2:'images/properties/pelling-mountaindew-2.jpg'
-  },
-
-  /* ── LACHUNG ── */
-  {
-    id:'lach-01', locationId:'lachung', name:'Lachung Alpine Resort', type:'Resort',
-    price:2600,
-    desc:'Cozy mountain resort at 8,600 ft with river views, perfect base for Yumthang Valley.',
-    amenities:['River View','Bonfire','Hot Water','Restaurant','Alpine Setting'],
-    img1:'images/properties/lachung-alpine-1.jpg',
-    img2:'images/properties/lachung-alpine-2.jpg'
-  },
-
-  /* ── DOOARS ── */
-  {
-    id:'door-01', locationId:'dooars', name:'Jungle Camp Dooars', type:'Resort',
-    price:2000,
-    desc:'Eco-resort inside the forest buffer zone with safari access, bonfire evenings and wildlife sightings.',
-    amenities:['Jungle Safari','Bonfire','Wildlife','Eco-resort','Meals Included'],
-    img1:'images/properties/dooars-junglecamp-1.jpg',
-    img2:'images/properties/dooars-junglecamp-2.jpg'
-  },
-
-  /* ── MIRIK ── */
-  {
-    id:'mirik-01', locationId:'mirik', name:'Lake View Cottage', type:'Cottage',
-    price:1600,
-    desc:'Peaceful cottage right on the banks of Mirik Lake with rowing boat access and tea garden surrounds.',
-    amenities:['Lake View','Rowing Boat','Tea Garden','Quiet','Bonfire'],
-    img1:'images/properties/mirik-lakeview-1.jpg',
-    img2:'images/properties/mirik-lakeview-2.jpg'
-  },
-
-  /* ── LAVA ── */
-  {
-    id:'lava-01', locationId:'lava', name:'Lava Forest Retreat', type:'Homestay',
-    price:1200,
-    desc:'Offbeat homestay surrounded by oak and rhododendron forests, close to Neora Valley National Park.',
-    amenities:['Forest Walk','Bird Watching','Home Meals','Fireplace','Offbeat'],
-    img1:'images/properties/lava-forest-1.jpg',
-    img2:'images/properties/lava-forest-2.jpg'
-  },
-
-  /* ── RISHYAP ── */
-  {
-    id:'rish-01', locationId:'rishyap', name:'Rishyap Starview Homestay', type:'Homestay',
-    price:1100,
-    desc:'Elevated homestay with one of the clearest night skies in North Bengal — perfect for stargazing.',
-    amenities:['Stargazing','Panoramic View','Home Meals','Peaceful','Bonfire'],
-    img1:'images/properties/rishyap-starview-1.jpg',
-    img2:'images/properties/rishyap-starview-2.jpg'
-  },
-];
-/* ═══════ END OF PROPERTY DATA — EDIT ABOVE ═══════ */
-
+// ── State
+let currentLocId = null;
 let selectedProp = null;
+let activeTypes = new Set();
+let activePriceBand = null;
 
-/* ── Build Location Grid ── */
-function buildLocGrid() {
+function priceBand(p) {
+  if (p < 1500) return 'budget';
+  if (p <= 3000) return 'mid';
+  return 'luxury';
+}
+
+// ── Build location grid
+function buildLocGrid(filterRegion) {
   const grid = document.getElementById('locGrid');
-  LOCATIONS.forEach(loc => {
+  grid.innerHTML = '';
+  const locs = filterRegion && filterRegion !== 'all'
+    ? LOCATIONS.filter(l => l.region === filterRegion)
+    : LOCATIONS;
+  locs.forEach(loc => {
+    const count = PROPERTIES.filter(p => p.locationId === loc.id).length;
     const card = document.createElement('div');
     card.className = 'loc-card';
+    card.dataset.region = loc.region;
     card.innerHTML = `
       <span class="loc-icon">${loc.icon}</span>
       <span class="loc-name">${loc.name}</span>
-      <span class="loc-region">${loc.region}</span>`;
+      <span class="loc-region">${loc.hint}</span>
+      <span class="loc-count">${count} propert${count !== 1 ? 'ies' : 'y'}</span>`;
     card.addEventListener('click', () => showProperties(loc));
     grid.appendChild(card);
   });
 }
 
-/* ── Show Properties for selected location ── */
+function filterRegion(region) {
+  document.querySelectorAll('.region-tab').forEach(t => t.classList.toggle('active', t.dataset.region === region));
+  buildLocGrid(region);
+}
+
+buildLocGrid('all');
+
 function showProperties(loc) {
-  const props = PROPERTIES.filter(p => p.locationId === loc.id);
+  currentLocId = loc.id;
+  activeTypes.clear();
+  activePriceBand = null;
   document.getElementById('step1').style.display = 'none';
   document.getElementById('step2').style.display = 'block';
-  document.getElementById('propHeading').textContent = `Properties in ${loc.name}`;
-
-  if (props.length === 0) {
-    document.getElementById('propSub').textContent = 'No properties listed yet for this location.';
-    document.getElementById('propGrid').innerHTML = `
-      <div style="grid-column:1/-1;text-align:center;padding:48px 24px;color:var(--muted);">
-        <div style="font-size:2.5rem;margin-bottom:12px;">🏗️</div>
-        <p style="font-weight:600;margin-bottom:6px;">Coming Soon</p>
-        <p style="font-size:0.88rem;">We're adding properties for ${loc.name}.<br>
-        <a href="https://wa.me/919874740763?text=Hi%2C%20I%20am%20looking%20for%20accommodation%20in%20${encodeURIComponent(loc.name)}" target="_blank" style="color:var(--green);font-weight:600;">
-          WhatsApp us directly →</a></p>
-      </div>`;
-  } else {
-    document.getElementById('propSub').textContent = `${props.length} ${props.length === 1 ? 'property' : 'properties'} available — tap to enquire`;
-    document.getElementById('propGrid').innerHTML = props.map(buildPropCard).join('');
-  }
-
-  // Update step indicators
-  document.getElementById('s1ind').classList.remove('active'); document.getElementById('s1ind').classList.add('done');
+  document.getElementById('propHeading').textContent = 'Stays in ' + loc.name;
+  document.getElementById('propSub').textContent = loc.hint + ' — ' + PROPERTIES.filter(p => p.locationId === loc.id).length + ' properties available';
+  document.getElementById('s1ind').classList.remove('active');
+  document.getElementById('s1ind').classList.add('done');
   document.getElementById('sl1').classList.add('done');
   document.getElementById('s2ind').classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  buildTypeFilters(loc.id);
+  renderProps();
+}
+
+function buildTypeFilters(locId) {
+  const types = [...new Set(PROPERTIES.filter(p => p.locationId === locId).map(p => p.type))].sort();
+  const container = document.getElementById('typeFilters');
+  container.innerHTML = '';
+  const icons = { Hotel:'🏨', Homestay:'🏡', Resort:'🌴', Guesthouse:'🛎️', Cottage:'🏕️' };
+  types.forEach(t => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-chip';
+    btn.dataset.type = t;
+    btn.textContent = (icons[t] || '🏠') + ' ' + t;
+    btn.addEventListener('click', () => toggleTypeFilter(t));
+    container.appendChild(btn);
+  });
+  document.querySelectorAll('[data-price]').forEach(b => b.classList.remove('price-active'));
+}
+
+function toggleTypeFilter(type) {
+  if (activeTypes.has(type)) activeTypes.delete(type);
+  else activeTypes.add(type);
+  document.querySelectorAll('[data-type]').forEach(b => b.classList.toggle('active', activeTypes.has(b.dataset.type)));
+  renderProps();
+}
+
+function togglePriceFilter(band) {
+  activePriceBand = activePriceBand === band ? null : band;
+  document.querySelectorAll('[data-price]').forEach(b => b.classList.toggle('price-active', b.dataset.price === activePriceBand));
+  renderProps();
+}
+
+function resetFilters() {
+  activeTypes.clear();
+  activePriceBand = null;
+  document.querySelectorAll('[data-type],[data-price]').forEach(b => b.classList.remove('active','price-active'));
+  renderProps();
+}
+
+function renderProps() {
+  let props = PROPERTIES.filter(p => p.locationId === currentLocId);
+  if (activeTypes.size > 0) props = props.filter(p => activeTypes.has(p.type));
+  if (activePriceBand) props = props.filter(p => priceBand(p.price) === activePriceBand);
+  const grid = document.getElementById('propGrid');
+  const count = document.getElementById('filterCount');
+  const total = PROPERTIES.filter(p => p.locationId === currentLocId).length;
+  if (!props.length) {
+    grid.innerHTML = `<div class="no-results"><span class="nr-icon">🔍</span><p><strong>No properties match your filters.</strong><br>Try removing a filter, or <a href="https://wa.me/919874740763?text=Hi%2C%20I%20need%20help%20finding%20a%20stay" target="_blank" style="color:var(--green);">WhatsApp us</a> for help.</p></div>`;
+    count.textContent = `0 of ${total} properties shown`;
+  } else {
+    grid.innerHTML = props.map(buildPropCard).join('');
+    count.textContent = `Showing ${props.length} of ${total} properties`;
+  }
 }
 
 function goBack() {
   document.getElementById('step2').style.display = 'none';
   document.getElementById('step1').style.display = 'block';
-  document.getElementById('s1ind').classList.add('active'); document.getElementById('s1ind').classList.remove('done');
+  document.getElementById('s1ind').classList.add('active');
+  document.getElementById('s1ind').classList.remove('done');
   document.getElementById('sl1').classList.remove('done');
   document.getElementById('s2ind').classList.remove('active');
 }
 
+function buildPropImg(src, alt) {
+  if (!src) return `<div class="prop-img-ph"><span class="ph-i">🏨</span><span>Add image</span></div>`;
+  return `<img src="${src}" alt="${alt}" loading="lazy" onerror="this.outerHTML='<div class=\'prop-img-ph\'><span class=\'ph-i\'>📷</span><span>Upload: ${src}</span></div>'">`;
+}
+
 function buildPropCard(p) {
-  const imgBlock = `
-    <div class="prop-imgs">
-      <span class="prop-type-badge">${p.type}</span>
-      ${buildPropImg(p.img1, p.name + ' photo 1')}
-      ${buildPropImg(p.img2, p.name + ' photo 2')}
-    </div>`;
-  const amenities = (p.amenities||[]).map(a => `<span class="amenity">${a}</span>`).join('');
+  const locName = LOCATIONS.find(l => l.id === p.locationId)?.name || '';
+  const amenitiesHtml = (p.amenities || []).map(a => `<span class="amenity">${a}</span>`).join('');
   return `
     <div class="prop-card">
-      ${imgBlock}
+      <div class="prop-imgs">
+        <span class="prop-type-badge">${p.type}</span>
+        <div class="prop-imgs-grid">
+          ${buildPropImg(p.img1, p.name + ' 1')}
+          ${buildPropImg(p.img2, p.name + ' 2')}
+        </div>
+      </div>
       <div class="prop-body">
         <div class="prop-name">${p.name}</div>
         <div class="prop-loc">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          ${LOCATIONS.find(l=>l.id===p.locationId)?.name || ''}
+          ${locName}
         </div>
-        <p style="font-size:0.85rem;color:var(--muted);margin-bottom:10px;line-height:1.55;">${p.desc}</p>
-        <div class="prop-amenities">${amenities}</div>
-        <div class="prop-price">₹${p.price.toLocaleString('en-IN')} <span>per person / night</span></div>
-        <button class="btn-book" onclick="openModal('${p.id}')">Enquire &amp; Book →</button>
+        <p class="prop-desc">${p.desc}</p>
+        <div class="prop-amenities">${amenitiesHtml}</div>
+        <div class="prop-price">&#8377;${p.price.toLocaleString('en-IN')} <span>per person / night</span></div>
+        <button class="btn-book" onclick="openModal('${p.id}')">Enquire &amp; Book &rarr;</button>
       </div>
     </div>`;
 }
 
-function buildPropImg(src, alt) {
-  if (!src) return `<div class="prop-img-ph"><span class="ph-i">🏨</span><span>Add image</span></div>`;
-  return `<img src="${src}" alt="${alt}" loading="lazy"
-    onerror="this.outerHTML='<div class=\\'prop-img-ph\\'><span class=\\'ph-i\\'>📷</span><span>${src.split('/').pop()}</span></div>'">`;
-}
-
-/* ── Open Booking Modal ── */
 function openModal(propId) {
   selectedProp = PROPERTIES.find(p => p.id === propId);
   if (!selectedProp) return;
-
-  document.getElementById('modalTitle').textContent = `Book: ${selectedProp.name}`;
-  document.getElementById('modalSub').textContent = `${selectedProp.type} · ${LOCATIONS.find(l=>l.id===selectedProp.locationId)?.name}`;
-
-  // Modal preview with 2 property photos
+  document.getElementById('modalTitle').textContent = 'Book: ' + selectedProp.name;
+  const loc = LOCATIONS.find(l => l.id === selectedProp.locationId)?.name || '';
+  document.getElementById('modalSub').textContent = selectedProp.type + ' · ' + loc;
   const preview = document.getElementById('modalPreview');
-  const img1HTML = selectedProp.img1
-    ? `<img src="${selectedProp.img1}" alt="${selectedProp.name}" onerror="this.outerHTML='<div class=\\'ph\\'>🏨</div>'">`
+  const imgHtml = selectedProp.img1
+    ? `<img src="${selectedProp.img1}" alt="${selectedProp.name}" onerror="this.outerHTML='<div class=\'ph\'>🏨</div>'">`
     : `<div class="ph">🏨</div>`;
-  preview.innerHTML = `
-    ${img1HTML}
-    <div>
-      <div class="mpname">${selectedProp.name}</div>
-      <div class="mploc">${LOCATIONS.find(l=>l.id===selectedProp.locationId)?.name} · ${selectedProp.type}</div>
-      <div class="mpprice">₹${selectedProp.price.toLocaleString('en-IN')} per person/night</div>
-    </div>`;
-
+  preview.innerHTML = `${imgHtml}<div><div class="mpname">${selectedProp.name}</div><div class="mploc">${loc} · ${selectedProp.type}</div><div class="mpprice">&#8377;${selectedProp.price.toLocaleString('en-IN')} per person/night</div></div>`;
+  ['mCheckin','mCheckout','mRooms','mPersons','mName','mNote'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+  document.querySelectorAll('.field-error').forEach(e => e.classList.remove('show'));
+  document.querySelectorAll('.mform-group input').forEach(e => e.classList.remove('error'));
   document.getElementById('bookModal').classList.add('open');
   document.body.style.overflow = 'hidden';
-
-  // Update step indicator
   document.getElementById('s2ind').classList.add('done');
   document.getElementById('sl2').classList.add('done');
   document.getElementById('s3ind').classList.add('active');
@@ -627,52 +525,44 @@ function closeModal() {
   document.getElementById('s3ind').classList.remove('active');
   document.getElementById('s2ind').classList.add('active');
 }
-
 document.getElementById('bookModal').addEventListener('click', e => { if (e.target === document.getElementById('bookModal')) closeModal(); });
 
-/* ── Send WhatsApp Enquiry ── */
+function validateDates() {
+  const ci = document.getElementById('mCheckin').value;
+  const co = document.getElementById('mCheckout').value;
+  const err = document.getElementById('checkoutErr');
+  if (ci && co && new Date(co) <= new Date(ci)) {
+    err.classList.add('show'); document.getElementById('mCheckout').classList.add('error'); return false;
+  }
+  err.classList.remove('show'); document.getElementById('mCheckout').classList.remove('error'); return true;
+}
+
 function sendPropertyWA() {
-  const ci   = document.getElementById('mCheckin').value;
-  const co   = document.getElementById('mCheckout').value;
-  const rm   = document.getElementById('mRooms').value;
-  const per  = document.getElementById('mPersons').value;
+  const ci = document.getElementById('mCheckin').value;
+  const co = document.getElementById('mCheckout').value;
+  const rm = document.getElementById('mRooms').value;
+  const per = document.getElementById('mPersons').value;
   const name = document.getElementById('mName').value.trim();
   const note = document.getElementById('mNote').value.trim();
-
-  if (!ci || !co || !rm || !per) { alert('Please fill in Check-in, Check-out, Rooms, and Persons.'); return; }
-  if (!name) { alert('Please enter your name.'); return; }
-
+  let valid = true;
+  if (!ci) { document.getElementById('checkinErr').classList.add('show'); document.getElementById('mCheckin').classList.add('error'); valid = false; }
+  else { document.getElementById('checkinErr').classList.remove('show'); document.getElementById('mCheckin').classList.remove('error'); }
+  if (!co || !validateDates()) valid = false;
+  if (!name) { document.getElementById('nameErr').classList.add('show'); document.getElementById('mName').classList.add('error'); valid = false; }
+  else { document.getElementById('nameErr').classList.remove('show'); document.getElementById('mName').classList.remove('error'); }
+  if (!rm || !per) { alert('Please select number of rooms and persons.'); valid = false; }
+  if (!valid) return;
   const fmt = v => { const [y,m,d] = v.split('-'); return `${d} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]} ${y}`; };
   const loc = LOCATIONS.find(l => l.id === selectedProp.locationId)?.name || '';
-
-  const msg =
-    `🏨 *PROPERTY BOOKING ENQUIRY*\n` +
-    `━━━━━━━━━━━━━━━━━━━━━━━━\n` +
-    `*Property:* ${selectedProp.name}\n` +
-    `*Location:* ${loc}\n` +
-    `*Type:* ${selectedProp.type}\n` +
-    `*Price:* ₹${selectedProp.price.toLocaleString('en-IN')} per person/night\n\n` +
-    `📅 *Check-in:* ${fmt(ci)}\n` +
-    `📅 *Check-out:* ${fmt(co)}\n` +
-    `🛏️ *Rooms Required:* ${rm}\n` +
-    `👥 *Total Persons:* ${per}\n` +
-    `👤 *Guest Name:* ${name}\n` +
-    (note ? `📝 *Special Requests:* ${note}\n` : '') +
-    `━━━━━━━━━━━━━━━━━━━━━━━━\n` +
-    `Please confirm availability and share the booking details. Thank you!`;
-
+  const msg = `🏨 *PROPERTY BOOKING ENQUIRY*\n━━━━━━━━━━━━━━━━━━━━━━━━\n*Property:* ${selectedProp.name}\n*Location:* ${loc}\n*Type:* ${selectedProp.type}\n*Price:* ₹${selectedProp.price.toLocaleString('en-IN')} per person/night\n\n📅 *Check-in:* ${fmt(ci)}\n📅 *Check-out:* ${fmt(co)}\n🛏️ *Rooms:* ${rm}\n👥 *Persons:* ${per}\n👤 *Name:* ${name}\n${note ? '📝 *Special Requests:* ' + note + '\n' : ''}━━━━━━━━━━━━━━━━━━━━━━━━\nPlease confirm availability. Thank you!`;
   window.open('https://wa.me/919874740763?text=' + encodeURIComponent(msg), '_blank');
 }
 
-/* ── Hamburger ── */
-const hbg = document.getElementById('hamburger');
-const mm  = document.getElementById('mobileMenu');
+const hbg = document.getElementById('hamburger'), mm = document.getElementById('mobileMenu');
 hbg.addEventListener('click', () => mm.classList.toggle('open'));
 function closeMenu() { mm.classList.remove('open'); }
 document.addEventListener('click', e => { if (!hbg.contains(e.target) && !mm.contains(e.target)) mm.classList.remove('open'); });
-
-// Init
-buildLocGrid();
+window.addEventListener('scroll', () => { document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400); }, { passive: true });
 </script>
 </body>
 </html>
