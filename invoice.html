@@ -371,6 +371,7 @@
             <tbody id="costRows"></tbody>
           </table>
           <button class="btn-add-row" onclick="addCostRow()">+ Add Item</button>
+          <button class="btn-add-row" onclick="addHomestayRow()" style="background:#eaf5ee;border-color:var(--green);color:var(--green);">🏡 + Homestay (per person/day)</button>
 
           <div class="total-display" id="totalDisplay">
             <span class="lbl">Total Package Cost</span>
@@ -564,10 +565,10 @@ document.addEventListener('DOMContentLoaded', () => {
   addDay('Day 2', '');
   addDay('Day 3', '');
   // Default cost rows
-  addCostRow('Accommodation (per person × nights)', 2, 3500);
-  addCostRow('All Transfers & Sightseeing Cab', 1, 4000);
-  addCostRow('Meals (Breakfast + Dinner)', 2, 1500);
-  addCostRow('Entry Fees & Permits', 1, 800);
+  addCostRow('Accommodation (per person × nights)', 2, 3500, 'fixed');
+  addCostRow('All Transfers & Sightseeing Cab', 1, 4000, 'fixed');
+  addCostRow('Meals (Breakfast + Dinner)', 2, 1500, 'fixed');
+  addCostRow('Entry Fees & Permits', 1, 800, 'fixed');
   calcTotal();
   updatePreview();
 });
@@ -605,28 +606,57 @@ function removeDay(id) {
 // ─────────────────────────────────────────────
 //  COST TABLE
 // ─────────────────────────────────────────────
-function addCostRow(desc='', qty=1, rate=0) {
+function addCostRow(desc='', qty=1, rate=0, rateType='fixed') {
   costRowCount++;
   const tbody = document.getElementById('costRows');
   const tr = document.createElement('tr');
   tr.id = 'cr-' + costRowCount;
+  tr.dataset.rateType = rateType;
   const amt = qty * rate;
+
+  // Label shown next to qty based on type
+  const qtyLabel  = rateType === 'ppd' ? 'Persons × Nights' : 'Qty';
+  const rateLabel = rateType === 'ppd' ? 'Rate/Person/Night (₹)' : 'Rate (₹)';
+  const typeBadge = rateType === 'ppd'
+    ? `<span style="font-size:0.65rem;background:#eaf5ee;color:var(--green);border-radius:4px;padding:1px 6px;font-weight:600;margin-left:4px;">per person/day</span>`
+    : '';
+
   tr.innerHTML = `
-    <td><input type="text" value="${desc}" placeholder="Item description" oninput="calcTotal()"></td>
-    <td><input type="number" value="${qty}" min="1" style="width:60px;" oninput="calcRowAmt(this)" data-row="${costRowCount}"></td>
-    <td><input type="number" value="${rate}" min="0" style="width:90px;" oninput="calcRowAmt(this)" data-row="${costRowCount}"></td>
+    <td>
+      <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;">
+        <input type="text" value="${desc}" placeholder="Item description" oninput="calcTotal()" style="flex:1;min-width:120px;">
+        ${typeBadge}
+      </div>
+    </td>
+    <td>
+      <div style="display:flex;flex-direction:column;gap:2px;">
+        <span style="font-size:0.65rem;color:var(--muted);white-space:nowrap;">${qtyLabel}</span>
+        <input type="number" value="${qty}" min="1" style="width:80px;" oninput="calcRowAmt(this)" data-row="${costRowCount}">
+      </div>
+    </td>
+    <td>
+      <div style="display:flex;flex-direction:column;gap:2px;">
+        <span style="font-size:0.65rem;color:var(--muted);white-space:nowrap;">${rateLabel}</span>
+        <input type="number" value="${rate}" min="0" style="width:100px;" oninput="calcRowAmt(this)" data-row="${costRowCount}">
+      </div>
+    </td>
     <td><input type="number" value="${amt}" min="0" style="width:100px;font-weight:600;color:var(--gold-dk);" id="rowamt-${costRowCount}" readonly></td>
     <td><button onclick="removeCostRow('cr-${costRowCount}')" style="background:#fee2e2;border:none;color:#c0392b;border-radius:5px;width:26px;height:26px;cursor:pointer;font-size:0.9rem;" title="Remove">✕</button></td>`;
   tbody.appendChild(tr);
   calcTotal();
 }
 
+function addHomestayRow() {
+  addCostRow('Homestay (accommodation + all meals)', 2, 1800, 'ppd');
+}
+
 function calcRowAmt(inp) {
   const row = inp.closest('tr');
-  const inputs = row.querySelectorAll('input[type="number"]');
-  const qty = parseFloat(inputs[0].value) || 0;
-  const rate = parseFloat(inputs[1].value) || 0;
-  inputs[2].value = qty * rate;
+  const numInputs = Array.from(row.querySelectorAll('input[type="number"]'));
+  // numInputs[0]=qty, numInputs[1]=rate, numInputs[2]=amt (readonly)
+  const qty  = parseFloat(numInputs[0].value) || 0;
+  const rate = parseFloat(numInputs[1].value) || 0;
+  numInputs[2].value = qty * rate;
   calcTotal();
 }
 
@@ -639,8 +669,8 @@ function removeCostRow(id) {
 function calcTotal() {
   let total = 0;
   document.querySelectorAll('#costRows tr').forEach(tr => {
-    const amtInputs = tr.querySelectorAll('input[type="number"]');
-    if(amtInputs.length >= 3) total += parseFloat(amtInputs[2].value) || 0;
+    const numInputs = Array.from(tr.querySelectorAll('input[type="number"]'));
+    if(numInputs.length >= 3) total += parseFloat(numInputs[2].value) || 0;
   });
   document.getElementById('totalAmt').textContent = '₹' + total.toLocaleString('en-IN');
   document.getElementById('pv-total').textContent = '₹' + total.toLocaleString('en-IN');
@@ -650,8 +680,8 @@ function calcTotal() {
 function calcPayments() {
   let total = 0;
   document.querySelectorAll('#costRows tr').forEach(tr => {
-    const amtInputs = tr.querySelectorAll('input[type="number"]');
-    if(amtInputs.length >= 3) total += parseFloat(amtInputs[2].value) || 0;
+    const numInputs = Array.from(tr.querySelectorAll('input[type="number"]'));
+    if(numInputs.length >= 3) total += parseFloat(numInputs[2].value) || 0;
   });
   const advance = parseFloat(document.getElementById('advancePaid').value) || 0;
   const due = Math.max(0, total - advance);
@@ -768,13 +798,16 @@ function generatePDF() {
   const costRows = [];
   let totalCost = 0;
   document.querySelectorAll('#costRows tr').forEach(tr => {
-    const cells = tr.querySelectorAll('input');
-    if(cells.length >= 4) {
-      const desc = cells[0].value;
-      const qty  = parseFloat(cells[1].value) || 0;
-      const rate = parseFloat(cells[2].value) || 0;
-      const amt  = parseFloat(cells[3].value) || 0;
-      costRows.push({ desc, qty, rate, amt });
+    const cells = Array.from(tr.querySelectorAll('input'));
+    const textInput = tr.querySelector('input[type="text"]');
+    const numInputs = Array.from(tr.querySelectorAll('input[type="number"]'));
+    if(numInputs.length >= 3) {
+      const desc     = textInput ? textInput.value : '';
+      const qty      = parseFloat(numInputs[0].value) || 0;
+      const rate     = parseFloat(numInputs[1].value) || 0;
+      const amt      = parseFloat(numInputs[2].value) || 0;
+      const rateType = tr.dataset.rateType || 'fixed';
+      costRows.push({ desc, qty, rate, amt, rateType });
       totalCost += amt;
     }
   });
@@ -898,44 +931,81 @@ function generatePDF() {
   const leftX = M, rightX = W / 2 + 4;
   const blockH = 38;
 
-  // Left: client info
+  // Right: trip summary — dynamic height so long values never truncate
+  const colR1 = rightX + 5, colR2 = rightX + 46;
+  const valMaxW = W - colR2 - M - 4;
+  const tripDetails = [
+    ['Package',        d.tripName],
+    ['Travel Dates',   d.travelStart && d.travelEnd ? `${fmtDate(d.travelStart)} to ${fmtDate(d.travelEnd)}` : '—'],
+    ['Persons/Rooms',  `${d.numPersons} pax / ${d.numRooms} room(s)`],
+    ['Accommodation',  d.accomType],
+    ['Pickup / Drop',  d.pickupDrop || 'NJP / Bagdogra'],
+  ];
+  // Pre-calculate total height needed
+  let tripBlockH = 10; // header bar
+  const tripLineCache = tripDetails.map(([lbl, val]) => {
+    doc.setFontSize(7.5);
+    const lines = doc.splitTextToSize(val || '—', valMaxW);
+    const h = Math.max(lines.length * 4.5, 5.5) + 3;
+    tripBlockH += h;
+    return { lbl, val: val || '—', lines, h };
+  });
+  tripBlockH = Math.max(tripBlockH + 4, blockH);
+
   doc.setFillColor(...CREAM);
-  doc.roundedRect(M, y, (W / 2) - M - 4, blockH, 2, 2, 'F');
+  doc.roundedRect(rightX, y, W - rightX - M, tripBlockH, 2, 2, 'F');
+  doc.setFillColor(...G);
+  doc.roundedRect(rightX, y, W - rightX - M, 8, 2, 2, 'F');
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(...WHITE);
+  doc.text('TRIP DETAILS', rightX + 5, y + 5.5);
+
+  let ry = y + 13;
+  tripLineCache.forEach(({ lbl, lines, h }) => {
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(6.8); doc.setTextColor(...MUTED);
+    doc.text(lbl, colR1, ry);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...TEXT);
+    doc.text(lines, colR2, ry);
+    ry += h;
+  });
+
+  // Recalculate blockH using actual rendered height
+  const actualRightH = tripBlockH;
+  const actualLeftH  = blockH;
+  const combinedH    = Math.max(actualRightH, actualLeftH);
+
+  // Redraw left box at matched height
+  doc.setFillColor(...CREAM);
+  doc.roundedRect(M, y, (W / 2) - M - 4, combinedH, 2, 2, 'F');
   doc.setFillColor(...G);
   doc.roundedRect(M, y, (W / 2) - M - 4, 8, 2, 2, 'F');
   doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(...WHITE);
   doc.text('BILLED TO', M + 5, y + 5.5);
   doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(...G_DK);
-  doc.text(d.clientName, M + 5, y + 16);
+  const clientLines = doc.splitTextToSize(d.clientName, (W/2) - M - 4 - 10);
+  doc.text(clientLines, M + 5, y + 15);
+  let cy = y + 15 + clientLines.length * 5;
   doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(...MUTED);
-  if (d.clientPhone) doc.text(d.clientPhone, M + 5, y + 22);
-  if (d.clientEmail) doc.text(d.clientEmail, M + 5, y + 27.5);
-  if (d.clientCity) doc.text(d.clientCity, M + 5, y + 33);
+  if (d.clientPhone) { doc.text(d.clientPhone, M + 5, cy); cy += 5.5; }
+  if (d.clientEmail) { doc.text(d.clientEmail, M + 5, cy); cy += 5.5; }
+  if (d.clientCity)  { doc.text(d.clientCity,  M + 5, cy); }
 
-  // Right: trip summary
+  // Redraw right box at correct height too
   doc.setFillColor(...CREAM);
-  doc.roundedRect(rightX, y, W - rightX - M, blockH, 2, 2, 'F');
+  doc.roundedRect(rightX, y, W - rightX - M, combinedH, 2, 2, 'F');
   doc.setFillColor(...G);
   doc.roundedRect(rightX, y, W - rightX - M, 8, 2, 2, 'F');
   doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(...WHITE);
   doc.text('TRIP DETAILS', rightX + 5, y + 5.5);
-  const colR1 = rightX + 5, colR2 = rightX + 52;
-  const tripDetails = [
-    ['Package', d.tripName],
-    ['Travel Dates', d.travelStart && d.travelEnd ? `${fmtDate(d.travelStart)} → ${fmtDate(d.travelEnd)}` : '—'],
-    ['Persons / Rooms', `${d.numPersons} pax  /  ${d.numRooms} room(s)`],
-    ['Pickup / Drop', d.pickupDrop || 'NJP / Bagdogra'],
-  ];
-  tripDetails.forEach(([lbl, val], i) => {
-    const ry = y + 14 + i * 6;
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(...MUTED);
+  ry = y + 13;
+  tripLineCache.forEach(({ lbl, lines, h }) => {
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(6.8); doc.setTextColor(...MUTED);
     doc.text(lbl, colR1, ry);
     doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...TEXT);
-    const lines = doc.splitTextToSize(val, W - colR2 - M - 2);
     doc.text(lines, colR2, ry);
+    ry += h;
   });
 
-  y += blockH + 12;
+  y += combinedH + 12;
 
   // ── ITINERARY ──
   if (days.length) {
@@ -970,27 +1040,47 @@ function generatePDF() {
 
   // ── COST BREAKDOWN ──
   if (costRows.length) {
-    sectionHead('Cost Breakdown', 'cost:');
+    sectionHead('Cost Breakdown', '');
+    // Column positions
+    const C_DESC = M + 3;
+    const C_QTY  = M + 95;
+    const C_RATE = M + 128;
+    const C_AMT  = W - M - 3;
+    const C_DESC_W = 78; // max width for description text before wrapping
     // Table header
     doc.setFillColor(...CREAM);
     doc.rect(M, y, W - M * 2, 8, 'F');
     doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5); doc.setTextColor(...G);
-    doc.text('ITEM / DESCRIPTION', M + 3, y + 5.5);
-    doc.text('QTY', M + 96, y + 5.5, { align: 'right' });
-    doc.text('RATE (₹)', M + 121, y + 5.5, { align: 'right' });
-    doc.text('AMOUNT (₹)', W - M - 3, y + 5.5, { align: 'right' });
+    doc.text('ITEM / DESCRIPTION', C_DESC, y + 5.5);
+    doc.text('QTY',       C_QTY,  y + 5.5, { align: 'right' });
+    doc.text('RATE (₹)',  C_RATE, y + 5.5, { align: 'right' });
+    doc.text('AMOUNT (₹)', C_AMT, y + 5.5, { align: 'right' });
     y += 10;
 
     costRows.forEach((row, i) => {
-      checkY(9);
-      if (i % 2 === 1) { doc.setFillColor(251, 249, 245); doc.rect(M, y - 3, W - M * 2, 8, 'F'); }
+      // Pre-wrap description to calculate row height
+      doc.setFontSize(8);
+      const descLines = doc.splitTextToSize(row.desc || '—', C_DESC_W);
+      const rowH = Math.max(descLines.length * 4.8, 8) + 4;
+      checkY(rowH + 2);
+      if (i % 2 === 1) {
+        doc.setFillColor(251, 249, 245);
+        doc.rect(M, y - 2, W - M * 2, rowH, 'F');
+      }
+      const midY = y + rowH / 2 - 1;
       doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(...TEXT);
-      doc.text(row.desc, M + 3, y + 2);
-      doc.text(String(row.qty), M + 96, y + 2, { align: 'right' });
-      doc.text(row.rate.toLocaleString('en-IN'), M + 121, y + 2, { align: 'right' });
+      doc.text(descLines, C_DESC, y + 4);
+      doc.text(String(row.qty),                    C_QTY,  midY, { align: 'right' });
+      doc.text(row.rate.toLocaleString('en-IN'),   C_RATE, midY, { align: 'right' });
       doc.setFont('helvetica', 'bold');
-      doc.text(row.amt.toLocaleString('en-IN'), W - M - 3, y + 2, { align: 'right' });
-      y += 7;
+      doc.text(row.amt.toLocaleString('en-IN'),    C_AMT,  midY, { align: 'right' });
+      // Draw a subtle type tag if present (homestay per-person-per-day)
+      if (row.rateType === 'ppd') {
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5);
+        doc.setTextColor(...G_LT);
+        doc.text('per person/day', C_DESC, y + 4 + descLines.length * 4.8 + 0.5);
+      }
+      y += rowH;
     });
 
     // Subtotal divider
