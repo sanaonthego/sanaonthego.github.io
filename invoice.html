@@ -756,14 +756,15 @@ function generatePDF() {
   function ep(str) {
     if (!str) return '';
     return str
-      .replace(/[\u{1F000}-\u{1FFFF}]/gu, '')   // supplemental multilingual plane (most emoji)
-      .replace(/[\u{2600}-\u{27FF}]/gu, '')       // misc symbols, dingbats
-      .replace(/[\u{2B00}-\u{2BFF}]/gu, '')       // misc symbols & arrows
-      .replace(/[\u{FE00}-\u{FEFF}]/gu, '')       // variation selectors, BOM
-      .replace(/\uFFFD/g, '')                      // replacement character
+      .replace(/[\u{1F000}-\u{1FFFF}]/gu, '')
+      .replace(/[\u{2600}-\u{27FF}]/gu, '')
+      .replace(/[\u{2B00}-\u{2BFF}]/gu, '')
+      .replace(/[\u{FE00}-\u{FEFF}]/gu, '')
+      .replace(/\uFFFD/g, '')
       .replace(/\s{2,}/g, ' ')
       .trim();
   }
+  function checkY(n) {
     if (y + n > 272) { doc.addPage(); wm(); pageHdr(); y = 34; }
   }
   function wm() {
