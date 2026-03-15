@@ -751,34 +751,41 @@ function generatePDF() {
   const TEXT  = [30,30,30];
   const RED   = [192,57,43];
 
-  // Emoji/unicode strip — jsPDF Helvetica can't render emoji glyphs
-  // Strips all emoji and non-Latin-extended characters, collapses extra spaces
+  // ── Clean text for PDF: strip emoji + replace arrows/special chars jsPDF can't render
   function ep(str) {
     if (!str) return '';
     return str
+      // Replace common arrow/special chars with ASCII equivalents BEFORE stripping
+      .replace(/→|➜|➔|⟶|⇒|▶/g, '->')
+      .replace(/←|⟵|⇐/g, '<-')
+      .replace(/↔/g, '<->')
+      .replace(/•|·|‣/g, '-')
+      .replace(/–|—/g, '-')
+      .replace(/"|"/g, '"')
+      .replace(/'|'/g, "'")
+      // Now strip emoji and unsupported unicode ranges
       .replace(/[\u{1F000}-\u{1FFFF}]/gu, '')
-      .replace(/[\u{2600}-\u{27FF}]/gu, '')
+      .replace(/[\u{2600}-\u{27FF}]/gu, '')   // misc symbols, arrows, dingbats
       .replace(/[\u{2B00}-\u{2BFF}]/gu, '')
       .replace(/[\u{FE00}-\u{FEFF}]/gu, '')
       .replace(/\uFFFD/g, '')
-      .replace(/\s{2,}/g, ' ')
+      // Collapse multiple spaces but preserve newlines
+      .replace(/[ \t]{2,}/g, ' ')
       .trim();
   }
+
   function checkY(n) {
-    if (y + n > 272) { doc.addPage(); wm(); pageHdr(); y = 34; }
+    if (y + n > 272) { doc.addPage(); pageHdr(); y = 34; }
   }
+  // Subtle watermark — drawn as very faint diagonal text (no GState opacity trick)
   function wm() {
-    doc.saveGraphicsState();
-    doc.setGState(new doc.GState({opacity:0.042}));
-    doc.setFont('helvetica','bold'); doc.setFontSize(33); doc.setTextColor(...G);
-    doc.text('SANA ON THE GO', W/2, 148, {align:'center',angle:38});
-    doc.setFontSize(15); doc.text('+91 98747 40763', W/2, 163, {align:'center',angle:38});
-    doc.restoreGraphicsState();
+    // Skip — GState opacity not reliable across all jsPDF CDN versions
+    // A professional clean look without watermark is better
   }
   function pageHdr() {
     doc.setFillColor(...GDK); doc.rect(0,0,W,10,'F');
     doc.setFont('helvetica','bold'); doc.setFontSize(7); doc.setTextColor(...WHITE);
-    doc.text(`Sana On The Go  ·  ${d.invoiceNo}  ·  ${d.clientName}`, M, 6.8);
+    doc.text(`Sana On The Go  |  ${d.invoiceNo}  |  ${d.clientName}`, M, 6.8);
     doc.setTextColor(...GLT); doc.text('INVOICE', W-M, 6.8, {align:'right'});
   }
   function secHead(t) {
@@ -790,7 +797,7 @@ function generatePDF() {
   }
 
   // ── PAGE 1
-  wm();
+  pageHdr();
 
   // Header band
   doc.setFillColor(...GDK); doc.rect(0,0,W,42,'F');
@@ -811,7 +818,8 @@ function generatePDF() {
 
   // ── CLIENT + TRIP BLOCK (measure then draw once)
   const RX   = W/2 + 3;
-  const VW   = W - RX - M - 42;
+  const LBLW = 34;  // label column width in mm
+  const VW   = W - RX - M - LBLW - 4;  // value column width
   const tripRows = [
     ['Destination',       d.tripName],
     ['Travel Dates',      d.travelStart&&d.travelEnd ? `${fmtDate(d.travelStart)} — ${fmtDate(d.travelEnd)}` : '—'],
@@ -853,7 +861,7 @@ function generatePDF() {
   let ry = y+13;
   tCache.forEach(({lbl,lines,h}) => {
     doc.setFont('helvetica','bold');  doc.setFontSize(6.8); doc.setTextColor(...MUTED); doc.text(lbl, RX+5, ry);
-    doc.setFont('helvetica','normal');doc.setFontSize(7.5); doc.setTextColor(...TEXT);  doc.text(lines, RX+41, ry);
+    doc.setFont('helvetica','normal');doc.setFontSize(7.5); doc.setTextColor(...TEXT);  doc.text(lines, RX+5+LBLW, ry);
     ry += h;
   });
 
@@ -862,32 +870,44 @@ function generatePDF() {
   // ── ITINERARY
   if (days.length) {
     secHead('Itinerary');
+    const ITX = M + 24;
+    const ITW = W - M*2 - 26;
+    const BODY_LH = 5.2;
+    const IE_LH   = 4.6;
+
     days.forEach((day, i) => {
-      // Strip emoji from all user text before measuring/rendering
-      const cleanLabel = ep(day.label);
-      const cleanDesc  = ep(day.desc);
-      const cleanIncl  = day.incl.map(ep).filter(Boolean);
-      const cleanExcl  = day.excl.map(ep).filter(Boolean);
+      const rawLabel  = ep(day.label);
+      const rawDesc   = ep(day.desc);
+      const cleanIncl = day.incl.map(ep).filter(Boolean);
+      const cleanExcl = day.excl.map(ep).filter(Boolean);
+
+      // Skip generic "Day N" labels — badge already shows the number
+      const isGeneric = /^day\s*\d+$/i.test(rawLabel.trim());
+      const showLabel = rawLabel && !isGeneric;
+
+      // Split description on newlines to preserve paragraph breaks
+      const descParas = rawDesc ? rawDesc.split(/\n+/).filter(s => s.trim()) : [];
+      doc.setFont('helvetica','normal'); doc.setFontSize(9);
+      const descGroups = descParas.map(p => doc.splitTextToSize(p.trim(), ITW));
+      const totalDescLines = descGroups.reduce((a, g) => a + g.length, 0);
+      const paraGap = descGroups.length > 1 ? (descGroups.length - 1) * 1.5 : 0;
 
       const inclStr = cleanIncl.length ? 'Included: ' + cleanIncl.join(', ') : '';
       const exclStr = cleanExcl.length ? 'Not Included: ' + cleanExcl.join(', ') : '';
-
-      doc.setFont('helvetica','normal'); doc.setFontSize(9);
-      const descLines = cleanDesc ? doc.splitTextToSize(cleanDesc, W-M*2-22) : [];
       doc.setFontSize(7.5);
-      const iLines = inclStr ? doc.splitTextToSize(inclStr, W-M*2-22) : [];
-      const eLines = exclStr ? doc.splitTextToSize(exclStr, W-M*2-22) : [];
+      const iLines = inclStr ? doc.splitTextToSize(inclStr, ITW) : [];
+      const eLines = exclStr ? doc.splitTextToSize(exclStr, ITW) : [];
 
-      const bH = 4
-        + (cleanLabel ? 6.5 : 0)
-        + descLines.length * 5.2
-        + (iLines.length ? iLines.length*4.2+3 : 0)
-        + (eLines.length ? eLines.length*4.2+2 : 0)
+      const bH = 5
+        + (showLabel ? BODY_LH + 1.5 : 0)
+        + totalDescLines * BODY_LH + paraGap
+        + (iLines.length ? iLines.length * IE_LH + 4 : 0)
+        + (eLines.length ? eLines.length * IE_LH + 3 : 0)
         + 6;
 
-      checkY(bH + 4);
+      checkY(bH + 2);
 
-      // Alternating row background
+      // Alternating row bg
       if (i % 2 === 0) {
         doc.setFillColor(250,249,246);
         doc.roundedRect(M, y-1, W-M*2, bH+2, 1,1,'F');
@@ -895,59 +915,61 @@ function generatePDF() {
 
       // DAY badge
       const bx = M+2, by = y+2;
-      doc.setFillColor(...G); doc.roundedRect(bx, by, 16, 18, 2,2,'F');
-      doc.setFont('helvetica','bold'); doc.setFontSize(5.2); doc.setTextColor(...WHITE);
-      doc.text('DAY', bx+8, by+5.8, {align:'center'});
+      doc.setFillColor(...G); doc.roundedRect(bx, by, 17, 18, 2,2,'F');
+      doc.setFont('helvetica','bold'); doc.setFontSize(5); doc.setTextColor(...WHITE);
+      doc.text('DAY', bx+8.5, by+5.5, {align:'center'});
       doc.setFont('helvetica','bold'); doc.setFontSize(11); doc.setTextColor(...WHITE);
-      doc.text(String(day.n), bx+8, by+14, {align:'center'});
+      doc.text(String(day.n), bx+8.5, by+14, {align:'center'});
 
-      const tx = M+22;
-      let ty = y+5;
+      let ty = y + 5;
 
-      // Title (bold, emoji-stripped)
-      if (cleanLabel) {
+      // Label (only if meaningful, not "Day 2")
+      if (showLabel) {
         doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.setTextColor(...GDK);
-        doc.text(cleanLabel, tx, ty);
-        ty += 6.5;
+        const lblLines = doc.splitTextToSize(rawLabel, ITW);
+        doc.text(lblLines, ITX, ty);
+        ty += lblLines.length * BODY_LH + 1.5;
       }
 
-      // Body text (emoji-stripped)
-      if (descLines.length) {
+      // Description — each paragraph on its own block
+      if (descGroups.length) {
         doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(...TEXT);
-        doc.text(descLines, tx, ty);
-        ty += descLines.length * 5.2 + 1;
+        descGroups.forEach((lines, pi) => {
+          doc.text(lines, ITX, ty);
+          ty += lines.length * BODY_LH;
+          if (pi < descGroups.length - 1) ty += 1.5;
+        });
+        ty += 3;
       }
 
-      // Per-day inclusions
+      // Inclusions
       if (iLines.length) {
-        ty += 2;
-        doc.setFont('helvetica','bold'); doc.setFontSize(7); doc.setTextColor(...G);
-        doc.text(iLines[0], tx, ty);
+        doc.setFont('helvetica','bold'); doc.setFontSize(7.5); doc.setTextColor(...G);
+        doc.text(iLines[0], ITX, ty);
         if (iLines.length > 1) {
-          doc.setFont('helvetica','normal'); doc.setFontSize(7);
-          iLines.slice(1).forEach(l => { ty += 4.2; doc.text(l, tx, ty); });
+          doc.setFont('helvetica','normal');
+          for (let li = 1; li < iLines.length; li++) { ty += IE_LH; doc.text(iLines[li], ITX, ty); }
         }
-        ty += 4.2;
+        ty += IE_LH + 1;
       }
 
-      // Per-day exclusions
+      // Exclusions
       if (eLines.length) {
-        ty += 1;
-        doc.setFont('helvetica','bold'); doc.setFontSize(7); doc.setTextColor(...RED);
-        doc.text(eLines[0], tx, ty);
+        doc.setFont('helvetica','bold'); doc.setFontSize(7.5); doc.setTextColor(...RED);
+        doc.text(eLines[0], ITX, ty);
         if (eLines.length > 1) {
-          doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor(...RED);
-          eLines.slice(1).forEach(l => { ty += 4.2; doc.text(l, tx, ty); });
+          doc.setFont('helvetica','normal'); doc.setTextColor(...RED);
+          for (let li = 1; li < eLines.length; li++) { ty += IE_LH; doc.text(eLines[li], ITX, ty); }
         }
       }
 
       y += bH + 2;
-      if (i < days.length-1) {
-        doc.setDrawColor(218,213,203); doc.setLineWidth(0.2);
+      if (i < days.length - 1) {
+        doc.setDrawColor(220,215,205); doc.setLineWidth(0.2);
         doc.line(M, y, W-M, y);
       }
     });
-    y += 6;
+    y += 8;
   }
 
   // ── GLOBAL INCLUSIONS & EXCLUSIONS ────────────────
