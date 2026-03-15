@@ -638,13 +638,13 @@ function generatePDF() {
   doc.setFillColor(...GLT); doc.rect(0,40,W,2,'F');
   doc.setFont('helvetica','bold'); doc.setFontSize(20); doc.setTextColor(...WHITE);
   doc.text('SANA ON THE GO', M, 14);
-  doc.setFont('helvetica','normal'); doc.setFontSize(7.5); doc.setTextColor([175,215,198]);
+  doc.setFont('helvetica','normal'); doc.setFontSize(7.5); doc.setTextColor(175,215,198);
   doc.text('INTO THE WILD TOUR AND TRAVELS', M, 20);
   doc.text('+91 98747 40763  |  sayantikaintothewild@gmail.com', M, 26);
   doc.text('@sana.onthe.go  |  Siliguri, North Bengal', M, 31.5);
   doc.setFont('helvetica','bold'); doc.setFontSize(13); doc.setTextColor(...GOLDL);
   doc.text('TRIP COST ESTIMATE', W-M, 14, {align:'right'});
-  doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor([190,225,210]);
+  doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor(190,225,210);
   doc.text(`Prepared on: ${fmtDate(d.invoiceDate)}`, W-M, 22, {align:'right'});
   doc.text(`Ref: ${d.invoiceNo}`, W-M, 29, {align:'right'});
 
@@ -933,10 +933,10 @@ function generatePDF() {
     doc.setFillColor(...GDK); doc.rect(0,284,W,13,'F');
     doc.setFont('helvetica','bold');  doc.setFontSize(7);   doc.setTextColor(...WHITE);
     doc.text('Sana On The Go  |  Into The Wild Tour and Travels', M, 290.5);
-    doc.setFont('helvetica','normal');doc.setFontSize(6.5); doc.setTextColor([155,205,180]);
+    doc.setFont('helvetica','normal');doc.setFontSize(6.5); doc.setTextColor(155,205,180);
     doc.text('WA: +91 98747 40763  ·  sayantikaintothewild@gmail.com  ·  @sana.onthe.go', M, 294.8);
     doc.setTextColor(...WHITE); doc.text(`Page ${pg} of ${tp}`, W-M, 290.5, {align:'right'});
-    doc.setTextColor([155,205,180]); doc.text('This is an estimated cost and may vary.', W-M, 294.8, {align:'right'});
+    doc.setTextColor(155,205,180); doc.text('This is an estimated cost and may vary.', W-M, 294.8, {align:'right'});
   }
 
   const fn = `SOTG-${d.invoiceNo}-${d.clientName.replace(/\s+/g,'-')}.pdf`;
