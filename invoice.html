@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -17,444 +16,276 @@
       --radius: 10px; --border: #ddd9d0;
     }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg); color: var(--text);
-      min-height: 100vh; padding-bottom: 60px;
-    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 60px; }
 
-    /* ── HEADER ── */
-    .tool-header {
-      background: var(--green-dk);
-      padding: 20px 36px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 12px;
-    }
+    .tool-header { background: var(--green-dk); padding: 18px 36px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .tool-header .brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; }
     .tool-header .brand span { color: var(--green-lt); }
-    .tool-header .badge {
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.75); font-size: 0.74rem; padding: 5px 12px; border-radius: 20px;
-      font-weight: 600; letter-spacing: 0.5px;
-    }
+    .tool-header .badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.75); font-size: 0.74rem; padding: 5px 12px; border-radius: 20px; font-weight: 600; }
 
-    /* ── LAYOUT ── */
-    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 36px 24px; }
-    .page-title { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--green); margin-bottom: 6px; }
-    .page-sub { color: var(--muted); font-size: 0.92rem; margin-bottom: 36px; }
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+    .page-title { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--green); margin-bottom: 5px; }
+    .page-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 32px; }
+    .two-col { display: grid; grid-template-columns: 1fr 340px; gap: 24px; align-items: start; }
 
-    .two-col { display: grid; grid-template-columns: 1fr 360px; gap: 28px; align-items: start; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 18px; }
+    .card-head { background: var(--green); color: #fff; padding: 12px 18px; display: flex; align-items: center; gap: 9px; }
+    .card-head h3 { font-size: 0.86rem; font-weight: 600; }
+    .card-body { padding: 18px; }
 
-    /* ── CARD ── */
-    .card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
-      margin-bottom: 20px;
-    }
-    .card-head {
-      background: var(--green); color: #fff;
-      padding: 13px 20px; display: flex; align-items: center; gap: 10px;
-    }
-    .card-head h3 { font-size: 0.88rem; font-weight: 600; letter-spacing: 0.3px; }
-    .card-head .ch-icon { font-size: 1rem; }
-    .card-body { padding: 20px; }
-
-    /* ── FORM ELEMENTS ── */
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
     .form-row.triple { grid-template-columns: 1fr 1fr 1fr; }
     .form-row.single { grid-template-columns: 1fr; }
-    .form-group { display: flex; flex-direction: column; gap: 5px; }
-    .form-group label {
-      font-size: 0.72rem; font-weight: 600; color: var(--green);
-      letter-spacing: 0.4px; text-transform: uppercase;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      padding: 9px 12px; border: 1.5px solid var(--border); border-radius: 7px;
-      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--text);
-      background: #faf9f6; transition: border-color 0.2s; width: 100%;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { outline: none; border-color: var(--green); background: #fff; }
-    .form-group textarea { resize: vertical; min-height: 72px; }
-    .form-hint { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+    .form-group { display: flex; flex-direction: column; gap: 4px; }
+    .form-group label { font-size: 0.7rem; font-weight: 600; color: var(--green); letter-spacing: 0.4px; text-transform: uppercase; }
+    .form-group input, .form-group select, .form-group textarea { padding: 8px 11px; border: 1.5px solid var(--border); border-radius: 7px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; color: var(--text); background: #faf9f6; transition: border-color 0.2s; width: 100%; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--green); background: #fff; }
+    .form-group textarea { resize: vertical; min-height: 68px; }
+    .form-hint { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
 
-    /* ── ITINERARY BUILDER ── */
-    .day-list { display: flex; flex-direction: column; gap: 10px; }
-    .day-item {
-      display: grid; grid-template-columns: 80px 1fr auto;
-      gap: 10px; align-items: start;
-      background: #faf9f6; border: 1px solid var(--border);
-      border-radius: 8px; padding: 12px;
-    }
-    .day-item input { background: #fff; }
-    .day-item textarea { background: #fff; min-height: 52px; font-size: 0.85rem; }
-    .day-num {
-      background: var(--green); color: #fff; border-radius: 6px;
-      font-size: 0.72rem; font-weight: 700; text-align: center;
-      padding: 8px 4px; letter-spacing: 0.5px;
-      align-self: start; margin-top: 2px;
-    }
-    .btn-rm-day {
-      background: #fee2e2; border: none; color: #c0392b; border-radius: 6px;
-      width: 30px; height: 30px; cursor: pointer; font-size: 1rem;
-      display: flex; align-items: center; justify-content: center;
-      align-self: start; margin-top: 2px; transition: background 0.2s;
-      flex-shrink: 0;
-    }
-    .btn-rm-day:hover { background: #fca5a5; }
-    .btn-add-day {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: none; border: 1.5px dashed var(--green-lt); color: var(--green);
-      padding: 9px 16px; border-radius: 7px; font-family: 'DM Sans', sans-serif;
-      font-size: 0.84rem; font-weight: 600; cursor: pointer; margin-top: 10px;
-      transition: background 0.2s;
-    }
+    /* COST FIELDS */
+    .cost-fields { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+    .cost-field { border-radius: 9px; padding: 12px 14px; border: 1.5px solid var(--border); background: #faf9f6; }
+    .cost-field label { display: block; font-size: 0.68rem; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .cost-field input { width: 100%; border: none; background: transparent; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--text); padding: 0; outline: none; }
+    .cost-field.cf-total { border-color: var(--gold); background: linear-gradient(135deg,#fffbf0,#fdf6e3); }
+    .cost-field.cf-total input { color: var(--gold-dk); }
+    .cost-field.cf-advance { border-color: var(--green-lt); background: #f0faf5; }
+    .cost-field.cf-advance input { color: var(--green); }
+    .cost-field.cf-balance { border-color: #e57373; background: #fff5f5; }
+    .cost-field.cf-balance input { color: #c0392b; }
+    .cost-field .cs { font-size: 0.68rem; color: var(--muted); margin-top: 3px; }
+    .perhead-row { background: #f7f4ef; border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .perhead-row .lbl { font-size: 0.76rem; color: var(--muted); }
+    .perhead-row .val { font-size: 1rem; font-weight: 700; color: var(--green-dk); font-family: 'Playfair Display', serif; }
+
+    /* DAY BUILDER */
+    .day-list { display: flex; flex-direction: column; gap: 14px; }
+    .day-item { background: #fafaf8; border: 1px solid var(--border); border-radius: 9px; overflow: hidden; }
+    .day-header { background: var(--green-dk); color: #fff; padding: 9px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .day-header-left { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+    .day-num-badge { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; padding: 3px 9px; font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; white-space: nowrap; flex-shrink: 0; }
+    .day-label-input { background: transparent; border: none; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600; flex: 1; min-width: 0; outline: none; }
+    .day-label-input::placeholder { color: rgba(255,255,255,0.4); }
+    .btn-rm-day { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); color: #fff; border-radius: 5px; width: 26px; height: 26px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s; }
+    .btn-rm-day:hover { background: rgba(255,60,60,0.4); }
+    .day-body { padding: 12px 14px; display: flex; flex-direction: column; gap: 10px; }
+    .day-desc { resize: vertical; min-height: 64px; font-size: 0.86rem; width: 100%; padding: 8px 11px; border: 1.5px solid var(--border); border-radius: 7px; font-family: 'DM Sans', sans-serif; color: var(--text); background: #fff; transition: border-color 0.2s; }
+    .day-desc:focus { outline: none; border-color: var(--green); }
+
+    /* PER-DAY IE */
+    .day-ie { border-top: 1px solid #eee; padding-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+    .day-ie-block label { font-size: 0.67rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 5px; }
+    .day-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 5px; }
+    .dchip { padding: 3px 10px; border-radius: 20px; font-size: 0.71rem; font-weight: 600; border: 1.5px solid var(--border); background: #fff; cursor: pointer; transition: all 0.14s; color: var(--text); user-select: none; }
+    .dchip:hover { border-color: var(--green); color: var(--green); }
+    .dchip.di { background: var(--green); border-color: var(--green); color: #fff; }
+    .dchip.de { background: #c0392b; border-color: #c0392b; color: #fff; }
+    .day-custom { font-size: 0.8rem; width: 100%; padding: 6px 10px; border: 1.5px solid var(--border); border-radius: 6px; font-family: 'DM Sans', sans-serif; color: var(--text); background: #fff; resize: none; min-height: 34px; }
+    .day-custom:focus { outline: none; border-color: var(--green); }
+
+    .btn-add-day { display: inline-flex; align-items: center; gap: 7px; background: none; border: 1.5px dashed var(--green-lt); color: var(--green); padding: 9px 16px; border-radius: 7px; font-family: 'DM Sans', sans-serif; font-size: 0.84rem; font-weight: 600; cursor: pointer; margin-top: 8px; transition: background 0.2s; }
     .btn-add-day:hover { background: #eaf5ee; }
 
-    /* ── COST TABLE ── */
-    .cost-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-    .cost-table th {
-      background: #f0ede6; color: var(--green); font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.5px; text-transform: uppercase; padding: 8px 10px; text-align: left;
-    }
-    .cost-table td { padding: 7px 10px; border-bottom: 1px solid #f0ede6; vertical-align: middle; }
-    .cost-table td input { border: 1px solid var(--border); border-radius: 5px; padding: 5px 8px; font-size: 0.85rem; width: 100%; background: #faf9f6; font-family: 'DM Sans', sans-serif; }
-    .cost-table td input:focus { outline: none; border-color: var(--green); background: #fff; }
-    .btn-add-row {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: none; border: 1.5px dashed var(--green-lt); color: var(--green);
-      padding: 7px 14px; border-radius: 7px; font-family: 'DM Sans', sans-serif;
-      font-size: 0.82rem; font-weight: 600; cursor: pointer; margin-top: 10px;
-      transition: background 0.2s;
-    }
-    .btn-add-row:hover { background: #eaf5ee; }
-    .total-display {
-      background: linear-gradient(135deg, var(--gold-dk), var(--gold));
-      color: #fff; border-radius: 8px; padding: 14px 18px;
-      display: flex; justify-content: space-between; align-items: center;
-      margin-top: 14px;
-    }
-    .total-display .lbl { font-size: 0.82rem; opacity: 0.85; }
-    .total-display .amt { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; }
-    .payment-summary {
-      background: #f7f4ef; border: 1px solid var(--border);
-      border-radius: 8px; padding: 14px; margin-top: 12px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-    }
-    .ps-item { text-align: center; }
-    .ps-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px; }
-    .ps-val { font-size: 1.05rem; font-weight: 700; }
-    .ps-val.advance { color: var(--green); }
-    .ps-val.due { color: #c0392b; }
-
-    /* ── INCLUSIONS QUICK-ADD ── */
+    /* GLOBAL CHIPS */
     .chip-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 10px; }
-    .quick-chip {
-      padding: 5px 12px; border-radius: 20px; font-size: 0.76rem; font-weight: 600;
-      border: 1.5px solid var(--border); background: #faf9f6; cursor: pointer;
-      transition: all 0.15s; color: var(--text); user-select: none;
-    }
-    .quick-chip:hover { border-color: var(--green); color: var(--green); background: #eaf5ee; }
-    .quick-chip.active { background: var(--green); border-color: var(--green); color: #fff; }
+    .qchip { padding: 5px 12px; border-radius: 20px; font-size: 0.76rem; font-weight: 600; border: 1.5px solid var(--border); background: #faf9f6; cursor: pointer; transition: all 0.15s; color: var(--text); user-select: none; }
+    .qchip:hover { border-color: var(--green); color: var(--green); background: #eaf5ee; }
+    .qchip.active { background: var(--green); border-color: var(--green); color: #fff; }
 
-    /* ── PREVIEW PANEL ── */
-    .preview-panel { position: sticky; top: 20px; }
-    .preview-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
-    }
-    .preview-header {
-      background: linear-gradient(135deg, var(--green-dk), var(--green));
-      padding: 20px; color: #fff;
-    }
-    .preview-header .pv-brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; }
-    .preview-header .pv-sub { font-size: 0.74rem; opacity: 0.7; margin-top: 2px; }
-    .preview-header .pv-inv { margin-top: 12px; font-size: 0.78rem; opacity: 0.8; }
-    .preview-header .pv-client { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-top: 4px; }
-    .preview-body { padding: 16px; }
-    .pv-row { display: flex; justify-content: space-between; font-size: 0.82rem; padding: 5px 0; border-bottom: 1px solid #f0ede6; }
-    .pv-row:last-child { border-bottom: none; }
-    .pv-row .lbl { color: var(--muted); }
-    .pv-row .val { font-weight: 600; color: var(--text); text-align: right; max-width: 60%; }
-    .pv-total {
-      background: linear-gradient(135deg, var(--gold-dk), var(--gold));
-      color: #fff; border-radius: 8px; padding: 12px 16px;
-      display: flex; justify-content: space-between; align-items: center;
-      margin-top: 10px;
-    }
-    .pv-total .lbl { font-size: 0.78rem; opacity: 0.85; }
-    .pv-total .amt { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; }
+    /* PREVIEW */
+    .preview-panel { position: sticky; top: 16px; }
+    .preview-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .pv-hdr { background: linear-gradient(135deg, var(--green-dk), var(--green)); padding: 18px; color: #fff; }
+    .pv-hdr .pv-brand { font-family: 'Playfair Display', serif; font-size: 1.05rem; }
+    .pv-hdr .pv-sub { font-size: 0.72rem; opacity: 0.7; margin-top: 2px; }
+    .pv-hdr .pv-ref { margin-top: 10px; font-size: 0.74rem; opacity: 0.8; }
+    .pv-hdr .pv-client { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-top: 3px; }
+    .pv-body { padding: 14px; }
+    .pv-row { display: flex; justify-content: space-between; font-size: 0.79rem; padding: 4px 0; border-bottom: 1px solid #f0ede6; }
+    .pv-row .lbl { color: var(--muted); flex-shrink: 0; }
+    .pv-row .val { font-weight: 600; text-align: right; max-width: 58%; word-break: break-word; }
+    .pv-total { background: linear-gradient(135deg, var(--gold-dk), var(--gold)); color: #fff; border-radius: 8px; padding: 11px 14px; display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+    .pv-total .lbl { font-size: 0.74rem; opacity: 0.85; }
+    .pv-total .amt { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; }
     .pv-days { margin-top: 10px; }
-    .pv-day { font-size: 0.78rem; color: var(--muted); padding: 4px 0; border-bottom: 1px solid #f5f3ee; display: flex; gap: 8px; }
-    .pv-day .d-lbl { color: var(--green); font-weight: 600; flex-shrink: 0; }
+    .pv-day { font-size: 0.75rem; color: var(--muted); padding: 4px 0; border-bottom: 1px solid #f5f3ee; display: flex; gap: 7px; }
+    .pv-day .dl { color: var(--green); font-weight: 700; flex-shrink: 0; font-size: 0.7rem; letter-spacing: 0.3px; }
 
-    /* ── GENERATE BTN ── */
-    .generate-wrap { margin-top: 8px; }
-    .btn-generate {
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      width: 100%; padding: 15px; border-radius: 9px; border: none;
-      background: linear-gradient(135deg, var(--green), var(--green-lt));
-      color: #fff; font-family: 'DM Sans', sans-serif; font-size: 1rem;
-      font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s;
-      box-shadow: 0 4px 18px rgba(45,106,79,0.38); letter-spacing: 0.3px;
-    }
-    .btn-generate:hover { opacity: 0.92; transform: translateY(-1px); }
-    .btn-generate svg { width: 20px; height: 20px; fill: #fff; flex-shrink: 0; }
-    .btn-preview-only {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      width: 100%; padding: 11px; border-radius: 9px;
-      border: 1.5px solid var(--border); background: #faf9f6; color: var(--green);
-      font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
-      font-weight: 600; cursor: pointer; margin-top: 9px; transition: all 0.2s;
-    }
-    .btn-preview-only:hover { border-color: var(--green); background: #eaf5ee; }
+    .btn-gen { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 14px; border-radius: 9px; border: none; background: linear-gradient(135deg, var(--green), var(--green-lt)); color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.96rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s; box-shadow: 0 4px 18px rgba(45,106,79,0.38); margin-top: 14px; }
+    .btn-gen:hover { opacity: 0.92; transform: translateY(-1px); }
+    .btn-gen svg { width: 19px; height: 19px; fill: #fff; flex-shrink: 0; }
 
-    /* ── STATUS TOAST ── */
-    .toast {
-      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
-      background: var(--green-dk); color: #fff; padding: 13px 22px; border-radius: 50px;
-      font-size: 0.88rem; font-weight: 600; opacity: 0; pointer-events: none;
-      transition: opacity 0.3s, transform 0.3s; z-index: 999; white-space: nowrap;
-    }
+    .toast { position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--green-dk); color: #fff; padding: 12px 22px; border-radius: 50px; font-size: 0.86rem; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; z-index: 999; white-space: nowrap; }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .two-col { grid-template-columns: 1fr; }
-      .preview-panel { position: static; }
-      .tool-header { padding: 14px 18px; }
-    }
-    @media (max-width: 560px) {
-      .form-row, .form-row.triple { grid-template-columns: 1fr; }
-      .day-item { grid-template-columns: 60px 1fr auto; }
-    }
+    @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } .preview-panel { position: static; } .tool-header { padding: 13px 18px; } }
+    @media (max-width: 560px) { .form-row, .form-row.triple { grid-template-columns: 1fr; } .cost-fields { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
-<div class="toast" id="toast">✓ PDF generated successfully!</div>
+<div class="toast" id="toast"></div>
 
-<!-- HEADER -->
 <div class="tool-header">
   <div class="brand">Sana On The Go <span>/ Invoice Generator</span></div>
   <span class="badge">🔒 PRIVATE — Do not share this URL</span>
 </div>
 
 <div class="page-wrap">
-  <h1 class="page-title">Generate Client Invoice</h1>
-  <p class="page-sub">Fill in the details below and click Generate PDF. The invoice will download instantly — branded, professional, ready to send.</p>
+  <h1 class="page-title">Generate Client Invoice / Estimate</h1>
+  <p class="page-sub">Fill in the details below and click Generate PDF. Downloads instantly — branded and ready to send on WhatsApp.</p>
 
   <div class="two-col">
-
-    <!-- ══ LEFT: FORM ══ -->
     <div>
 
-      <!-- CLIENT DETAILS -->
+      <!-- CLIENT -->
       <div class="card">
-        <div class="card-head"><span class="ch-icon">👤</span><h3>Client Details</h3></div>
+        <div class="card-head"><span>👤</span><h3>Client Details</h3></div>
         <div class="card-body">
           <div class="form-row">
-            <div class="form-group">
-              <label>Client Full Name *</label>
-              <input type="text" id="clientName" placeholder="e.g. Priya Sharma" oninput="updatePreview()">
-            </div>
-            <div class="form-group">
-              <label>Phone / WhatsApp</label>
-              <input type="text" id="clientPhone" placeholder="+91 98XXX XXXXX" oninput="updatePreview()">
-            </div>
+            <div class="form-group"><label>Client Full Name *</label><input type="text" id="clientName" placeholder="e.g. Arunava Roy" oninput="updatePreview()"></div>
+            <div class="form-group"><label>Phone / WhatsApp</label><input type="text" id="clientPhone" placeholder="+91 98XXX XXXXX"></div>
           </div>
           <div class="form-row">
-            <div class="form-group">
-              <label>Email Address</label>
-              <input type="email" id="clientEmail" placeholder="client@email.com" oninput="updatePreview()">
-            </div>
-            <div class="form-group">
-              <label>City / State</label>
-              <input type="text" id="clientCity" placeholder="e.g. Kolkata, West Bengal" oninput="updatePreview()">
-            </div>
+            <div class="form-group"><label>Email</label><input type="email" id="clientEmail" placeholder="client@email.com"></div>
+            <div class="form-group"><label>City / State</label><input type="text" id="clientCity" placeholder="e.g. Kolkata, West Bengal"></div>
           </div>
           <div class="form-row">
-            <div class="form-group">
-              <label>Invoice Number *</label>
-              <input type="text" id="invoiceNo" placeholder="e.g. SOTG-2025-042" oninput="updatePreview()">
-            </div>
-            <div class="form-group">
-              <label>Invoice Date *</label>
-              <input type="date" id="invoiceDate" oninput="updatePreview()">
-            </div>
+            <div class="form-group"><label>Estimate / Invoice No. *</label><input type="text" id="invoiceNo" placeholder="SOTG-2026-001" oninput="updatePreview()"></div>
+            <div class="form-group"><label>Prepared On *</label><input type="date" id="invoiceDate"></div>
           </div>
         </div>
       </div>
 
-      <!-- TRIP DETAILS -->
+      <!-- TRIP -->
       <div class="card">
-        <div class="card-head"><span class="ch-icon">🏔️</span><h3>Trip Details</h3></div>
+        <div class="card-head"><span>🏔️</span><h3>Trip Details</h3></div>
         <div class="card-body">
           <div class="form-row single">
-            <div class="form-group">
-              <label>Package / Trip Name *</label>
-              <input type="text" id="tripName" placeholder="e.g. Offbeat Sikkim – 7N/8D" oninput="updatePreview()">
-            </div>
+            <div class="form-group"><label>Package / Trip Name *</label><input type="text" id="tripName" placeholder="e.g. Sandakphu 4N/5D" oninput="updatePreview()"></div>
           </div>
           <div class="form-row triple">
-            <div class="form-group">
-              <label>Travel Start Date *</label>
-              <input type="date" id="travelStart" oninput="updatePreview()">
-            </div>
-            <div class="form-group">
-              <label>Travel End Date *</label>
-              <input type="date" id="travelEnd" oninput="updatePreview()">
-            </div>
-            <div class="form-group">
-              <label>No. of Persons</label>
-              <input type="number" id="numPersons" min="1" value="2" oninput="updatePreview()">
-            </div>
+            <div class="form-group"><label>Travel Start Date</label><input type="date" id="travelStart" oninput="updatePreview()"></div>
+            <div class="form-group"><label>Travel End Date</label><input type="date" id="travelEnd" oninput="updatePreview()"></div>
+            <div class="form-group"><label>No. of Adults</label><input type="number" id="numAdults" min="0" value="2" oninput="updateCostCalc()"></div>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>No. of Rooms</label>
-              <input type="number" id="numRooms" min="1" value="1" oninput="updatePreview()">
-            </div>
-            <div class="form-group">
-              <label>Accommodation Type</label>
-              <select id="accomType" onchange="updatePreview()">
+          <div class="form-row triple">
+            <div class="form-group"><label>No. of Children</label><input type="number" id="numChildren" min="0" value="0" oninput="updatePreview()"></div>
+            <div class="form-group"><label>No. of Rooms</label><input type="number" id="numRooms" min="1" value="1" oninput="updatePreview()"></div>
+            <div class="form-group"><label>Accommodation Type</label>
+              <select id="accomType">
                 <option>Standard Hotel (3-star)</option>
                 <option>Heritage Property</option>
                 <option>Homestay</option>
                 <option>Resort</option>
-                <option>Mix of Hotel & Homestay</option>
+                <option>Mix of Hotel &amp; Homestay</option>
                 <option>Luxury Resort</option>
+                <option>Forest Lodge</option>
+                <option>Trek Hut / Guesthouse</option>
               </select>
             </div>
           </div>
-          <div class="form-row single">
-            <div class="form-group">
-              <label>Destinations Covered</label>
-              <input type="text" id="destinations" placeholder="e.g. Gangtok, Lachung, Yumthang, Offbeat Villages" oninput="updatePreview()">
-            </div>
-          </div>
-          <div class="form-row single">
-            <div class="form-group">
-              <label>Pickup / Drop Point</label>
-              <input type="text" id="pickupDrop" placeholder="e.g. NJP Railway Station / Bagdogra Airport" oninput="updatePreview()">
-            </div>
+          <div class="form-row">
+            <div class="form-group"><label>Places Covered</label><input type="text" id="destinations" placeholder="e.g. Tumling, Sandakphu, Thakum Valley, Majua" oninput="updatePreview()"></div>
+            <div class="form-group"><label>Pickup / Drop Point</label><input type="text" id="pickupDrop" placeholder="e.g. NJP Railway Station" oninput="updatePreview()"></div>
           </div>
         </div>
       </div>
 
       <!-- ITINERARY -->
       <div class="card">
-        <div class="card-head"><span class="ch-icon">📋</span><h3>Day-by-Day Itinerary</h3></div>
+        <div class="card-head"><span>📋</span><h3>Day-by-Day Itinerary</h3></div>
         <div class="card-body">
+          <p style="font-size:0.74rem;color:var(--muted);margin-bottom:10px;">Each day has its own inclusion/exclusion chips. Toggle what applies — only the selected ones appear in the PDF for that day.</p>
           <div class="day-list" id="dayList"></div>
           <button class="btn-add-day" onclick="addDay()">+ Add Day</button>
         </div>
       </div>
 
-      <!-- COST BREAKDOWN -->
+      <!-- COST -->
       <div class="card">
-        <div class="card-head"><span class="ch-icon">💰</span><h3>Cost Breakdown</h3></div>
+        <div class="card-head"><span>💰</span><h3>Cost Details</h3></div>
         <div class="card-body">
-          <table class="cost-table">
-            <thead>
-              <tr>
-                <th style="width:50%">Item / Description</th>
-                <th>Qty</th>
-                <th>Rate (₹)</th>
-                <th>Amount (₹)</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="costRows"></tbody>
-          </table>
-          <button class="btn-add-row" onclick="addCostRow()">+ Add Item</button>
-          <button class="btn-add-row" onclick="addHomestayRow()" style="background:#eaf5ee;border-color:var(--green);color:var(--green);">🏡 + Homestay (per person/day)</button>
-
-          <div class="total-display" id="totalDisplay">
-            <span class="lbl">Total Package Cost</span>
-            <span class="amt" id="totalAmt">₹0</span>
+          <div class="cost-fields">
+            <div class="cost-field cf-total">
+              <label>Total Package Cost (₹)</label>
+              <input type="number" id="totalCost" min="0" placeholder="0" oninput="updateCostCalc()">
+              <div class="cs">Full amount for this trip</div>
+            </div>
+            <div class="cost-field cf-advance">
+              <label>Advance Paid (₹)</label>
+              <input type="number" id="advancePaid" min="0" placeholder="0" oninput="updateCostCalc()">
+              <div class="cs">Amount already received</div>
+            </div>
+            <div class="cost-field cf-balance">
+              <label>Balance Due (₹)</label>
+              <input type="number" id="balanceDue" min="0" placeholder="Auto" oninput="updatePreview()">
+              <div class="cs">Auto-fills or type manually</div>
+            </div>
           </div>
-
-          <div style="margin-top: 16px;">
-            <div class="form-row triple">
-              <div class="form-group">
-                <label>Advance Paid (₹)</label>
-                <input type="number" id="advancePaid" min="0" placeholder="0" oninput="calcPayments()">
-              </div>
-              <div class="form-group">
-                <label>Advance Date</label>
-                <input type="date" id="advanceDate">
-              </div>
-              <div class="form-group">
-                <label>Payment Method</label>
-                <select id="payMethod">
-                  <option>UPI / GPay</option>
-                  <option>Bank Transfer</option>
-                  <option>Cash</option>
-                  <option>PhonePe</option>
-                  <option>Cheque</option>
-                </select>
-              </div>
-            </div>
-            <div class="payment-summary" id="paymentSummary">
-              <div class="ps-item"><span class="ps-label">Advance Paid</span><span class="ps-val advance" id="ps-advance">₹0</span></div>
-              <div class="ps-item"><span class="ps-label">Balance Due</span><span class="ps-val due" id="ps-due">₹0</span></div>
-            </div>
-            <div class="form-row single" style="margin-top:12px">
-              <div class="form-group">
-                <label>Balance Due Date</label>
-                <input type="date" id="dueDate">
-                <span class="form-hint">Usually 7 days before travel start</span>
-              </div>
+          <div class="perhead-row">
+            <span class="lbl">Per Head Cost (adults)</span>
+            <span class="val" id="perHeadDisplay">—</span>
+          </div>
+          <div class="form-row triple">
+            <div class="form-group"><label>Advance Received On</label><input type="date" id="advanceDate"></div>
+            <div class="form-group"><label>Balance Due By</label><input type="date" id="dueDate"><span class="form-hint">Usually 7 days before travel</span></div>
+            <div class="form-group"><label>Payment Method</label>
+              <select id="payMethod">
+                <option>UPI / GPay</option>
+                <option>Bank Transfer</option>
+                <option>Cash</option>
+                <option>PhonePe</option>
+                <option>Cheque</option>
+              </select>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- INCLUSIONS -->
+      <!-- OVERALL INCLUSIONS -->
       <div class="card">
-        <div class="card-head"><span class="ch-icon">✅</span><h3>Inclusions</h3></div>
+        <div class="card-head"><span>✅</span><h3>Overall Inclusions (whole trip)</h3></div>
         <div class="card-body">
-          <p style="font-size:0.78rem;color:var(--muted);margin-bottom:10px;">Quick-add common inclusions, or type your own below:</p>
-          <div class="chip-row" id="inclChips">
-            <span class="quick-chip" onclick="toggleChip(this,'incl')">🏨 Accommodation</span>
-            <span class="quick-chip" onclick="toggleChip(this,'incl')">🍽️ Breakfast</span>
-            <span class="quick-chip" onclick="toggleChip(this,'incl')">🍽️ Dinner</span>
-            <span class="quick-chip" onclick="toggleChip(this,'incl')">🚗 All Transfers</span>
-            <span class="quick-chip" onclick="toggleChip(this,'incl')">🎟️ Entry Fees</span>
-            <span class="quick-chip" onclick="toggleChip(this,'incl')">🧭 Local Guide</span>
-            <span class="quick-chip" onclick="toggleChip(this,'incl')">📋 Permits (ILP/PAP)</span>
-            <span class="quick-chip" onclick="toggleChip(this,'incl')">🚂 Toy Train Joyride</span>
-            <span class="quick-chip" onclick="toggleChip(this,'incl')">🏡 Homestay Meals</span>
-            <span class="quick-chip" onclick="toggleChip(this,'incl')">📱 24/7 Support</span>
-            <span class="quick-chip" onclick="toggleChip(this,'incl')">🔥 Bonfire Evening</span>
+          <p style="font-size:0.74rem;color:var(--muted);margin-bottom:9px;">These appear in the main INCLUDED section. For day-specific inclusions, use the chips inside each Day card.</p>
+          <div class="chip-row">
+            <span class="qchip" onclick="toggleGChip(this,'incl')">Accommodation</span>
+            <span class="qchip" onclick="toggleGChip(this,'incl')">All Meals</span>
+            <span class="qchip" onclick="toggleGChip(this,'incl')">Breakfast</span>
+            <span class="qchip" onclick="toggleGChip(this,'incl')">Dinner</span>
+            <span class="qchip" onclick="toggleGChip(this,'incl')">All Transfers</span>
+            <span class="qchip" onclick="toggleGChip(this,'incl')">Entry Fees</span>
+            <span class="qchip" onclick="toggleGChip(this,'incl')">Local Guide</span>
+            <span class="qchip" onclick="toggleGChip(this,'incl')">Permits (ILP/PAP)</span>
+            <span class="qchip" onclick="toggleGChip(this,'incl')">Toy Train Joyride</span>
+            <span class="qchip" onclick="toggleGChip(this,'incl')">24/7 Support</span>
+            <span class="qchip" onclick="toggleGChip(this,'incl')">Bonfire Evening</span>
           </div>
           <div class="form-group">
-            <label>Additional / Custom Inclusions</label>
-            <textarea id="customIncl" placeholder="One per line, e.g.&#10;Tea garden visit with tasting session&#10;Complimentary room upgrade"></textarea>
+            <label>Additional Inclusions (one per line)</label>
+            <textarea id="customIncl" placeholder="e.g. Tea garden visit with tasting"></textarea>
           </div>
         </div>
       </div>
 
-      <!-- EXCLUSIONS -->
+      <!-- OVERALL EXCLUSIONS -->
       <div class="card">
-        <div class="card-head"><span class="ch-icon">❌</span><h3>Exclusions</h3></div>
+        <div class="card-head"><span>❌</span><h3>Overall Exclusions (whole trip)</h3></div>
         <div class="card-body">
           <div class="chip-row">
-            <span class="quick-chip" onclick="toggleChip(this,'excl')">✈️ Flights/Trains</span>
-            <span class="quick-chip" onclick="toggleChip(this,'excl')">🍛 Lunch</span>
-            <span class="quick-chip" onclick="toggleChip(this,'excl')">🛡️ Travel Insurance</span>
-            <span class="quick-chip" onclick="toggleChip(this,'excl')">🛍️ Personal Expenses</span>
-            <span class="quick-chip" onclick="toggleChip(this,'excl')">💊 Medical Expenses</span>
-            <span class="quick-chip" onclick="toggleChip(this,'excl')">❄️ Snow Vehicle Charges</span>
-            <span class="quick-chip" onclick="toggleChip(this,'excl')">🎭 Optional Activities</span>
-            <span class="quick-chip" onclick="toggleChip(this,'excl')">🧗 Porter / Trekking Gear</span>
+            <span class="qchip" onclick="toggleGChip(this,'excl')">Flights / Trains</span>
+            <span class="qchip" onclick="toggleGChip(this,'excl')">Lunch</span>
+            <span class="qchip" onclick="toggleGChip(this,'excl')">Travel Insurance</span>
+            <span class="qchip" onclick="toggleGChip(this,'excl')">Personal Expenses</span>
+            <span class="qchip" onclick="toggleGChip(this,'excl')">Medical Expenses</span>
+            <span class="qchip" onclick="toggleGChip(this,'excl')">Snow Vehicle Charges</span>
+            <span class="qchip" onclick="toggleGChip(this,'excl')">Porter / Trekking Gear</span>
+            <span class="qchip" onclick="toggleGChip(this,'excl')">Optional Activities</span>
+            <span class="qchip" onclick="toggleGChip(this,'excl')">Any cost due to Natural Calamity / Road Blockages</span>
           </div>
           <div class="form-group">
-            <label>Additional / Custom Exclusions</label>
+            <label>Additional Exclusions (one per line)</label>
             <textarea id="customExcl" placeholder="One per line"></textarea>
           </div>
         </div>
@@ -462,7 +293,7 @@
 
       <!-- POLICIES -->
       <div class="card">
-        <div class="card-head"><span class="ch-icon">📜</span><h3>Policies & Notes</h3></div>
+        <div class="card-head"><span>📜</span><h3>Policies & Notes</h3></div>
         <div class="card-body">
           <div class="form-row single">
             <div class="form-group">
@@ -476,13 +307,13 @@
           <div class="form-row single">
             <div class="form-group">
               <label>Special Notes / Terms</label>
-              <textarea id="specialNotes" style="min-height:80px" placeholder="e.g. Itinerary may be adjusted due to road conditions / weather. We recommend travel insurance for all guests."></textarea>
+              <textarea id="specialNotes" placeholder="e.g. This is an estimated cost and may vary based on final confirmation of services, availability and seasonal pricing. Rates are subject to change."></textarea>
             </div>
           </div>
           <div class="form-row single">
             <div class="form-group">
               <label>Personal Message to Client (optional)</label>
-              <textarea id="personalMsg" style="min-height:72px" placeholder="e.g. Thank you so much for choosing Sana On The Go, Priya! We can't wait to craft your perfect Himalayan adventure. 🏔️"></textarea>
+              <textarea id="personalMsg" placeholder="e.g. Thank you for choosing Sana On The Go! 🏔️"></textarea>
             </div>
           </div>
         </div>
@@ -490,774 +321,629 @@
 
     </div><!-- /left -->
 
-    <!-- ══ RIGHT: PREVIEW + GENERATE ══ -->
+    <!-- RIGHT: PREVIEW -->
     <div class="preview-panel">
-
       <div class="preview-card">
-        <div class="preview-header">
+        <div class="pv-hdr">
           <div class="pv-brand">Sana On The Go</div>
-          <div class="pv-sub">Into The Wild Tour and Travels · Siliguri, West Bengal</div>
-          <div class="pv-inv" id="pv-invno">Invoice #—</div>
+          <div class="pv-sub">Into The Wild Tour and Travels</div>
+          <div class="pv-ref" id="pv-ref">—</div>
           <div class="pv-client" id="pv-client">Client Name</div>
         </div>
-        <div class="preview-body">
+        <div class="pv-body">
           <div class="pv-row"><span class="lbl">Trip</span><span class="val" id="pv-trip">—</span></div>
           <div class="pv-row"><span class="lbl">Dates</span><span class="val" id="pv-dates">—</span></div>
-          <div class="pv-row"><span class="lbl">Persons / Rooms</span><span class="val" id="pv-persons">—</span></div>
-          <div class="pv-row"><span class="lbl">Destinations</span><span class="val" id="pv-dest">—</span></div>
-          <div class="pv-row"><span class="lbl">Accommodation</span><span class="val" id="pv-accom">—</span></div>
+          <div class="pv-row"><span class="lbl">Adults / Children</span><span class="val" id="pv-persons">—</span></div>
+          <div class="pv-row"><span class="lbl">Places</span><span class="val" id="pv-dest">—</span></div>
+          <div class="pv-row"><span class="lbl">Pickup / Drop</span><span class="val" id="pv-pickup">—</span></div>
           <div class="pv-total">
-            <span class="lbl">Total Cost</span>
+            <span class="lbl">Total Estimated Cost</span>
             <span class="amt" id="pv-total">₹0</span>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;">
-            <div style="background:#eaf5ee;border-radius:7px;padding:10px;text-align:center;">
-              <div style="font-size:0.7rem;color:#2d6a4f;font-weight:700;text-transform:uppercase;margin-bottom:3px;">Advance</div>
-              <div style="font-size:1rem;font-weight:700;color:#2d6a4f;" id="pv-advance">₹0</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;">
+            <div style="background:#eaf5ee;border-radius:7px;padding:9px;text-align:center;">
+              <div style="font-size:0.64rem;color:#2d6a4f;font-weight:700;text-transform:uppercase;margin-bottom:2px;">Advance</div>
+              <div style="font-size:0.94rem;font-weight:700;color:#2d6a4f;" id="pv-advance">₹0</div>
             </div>
-            <div style="background:#fef2f2;border-radius:7px;padding:10px;text-align:center;">
-              <div style="font-size:0.7rem;color:#c0392b;font-weight:700;text-transform:uppercase;margin-bottom:3px;">Balance Due</div>
-              <div style="font-size:1rem;font-weight:700;color:#c0392b;" id="pv-due">₹0</div>
+            <div style="background:#fef2f2;border-radius:7px;padding:9px;text-align:center;">
+              <div style="font-size:0.64rem;color:#c0392b;font-weight:700;text-transform:uppercase;margin-bottom:2px;">Balance Due</div>
+              <div style="font-size:0.94rem;font-weight:700;color:#c0392b;" id="pv-due">₹0</div>
             </div>
           </div>
           <div class="pv-days" id="pv-days"></div>
         </div>
       </div>
+      <button class="btn-gen" onclick="generatePDF()">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z"/></svg>
+        Generate &amp; Download PDF
+      </button>
+      <div style="font-size:0.72rem;color:var(--muted);text-align:center;margin-top:7px;">A4 PDF · Branded · Ready to send on WhatsApp</div>
+    </div>
 
-      <div class="generate-wrap" style="margin-top:16px;">
-        <button class="btn-generate" onclick="generatePDF()">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z"/></svg>
-          Generate & Download PDF
-        </button>
-        <div style="font-size:0.74rem;color:var(--muted);text-align:center;margin-top:8px;">
-          Professional A4 PDF · Branded · Ready to send on WhatsApp
-        </div>
-      </div>
-
-    </div><!-- /right -->
-
-  </div><!-- /two-col -->
+  </div>
 </div>
 
 <script>
-// ─────────────────────────────────────────────
-//  STATE
-// ─────────────────────────────────────────────
+// ── STATE
 let dayCount = 0;
-let costRowCount = 0;
-const activeInclChips = new Set();
-const activeExclChips = new Set();
+const gInclSet = new Set();
+const gExclSet = new Set();
+// dayIE[id] = { incl: Set, excl: Set }
+const dayIE = {};
 
-// ─────────────────────────────────────────────
-//  INIT
-// ─────────────────────────────────────────────
+const D_INCL = ['Breakfast','Lunch','Dinner','All Meals','Accommodation','Transfers','Entry Fees','Guide','Bonfire'];
+const D_EXCL = ['Breakfast','Lunch','Dinner','Porter','Optional Activities','Personal Expenses'];
+
+// ── INIT
 document.addEventListener('DOMContentLoaded', () => {
-  // Set today's date for invoice
   document.getElementById('invoiceDate').value = new Date().toISOString().split('T')[0];
-  // Auto-invoice number
   const now = new Date();
-  const yr = now.getFullYear().toString().slice(-2);
-  const mo = String(now.getMonth()+1).padStart(2,'0');
+  const yr  = now.getFullYear().toString().slice(-2);
+  const mo  = String(now.getMonth()+1).padStart(2,'0');
   const rnd = String(Math.floor(Math.random()*900)+100);
   document.getElementById('invoiceNo').value = `SOTG-${yr}${mo}-${rnd}`;
-  // Default days
-  addDay('Arrival', 'Arrival at NJP / Bagdogra. Transfer to hotel. Check-in, rest & welcome dinner.');
+
+  // Balance auto-calc logic
+  document.getElementById('balanceDue').addEventListener('input', function() {
+    this.dataset.manual = '1';
+    updatePreview();
+  });
+
+  addDay('Day 1', 'Arrival at NJP / Bagdogra. Transfer to first destination. Check-in and rest.');
   addDay('Day 2', '');
   addDay('Day 3', '');
-  // Default cost rows
-  addCostRow('Accommodation (per person × nights)', 2, 3500, 'fixed');
-  addCostRow('All Transfers & Sightseeing Cab', 1, 4000, 'fixed');
-  addCostRow('Meals (Breakfast + Dinner)', 2, 1500, 'fixed');
-  addCostRow('Entry Fees & Permits', 1, 800, 'fixed');
-  calcTotal();
   updatePreview();
 });
 
-// ─────────────────────────────────────────────
-//  DAY BUILDER
-// ─────────────────────────────────────────────
+// ── FORMATTERS
+function fmtDate(v) {
+  if (!v) return '';
+  const [y,m,d] = v.split('-');
+  const mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${parseInt(d)} ${mo[parseInt(m)-1]} ${y}`;
+}
+function fmt(n) { return '₹' + (n||0).toLocaleString('en-IN'); }
+function fmtRs(n) { return 'Rs.' + (n||0).toLocaleString('en-IN'); }
+
+// ── COST CALC
+function updateCostCalc() {
+  const total   = parseFloat(document.getElementById('totalCost').value)   || 0;
+  const advance = parseFloat(document.getElementById('advancePaid').value) || 0;
+  const balEl   = document.getElementById('balanceDue');
+  if (!balEl.dataset.manual) balEl.value = total > 0 ? Math.max(0, total - advance) : '';
+  const adults  = parseInt(document.getElementById('numAdults').value) || 0;
+  document.getElementById('perHeadDisplay').textContent =
+    adults > 0 && total > 0 ? fmt(Math.round(total / adults)) : '—';
+  // Reset manual flag when total changes
+  document.getElementById('totalCost').addEventListener('input', () => {
+    balEl.dataset.manual = '';
+  }, { once: true });
+  updatePreview();
+}
+
+// ── GLOBAL CHIPS
+function toggleGChip(el, type) {
+  const set = type === 'incl' ? gInclSet : gExclSet;
+  const key = el.textContent.trim();
+  if (set.has(key)) { set.delete(key); el.classList.remove('active'); }
+  else { set.add(key); el.classList.add('active'); }
+}
+function getGIncl() {
+  const c = document.getElementById('customIncl').value.trim();
+  return [...gInclSet, ...(c ? c.split('\n').filter(l=>l.trim()) : [])];
+}
+function getGExcl() {
+  const c = document.getElementById('customExcl').value.trim();
+  return [...gExclSet, ...(c ? c.split('\n').filter(l=>l.trim()) : [])];
+}
+
+// ── DAY BUILDER
 function addDay(label='', desc='') {
   dayCount++;
-  const list = document.getElementById('dayList');
-  const item = document.createElement('div');
-  item.className = 'day-item';
-  item.id = 'day-' + dayCount;
-  item.innerHTML = `
-    <div class="day-num">DAY<br>${dayCount}</div>
-    <div style="display:flex;flex-direction:column;gap:7px;flex:1;">
-      <input type="text" placeholder="Day label (e.g. Day 2 / Departure)" value="${label}" oninput="updatePreview()" style="font-size:0.82rem;font-weight:600;">
-      <textarea placeholder="Brief description of the day's activities…" oninput="updatePreview()" style="min-height:52px;font-size:0.82rem;">${desc}</textarea>
+  const id = 'day-' + dayCount;
+  dayIE[id] = { incl: new Set(), excl: new Set() };
+
+  const mkChips = (opts, type) => opts.map(o =>
+    `<span class="dchip" data-id="${id}" data-t="${type}" onclick="toggleDChip(this)">${o}</span>`
+  ).join('');
+
+  const el = document.createElement('div');
+  el.className = 'day-item';
+  el.id = id;
+  el.innerHTML = `
+    <div class="day-header">
+      <div class="day-header-left">
+        <span class="day-num-badge">DAY ${dayCount}</span>
+        <input class="day-label-input" type="text" placeholder="Day title (e.g. Sandakphu to Thakum)" value="${label}" oninput="updatePreview()">
+      </div>
+      <button class="btn-rm-day" onclick="removeDay('${id}')" title="Remove day">✕</button>
     </div>
-    <button class="btn-rm-day" onclick="removeDay('day-${dayCount}')" title="Remove day">✕</button>`;
-  list.appendChild(item);
+    <div class="day-body">
+      <textarea class="day-desc" placeholder="Describe the day — travel, meals, accommodation, highlights…" oninput="updatePreview()">${desc}</textarea>
+      <div class="day-ie">
+        <div class="day-ie-block">
+          <label>✓ Included this day</label>
+          <div class="day-chips">${mkChips(D_INCL,'incl')}</div>
+          <textarea class="day-custom" id="${id}-ic" placeholder="Any other inclusions for this day…" rows="1"></textarea>
+        </div>
+        <div class="day-ie-block">
+          <label>✗ Not included / Excluded this day</label>
+          <div class="day-chips">${mkChips(D_EXCL,'excl')}</div>
+          <textarea class="day-custom" id="${id}-ec" placeholder="Any other exclusions for this day…" rows="1"></textarea>
+        </div>
+      </div>
+    </div>`;
+  document.getElementById('dayList').appendChild(el);
   updatePreview();
+}
+
+function toggleDChip(el) {
+  const id   = el.dataset.id;
+  const type = el.dataset.t;
+  const key  = el.textContent.trim();
+  const set  = dayIE[id][type];
+  if (set.has(key)) { set.delete(key); el.classList.remove(type === 'incl' ? 'di' : 'de'); }
+  else { set.add(key); el.classList.add(type === 'incl' ? 'di' : 'de'); }
 }
 
 function removeDay(id) {
-  const el = document.getElementById(id);
-  if(el) el.remove();
-  // Re-number
+  document.getElementById(id)?.remove();
+  delete dayIE[id];
   document.querySelectorAll('.day-item').forEach((item, i) => {
-    item.querySelector('.day-num').innerHTML = `DAY<br>${i+1}`;
+    item.querySelector('.day-num-badge').textContent = `DAY ${i+1}`;
   });
   updatePreview();
 }
 
-// ─────────────────────────────────────────────
-//  COST TABLE
-// ─────────────────────────────────────────────
-function addCostRow(desc='', qty=1, rate=0, rateType='fixed') {
-  costRowCount++;
-  const tbody = document.getElementById('costRows');
-  const tr = document.createElement('tr');
-  tr.id = 'cr-' + costRowCount;
-  tr.dataset.rateType = rateType;
-  const amt = qty * rate;
-
-  // Label shown next to qty based on type
-  const qtyLabel  = rateType === 'ppd' ? 'Persons × Nights' : 'Qty';
-  const rateLabel = rateType === 'ppd' ? 'Rate/Person/Night (₹)' : 'Rate (₹)';
-  const typeBadge = rateType === 'ppd'
-    ? `<span style="font-size:0.65rem;background:#eaf5ee;color:var(--green);border-radius:4px;padding:1px 6px;font-weight:600;margin-left:4px;">per person/day</span>`
-    : '';
-
-  tr.innerHTML = `
-    <td>
-      <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;">
-        <input type="text" value="${desc}" placeholder="Item description" oninput="calcTotal()" style="flex:1;min-width:120px;">
-        ${typeBadge}
-      </div>
-    </td>
-    <td>
-      <div style="display:flex;flex-direction:column;gap:2px;">
-        <span style="font-size:0.65rem;color:var(--muted);white-space:nowrap;">${qtyLabel}</span>
-        <input type="number" value="${qty}" min="1" style="width:80px;" oninput="calcRowAmt(this)" data-row="${costRowCount}">
-      </div>
-    </td>
-    <td>
-      <div style="display:flex;flex-direction:column;gap:2px;">
-        <span style="font-size:0.65rem;color:var(--muted);white-space:nowrap;">${rateLabel}</span>
-        <input type="number" value="${rate}" min="0" style="width:100px;" oninput="calcRowAmt(this)" data-row="${costRowCount}">
-      </div>
-    </td>
-    <td><input type="number" value="${amt}" min="0" style="width:100px;font-weight:600;color:var(--gold-dk);" id="rowamt-${costRowCount}" readonly></td>
-    <td><button onclick="removeCostRow('cr-${costRowCount}')" style="background:#fee2e2;border:none;color:#c0392b;border-radius:5px;width:26px;height:26px;cursor:pointer;font-size:0.9rem;" title="Remove">✕</button></td>`;
-  tbody.appendChild(tr);
-  calcTotal();
-}
-
-function addHomestayRow() {
-  addCostRow('Homestay (accommodation + all meals)', 2, 1800, 'ppd');
-}
-
-function calcRowAmt(inp) {
-  const row = inp.closest('tr');
-  const numInputs = Array.from(row.querySelectorAll('input[type="number"]'));
-  // numInputs[0]=qty, numInputs[1]=rate, numInputs[2]=amt (readonly)
-  const qty  = parseFloat(numInputs[0].value) || 0;
-  const rate = parseFloat(numInputs[1].value) || 0;
-  numInputs[2].value = qty * rate;
-  calcTotal();
-}
-
-function removeCostRow(id) {
-  const el = document.getElementById(id);
-  if(el) el.remove();
-  calcTotal();
-}
-
-function calcTotal() {
-  let total = 0;
-  document.querySelectorAll('#costRows tr').forEach(tr => {
-    const numInputs = Array.from(tr.querySelectorAll('input[type="number"]'));
-    if(numInputs.length >= 3) total += parseFloat(numInputs[2].value) || 0;
+function getDays() {
+  return Array.from(document.querySelectorAll('.day-item')).map((item, i) => {
+    const id    = item.id;
+    const label = item.querySelector('.day-label-input').value.trim();
+    const desc  = item.querySelector('.day-desc').value.trim();
+    const state = dayIE[id] || { incl: new Set(), excl: new Set() };
+    const ic    = (document.getElementById(id+'-ic')?.value||'').split('\n').filter(l=>l.trim());
+    const ec    = (document.getElementById(id+'-ec')?.value||'').split('\n').filter(l=>l.trim());
+    return { n: i+1, label, desc, incl: [...state.incl,...ic], excl: [...state.excl,...ec] };
   });
-  document.getElementById('totalAmt').textContent = '₹' + total.toLocaleString('en-IN');
-  document.getElementById('pv-total').textContent = '₹' + total.toLocaleString('en-IN');
-  calcPayments();
 }
 
-function calcPayments() {
-  let total = 0;
-  document.querySelectorAll('#costRows tr').forEach(tr => {
-    const numInputs = Array.from(tr.querySelectorAll('input[type="number"]'));
-    if(numInputs.length >= 3) total += parseFloat(numInputs[2].value) || 0;
-  });
-  const advance = parseFloat(document.getElementById('advancePaid').value) || 0;
-  const due = Math.max(0, total - advance);
-  document.getElementById('ps-advance').textContent = '₹' + advance.toLocaleString('en-IN');
-  document.getElementById('ps-due').textContent = '₹' + due.toLocaleString('en-IN');
-  document.getElementById('pv-advance').textContent = '₹' + advance.toLocaleString('en-IN');
-  document.getElementById('pv-due').textContent = '₹' + due.toLocaleString('en-IN');
-}
-
-// ─────────────────────────────────────────────
-//  CHIPS
-// ─────────────────────────────────────────────
-function toggleChip(el, type) {
-  const set = type === 'incl' ? activeInclChips : activeExclChips;
-  const key = el.textContent.trim();
-  if(set.has(key)) { set.delete(key); el.classList.remove('active'); }
-  else { set.add(key); el.classList.add('active'); }
-}
-
-function getInclusions() {
-  const chips = Array.from(activeInclChips);
-  const custom = document.getElementById('customIncl').value.trim();
-  const lines = custom ? custom.split('\n').filter(l=>l.trim()) : [];
-  return [...chips, ...lines];
-}
-
-function getExclusions() {
-  const chips = Array.from(activeExclChips);
-  const custom = document.getElementById('customExcl').value.trim();
-  const lines = custom ? custom.split('\n').filter(l=>l.trim()) : [];
-  return [...chips, ...lines];
-}
-
-// ─────────────────────────────────────────────
-//  LIVE PREVIEW
-// ─────────────────────────────────────────────
-function fmtDate(v) {
-  if(!v) return '';
-  const [y,m,d] = v.split('-');
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  return `${parseInt(d)} ${months[parseInt(m)-1]} ${y}`;
-}
-
+// ── LIVE PREVIEW
 function updatePreview() {
-  document.getElementById('pv-client').textContent = document.getElementById('clientName').value || 'Client Name';
-  document.getElementById('pv-invno').textContent = 'Invoice #' + (document.getElementById('invoiceNo').value || '—');
-  document.getElementById('pv-trip').textContent = document.getElementById('tripName').value || '—';
+  const cn = document.getElementById('clientName').value || 'Client Name';
+  document.getElementById('pv-client').textContent = cn;
+  document.getElementById('pv-ref').textContent    = document.getElementById('invoiceNo').value || '—';
+  document.getElementById('pv-trip').textContent   = document.getElementById('tripName').value  || '—';
   const s = document.getElementById('travelStart').value;
   const e = document.getElementById('travelEnd').value;
-  document.getElementById('pv-dates').textContent = s && e ? `${fmtDate(s)} → ${fmtDate(e)}` : '—';
-  document.getElementById('pv-persons').textContent = `${document.getElementById('numPersons').value || '?'} pax / ${document.getElementById('numRooms').value || '?'} room(s)`;
-  document.getElementById('pv-dest').textContent = document.getElementById('destinations').value || '—';
-  document.getElementById('pv-accom').textContent = document.getElementById('accomType').value || '—';
-  // Days preview
-  const days = document.querySelectorAll('.day-item');
-  const pvDays = document.getElementById('pv-days');
-  pvDays.innerHTML = '';
-  if(days.length) {
+  document.getElementById('pv-dates').textContent   = s&&e ? `${fmtDate(s)} — ${fmtDate(e)}` : '—';
+  document.getElementById('pv-persons').textContent = `${document.getElementById('numAdults').value||0} adults, ${document.getElementById('numChildren').value||0} children`;
+  document.getElementById('pv-dest').textContent    = document.getElementById('destinations').value || '—';
+  document.getElementById('pv-pickup').textContent  = document.getElementById('pickupDrop').value   || '—';
+
+  const total   = parseFloat(document.getElementById('totalCost').value)   || 0;
+  const advance = parseFloat(document.getElementById('advancePaid').value) || 0;
+  const balance = parseFloat(document.getElementById('balanceDue').value)  || Math.max(0, total-advance);
+  document.getElementById('pv-total').textContent   = fmt(total);
+  document.getElementById('pv-advance').textContent = fmt(advance);
+  document.getElementById('pv-due').textContent     = fmt(balance);
+
+  const days = getDays();
+  const pvD  = document.getElementById('pv-days');
+  pvD.innerHTML = '';
+  if (days.length) {
     const hdr = document.createElement('div');
-    hdr.style.cssText = 'font-size:0.72rem;font-weight:700;color:var(--green);letter-spacing:0.5px;text-transform:uppercase;margin:12px 0 6px;';
+    hdr.style.cssText = 'font-size:0.67rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.5px;margin:10px 0 5px;';
     hdr.textContent = 'Itinerary';
-    pvDays.appendChild(hdr);
-    days.forEach((d,i) => {
-      const lbl = d.querySelector('input[type="text"]').value || `Day ${i+1}`;
-      const desc = d.querySelector('textarea').value || '';
+    pvD.appendChild(hdr);
+    days.forEach(d => {
       const row = document.createElement('div');
       row.className = 'pv-day';
-      row.innerHTML = `<span class="d-lbl">${lbl}</span><span>${desc.length > 60 ? desc.slice(0,60)+'…' : desc}</span>`;
-      pvDays.appendChild(row);
+      const short = d.desc.length > 52 ? d.desc.slice(0,52)+'…' : d.desc;
+      row.innerHTML = `<span class="dl">DAY ${d.n}</span><span>${d.label ? d.label+(d.desc?(' — '+short):'') : short}</span>`;
+      pvD.appendChild(row);
     });
   }
-  calcTotal();
 }
 
-// ─────────────────────────────────────────────
-//  PDF GENERATION
-// ─────────────────────────────────────────────
+// ── PDF
 function generatePDF() {
-  // Gather all data
+  const g = id => document.getElementById(id);
   const d = {
-    clientName:   document.getElementById('clientName').value.trim() || 'Valued Client',
-    clientPhone:  document.getElementById('clientPhone').value.trim(),
-    clientEmail:  document.getElementById('clientEmail').value.trim(),
-    clientCity:   document.getElementById('clientCity').value.trim(),
-    invoiceNo:    document.getElementById('invoiceNo').value.trim() || 'SOTG-001',
-    invoiceDate:  document.getElementById('invoiceDate').value,
-    tripName:     document.getElementById('tripName').value.trim() || 'Himalayan Journey',
-    travelStart:  document.getElementById('travelStart').value,
-    travelEnd:    document.getElementById('travelEnd').value,
-    numPersons:   document.getElementById('numPersons').value,
-    numRooms:     document.getElementById('numRooms').value,
-    accomType:    document.getElementById('accomType').value,
-    destinations: document.getElementById('destinations').value.trim(),
-    pickupDrop:   document.getElementById('pickupDrop').value.trim(),
-    advancePaid:  parseFloat(document.getElementById('advancePaid').value) || 0,
-    advanceDate:  document.getElementById('advanceDate').value,
-    payMethod:    document.getElementById('payMethod').value,
-    dueDate:      document.getElementById('dueDate').value,
-    cancelPolicy: document.getElementById('cancelPolicy').value.trim(),
-    specialNotes: document.getElementById('specialNotes').value.trim(),
-    personalMsg:  document.getElementById('personalMsg').value.trim(),
+    clientName:  g('clientName').value.trim()  || 'Valued Client',
+    clientPhone: g('clientPhone').value.trim(),
+    clientEmail: g('clientEmail').value.trim(),
+    clientCity:  g('clientCity').value.trim(),
+    invoiceNo:   g('invoiceNo').value.trim()   || 'SOTG-001',
+    invoiceDate: g('invoiceDate').value,
+    tripName:    g('tripName').value.trim()    || 'Himalayan Journey',
+    travelStart: g('travelStart').value,
+    travelEnd:   g('travelEnd').value,
+    numAdults:   g('numAdults').value,
+    numChildren: g('numChildren').value,
+    numRooms:    g('numRooms').value,
+    accomType:   g('accomType').value,
+    destinations:g('destinations').value.trim(),
+    pickupDrop:  g('pickupDrop').value.trim(),
+    totalCost:   parseFloat(g('totalCost').value)   || 0,
+    advancePaid: parseFloat(g('advancePaid').value) || 0,
+    balanceDue:  parseFloat(g('balanceDue').value)  || 0,
+    advanceDate: g('advanceDate').value,
+    dueDate:     g('dueDate').value,
+    payMethod:   g('payMethod').value,
+    cancelPolicy:g('cancelPolicy').value.trim(),
+    specialNotes:g('specialNotes').value.trim(),
+    personalMsg: g('personalMsg').value.trim(),
   };
 
-  // Collect itinerary days
-  const days = [];
-  document.querySelectorAll('.day-item').forEach((item, i) => {
-    days.push({
-      label: item.querySelector('input[type="text"]').value || `Day ${i+1}`,
-      desc:  item.querySelector('textarea').value || ''
-    });
-  });
+  const days     = getDays();
+  const gIncl    = getGIncl();
+  const gExcl    = getGExcl();
+  const perHead  = parseInt(d.numAdults) > 0 && d.totalCost > 0
+    ? Math.round(d.totalCost / parseInt(d.numAdults)) : 0;
 
-  // Collect cost rows
-  const costRows = [];
-  let totalCost = 0;
-  document.querySelectorAll('#costRows tr').forEach(tr => {
-    const cells = Array.from(tr.querySelectorAll('input'));
-    const textInput = tr.querySelector('input[type="text"]');
-    const numInputs = Array.from(tr.querySelectorAll('input[type="number"]'));
-    if(numInputs.length >= 3) {
-      const desc     = textInput ? textInput.value : '';
-      const qty      = parseFloat(numInputs[0].value) || 0;
-      const rate     = parseFloat(numInputs[1].value) || 0;
-      const amt      = parseFloat(numInputs[2].value) || 0;
-      const rateType = tr.dataset.rateType || 'fixed';
-      costRows.push({ desc, qty, rate, amt, rateType });
-      totalCost += amt;
-    }
-  });
-  const balanceDue = Math.max(0, totalCost - d.advancePaid);
+  // Duration string
+  let durationStr = '—';
+  if (d.travelStart && d.travelEnd) {
+    const diff = Math.round((new Date(d.travelEnd)-new Date(d.travelStart))/86400000);
+    durationStr = `${diff}N / ${diff+1}D`;
+  }
 
-  const incl = getInclusions();
-  const excl = getExclusions();
-
-  // ── jsPDF ──
   const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+  const doc = new jsPDF({ unit:'mm', format:'a4' });
   const W = 210, M = 16;
   let y = 0;
 
-  // ── Colors
-  const G_DK = [26, 61, 43];
-  const G    = [45, 106, 79];
-  const G_LT = [82, 183, 136];
-  const GOLD = [160, 120, 48];
-  const GOLD_LT = [232, 201, 122];
-  const CREAM = [247, 244, 239];
-  const WHITE = [255, 255, 255];
-  const MUTED = [100, 100, 100];
-  const TEXT  = [30, 30, 30];
-  const RED   = [192, 57, 43];
+  // Color palette
+  const GDK   = [26,61,43];
+  const G     = [45,106,79];
+  const GLT   = [82,183,136];
+  const GOLD  = [160,120,48];
+  const GOLDL = [232,201,122];
+  const CREAM = [247,244,239];
+  const WHITE = [255,255,255];
+  const MUTED = [110,110,110];
+  const TEXT  = [30,30,30];
+  const RED   = [192,57,43];
 
-  // ── Helper: page-break safe
-  function checkY(needed = 20) {
-    if (y + needed > 270) {
-      doc.addPage();
-      watermark();
-      drawPageHeader();
-      y = 38;
-    }
+  function checkY(n) {
+    if (y + n > 272) { doc.addPage(); wm(); pageHdr(); y = 34; }
   }
-
-  // ── Watermark
-  function watermark() {
+  function wm() {
     doc.saveGraphicsState();
-    doc.setGState(new doc.GState({ opacity: 0.045 }));
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(36);
-    doc.setTextColor(...G);
-    doc.text('SANA ON THE GO', W / 2, 148, { align: 'center', angle: 38 });
-    doc.setFontSize(16);
-    doc.text('+91 98747 40763', W / 2, 165, { align: 'center', angle: 38 });
+    doc.setGState(new doc.GState({opacity:0.042}));
+    doc.setFont('helvetica','bold'); doc.setFontSize(33); doc.setTextColor(...G);
+    doc.text('SANA ON THE GO', W/2, 148, {align:'center',angle:38});
+    doc.setFontSize(15); doc.text('+91 98747 40763', W/2, 163, {align:'center',angle:38});
     doc.restoreGraphicsState();
   }
-
-  // ── Page header (continuation pages)
-  function drawPageHeader() {
-    doc.setFillColor(...G_DK);
-    doc.rect(0, 0, W, 10, 'F');
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(7);
-    doc.setTextColor(...WHITE);
-    doc.text(`Sana On The Go  ·  Invoice ${d.invoiceNo}  ·  ${d.clientName}`, M, 7);
-    doc.setTextColor(...G_LT);
-    doc.text('CONFIDENTIAL', W - M, 7, { align: 'right' });
+  function pageHdr() {
+    doc.setFillColor(...GDK); doc.rect(0,0,W,10,'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(7); doc.setTextColor(...WHITE);
+    doc.text(`Sana On The Go  ·  ${d.invoiceNo}  ·  ${d.clientName}`, M, 6.8);
+    doc.setTextColor(...GLT); doc.text('TRIP COST ESTIMATE', W-M, 6.8, {align:'right'});
+  }
+  function secHead(t) {
+    checkY(12);
+    doc.setFillColor(...G); doc.roundedRect(M,y,W-M*2,8,1,1,'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(7.5); doc.setTextColor(...WHITE);
+    doc.text(t.toUpperCase(), M+5, y+5.5);
+    y += 12;
   }
 
-  // ── Section heading helper
-  function sectionHead(title, icon = '') {
-    checkY(14);
-    doc.setFillColor(...G);
-    doc.roundedRect(M, y, W - M * 2, 9, 1, 1, 'F');
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8);
-    doc.setTextColor(...WHITE);
-    doc.text((icon ? icon + '  ' : '') + title.toUpperCase(), M + 5, y + 6.2);
-    y += 13;
-  }
+  // ── PAGE 1
+  wm();
 
-  // ── Text helper with wrap
-  function txt(text, x, yPos, size, color, fontStyle = 'normal', maxWidth = null) {
-    doc.setFont('helvetica', fontStyle);
-    doc.setFontSize(size);
-    doc.setTextColor(...color);
-    if (maxWidth) {
-      const lines = doc.splitTextToSize(text, maxWidth);
-      doc.text(lines, x, yPos);
-      return lines.length * (size * 0.4);
-    }
-    doc.text(text, x, yPos);
-    return size * 0.4;
-  }
+  // Header band
+  doc.setFillColor(...GDK); doc.rect(0,0,W,42,'F');
+  doc.setFillColor(...GLT); doc.rect(0,40,W,2,'F');
+  doc.setFont('helvetica','bold'); doc.setFontSize(20); doc.setTextColor(...WHITE);
+  doc.text('SANA ON THE GO', M, 14);
+  doc.setFont('helvetica','normal'); doc.setFontSize(7.5); doc.setTextColor([175,215,198]);
+  doc.text('INTO THE WILD TOUR AND TRAVELS', M, 20);
+  doc.text('+91 98747 40763  |  sayantikaintothewild@gmail.com', M, 26);
+  doc.text('@sana.onthe.go  |  Siliguri, North Bengal', M, 31.5);
+  doc.setFont('helvetica','bold'); doc.setFontSize(13); doc.setTextColor(...GOLDL);
+  doc.text('TRIP COST ESTIMATE', W-M, 14, {align:'right'});
+  doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor([190,225,210]);
+  doc.text(`Prepared on: ${fmtDate(d.invoiceDate)}`, W-M, 22, {align:'right'});
+  doc.text(`Ref: ${d.invoiceNo}`, W-M, 29, {align:'right'});
 
-  // ── WATERMARK + PAGE 1 ──
-  watermark();
+  y = 49;
 
-  // ── HEADER BAND ──
-  doc.setFillColor(...G_DK);
-  doc.rect(0, 0, W, 46, 'F');
-  doc.setFillColor(...G_LT);
-  doc.rect(0, 44, W, 2, 'F');
-  // Brand
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(20);
-  doc.setTextColor(...WHITE);
-  doc.text('Sana On The Go', M, 16);
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8);
-  doc.setTextColor(180, 220, 200);
-  doc.text('Into The Wild Tour and Travels  |  Himalayan Travel Specialists', M, 23);
-  doc.text('100/A/3/L Rabindra Nagar Main Road, Siliguri, West Bengal 734006', M, 29);
-  doc.text('+91 98747 40763  |  sayantikaintothewild@gmail.com  |  @sana.onthe.go', M, 35);
-  // Invoice label (right side)
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(22);
-  doc.setTextColor(...GOLD_LT);
-  doc.text('INVOICE', W - M, 18, { align: 'right' });
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8.5);
-  doc.setTextColor(200, 230, 215);
-  doc.text(`No. ${d.invoiceNo}`, W - M, 26, { align: 'right' });
-  doc.text(`Date: ${fmtDate(d.invoiceDate)}`, W - M, 32, { align: 'right' });
-
-  y = 52;
-
-  // ── CLIENT + TRIP SUMMARY BLOCK ──
-  const leftX = M, rightX = W / 2 + 4;
-  const blockH = 38;
-
-  // Right: trip summary — dynamic height so long values never truncate
-  const colR1 = rightX + 5, colR2 = rightX + 46;
-  const valMaxW = W - colR2 - M - 4;
-  const tripDetails = [
-    ['Package',        d.tripName],
-    ['Travel Dates',   d.travelStart && d.travelEnd ? `${fmtDate(d.travelStart)} to ${fmtDate(d.travelEnd)}` : '—'],
-    ['Persons/Rooms',  `${d.numPersons} pax / ${d.numRooms} room(s)`],
-    ['Accommodation',  d.accomType],
-    ['Pickup / Drop',  d.pickupDrop || 'NJP / Bagdogra'],
+  // ── CLIENT + TRIP BLOCK (measure then draw once)
+  const RX   = W/2 + 3;
+  const VW   = W - RX - M - 42;
+  const tripRows = [
+    ['Destination',       d.tripName],
+    ['Travel Dates',      d.travelStart&&d.travelEnd ? `${fmtDate(d.travelStart)} — ${fmtDate(d.travelEnd)}` : '—'],
+    ['Duration',          durationStr],
+    ['Adults / Children', `${d.numAdults} adults, ${d.numChildren} children`],
+    ['Rooms',             `${d.numRooms} (${d.accomType})`],
+    ['Places Covered',    d.destinations || '—'],
+    ['Pickup / Drop',     d.pickupDrop   || '—'],
   ];
-  // Pre-calculate total height needed
-  let tripBlockH = 10; // header bar
-  const tripLineCache = tripDetails.map(([lbl, val]) => {
-    doc.setFontSize(7.5);
-    const lines = doc.splitTextToSize(val || '—', valMaxW);
-    const h = Math.max(lines.length * 4.5, 5.5) + 3;
-    tripBlockH += h;
-    return { lbl, val: val || '—', lines, h };
+  let tH = 12;
+  const tCache = tripRows.map(([lbl,val]) => {
+    doc.setFont('helvetica','normal'); doc.setFontSize(7.5);
+    const lines = doc.splitTextToSize(val, VW);
+    const h = Math.max(lines.length*4.6, 5.5) + 2.5;
+    tH += h;
+    return {lbl, lines, h};
   });
-  tripBlockH = Math.max(tripBlockH + 4, blockH);
+  tH = Math.max(tH+4, 46);
 
-  doc.setFillColor(...CREAM);
-  doc.roundedRect(rightX, y, W - rightX - M, tripBlockH, 2, 2, 'F');
-  doc.setFillColor(...G);
-  doc.roundedRect(rightX, y, W - rightX - M, 8, 2, 2, 'F');
-  doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(...WHITE);
-  doc.text('TRIP DETAILS', rightX + 5, y + 5.5);
+  // Left: client
+  doc.setFillColor(...CREAM); doc.roundedRect(M, y, RX-M-3, tH, 2,2,'F');
+  doc.setFillColor(...G);     doc.roundedRect(M, y, RX-M-3, 8,  2,2,'F');
+  doc.setFont('helvetica','bold'); doc.setFontSize(7); doc.setTextColor(...WHITE);
+  doc.text('BILLED TO', M+5, y+5.5);
+  doc.setFont('helvetica','bold'); doc.setFontSize(11); doc.setTextColor(...GDK);
+  const cnL = doc.splitTextToSize(d.clientName, RX-M-3-10);
+  doc.text(cnL, M+5, y+15);
+  let cy = y+15+cnL.length*5.5;
+  doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor(...MUTED);
+  if (d.clientPhone) { doc.text(d.clientPhone, M+5, cy); cy+=5.2; }
+  if (d.clientEmail) { doc.text(d.clientEmail, M+5, cy); cy+=5.2; }
+  if (d.clientCity)  { doc.text(d.clientCity,  M+5, cy); }
 
-  let ry = y + 13;
-  tripLineCache.forEach(({ lbl, lines, h }) => {
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(6.8); doc.setTextColor(...MUTED);
-    doc.text(lbl, colR1, ry);
-    doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...TEXT);
-    doc.text(lines, colR2, ry);
+  // Right: trip
+  doc.setFillColor(...CREAM); doc.roundedRect(RX, y, W-RX-M, tH, 2,2,'F');
+  doc.setFillColor(...G);     doc.roundedRect(RX, y, W-RX-M, 8,  2,2,'F');
+  doc.setFont('helvetica','bold'); doc.setFontSize(7); doc.setTextColor(...WHITE);
+  doc.text('TRIP DETAILS', RX+5, y+5.5);
+  let ry = y+13;
+  tCache.forEach(({lbl,lines,h}) => {
+    doc.setFont('helvetica','bold');  doc.setFontSize(6.8); doc.setTextColor(...MUTED); doc.text(lbl, RX+5, ry);
+    doc.setFont('helvetica','normal');doc.setFontSize(7.5); doc.setTextColor(...TEXT);  doc.text(lines, RX+41, ry);
     ry += h;
   });
 
-  // Recalculate blockH using actual rendered height
-  const actualRightH = tripBlockH;
-  const actualLeftH  = blockH;
-  const combinedH    = Math.max(actualRightH, actualLeftH);
+  y += tH + 12;
 
-  // Redraw left box at matched height
-  doc.setFillColor(...CREAM);
-  doc.roundedRect(M, y, (W / 2) - M - 4, combinedH, 2, 2, 'F');
-  doc.setFillColor(...G);
-  doc.roundedRect(M, y, (W / 2) - M - 4, 8, 2, 2, 'F');
-  doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(...WHITE);
-  doc.text('BILLED TO', M + 5, y + 5.5);
-  doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(...G_DK);
-  const clientLines = doc.splitTextToSize(d.clientName, (W/2) - M - 4 - 10);
-  doc.text(clientLines, M + 5, y + 15);
-  let cy = y + 15 + clientLines.length * 5;
-  doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(...MUTED);
-  if (d.clientPhone) { doc.text(d.clientPhone, M + 5, cy); cy += 5.5; }
-  if (d.clientEmail) { doc.text(d.clientEmail, M + 5, cy); cy += 5.5; }
-  if (d.clientCity)  { doc.text(d.clientCity,  M + 5, cy); }
-
-  // Redraw right box at correct height too
-  doc.setFillColor(...CREAM);
-  doc.roundedRect(rightX, y, W - rightX - M, combinedH, 2, 2, 'F');
-  doc.setFillColor(...G);
-  doc.roundedRect(rightX, y, W - rightX - M, 8, 2, 2, 'F');
-  doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(...WHITE);
-  doc.text('TRIP DETAILS', rightX + 5, y + 5.5);
-  ry = y + 13;
-  tripLineCache.forEach(({ lbl, lines, h }) => {
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(6.8); doc.setTextColor(...MUTED);
-    doc.text(lbl, colR1, ry);
-    doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...TEXT);
-    doc.text(lines, colR2, ry);
-    ry += h;
-  });
-
-  y += combinedH + 12;
-
-  // ── ITINERARY ──
+  // ── ITINERARY ─────────────────────────────────────
+  // Style matches sample PDF: DAY badge + bold title on same line + body paragraph below
   if (days.length) {
-    sectionHead('Day-by-Day Itinerary', 'itinerary:');
+    secHead('Itinerary');
     days.forEach((day, i) => {
-      checkY(16);
-      // Day pill
-      doc.setFillColor(...G);
-      doc.roundedRect(M, y - 3, 22, 7, 2, 2, 'F');
-      doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(...WHITE);
-      doc.text(String(i + 1).padStart(2,'0'), M + 11, y + 2, { align: 'center' });
-      // Label
-      doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(...G_DK);
-      doc.text(day.label, M + 26, y + 1.5);
-      // Description
-      if (day.desc) {
-        doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(...MUTED);
-        const lines = doc.splitTextToSize(day.desc, W - M * 2 - 30);
-        doc.text(lines, M + 26, y + 7);
-        y += 8 + lines.length * 4 + 4;
-      } else {
-        y += 12;
+      // Pre-measure heights
+      doc.setFont('helvetica','normal'); doc.setFontSize(9);
+      const descLines = day.desc ? doc.splitTextToSize(day.desc, W-M*2-22) : [];
+
+      // Per-day IE strings
+      const inclStr = day.incl.length ? 'Included: ' + day.incl.join(', ') : '';
+      const exclStr = day.excl.length ? 'Not Included: ' + day.excl.join(', ') : '';
+      doc.setFontSize(7.5);
+      const iLines = inclStr ? doc.splitTextToSize(inclStr, W-M*2-22) : [];
+      const eLines = exclStr ? doc.splitTextToSize(exclStr, W-M*2-22) : [];
+
+      const bH = 4
+        + (day.label ? 6.5 : 0)
+        + descLines.length * 5.2
+        + (iLines.length ? iLines.length*4.2+3 : 0)
+        + (eLines.length ? eLines.length*4.2+2 : 0)
+        + 6;
+
+      checkY(bH + 4);
+
+      // Alternating row background
+      if (i % 2 === 0) {
+        doc.setFillColor(250,249,246);
+        doc.roundedRect(M, y-1, W-M*2, bH+2, 1,1,'F');
       }
-      // Divider
-      if (i < days.length - 1) {
-        doc.setDrawColor(220, 215, 205); doc.setLineWidth(0.2);
-        doc.line(M + 26, y - 2, W - M, y - 2);
+
+      // DAY badge — green rounded square, "DAY" small above number
+      const bx = M+2, by = y+2;
+      doc.setFillColor(...G); doc.roundedRect(bx, by, 16, 18, 2,2,'F');
+      doc.setFont('helvetica','bold'); doc.setFontSize(5.2); doc.setTextColor(...WHITE);
+      doc.text('DAY', bx+8, by+5.8, {align:'center'});
+      doc.setFont('helvetica','bold'); doc.setFontSize(11); doc.setTextColor(...WHITE);
+      doc.text(String(day.n), bx+8, by+14, {align:'center'});
+
+      const tx = M+22, tw = W-M*2-24;
+      let ty = y+5;
+
+      // Title line — bold
+      if (day.label) {
+        doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.setTextColor(...GDK);
+        doc.text(day.label, tx, ty);
+        ty += 6.5;
+      }
+
+      // Body text — normal weight, 9pt (same as sample PDF)
+      if (descLines.length) {
+        doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(...TEXT);
+        doc.text(descLines, tx, ty);
+        ty += descLines.length * 5.2 + 1;
+      }
+
+      // Per-day inclusions (small green label)
+      if (iLines.length) {
+        ty += 2;
+        doc.setFont('helvetica','bold');   doc.setFontSize(7); doc.setTextColor(...G);
+        doc.text(iLines[0], tx, ty);
+        if (iLines.length > 1) {
+          doc.setFont('helvetica','normal'); doc.setFontSize(7);
+          iLines.slice(1).forEach(l => { ty += 4.2; doc.text(l, tx, ty); });
+        }
+        ty += 4.2;
+      }
+
+      // Per-day exclusions (small red label)
+      if (eLines.length) {
+        ty += 1;
+        doc.setFont('helvetica','bold');   doc.setFontSize(7); doc.setTextColor(...RED);
+        doc.text(eLines[0], tx, ty);
+        if (eLines.length > 1) {
+          doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor(...RED);
+          eLines.slice(1).forEach(l => { ty += 4.2; doc.text(l, tx, ty); });
+        }
+      }
+
+      y += bH + 2;
+      // Divider between days
+      if (i < days.length-1) {
+        doc.setDrawColor(218,213,203); doc.setLineWidth(0.2);
+        doc.line(M, y, W-M, y);
       }
     });
     y += 6;
   }
 
-  // ── COST BREAKDOWN ──
-  if (costRows.length) {
-    sectionHead('Cost Breakdown', '');
-    // Column positions
-    const C_DESC = M + 3;
-    const C_QTY  = M + 95;
-    const C_RATE = M + 128;
-    const C_AMT  = W - M - 3;
-    const C_DESC_W = 78; // max width for description text before wrapping
-    // Table header
-    doc.setFillColor(...CREAM);
-    doc.rect(M, y, W - M * 2, 8, 'F');
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5); doc.setTextColor(...G);
-    doc.text('ITEM / DESCRIPTION', C_DESC, y + 5.5);
-    doc.text('QTY',       C_QTY,  y + 5.5, { align: 'right' });
-    doc.text('RATE (₹)',  C_RATE, y + 5.5, { align: 'right' });
-    doc.text('AMOUNT (₹)', C_AMT, y + 5.5, { align: 'right' });
-    y += 10;
+  // ── GLOBAL INCLUSIONS & EXCLUSIONS ────────────────
+  if (gIncl.length || gExcl.length) {
+    secHead('Inclusions & Exclusions');
+    const strip = s => s.replace(/[\u{1F000}-\u{1FFFF}]|[\u2600-\u27FF]/gu,'').replace(/\s{2,}/g,' ').trim();
 
-    costRows.forEach((row, i) => {
-      // Pre-wrap description to calculate row height
-      doc.setFontSize(8);
-      const descLines = doc.splitTextToSize(row.desc || '—', C_DESC_W);
-      const rowH = Math.max(descLines.length * 4.8, 8) + 4;
-      checkY(rowH + 2);
-      if (i % 2 === 1) {
-        doc.setFillColor(251, 249, 245);
-        doc.rect(M, y - 2, W - M * 2, rowH, 'F');
-      }
-      const midY = y + rowH / 2 - 1;
-      doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(...TEXT);
-      doc.text(descLines, C_DESC, y + 4);
-      doc.text(String(row.qty),                    C_QTY,  midY, { align: 'right' });
-      doc.text(row.rate.toLocaleString('en-IN'),   C_RATE, midY, { align: 'right' });
-      doc.setFont('helvetica', 'bold');
-      doc.text(row.amt.toLocaleString('en-IN'),    C_AMT,  midY, { align: 'right' });
-      // Draw a subtle type tag if present (homestay per-person-per-day)
-      if (row.rateType === 'ppd') {
-        doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5);
-        doc.setTextColor(...G_LT);
-        doc.text('per person/day', C_DESC, y + 4 + descLines.length * 4.8 + 0.5);
-      }
-      y += rowH;
-    });
-
-    // Subtotal divider
-    doc.setDrawColor(...G_LT); doc.setLineWidth(0.5);
-    doc.line(M, y, W - M, y);
-    y += 4;
-
-    // Total box
-    checkY(14);
-    doc.setFillColor(...GOLD);
-    doc.roundedRect(M + 80, y, W - M - 80 - M, 12, 2, 2, 'F');
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(...WHITE);
-    doc.text('TOTAL PACKAGE COST', M + 85, y + 8);
-    doc.setFontSize(11);
-    doc.text('₹' + totalCost.toLocaleString('en-IN'), W - M - 3, y + 8, { align: 'right' });
-    y += 18;
-  }
-
-  // ── PAYMENT SUMMARY ──
-  checkY(36);
-  sectionHead('Payment Summary', 'payment:');
-
-  const psBoxW = (W - M * 2 - 8) / 3;
-  const psData = [
-    { lbl: 'Total Cost', val: '₹' + totalCost.toLocaleString('en-IN'), color: G_DK },
-    { lbl: 'Advance Paid' + (d.advanceDate ? '\n' + fmtDate(d.advanceDate) : ''), val: '₹' + d.advancePaid.toLocaleString('en-IN'), color: G },
-    { lbl: 'Balance Due' + (d.dueDate ? '\nby ' + fmtDate(d.dueDate) : ''), val: '₹' + balanceDue.toLocaleString('en-IN'), color: RED },
-  ];
-
-  psData.forEach((item, i) => {
-    const bx = M + i * (psBoxW + 4);
-    doc.setFillColor(...CREAM);
-    doc.roundedRect(bx, y, psBoxW, 24, 2, 2, 'F');
-    doc.setFillColor(...item.color);
-    doc.roundedRect(bx, y, psBoxW, 7, 2, 2, 'F');
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(...WHITE);
-    doc.text(item.lbl.split('\n')[0].toUpperCase(), bx + psBoxW / 2, y + 4.8, { align: 'center' });
-    if (item.lbl.split('\n')[1]) {
-      doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(...WHITE);
-      doc.text(item.lbl.split('\n')[1], bx + psBoxW / 2, y + 9.5, { align: 'center' });
-    }
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(...item.color);
-    doc.text(item.val, bx + psBoxW / 2, y + 20, { align: 'center' });
-  });
-
-  y += 30;
-
-  // Payment method
-  if (d.payMethod) {
-    checkY(8);
-    doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...MUTED);
-    doc.text(`Advance received via: ${d.payMethod}`, M, y);
-    y += 8;
-  }
-
-  // Bank details box
-  checkY(22);
-  doc.setFillColor(...CREAM);
-  doc.roundedRect(M, y, W - M * 2, 20, 2, 2, 'F');
-  doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5); doc.setTextColor(...G_DK);
-  doc.text('PAYMENT DETAILS', M + 5, y + 6);
-  doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...MUTED);
-  doc.text('UPI ID: sayantikaintothewild@okicici  |  PayTM / GPay / PhonePe: +91 98747 40763', M + 5, y + 12);
-  doc.text('Bank: Please contact us on WhatsApp for NEFT/IMPS details  |  Preferred: UPI', M + 5, y + 17.5);
-  y += 26;
-
-  // ── INCLUSIONS & EXCLUSIONS ──
-  if (incl.length || excl.length) {
-    checkY(14);
-    sectionHead('Package Inclusions & Exclusions', 'ie:');
-
-    const colW = (W - M * 2 - 8) / 2;
-    const startY = y;
-    let leftY = y, rightY = y;
-
-    if (incl.length) {
-      doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(...G);
-      doc.text('INCLUDED', M, leftY); leftY += 6;
-      incl.forEach(item => {
-        if (leftY > 275) { /* safety */ return; }
-        doc.setFillColor(...G_LT);
-        doc.circle(M + 1.5, leftY - 1, 1.2, 'F');
-        doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...TEXT);
-        const lines = doc.splitTextToSize(item.replace(/^[^\s]+\s/, ''), colW - 12);
-        // Show item text (strip emoji for cleaner PDF)
-        const cleanItem = item.replace(/[\u{1F300}-\u{1FFFF}]/gu, '').trim();
-        doc.text(cleanItem || item, M + 6, leftY);
-        leftY += lines.length * 4.5 + 1.5;
+    if (gIncl.length) {
+      checkY(8);
+      doc.setFont('helvetica','bold'); doc.setFontSize(8.5); doc.setTextColor(...G);
+      doc.text('INCLUDED', M, y); y += 6;
+      gIncl.forEach(item => {
+        const cl = strip(item)||item;
+        doc.setFont('helvetica','normal'); doc.setFontSize(8.5);
+        const ls = doc.splitTextToSize(`- ${cl}`, W-M*2-5);
+        const rh = ls.length*4.8+2;
+        checkY(rh);
+        doc.setTextColor(...TEXT); doc.text(ls, M+3, y);
+        y += rh;
       });
+      y += 4;
     }
-
-    if (excl.length) {
-      doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(RED[0], RED[1], RED[2]);
-      doc.text('EXCLUDED', M + colW + 8, rightY); rightY += 6;
-      excl.forEach(item => {
-        if (rightY > 275) { return; }
-        doc.setFillColor(...RED);
-        doc.circle(M + colW + 8 + 1.5, rightY - 1, 1.2, 'F');
-        doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...TEXT);
-        const cleanItem = item.replace(/[\u{1F300}-\u{1FFFF}]/gu, '').trim();
-        doc.text(cleanItem || item, M + colW + 8 + 6, rightY);
-        rightY += 4.5 + 1.5;
+    if (gExcl.length) {
+      checkY(8);
+      doc.setFont('helvetica','bold'); doc.setFontSize(8.5); doc.setTextColor(...RED);
+      doc.text('NOT INCLUDED', M, y); y += 6;
+      gExcl.forEach(item => {
+        const cl = strip(item)||item;
+        doc.setFont('helvetica','normal'); doc.setFontSize(8.5);
+        const ls = doc.splitTextToSize(`- ${cl}`, W-M*2-5);
+        const rh = ls.length*4.8+2;
+        checkY(rh);
+        doc.setTextColor(...TEXT); doc.text(ls, M+3, y);
+        y += rh;
       });
+      y += 4;
     }
-
-    y = Math.max(leftY, rightY) + 8;
+    y += 2;
   }
 
-  // ── CANCELLATION POLICY ──
+  // ── TOTAL COST ─────────────────────────────────────
+  checkY(50);
+  secHead('Total Estimated Cost');
+
+  // Big total
+  doc.setFillColor(...GOLD); doc.roundedRect(M, y, W-M*2, 18, 2,2,'F');
+  doc.setFont('helvetica','bold'); doc.setFontSize(13); doc.setTextColor(...WHITE);
+  doc.text(fmtRs(d.totalCost), W/2, y+12, {align:'center'});
+  y += 22;
+
+  // Per head
+  if (perHead > 0) {
+    checkY(12);
+    doc.setFillColor(...CREAM); doc.roundedRect(M,y,W-M*2,10,2,2,'F');
+    doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor(...MUTED);
+    doc.text(`Per Head Cost (${d.numAdults} pax)`, M+5, y+6.5);
+    doc.setFont('helvetica','bold'); doc.setTextColor(...GDK);
+    doc.text(fmtRs(perHead), W-M-5, y+6.5, {align:'right'});
+    y += 14;
+  }
+
+  // Advance + balance boxes
+  if (d.advancePaid > 0 || d.balanceDue > 0) {
+    checkY(26);
+    const bw = (W-M*2-6)/2;
+    doc.setFillColor(230,247,238); doc.roundedRect(M,        y, bw, 20, 2,2,'F');
+    doc.setFillColor(...G);        doc.roundedRect(M,        y, bw, 7,  2,2,'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(6.5); doc.setTextColor(...WHITE);
+    doc.text('ADVANCE PAID', M+bw/2, y+4.5, {align:'center'});
+    doc.setFont('helvetica','bold'); doc.setFontSize(10); doc.setTextColor(...G);
+    doc.text(fmtRs(d.advancePaid), M+bw/2, y+15, {align:'center'});
+    if (d.advanceDate) {
+      doc.setFont('helvetica','normal'); doc.setFontSize(6.2); doc.setTextColor(...MUTED);
+      doc.text(`on ${fmtDate(d.advanceDate)} via ${d.payMethod}`, M+bw/2, y+19, {align:'center'});
+    }
+    doc.setFillColor(255,238,236); doc.roundedRect(M+bw+6,   y, bw, 20, 2,2,'F');
+    doc.setFillColor(...RED);      doc.roundedRect(M+bw+6,   y, bw, 7,  2,2,'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(6.5); doc.setTextColor(...WHITE);
+    doc.text('BALANCE DUE', M+bw+6+bw/2, y+4.5, {align:'center'});
+    doc.setFont('helvetica','bold'); doc.setFontSize(10); doc.setTextColor(...RED);
+    doc.text(fmtRs(d.balanceDue), M+bw+6+bw/2, y+15, {align:'center'});
+    if (d.dueDate) {
+      doc.setFont('helvetica','normal'); doc.setFontSize(6.2); doc.setTextColor(...MUTED);
+      doc.text(`due by ${fmtDate(d.dueDate)}`, M+bw+6+bw/2, y+19, {align:'center'});
+    }
+    y += 26;
+  }
+
+  // Payment details
+  checkY(18);
+  doc.setFillColor(...CREAM); doc.roundedRect(M,y,W-M*2,16,2,2,'F');
+  doc.setFont('helvetica','bold');  doc.setFontSize(7); doc.setTextColor(...GDK);
+  doc.text('PAYMENT DETAILS', M+5, y+5.5);
+  doc.setFont('helvetica','normal');doc.setFontSize(7); doc.setTextColor(...MUTED);
+  doc.text('UPI ID: sayantikaintothewild@okicici  |  PayTM / GPay / PhonePe: +91 98747 40763', M+5, y+10.5);
+  doc.text('For NEFT / IMPS bank details please contact us on WhatsApp.', M+5, y+15);
+  y += 22;
+
+  // ── CANCELLATION ──────────────────────────────
   if (d.cancelPolicy) {
-    checkY(20);
-    sectionHead('Cancellation Policy', 'cancel:');
-    doc.setFillColor(255, 243, 240);
-    const lines = doc.splitTextToSize(d.cancelPolicy, W - M * 2 - 10);
-    doc.roundedRect(M, y - 2, W - M * 2, lines.length * 5 + 8, 2, 2, 'F');
-    doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(...TEXT);
-    lines.forEach((line, i) => {
-      const ly = y + i * 5 + 3;
-      doc.text(line, M + 5, ly);
-    });
-    y += lines.length * 5 + 14;
+    doc.setFont('helvetica','normal'); doc.setFontSize(8);
+    const cL = doc.splitTextToSize(d.cancelPolicy, W-M*2-10);
+    const cH = cL.length*5.2+10;
+    checkY(cH+14);
+    secHead('Cancellation Policy');
+    doc.setFillColor(255,243,240); doc.roundedRect(M,y,W-M*2,cH,2,2,'F');
+    doc.setTextColor(...TEXT);
+    cL.forEach((l,i) => doc.text(l, M+5, y+6+i*5.2));
+    y += cH+8;
   }
 
-  // ── SPECIAL NOTES ──
+  // ── NOTES ──────────────────────────────────────
   if (d.specialNotes) {
-    checkY(18);
-    sectionHead('Important Notes', 'notes:');
-    const lines = doc.splitTextToSize(d.specialNotes, W - M * 2 - 10);
-    doc.setFillColor(...CREAM);
-    doc.roundedRect(M, y - 2, W - M * 2, lines.length * 5 + 8, 2, 2, 'F');
-    doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...MUTED);
-    lines.forEach((line, i) => { doc.text(line, M + 5, y + i * 5 + 3); });
-    y += lines.length * 5 + 14;
+    doc.setFont('helvetica','normal'); doc.setFontSize(7.5);
+    const nL = doc.splitTextToSize(d.specialNotes, W-M*2-10);
+    const nH = nL.length*5+10;
+    checkY(nH+14);
+    secHead('Important Notes');
+    doc.setFillColor(...CREAM); doc.roundedRect(M,y,W-M*2,nH,2,2,'F');
+    doc.setTextColor(...MUTED);
+    nL.forEach((l,i) => doc.text(l, M+5, y+6+i*5));
+    y += nH+8;
   }
 
-  // ── PERSONAL MESSAGE ──
+  // ── PERSONAL MESSAGE ────────────────────────────
   if (d.personalMsg) {
-    checkY(20);
-    doc.setFillColor(232, 245, 238);
-    const lines = doc.splitTextToSize(`"${d.personalMsg}"`, W - M * 2 - 14);
-    doc.roundedRect(M, y, W - M * 2, lines.length * 5.5 + 10, 3, 3, 'F');
-    doc.setFillColor(...G);
-    doc.roundedRect(M, y, 3, lines.length * 5.5 + 10, 1, 1, 'F');
-    doc.setFont('helvetica', 'italic'); doc.setFontSize(8.5); doc.setTextColor(...G_DK);
-    lines.forEach((line, i) => { doc.text(line, M + 8, y + 7 + i * 5.5); });
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5); doc.setTextColor(...G);
-    doc.text('— Sayantika, Sana On The Go', W - M, y + lines.length * 5.5 + 4, { align: 'right' });
-    y += lines.length * 5.5 + 16;
+    doc.setFont('helvetica','italic'); doc.setFontSize(8.5);
+    const mL = doc.splitTextToSize(`"${d.personalMsg}"`, W-M*2-14);
+    const mH = mL.length*5.5+14;
+    checkY(mH+6);
+    doc.setFillColor(232,245,238); doc.roundedRect(M,y,W-M*2,mH,3,3,'F');
+    doc.setFillColor(...G);        doc.roundedRect(M,y,3,mH,1,1,'F');
+    doc.setTextColor(...GDK);
+    mL.forEach((l,i) => doc.text(l, M+8, y+8+i*5.5));
+    doc.setFont('helvetica','bold'); doc.setFontSize(7.5); doc.setTextColor(...G);
+    doc.text('— Sayantika, Sana On The Go', W-M, y+mH-3, {align:'right'});
+    y += mH+8;
   }
 
-  // ── FOOTER ──
-  const totalPages = doc.internal.getNumberOfPages();
-  for (let pg = 1; pg <= totalPages; pg++) {
+  // ── FOOTER ─────────────────────────────────────
+  const tp = doc.internal.getNumberOfPages();
+  for (let pg=1; pg<=tp; pg++) {
     doc.setPage(pg);
-    doc.setFillColor(...G_DK);
-    doc.rect(0, 284, W, 13, 'F');
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5); doc.setTextColor(...WHITE);
-    doc.text('Sana On The Go  |  Into The Wild Tour and Travels', M, 291);
-    doc.setFont('helvetica', 'normal'); doc.setFontSize(7); doc.setTextColor(160, 210, 185);
-    doc.text('WA: +91 98747 40763  ·  sayantikaintothewild@gmail.com  ·  @sana.onthe.go', M, 295.5);
-    doc.setTextColor(...WHITE);
-    doc.text(`Page ${pg} of ${totalPages}`, W - M, 291, { align: 'right' });
-    if (pg === 1 && d.invoiceNo) {
-      doc.setTextColor(160, 210, 185);
-      doc.text(`Invoice ${d.invoiceNo}`, W - M, 295.5, { align: 'right' });
-    }
+    doc.setFillColor(...GDK); doc.rect(0,284,W,13,'F');
+    doc.setFont('helvetica','bold');  doc.setFontSize(7);   doc.setTextColor(...WHITE);
+    doc.text('Sana On The Go  |  Into The Wild Tour and Travels', M, 290.5);
+    doc.setFont('helvetica','normal');doc.setFontSize(6.5); doc.setTextColor([155,205,180]);
+    doc.text('WA: +91 98747 40763  ·  sayantikaintothewild@gmail.com  ·  @sana.onthe.go', M, 294.8);
+    doc.setTextColor(...WHITE); doc.text(`Page ${pg} of ${tp}`, W-M, 290.5, {align:'right'});
+    doc.setTextColor([155,205,180]); doc.text('This is an estimated cost and may vary.', W-M, 294.8, {align:'right'});
   }
 
-  // ── SAVE ──
-  const filename = `SOTG-Invoice-${d.invoiceNo}-${d.clientName.replace(/\s+/g,'-')}.pdf`;
-  doc.save(filename);
-  showToast('✓ PDF saved: ' + filename);
+  const fn = `SOTG-${d.invoiceNo}-${d.clientName.replace(/\s+/g,'-')}.pdf`;
+  doc.save(fn);
+  showToast(`✓ PDF saved: ${fn}`);
 }
 
-// ─────────────────────────────────────────────
-//  TOAST
-// ─────────────────────────────────────────────
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
