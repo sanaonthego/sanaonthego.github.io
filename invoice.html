@@ -1064,8 +1064,7 @@ function generatePDF() {
   doc.setFont('helvetica','bold');  doc.setFontSize(7); doc.setTextColor(...GDK);
   doc.text('PAYMENT DETAILS', M+5, y+5.5);
   doc.setFont('helvetica','normal');doc.setFontSize(7); doc.setTextColor(...MUTED);
-  doc.text('UPI ID: sayantikaintothewild@okicici  |  PayTM / GPay / PhonePe: +91 98747 40763', M+5, y+10.5);
-  doc.text('For NEFT / IMPS bank details please contact us on WhatsApp.', M+5, y+15);
+  doc.text('For NEFT/ UPI / IMPS bank details please contact us on WhatsApp.', M+5, y+15);
   y += 22;
 
   if (d.cancelPolicy) {
@@ -1116,7 +1115,7 @@ function generatePDF() {
     doc.setFont('helvetica','normal');doc.setFontSize(6.5); doc.setTextColor(155,205,180);
     doc.text('WA: +91 98747 40763  ·  sayantikaintothewild@gmail.com  ·  @sana.onthe.go', M, 294.8);
     doc.setTextColor(...WHITE); doc.text(`Page ${pg} of ${tp}`, W-M, 290.5, {align:'right'});
-    doc.setTextColor(155,205,180); doc.text('This is an estimated cost and may vary.', W-M, 294.8, {align:'right'});
+  
   }
 
   const fn = `SOTG-${d.invoiceNo}-${d.clientName.replace(/\s+/g,'-')}.pdf`;
